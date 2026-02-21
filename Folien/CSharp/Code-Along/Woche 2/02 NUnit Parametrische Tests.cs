@@ -1,0 +1,218 @@
+// -*- coding: utf-8 -*-
+// %% [markdown]
+//
+// <div style="text-align:center; font-size:200%;">
+//  <b>NUnit Parametrische Tests</b>
+// </div>
+// <br/>
+// <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
+// <br/>
+// <div style="text-align:center;">Coding-Akademie München</div>
+// <br/>
+
+// %% [markdown]
+//
+// ## Motivation: Schaltjahr-Funktion
+//
+// - Ein Schaltjahr ist etwas komplizierter als "durch 4 teilbar"
+// - Genauer:
+//   - Durch 4 teilbar: Schaltjahr
+//   - Aber durch 100 teilbar: **kein** Schaltjahr
+//   - Aber durch 400 teilbar: **doch** Schaltjahr
+
+// %%
+static bool IsLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+// %%
+#r "nuget: NUnit, *"
+
+// %%
+#load "NunitTestRunner.cs"
+
+// %%
+using NUnit.Framework;
+
+// %%
+using static NunitTestRunner;
+
+// %% [markdown]
+//
+// ## Problem: Wiederholter Test-Code
+//
+// - Mehrere Tests mit identischer Struktur
+// - Nur die Testwerte unterscheiden sich
+// - Viel syntaktischer Overhead
+
+// %%
+
+// %%
+
+// %% [markdown]
+//
+// ## `[TestCase]`-Attribut
+//
+// - Ersetzt wiederholte `[Test]`-Methoden durch eine parametrisierte Methode
+// - Jedes `[TestCase]`-Attribut liefert einen Satz von Testdaten
+// - Der Test wird fuer jeden `[TestCase]` einzeln ausgefuehrt
+// - Parameter der Methode muessen zum `[TestCase]` passen
+
+// %%
+[TestFixture]
+public class LeapYearTestsV2 {
+    [Test]
+    public void YearDivisibleBy4ButNot100IsLeapYear() {
+        Assert.That(IsLeapYear(2004), Is.True);
+    }
+
+    [Test]
+    public void YearDivisibleBy400IsLeapYear() {
+        Assert.That(IsLeapYear(2000), Is.True);
+    }
+
+    [Test]
+    public void YearsNotDivisibleBy4AreNotLeapYears() {
+        Assert.That(IsLeapYear(2001), Is.False);
+        Assert.That(IsLeapYear(2002), Is.False);
+        Assert.That(IsLeapYear(2003), Is.False);
+    }
+
+    [Test]
+    public void YearDivisibleBy100ButNot400IsNotLeapYear() {
+        Assert.That(IsLeapYear(1900), Is.False);
+    }
+}
+
+// %%
+
+// %% [markdown]
+//
+// ## Kompaktere Version
+//
+// - Alle Tests haben die gleiche Struktur
+// - Wir koennen sie zu zwei parametrisierten Tests zusammenfassen
+// - Vorteil: Kompakter Code
+// - Nachteil: Weniger informative Testnamen
+
+// %%
+
+// %%
+
+// %% [markdown]
+//
+// ## `[TestCase]` mit mehreren Parametern
+//
+// - `[TestCase]` kann mehrere Argumente enthalten
+// - Argumente werden den Methodenparametern der Reihe nach zugeordnet
+// - Ermoeglicht Kombination von Eingabe und erwartetem Ergebnis
+
+// %%
+
+// %%
+
+// %% [markdown]
+//
+// ## `[TestCaseSource]`
+//
+// - `[TestCaseSource]` liefert Testdaten aus einer Methode oder Property
+// - Methodenname wird mit `nameof()` uebergeben
+// - Methode muss `static` sein
+// - Gibt `IEnumerable` von Testdaten zurueck
+// - Mehr Flexibilitaet als `[TestCase]`
+
+// %%
+using System;
+using System.Collections.Generic;
+
+// %% [markdown]
+//
+// ### `[TestCaseSource]` mit `object[]`
+//
+// - Factory-Methode gibt `IEnumerable<object[]>` zurueck
+// - Jedes `object[]` enthaelt die Argumente fuer einen Testlauf
+// - Aehnlich wie `[MemberData]` in xUnit
+
+// %%
+
+// %% [markdown]
+//
+// ### `[TestCaseSource]` mit `TestCaseData`
+//
+// - `TestCaseData` erlaubt mehr Kontrolle ueber Testfaelle
+// - Testnamen koennen individuell vergeben werden
+// - Erwartete Ergebnisse koennen mit `.Returns()` angegeben werden
+
+// %%
+
+// %% [markdown]
+//
+// ## Vergleich: xUnit vs. NUnit
+//
+// | Feature | xUnit | NUnit |
+// |---------|-------|-------|
+// | Einfacher Test | `[Fact]` | `[Test]` |
+// | Inline-Daten | `[Theory]` + `[InlineData]` | `[TestCase]` |
+// | Factory-Methode | `[Theory]` + `[MemberData]` | `[TestCaseSource]` |
+// | Assertions | `Assert.True/False/Equal` | `Assert.That(..., Is.*)` |
+
+// %% [markdown]
+//
+// ## Workshop: Parametrisierte Tests (NUnit)
+//
+// - Schreiben Sie parametrisierte Tests fuer die folgenden Funktionen.
+// - Verwenden Sie dabei `[TestCase]` mindestens einmal.
+// - Verwenden Sie das NUnit Constraint-Modell (`Assert.That(..., Is.*)`)
+//   fuer Assertions.
+
+// %%
+static bool IsPrime(int n) {
+    if (n <= 1) {
+        return false;
+    }
+    for (int i = 2; i <= Math.Sqrt(n); i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// %%
+
+// %%
+RunTests<PrimeTests>();
+
+// %%
+static bool IsPalindrome(string s) {
+    return s.Equals(new string(s.Reverse().ToArray()));
+}
+
+// %%
+
+// %%
+RunTests<PalindromeTests>();
+
+// %%
+static bool ContainsDigit(int n, int digit) {
+    return n.ToString().Contains(digit.ToString());
+}
+
+// %%
+
+// %%
+RunTests<ContainsDigitTests>();
+
+// %%
+static string SubstringFollowing(string s, string prefix) {
+    int index = s.IndexOf(prefix);
+    if (index == -1) {
+        return s;
+    }
+    return s.Substring(index + prefix.Length);
+}
+
+// %%
+
+// %%
+RunTests<SubstringFollowingTests>();
