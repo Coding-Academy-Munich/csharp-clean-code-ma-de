@@ -22,6 +22,17 @@
 
 // %% [markdown]
 //
+// # Hinweis: Deprecation
+//
+// - Microsoft hat angekündigt, Polyglot Notebooks ab März 2026 nicht mehr
+//   weiterzuentwickeln
+// - Die Erweiterung funktioniert weiterhin und wird nicht deaktiviert
+// - Für diesen Kurs ist das kein Problem
+// - Falls die Erweiterung irgendwann nicht mehr funktioniert: Docker oder
+//   HTML-Folien als Alternative verwenden
+
+// %% [markdown]
+//
 // # Voraussetzungen
 //
 // - [.NET SDK](https://dotnet.microsoft.com/download) (Version 8 oder neuer)
@@ -61,7 +72,17 @@
 //
 // # Alternative: Docker
 //
-// - Falls Probleme mit der lokalen Installation auftreten:
-//   - Docker-basierte Notebooks als Alternative
-//   - Siehe Video "Docker für Notebooks"
-// - Polyglot Notebooks in VS Code ist aber die empfohlene Methode
+// - Docker-basierte Notebooks als gleichwertige Alternative
+// - Läuft im Browser (JupyterLab)
+// - Nur Docker Desktop erforderlich
+// - Siehe Video "Docker für Notebooks"
+
+// %% [markdown]
+//
+// # Fallback: HTML-Folien
+//
+// - Alle Notebooks gibt es auch als HTML-Folien (gleicher Inhalt, nicht
+//   interaktiv)
+// - Falls keine der Notebook-Installationen funktioniert: HTML-Folien
+//   verwenden
+// - Wir empfehlen die Notebook-Variante, wenn möglich
