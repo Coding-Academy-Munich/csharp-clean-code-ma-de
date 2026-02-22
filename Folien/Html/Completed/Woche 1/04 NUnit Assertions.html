@@ -13087,7 +13087,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=cfa36aa30a703b38"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=66bb2d35dbde9715"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="C# Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEgCAYAAABb3q1QAAAEuGlUWHRYTUw6Y29tLmFkb2JlLnht
@@ -13367,7 +13367,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 " style="display:block;margin:auto;width:5%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>Was sind gute Tests?</b>
+<b>NUnit: Assertions</b>
 </div>
 <br>
 <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -13377,69 +13377,51 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=796fedbba61cb19f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fea74f295ac9aff1"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="Velocity vs. Tests 3" src="img/velocity-tests-03.png" style="width: 75%; margin-left: auto; margin-right: auto;"/></p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=3196f2596ed51b51"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Welche-Eigenschaften-sollte-ein-Test-haben?">Welche Eigenschaften sollte ein Test haben?<a class="anchor-link" href="#Welche-Eigenschaften-sollte-ein-Test-haben?">¶</a></h2><ul>
-<li class="fragment">Zeigt viele Fehler/Regressionen im Code auf</li>
-<li class="fragment">Gibt schnelle Rückmeldung</li>
-<li class="fragment">Ist deterministisch</li>
-<li class="fragment">Ist leicht zu warten und verstehen</li>
-<li class="fragment"><b>Unempfindlich gegenüber Refactorings</b></li>
-</ul>
-<p class="fragment">
-  Leider stehen diese Eigenschaften oft im Konflikt zueinander!
-</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=dd6fc90376ae5811"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Aufzeigen-von-Fehlern/Regressionen">Aufzeigen von Fehlern/Regressionen<a class="anchor-link" href="#Aufzeigen-von-Fehlern/Regressionen">¶</a></h2><h3 id="Einfl%C3%BCsse">Einflüsse<a class="anchor-link" href="#Einfl%C3%BCsse">¶</a></h3><ul>
-<li class="fragment">Menge des abgedeckten Codes</li>
-<li class="fragment">Komplexität des abgedeckten Codes</li>
-<li class="fragment">Interaktion mit externen Systemen</li>
-<li class="fragment">Signifikanz des abgedeckten Codes für die Domäne/das
-  System</li>
+<h2 id="Was-ist-NUnit?">Was ist NUnit?<a class="anchor-link" href="#Was-ist-NUnit?">¶</a></h2><ul>
+<li>NUnit ist ein modernes Test-Framework für C#</li>
+<li>Open-Source</li>
+<li>Einfach in Projekte zu integrieren</li>
+<li>Viele Features, einschließlich des Constraint-Modells für Assertions</li>
+<li>Eines der ältesten und am weitesten verbreiteten .NET Test-Frameworks</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=ddf3b306c66d9206">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=6d57bd8a51a275b1"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Features-von-NUnit">Features von NUnit<a class="anchor-link" href="#Features-von-NUnit">¶</a></h2><ul>
+<li>Verwaltung von Tests und Test-Suites</li>
+<li>Assertion-Bibliothek mit Constraint-Modell</li>
+<li>Ausführung von Tests (Test Runner)</li>
+<li>Versetzen des SuT in einen definierten Zustand (Test Fixtures)</li>
+<li>Unterstützung für parametrisierte Tests (TestCase, TestCaseSource)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7d3ec6731967b363"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Assertions-in-NUnit:-Das-Constraint-Modell">Assertions in NUnit: Das Constraint-Modell<a class="anchor-link" href="#Assertions-in-NUnit:-Das-Constraint-Modell">¶</a></h2><ul>
+<li><code>Assert.That(condition)</code> um Bedingungen zu prüfen</li>
+<li><code>Assert.That(actual, Is.EqualTo(expected))</code> um Werte zu prüfen</li>
+<li><code>Assert.That(actual, Is.SameAs(expected))</code> um Referenzen zu prüfen</li>
+<li><code>Assert.That(actual, Is.Null)</code> um auf <code>null</code> zu prüfen</li>
+<li><code>Assert.Throws&lt;T&gt;(...)</code> um Exceptions zu prüfen</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=f55ae3cb48d1b08e">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Item</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Item</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">init</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">        </span><span class="k">set</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">value</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0m</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="o">-</span><span class="k">value</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">ToString</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">"Item({0}, {1:F2})"</span><span class="p">,</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="n">Price</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">;</span><span class="w"> </span><span class="c1">// always positive</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
 </pre></div>
 </div>
 </div>
@@ -13450,7 +13432,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-64228.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-70744.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13539,7 +13521,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2048/", "http://169.254.203.116:2048/", "http://169.254.194.28:2048/", "http://172.16.0.1:2048/", "http://172.23.192.1:2048/", "http://172.23.176.1:2048/", "http://127.0.0.1:2048/"])
+    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.23.192.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
 
         .then((root) => {
 
@@ -13549,7 +13531,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '64228.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '70744.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13658,529 +13640,439 @@ else {
     </script>
 </div></div>
 </div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea"><div><div></div><div></div><div><strong>Installed Packages</strong><ul><li><span>NUnit, 4.5.0</span></li></ul></div></div></div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=42945fb3c75b8f36">
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=377b108a33489c35">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=54454615ec290b3a">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2fd48cbc3d68c640"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Boolesche-Assertions">Boolesche Assertions<a class="anchor-link" href="#Boolesche-Assertions">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=36f0731fad87f64a">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Order</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Order</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">itemList</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="p">(</span><span class="n">itemList</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Item</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Items</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">items</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">Total</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">get</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0m</span><span class="p">;</span>
-<span class="w">            </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">Item</span><span class="w"> </span><span class="n">item</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">items</span><span class="p">)</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">Price</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">ToString</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">itemsString</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">", "</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">Select</span><span class="p">(</span><span class="n">item</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">item</span><span class="p">.</span><span class="n">ToString</span><span class="p">()));</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="s">$"Order([{itemsString}]), total = {Total:F2}"</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=e4c9a0bdee2ade7f">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=945ca2be8255d8f7">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">Check</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">condition</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">condition</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Success."</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_slide" id="cell-id=3ff006968d97a6d8">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=50c32b706450aeaa">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestItemName</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Item</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Item</span><span class="p">(</span><span class="s">"Apple"</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0m</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Apple"</span><span class="p">,</span><span class="w"> </span><span class="s">"Name does not match"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=cf54b6cb7ec0bfba">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c3c7e8390776904a">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestItemName</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That(1 &gt; 4);</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
-
-</pre>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=bfa4fb24338f8661"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Gleichheits-Assertions">Gleichheits-Assertions<a class="anchor-link" href="#Gleichheits-Assertions">¶</a></h3>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=39fc2885a0f39a7d">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=3b5feeab674ef0b2">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestOrderTotal</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">([</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Item</span><span class="p">(</span><span class="s">"Apple"</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0m</span><span class="p">),</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Item</span><span class="p">(</span><span class="s">"Banana"</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.0m</span><span class="p">)</span>
-<span class="w">    </span><span class="p">]);</span>
-
-<span class="w">    </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">total</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">3.0m</span><span class="p">,</span><span class="w"> </span><span class="s">"Total is not correct"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">4</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=e9ca3e2d201acf60">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5df6197d9179f9b8">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestOrderTotal</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">Not</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
-
-</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=266ea051fae4173b">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=82f3f603ca15dbb5">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestOrderOutput</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Order</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">([</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Item</span><span class="p">(</span><span class="s">"Apple"</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0m</span><span class="p">),</span>
-<span class="w">        </span><span class="k">new</span><span class="w"> </span><span class="nf">Item</span><span class="p">(</span><span class="s">"Banana"</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mf">2.0m</span><span class="p">)</span>
-<span class="w">    </span><span class="p">]);</span>
-
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit</span><span class="p">.</span><span class="n">ToString</span><span class="p">();</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">output</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"Order([Item(Apple, 1.00), Item(Banana, 2.00)]), total = 3.00"</span><span class="p">,</span><span class="w"> </span><span class="s">"Output is not correct"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">str1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
+<span class="kt">string</span><span class="w"> </span><span class="n">str2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=86415afa0f7055db">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c93be53a656a27ab">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestOrderOutput</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">str2</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Output is not correct
-
-</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7883cd17aa49460e"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Schnelle-R%C3%BCckmeldung">Schnelle Rückmeldung<a class="anchor-link" href="#Schnelle-R%C3%BCckmeldung">¶</a></h2><h3 id="Einfl%C3%BCsse">Einflüsse<a class="anchor-link" href="#Einfl%C3%BCsse">¶</a></h3><ul>
-<li>Menge des abgedeckten Codes</li>
-<li>Komplexität/Anzahl Iterationen des abgedeckten Codes</li>
-<li>Interaktion mit externen Systemen</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=6a5cc5fed41d1385"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Deterministisch">Deterministisch<a class="anchor-link" href="#Deterministisch">¶</a></h2><ul>
-<li class="fragment">Gleicher Code führt immer zum gleichen Ergebnis</li>
-<li class="fragment">Gründe für Nichtdeterminismus
-    <ul>
-<li class="fragment">Zufallszahlen</li>
-<li class="fragment">Zeit/Datum</li>
-<li class="fragment">Interaktion mit externen Systemen</li>
-<li class="fragment">Nicht initialisierte Variablen</li>
-<li class="fragment">Kommunikation zwischen Tests</li>
-</ul>
-</li>
-<li class="fragment">
-     Tests, die falsche Warnungen erzeugen sind nicht
-     hilfreich sondern schädlich!
-  </li>
-<ul>
-</ul></ul></div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=7a55d701ce6a50c0">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a43975bbf7aef081">
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">str1</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="n">str2</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=4dbe308e2d3840a4">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=05ea6610f942f9f3">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestRandomBad</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Random</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">roll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">roll</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">"Roll is not 2"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That("Hello", Is.EqualTo("World"));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=eab5c38547cf2650">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=8c53310d783fb3e5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Vergleich-von-Gleitkommazahlen">Vergleich von Gleitkommazahlen<a class="anchor-link" href="#Vergleich-von-Gleitkommazahlen">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=47aa1408df96f3a8">
 <div class="input">
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestRandomBad</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That(0.1 + 0.2, Is.EqualTo(0.3));</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Roll is not 2
-
-</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=ad2bcef34207c3b2">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f51ffb516c3d5e30">
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestRandomBetter</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">Random</span><span class="w"> </span><span class="n">random</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Random</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span><span class="w">  </span><span class="c1">// &lt;= Fixed seed!</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">roll</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">random</span><span class="p">.</span><span class="n">Next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">roll</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">"Roll is not 2"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mf">0.3</span><span class="p">).</span><span class="n">Within</span><span class="p">(</span><span class="mf">0.00001</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=8a78f86938300ebf">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=499f56f254650cac">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestRandomBetter</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mf">0.3</span><span class="p">).</span><span class="n">Within</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">Percent</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
-
-</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=8b0dc789e2a590f3">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5b208ea96c8c44a2">
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestDateBad</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2024</span><span class="p">,</span><span class="w"> </span><span class="s">"Year is not 2024"</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="n">Second</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"Second is not even"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That(0.1, Is.EqualTo(0.11).Within(0.001));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=8cc09a3003c2fc61">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=52127c167804a04c">
 <div class="input">
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestDateBad</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mf">0.11</span><span class="p">).</span><span class="n">Within</span><span class="p">(</span><span class="mf">0.1</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Year is not 2024
-
-</pre>
 </div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
-
-</pre>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=4b1f9ae2534b512a"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Identit%C3%A4ts-Assertions">Identitäts-Assertions<a class="anchor-link" href="#Identit%C3%A4ts-Assertions">¶</a></h3>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=8e30227681609e6c">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=7ec867bbc2271687">
 <div class="input">
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestDateBetter</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">fixedDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DateTime</span><span class="p">(</span><span class="mi">2024</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">fixedDate</span><span class="p">.</span><span class="n">Year</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2024</span><span class="p">,</span><span class="w"> </span><span class="s">"Year is not 2024"</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">fixedDate</span><span class="p">.</span><span class="n">Second</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="s">"Second is not even"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">SameAs</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=1fed6b04304cf940">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c1646052ed8a3672">
 <div class="input">
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestDateBetter</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That(str1, Is.SameAs(str2));</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
-
-</pre>
 </div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=f62e1e55cb7711e3"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Leicht-zu-warten">Leicht zu warten<a class="anchor-link" href="#Leicht-zu-warten">¶</a></h2><ul>
-<li>Einfache, standardisierte Struktur<br/> <br/>
-<table style="display:inline;margin:20px 20px;">
-<tr><td style="text-align:left;width:60px;padding-left:15px;">Arrange</td>
-<td style="text-align:left;width:60px;padding-left:15px;border-left:1px solid black;">Given</td>
-<td style="text-align:left;width:600px;padding-left:15px;border-left:1px solid black;">
-          Bereite das Test-Environment vor</td></tr>
-<tr><td style="text-align:left;padding-left:15px;">Act</td>
-<td style="text-align:left;width:60px;padding-left:15px;border-left:1px solid black;">
-           When</td>
-<td style="text-align:left;width:600px;padding-left:15px;border-left:1px solid black;">
-           Führe die getestete Aktion aus (falls vorhanden)</td></tr>
-<tr><td style="text-align:left;padding-left:15px;">Assert</td>
-<td style="text-align:left;width:60px;padding-left:15px;border-left:1px solid black;">
-           Then</td>
-<td style="text-align:left;width:600px;padding-left:15px;border-left:1px solid black;">
-           Überprüfe die Ergebnisse</td></tr>
-</table>
-<br/> <br/>
-</li>
-<li>Wenig Code
-    <ul>
-<li>Wenig Boilerplate</li>
-<li>Factories, etc. für Tests</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=13a418744c76d04f"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Unempfindlich-gegen%C3%BCber-Refactorings">Unempfindlich gegenüber Refactorings<a class="anchor-link" href="#Unempfindlich-gegen%C3%BCber-Refactorings">¶</a></h2><ul>
-<li>Möglichst wenige falsche Positive!</li>
-<li>Typischerweise vorhanden oder nicht, wenig Zwischenstufen</li>
-</ul>
-<h3 id="Einfl%C3%BCsse">Einflüsse<a class="anchor-link" href="#Einfl%C3%BCsse">¶</a></h3><ul>
-<li>Bezug zu Domäne/System</li>
-<li>Zugriff auf interne Strukturen</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=20786c3f1389a426">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=16d5d694fd0faa87">
 <div class="input">
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="cp">#pragma warning disable CS0414</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">VeryPrivate</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">secret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span>
-<span class="p">}</span>
-<span class="cp">#pragma warning restore CS0414</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">str1</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">SameAs</span><span class="p">(</span><span class="n">str1</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=d4b86c1a1293ffff">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=93af4ea6e11fff48">
 <div class="input">
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System.Reflection</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That(str1, Is.Not.SameAs(str1));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=dc97565091f76aaa">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=eb7245c2af99b422"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Null-Assertions">Null-Assertions<a class="anchor-link" href="#Null-Assertions">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=8eb76e2b3e0cca82">
 <div class="input">
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestVeryPrivate</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">VeryPrivate</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">VeryPrivate</span><span class="p">();</span>
-
-<span class="w">    </span><span class="n">Type</span><span class="w"> </span><span class="n">veryPrivateType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">unit</span><span class="p">.</span><span class="n">GetType</span><span class="p">();</span>
-<span class="w">    </span><span class="n">FieldInfo</span><span class="w"> </span><span class="n">secretField</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">veryPrivateType</span><span class="p">.</span><span class="n">GetField</span><span class="p">(</span><span class="s">"secret"</span><span class="p">,</span><span class="w"> </span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">NonPublic</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">BindingFlags</span><span class="p">.</span><span class="n">Instance</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">secretValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">secretField</span><span class="p">.</span><span class="n">GetValue</span><span class="p">(</span><span class="n">unit</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">secretValue</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w"> </span><span class="s">"Secret is not 42"</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">Null</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=1f08980a822378a6">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=67a54b5c0676e773">
 <div class="input">
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestVeryPrivate</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.That(0, Is.Null);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=300beec58d854685">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">123</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">Not</span><span class="p">.</span><span class="n">Null</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=57503f68c966dec3"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Einschub:-Lambda-Ausdr%C3%BCcke">Einschub: Lambda-Ausdrücke<a class="anchor-link" href="#Einschub:-Lambda-Ausdr%C3%BCcke">¶</a></h3><ul>
+<li>Lambda-Ausdrücke sind eine Möglichkeit, Funktionen als Argumente zu
+übergeben.</li>
+<li>Sie können in Delegat-Typen konvertiert werden.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=35a1f81a774304ae"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Ausdrucks-Lambdas">Ausdrucks-Lambdas<a class="anchor-link" href="#Ausdrucks-Lambdas">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a3e688d388c4bc4c">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Func</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">add</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=0e986ceae0992f39">
+<div class="input">
+<div class="prompt input_prompt">In [26]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[26]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result"><div class="dni-plaintext"><pre>5</pre></div><style>
+
+.dni-code-hint {
+
+    font-style: italic;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+}
+
+.dni-treeview {
+
+    white-space: nowrap;
+
+}
+
+.dni-treeview td {
+
+    vertical-align: top;
+
+    text-align: start;
+
+}
+
+details.dni-treeview {
+
+    padding-left: 1em;
+
+}
+
+table td {
+
+    text-align: start;
+
+}
+
+table tr { 
+
+    vertical-align: top; 
+
+    margin: 0em 0px;
+
+}
+
+table tr td pre 
+
+{ 
+
+    vertical-align: top !important; 
+
+    margin: 0em 0px !important;
+
+} 
+
+table th {
+
+    text-align: start;
+
+}
+
+</style></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=aad8363b74a9e183"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Anweisungs-Lambdas">Anweisungs-Lambdas<a class="anchor-link" href="#Anweisungs-Lambdas">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2aad9cd2c12126e0">
+<div class="input">
+<div class="prompt input_prompt">In [27]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Action</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">print</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">"Hello, "</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c585d3e046546fa8">
+<div class="input">
+<div class="prompt input_prompt">In [28]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">"World!"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -14190,7 +14082,13 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Success.
+<pre>Hello, </pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>World!
 
 </pre>
 </div>
@@ -14198,34 +14096,314 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=8b3ef14e7edd3a8a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=776c17ea840d0873"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Die folgenden Einflüsse stehen im Konflikt zueinander:</p>
-<ul>
-<li>Erkennen von Fehlern/Regressionen</li>
-<li>Schnelle Rückmeldung</li>
-<li>Unempfindlich gegenüber Refactorings</li>
-</ul>
-<p>Die Qualität eines Tests hängt vom <em>Produkt</em> dieser Faktoren ab!</p>
+<h3 id="Exception-Assertions">Exception-Assertions<a class="anchor-link" href="#Exception-Assertions">¶</a></h3>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=763eb32c87fff1cc"><div class="prompt input_prompt">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d2fb5e53b934a777">
+<div class="input">
+<div class="prompt input_prompt">In [29]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5546de584e27a343">
+<div class="input">
+<div class="prompt input_prompt">In [30]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">Throws</span><span class="o">&lt;</span><span class="n">DivideByZeroException</span><span class="o">&gt;</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=c11c6db03dbad3d7">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Assert.Throws&lt;DivideByZeroException&gt;(() =&gt; { var x = 1 / 1; });</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a95b83ea53aaa2e3">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">Throws</span><span class="o">&lt;</span><span class="n">DivideByZeroException</span><span class="o">&gt;</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=1d192adcc14d3a05">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">Catch</span><span class="o">&lt;</span><span class="n">ArithmeticException</span><span class="o">&gt;</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">var</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="p">});</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=631681a620b9d57f"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Wie-finden-wir-den-Trade-Off?">Wie finden wir den Trade-Off?<a class="anchor-link" href="#Wie-finden-wir-den-Trade-Off?">¶</a></h2><ul>
-<li>Unempfindlich gegenüber Refactorings kann <em>nie</em> geopfert werden</li>
-<li>Wir müssen also einen Kompromiss finden zwischen<ul>
-<li>Erkennen von Fehlern/Regressionen</li>
-<li>Schnelle Rückmeldung</li>
+<h3 id="Weitere-n%C3%BCtzliche-Constraints">Weitere nützliche Constraints<a class="anchor-link" href="#Weitere-n%C3%BCtzliche-Constraints">¶</a></h3><ul>
+<li><code>Is.GreaterThan</code>, <code>Is.LessThan</code>, <code>Is.InRange</code></li>
+<li><code>Does.Contain</code>, <code>Does.StartWith</code>, <code>Does.EndWith</code> (für Strings)</li>
+<li><code>Has.Count.EqualTo</code>, <code>Has.Member</code>, <code>Is.Empty</code> (für Collections)</li>
+<li><code>Is.TypeOf&lt;T&gt;</code>, <code>Is.InstanceOf&lt;T&gt;</code> (für Typ-Prüfungen)</li>
 </ul>
-</li>
-</ul>
-<h3 id="Typischerweise">Typischerweise<a class="anchor-link" href="#Typischerweise">¶</a></h3><ul>
-<li>Schnelles Feedback für die meisten Tests (Unit-Tests)</li>
-<li>Gründliche Fehlererkennung für wenige Tests (Integrationstests)</li>
-</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=4a2cb04d69bbb9d3">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">GreaterThan</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c13639b689ecb11f">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">LessThan</span><span class="p">(</span><span class="mi">5</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c3e2aabb968a7487">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">InRange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=50e9a281510d08e0">
+<div class="input">
+<div class="prompt input_prompt">In [37]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"World"</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=d31007a7abcd64da">
+<div class="input">
+<div class="prompt input_prompt">In [38]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">StartWith</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=6514389f00b1206d">
+<div class="input">
+<div class="prompt input_prompt">In [39]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">numbers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="p">};</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="n">Has</span><span class="p">.</span><span class="n">Count</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=206118e83d4a3565">
+<div class="input">
+<div class="prompt input_prompt">In [40]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">numbers</span><span class="p">,</span><span class="w"> </span><span class="n">Has</span><span class="p">.</span><span class="n">Member</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=0fc11285f8b11ec7">
+<div class="input">
+<div class="prompt input_prompt">In [41]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">Empty</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2ed953dabce5e3a0"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mini-Workshop:-NUnit-Assertions">Mini-Workshop: NUnit Assertions<a class="anchor-link" href="#Mini-Workshop:-NUnit-Assertions">¶</a></h2><p>Hier ist eine einfache Klasse <code>StringUtils</code>. Schreiben Sie Assertions, um
+die Methoden dieser Klasse zu überprüfen. Verwenden Sie dabei verschiedene
+NUnit Constraints.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=01c5f9b0b840b1fe">
+<div class="input">
+<div class="prompt input_prompt">In [42]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">StringUtils</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Reverse</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">char</span><span class="p">[]</span><span class="w"> </span><span class="n">chars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ToCharArray</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Array</span><span class="p">.</span><span class="n">Reverse</span><span class="p">(</span><span class="n">chars</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">string</span><span class="p">(</span><span class="n">chars</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPalindrome</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">string</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ToLower</span><span class="p">();</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Reverse</span><span class="p">(</span><span class="n">lower</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Capitalize</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrEmpty</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kt">char</span><span class="p">.</span><span class="n">ToUpper</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="mi">1</span><span class="p">).</span><span class="n">ToLower</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">CountWords</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="kt">string</span><span class="p">.</span><span class="n">IsNullOrWhiteSpace</span><span class="p">(</span><span class="n">s</span><span class="p">))</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="sc">' '</span><span class="p">,</span><span class="w"> </span><span class="n">StringSplitOptions</span><span class="p">.</span><span class="n">RemoveEmptyEntries</span><span class="p">).</span><span class="n">Length</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=5f0d834eaa8861a5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Schreiben Sie Assertions für die folgenden Fälle:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=06a3f905f34dee07"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Reverse</code> gibt den String umgekehrt zurück:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=062da4d6c325e3c6">
+<div class="input">
+<div class="prompt input_prompt">In [43]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">utils</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringUtils</span><span class="p">();</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">Reverse</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">"olleH"</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=effe5c54d3dc9e32"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>IsPalindrome</code> erkennt Palindrome (unabhängig von Groß-/Kleinschreibung):</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=fd2f86c18c150aa7">
+<div class="input">
+<div class="prompt input_prompt">In [44]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">IsPalindrome</span><span class="p">(</span><span class="s">"Racecar"</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">IsPalindrome</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=ae98e05bf2a7baf4"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Capitalize</code> formatiert den String korrekt:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=4b26feaaa8e73b0f">
+<div class="input">
+<div class="prompt input_prompt">In [45]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">Capitalize</span><span class="p">(</span><span class="s">"hELLO"</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">));</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">Capitalize</span><span class="p">(</span><span class="s">"hELLO"</span><span class="p">),</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">StartWith</span><span class="p">(</span><span class="s">"H"</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=e76b4bb4206b6504"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>CountWords</code> zählt die Wörter korrekt:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=ddd7e8f39701503a">
+<div class="input">
+<div class="prompt input_prompt">In [46]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">CountWords</span><span class="p">(</span><span class="s">"Hello World"</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">CountWords</span><span class="p">(</span><span class="s">""</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+<span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">CountWords</span><span class="p">(</span><span class="s">"  spaced  out  "</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=9f51f987daf59d38"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>Capitalize</code> wirft bei <code>null</code> keine Exception:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=f33242d851549419">
+<div class="input">
+<div class="prompt input_prompt">In [47]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">utils</span><span class="p">.</span><span class="n">Capitalize</span><span class="p">(</span><span class="k">null</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">Null</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>

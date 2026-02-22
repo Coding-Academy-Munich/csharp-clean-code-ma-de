@@ -29,5 +29,5 @@
 // %% [markdown]
 //
 // - Um auf die Notebooks zuzugreifen:
-//   - URL: [http://localhost:8888]
+//   - URL: http://localhost:8888
 //   - Passwort: `CAM`

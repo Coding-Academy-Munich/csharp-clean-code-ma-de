@@ -175,3 +175,84 @@ int n = 0;
 // %%
 
 // %%
+
+// %% [markdown]
+//
+// ## Mini-Workshop: NUnit Assertions
+//
+// Hier ist eine einfache Klasse `StringUtils`. Schreiben Sie Assertions, um
+// die Methoden dieser Klasse zu überprüfen. Verwenden Sie dabei verschiedene
+// NUnit Constraints.
+
+// %%
+public class StringUtils
+{
+    public string Reverse(string s)
+    {
+        char[] chars = s.ToCharArray();
+        Array.Reverse(chars);
+        return new string(chars);
+    }
+
+    public bool IsPalindrome(string s)
+    {
+        string lower = s.ToLower();
+        return lower == Reverse(lower);
+    }
+
+    public string Capitalize(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return s;
+        return char.ToUpper(s[0]) + s.Substring(1).ToLower();
+    }
+
+    public int CountWords(string s)
+    {
+        if (string.IsNullOrWhiteSpace(s)) return 0;
+        return s.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+    }
+}
+
+// %% [markdown]
+//
+// Schreiben Sie Assertions für die folgenden Fälle:
+
+// %% [markdown]
+//
+// `Reverse` gibt den String umgekehrt zurück:
+
+// %%
+var utils = new StringUtils();
+// Assert that Reverse("Hello") returns "olleH"
+
+// %% [markdown]
+//
+// `IsPalindrome` erkennt Palindrome (unabhängig von Groß-/Kleinschreibung):
+
+// %%
+// Assert that "Racecar" is a palindrome
+// Assert that "Hello" is not a palindrome
+
+// %% [markdown]
+//
+// `Capitalize` formatiert den String korrekt:
+
+// %%
+// Assert that Capitalize("hELLO") returns "Hello"
+// Assert that the result starts with "H"
+
+// %% [markdown]
+//
+// `CountWords` zählt die Wörter korrekt:
+
+// %%
+// Assert that "Hello World" has 2 words
+// Assert that an empty string has 0 words
+// Assert that "  spaced  out  " has 2 words
+
+// %% [markdown]
+//
+// `Capitalize` wirft bei `null` keine Exception:
+
+// %%
+// Assert that Capitalize(null) returns null

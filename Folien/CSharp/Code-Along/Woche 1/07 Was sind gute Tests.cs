@@ -47,6 +47,13 @@
 // </ul>
 
 // %%
+#r "nuget: NUnit, *"
+
+// %%
+using NUnit.Framework;
+using System.Globalization;
+
+// %%
 public class Item
 {
     public Item(string name, decimal price)
@@ -64,7 +71,7 @@ public class Item
 
     public override string ToString()
     {
-        return string.Format("Item({0}, {1:F2})", Name, Price);
+        return string.Format(CultureInfo.InvariantCulture, "Item({0}, {1:F2})", Name, Price);
     }
 
     private decimal price; // always positive
@@ -73,6 +80,7 @@ public class Item
 // %%
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 // %%
 public class Order
@@ -102,65 +110,21 @@ public class Order
     public override string ToString()
     {
         string itemsString = string.Join(", ", items.Select(item => item.ToString()));
-        return $"Order([{itemsString}]), total = {Total:F2}";
+        return string.Format(CultureInfo.InvariantCulture, "Order([{0}]), total = {1:F2}", itemsString, Total);
     }
 }
 
 // %%
-void Check(bool condition, string message)
-{
-    if (!condition)
-    {
-        Console.Error.WriteLine(message);
-    }
-    else
-    {
-        Console.WriteLine("Success.");
-    }
-}
 
 // %%
-void TestItemName()
-{
-    Item unit = new Item("Apple", 1.0m);
-
-    Check(unit.Name == "Apple", "Name does not match");
-}
 
 // %%
-TestItemName();
 
 // %%
-void TestOrderTotal()
-{
-    Order unit = new Order([
-        new Item("Apple", 1.0m),
-        new Item("Banana", -2.0m)
-    ]);
-
-    decimal total = unit.Total;
-
-    Check(total == 3.0m, "Total is not correct");
-}
 
 // %%
-TestOrderTotal();
 
 // %%
-void TestOrderOutput()
-{
-    Order unit = new Order([
-        new Item("Apple", 1.0m),
-        new Item("Banana", -2.0m)
-    ]);
-
-    string output = unit.ToString();
-
-    Check(output == "Order([Item(Apple, 1.00), Item(Banana, 2.00)]), total = 3.00", "Output is not correct");
-}
-
-// %%
-TestOrderOutput();
 
 // %% [markdown]
 //
@@ -202,47 +166,43 @@ void TestRandomBad()
     Random random = new Random();
     int roll = random.Next(1, 3);
 
-    Check(roll == 2, "Roll is not 2");
+    Assert.That(roll, Is.EqualTo(2));
 }
 
 // %%
-TestRandomBad();
 
 // %%
 void TestRandomBetter()
 {
-    Random random = new Random(42);  // <= Fixed seed!
+    Random random = new Random();
     int roll = random.Next(1, 3);
 
-    Check(roll == 2, "Roll is not 2");
+    Assert.That(roll, Is.EqualTo(2));
 }
 
 // %%
-TestRandomBetter();
 
 // %%
 void TestDateBad()
 {
     DateTime now = DateTime.Now;
 
-    Check(now.Year == 2024, "Year is not 2024");
-    Check(now.Second % 2 == 0, "Second is not even");
+    Assert.That(now.Year, Is.EqualTo(2024));
+    Assert.That(now.Second % 2, Is.EqualTo(0));
 }
 
 // %%
-TestDateBad();
 
 // %%
 void TestDateBetter()
 {
-    DateTime fixedDate = new DateTime(2024, 1, 1, 0, 0, 0);
+    DateTime now = DateTime.Now;
 
-    Check(fixedDate.Year == 2024, "Year is not 2024");
-    Check(fixedDate.Second % 2 == 0, "Second is not even");
+    Assert.That(now.Year, Is.EqualTo(2024));
+    Assert.That(now.Second % 2, Is.EqualTo(0));
 }
 
 // %%
-TestDateBetter();
 
 // %% [markdown]
 //
@@ -308,11 +268,10 @@ public void TestVeryPrivate()
     FieldInfo secretField = veryPrivateType.GetField("secret", BindingFlags.NonPublic | BindingFlags.Instance);
     int secretValue = (int)secretField.GetValue(unit);
 
-    Check(secretValue == 42, "Secret is not 42");
+    Assert.That(secretValue, Is.EqualTo(42));
 }
 
 // %%
-TestVeryPrivate();
 
 // %% [markdown]
 //
@@ -337,3 +296,207 @@ TestVeryPrivate();
 //
 // - Schnelles Feedback für die meisten Tests (Unit-Tests)
 // - Gründliche Fehlererkennung für wenige Tests (Integrationstests)
+
+// %% [markdown]
+//
+// ## Workshop: Gute und schlechte Tests
+//
+// In den folgenden Aufgaben arbeiten Sie mit der Klasse `Scoreboard`, die eine
+// Highscore-Liste verwaltet. Sie werden Tests analysieren, die verschiedene
+// Probleme aufweisen und danach bessere Tests schreiben.
+
+// %%
+using System.Linq;
+
+// %%
+public record ScoreEntry(string PlayerName, int Score);
+
+// %%
+public class Scoreboard
+{
+    private readonly List<ScoreEntry> _entries = new();
+    private readonly DateTime _createdAt = DateTime.Now;
+
+    public int Count => _entries.Count;
+
+    public void AddScore(string playerName, int score)
+    {
+        if (score < 0) score = 0;
+        _entries.Add(new ScoreEntry(playerName, score));
+        _entries.Sort((a, b) => b.Score.CompareTo(a.Score));
+    }
+
+    public IReadOnlyList<ScoreEntry> GetTopScores(int count)
+    {
+        return _entries.Take(count).ToList().AsReadOnly();
+    }
+
+    public int? GetRank(string playerName)
+    {
+        for (int i = 0; i < _entries.Count; i++)
+        {
+            if (_entries[i].PlayerName == playerName)
+                return i + 1;
+        }
+        return null;
+    }
+
+    public ScoreEntry? HighestScore => _entries.Count > 0 ? _entries[0] : null;
+
+    public override string ToString()
+    {
+        var lines = _entries.Select((e, i) =>
+            $"{i + 1}. {e.PlayerName}: {e.Score}");
+        return $"Scoreboard (created {_createdAt:yyyy-MM-dd})\n" +
+               string.Join("\n", lines);
+    }
+}
+
+// %% [markdown]
+//
+// ### Schlechter Test 1: Trivial
+//
+// Was ist das Problem mit diesem Test?
+
+// %%
+void TestScoreboardCount()
+{
+    var board = new Scoreboard();
+
+    Assert.That(board.Count, Is.EqualTo(0));
+}
+
+// %%
+
+// %% [markdown]
+// *Antwort:* 
+
+// %% [markdown]
+//
+// ### Schlechter Test 2: Nichtdeterministisch
+//
+// Was ist das Problem mit diesem Test?
+
+// %%
+void TestScoreboardCreatedToday()
+{
+    var board = new Scoreboard();
+
+    string output = board.ToString();
+
+    string today = DateTime.Now.ToString("yyyy-MM-dd");
+    Assert.That(output, Does.Contain(today));
+}
+
+// %%
+
+// %% [markdown]
+// *Antwort:* 
+
+// %% [markdown]
+//
+// ### Schlechter Test 3: Empfindlich gegenüber Refactoring (ToString)
+//
+// Was ist das Problem mit diesem Test?
+
+// %%
+void TestScoreboardOutput()
+{
+    var board = new Scoreboard();
+    board.AddScore("Alice", 100);
+    board.AddScore("Bob", 200);
+
+    string output = board.ToString();
+
+    Assert.That(output, Does.Contain("1. Bob: 200"));
+    Assert.That(output, Does.Contain("2. Alice: 100"));
+}
+
+// %%
+
+// %% [markdown]
+// *Antwort:* 
+
+// %% [markdown]
+//
+// ### Schlechter Test 4: Zugriff auf interne Strukturen
+//
+// Was ist das Problem mit diesem Test?
+
+// %%
+void TestScoreboardInternalOrder()
+{
+    var board = new Scoreboard();
+    board.AddScore("Alice", 100);
+    board.AddScore("Bob", 200);
+    board.AddScore("Charlie", 150);
+
+    var entriesField = typeof(Scoreboard).GetField(
+        "_entries",
+        BindingFlags.NonPublic | BindingFlags.Instance);
+    var entries = (List<ScoreEntry>)entriesField!.GetValue(board)!;
+
+    Assert.That(entries[0].PlayerName, Is.EqualTo("Bob"));
+    Assert.That(entries[1].PlayerName, Is.EqualTo("Charlie"));
+    Assert.That(entries[2].PlayerName, Is.EqualTo("Alice"));
+}
+
+// %%
+
+// %% [markdown]
+// *Antwort:* 
+
+// %% [markdown]
+//
+// ### Schreiben Sie bessere Tests!
+//
+// Schreiben Sie Tests für die `Scoreboard`-Klasse, die nur die öffentliche
+// API verwenden und die Kriterien für gute Tests erfüllen:
+//
+// - Testen Sie, dass Scores korrekt gerankt werden
+// - Testen Sie, dass `GetTopScores` die richtige Anzahl zurückgibt
+// - Testen Sie, dass `GetRank` korrekte Rankings zurückgibt
+// - Testen Sie das Verhalten bei negativen Scores
+// - Testen Sie das Verhalten bei unbekannten Spielern
+
+// %%
+void TestScoreboardAddAndRank()
+{
+    // Arrange: create a scoreboard and add some scores
+    // Act: retrieve the top scores
+    // Assert: verify the ranking is correct
+}
+
+// %%
+
+// %%
+void TestScoreboardGetTopScoresLimit()
+{
+    // Test that GetTopScores returns only the requested number
+}
+
+// %%
+
+// %%
+void TestScoreboardGetRank()
+{
+    // Test that GetRank returns correct rankings
+}
+
+// %%
+
+// %%
+void TestScoreboardUnknownPlayer()
+{
+    // Test the behavior for an unknown player
+}
+
+// %%
+
+// %%
+void TestScoreboardNegativeScore()
+{
+    // Test the behavior for negative scores
+}
+
+// %%
