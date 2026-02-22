@@ -13087,7 +13087,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=03df0eaf9a6feaa3"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=45976ee8986d1c2f"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="C# Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEgCAYAAABb3q1QAAAEuGlUWHRYTUw6Y29tLmFkb2JlLnht
@@ -13367,7 +13367,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 " style="display:block;margin:auto;width:5%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>Polyglot Notebooks in VS Code</b>
+<b>Kursmaterialien und Notebooks</b>
 </div>
 <br>
 <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -13377,107 +13377,127 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=b48cc8c17e62b9e1"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=37056bcb711edf6f"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Was-sind-Polyglot-Notebooks?">Was sind Polyglot Notebooks?<a class="anchor-link" href="#Was-sind-Polyglot-Notebooks?">¶</a></h1><ul>
-<li>Microsoft-Erweiterung für Visual Studio Code</li>
-<li>Interaktive Notebooks direkt in VS Code</li>
-<li>Unterstützt C#, F#, PowerShell, SQL und mehr</li>
-<li>Beste Unterstützung für C# (Code-Vervollständigung, Fehlerdiagnose)</li>
-<li>Kein Docker erforderlich</li>
+<h1 id="Kursmaterialien">Kursmaterialien<a class="anchor-link" href="#Kursmaterialien">¶</a></h1><ul>
+<li>Sie erhalten alle Folien und Code-Beispiele</li>
+<li>Entpacken Sie die Materialien in einen Ordner Ihrer Wahl</li>
+<li>Merken Sie sich den Speicherort!</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=68420628e5f40642"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=39e026fed02843ad"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Hinweis:-Deprecation">Hinweis: Deprecation<a class="anchor-link" href="#Hinweis:-Deprecation">¶</a></h1><ul>
-<li>Microsoft hat angekündigt, Polyglot Notebooks ab März 2026 nicht mehr
-weiterzuentwickeln</li>
-<li>Die Erweiterung funktioniert weiterhin und wird nicht deaktiviert</li>
-<li>Für diesen Kurs ist das kein Problem</li>
-<li>Falls die Erweiterung irgendwann nicht mehr funktioniert: Docker oder
-HTML-Folien als Alternative verwenden</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=98676fcf7b8da204"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Voraussetzungen">Voraussetzungen<a class="anchor-link" href="#Voraussetzungen">¶</a></h1><ul>
-<li><a href="https://dotnet.microsoft.com/download">.NET SDK</a> (Version 8 oder neuer)<ul>
-<li>Test: <code>dotnet --version</code></li>
+<h1 id="Ordnerstruktur">Ordnerstruktur<a class="anchor-link" href="#Ordnerstruktur">¶</a></h1><ul>
+<li><code>Folien</code>: Kursfolien in drei Formaten<ul>
+<li><code>Notebooks</code>: Interaktive Jupyter Notebooks (empfohlen)</li>
+<li><code>Html</code>: Statische HTML-Versionen (im Browser anzeigbar)</li>
+<li><code>CSharp</code>: C#-Quellcode der Folien (zum Kopieren von Code-Schnipseln)</li>
 </ul>
 </li>
-<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=2760885cb03090ea"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Installation-der-Erweiterung">Installation der Erweiterung<a class="anchor-link" href="#Installation-der-Erweiterung">¶</a></h1><ul>
-<li>Erweiterungen in VS Code öffnen (<code>Ctrl+Shift+X</code>)</li>
-<li>Nach "Polyglot Notebooks" suchen</li>
-<li>Erweiterung von Microsoft installieren<ul>
-<li>ID: <code>ms-dotnettools.dotnet-interactive-vscode</code></li>
+<li><code>Code</code>: C#-Projekte für Workshops<ul>
+<li><code>StarterKits</code>: Projekt-Gerüste als Ausgangspunkt</li>
+<li><code>Completed</code>: Vollständige Lösungen</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=acd666c108d734b0"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=4d83c8ee54dc59b1"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Testen-der-Installation">Testen der Installation<a class="anchor-link" href="#Testen-der-Installation">¶</a></h1><ul>
-<li>Command Palette öffnen: <code>Ctrl+Shift+P</code></li>
-<li>"Polyglot Notebook: Create new blank notebook" auswählen</li>
-<li>Als Sprache "C#" (<code>.NET Interactive</code>) auswählen</li>
-<li>In die erste Zelle <code>1 + 1</code> eingeben</li>
-<li>Mit <code>Ctrl+Enter</code> ausführen</li>
-<li>Ergebnis <code>2</code> sollte angezeigt werden</li>
+<h2 id="Ordnerstruktur-(%C3%9Cbersicht)">Ordnerstruktur (Übersicht)<a class="anchor-link" href="#Ordnerstruktur-(%C3%9Cbersicht)">¶</a></h2><pre><code>Folien/
+├── Notebooks/
+│   ├── Code-Along/
+│   │   ├── Intro/
+│   │   └── Woche 1/
+│   └── Completed/
+│       ├── Intro/
+│       └── Woche 1/
+├── Html/
+│   ├── Code-Along/
+│   └── Completed/
+└── CSharp/
+    ├── Code-Along/
+    └── Completed/
+Code/
+├── StarterKits/
+└── Completed/
+</code></pre>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=cda68857f16531d6"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Code-Along-vs.-Completed">Code-Along vs. Completed<a class="anchor-link" href="#Code-Along-vs.-Completed">¶</a></h1><ul>
+<li><strong>Code-Along</strong>: Ausgangspunkt zum Mitmachen<ul>
+<li>Teile des Codes fehlen (werden live geschrieben)</li>
+<li>Workshop-Lösungen fehlen</li>
+<li>Verwenden Sie diese für die Workshops!</li>
+</ul>
+</li>
+<li><strong>Completed</strong>: Vollständige Referenz<ul>
+<li>Kompletter Code und alle Lösungen</li>
+<li>Zum Nachschlagen, wenn Sie nicht weiterkommen</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=0b835c693a3786c9"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=9e679fa198bde057"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Kurs-Notebooks-%C3%B6ffnen">Kurs-Notebooks öffnen<a class="anchor-link" href="#Kurs-Notebooks-%C3%B6ffnen">¶</a></h1><ul>
-<li>Kurs-Materialien entpacken</li>
-<li>In VS Code: <code>File</code> &gt; <code>Open Folder...</code> &gt; Notebooks-Ordner auswählen</li>
-<li><code>.ipynb</code>-Dateien im Explorer anklicken</li>
-<li>Polyglot Notebooks öffnet sie automatisch</li>
+<h1 id="Der-Code-Ordner">Der Code-Ordner<a class="anchor-link" href="#Der-Code-Ordner">¶</a></h1><ul>
+<li><code>StarterKits</code>: Projekt-Gerüste für größere Workshops<ul>
+<li>Haben ein <code>Sk</code>-Suffix im Namen (z.B. <code>FizzBuzzNunitSk</code>)</li>
+</ul>
+</li>
+<li><code>Completed</code>: Fertige Projekte und Musterlösungen<ul>
+<li>Zu jedem StarterKit gibt es ein fertiges Projekt</li>
+</ul>
+</li>
+<li>Projekte sind .NET-Solutions (<code>.sln</code> + <code>.csproj</code>)</li>
+<li>Öffnen Sie die Projekte in Rider, Visual Studio oder VS Code</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=ad923f137af4f6d2"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=bbe162a4fa3e68f7"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Alternative:-Docker">Alternative: Docker<a class="anchor-link" href="#Alternative:-Docker">¶</a></h1><ul>
-<li>Docker-basierte Notebooks als gleichwertige Alternative</li>
-<li>Läuft im Browser (JupyterLab)</li>
-<li>Nur Docker Desktop erforderlich</li>
-<li>Siehe Video "Docker für Notebooks"</li>
+<h1 id="Was-sind-Jupyter-Notebooks?">Was sind Jupyter Notebooks?<a class="anchor-link" href="#Was-sind-Jupyter-Notebooks?">¶</a></h1><ul>
+<li>Interaktive Dokumente, die Text und ausführbaren Code kombinieren</li>
+<li>Ursprünglich aus der Data-Science-Welt (Python)</li>
+<li>Für C# unterstützt durch Microsofts .NET Interactive</li>
+<li>Code wird in einzelnen Zellen ausgeführt</li>
+<li>Ergebnisse werden sofort angezeigt</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=04d7227b2cf1b19f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=3526e1d14abb7612"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Fallback:-HTML-Folien">Fallback: HTML-Folien<a class="anchor-link" href="#Fallback:-HTML-Folien">¶</a></h1><ul>
-<li>Alle Notebooks gibt es auch als HTML-Folien (gleicher Inhalt, nicht
-interaktiv)</li>
-<li>Falls keine der Notebook-Installationen funktioniert: HTML-Folien
-verwenden</li>
-<li>Wir empfehlen die Notebook-Variante, wenn möglich</li>
+<h1 id="Notebooks-verwenden">Notebooks verwenden<a class="anchor-link" href="#Notebooks-verwenden">¶</a></h1><ul>
+<li><strong>Empfohlen:</strong> Polyglot Notebooks in VS Code<ul>
+<li>Einfachste Installation, beste C#-Unterstützung</li>
+</ul>
+</li>
+<li><strong>Alternativ:</strong> Docker (JupyterLab im Browser)<ul>
+<li>Keine lokale Installation nötig</li>
+</ul>
+</li>
+<li><strong>Fallback:</strong> HTML-Folien<ul>
+<li>Gleicher Inhalt, aber nicht interaktiv</li>
+</ul>
+</li>
+<li>In den nächsten Videos zeigen wir die Installation</li>
 </ul>
 </div>
 </div>

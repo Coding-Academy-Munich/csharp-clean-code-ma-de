@@ -61,6 +61,16 @@
 
 // %% [markdown]
 //
+// # Weitere Tests
+//
+// - Neue Zelle hinzufügen (+ Code)
+// - `Console.WriteLine("Hello, World!");` eingeben und ausführen
+// - In einer weiteren Zelle: `string name = "World";`
+// - In der nächsten Zelle: `Console.WriteLine($"Hello, {name}!");`
+// - Variablen aus vorherigen Zellen bleiben verfügbar
+
+// %% [markdown]
+//
 // # Kurs-Notebooks öffnen
 //
 // - Kurs-Materialien entpacken
