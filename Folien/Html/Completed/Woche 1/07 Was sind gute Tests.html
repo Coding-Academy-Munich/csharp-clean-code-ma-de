@@ -13429,7 +13429,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-36424.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-98788.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13528,7 +13528,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '36424.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '98788.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13909,7 +13909,13 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>PASSED
+<pre>FAILED:   Assert.That(roll, Is.EqualTo(2))
+
+  Expected: 2
+
+  But was:  1
+
+
 
 </pre>
 </div>
@@ -14252,10 +14258,10 @@ Probleme aufweisen und danach bessere Tests schreiben.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=0d72439df28c3bd9"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=ae8648edb2fc8d90"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Schlechter-Test-1:-Trivial">Schlechter Test 1: Trivial<a class="anchor-link" href="#Schlechter-Test-1:-Trivial">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
+<h3 id="Schlechter-Test-1">Schlechter Test 1<a class="anchor-link" href="#Schlechter-Test-1">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
 </div>
 </div>
 </div>
@@ -14275,7 +14281,7 @@ Probleme aufweisen und danach bessere Tests schreiben.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=0350cc5ccfd44b02">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=0350cc5ccfd44b02">
 <div class="input">
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
@@ -14297,10 +14303,10 @@ signifikante Logik ab. Er findet praktisch keine echten Bugs.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=52b3c7f16ea3caf4"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=37550e617b89a7bf"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Schlechter-Test-2:-Nichtdeterministisch">Schlechter Test 2: Nichtdeterministisch<a class="anchor-link" href="#Schlechter-Test-2:-Nichtdeterministisch">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
+<h3 id="Schlechter-Test-2">Schlechter Test 2<a class="anchor-link" href="#Schlechter-Test-2">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
 </div>
 </div>
 </div>
@@ -14323,7 +14329,7 @@ signifikante Logik ab. Er findet praktisch keine echten Bugs.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d9930b16c156eab4">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d9930b16c156eab4">
 <div class="input">
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
@@ -14347,10 +14353,10 @@ von <code>ToString()</code> verlässt.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=0587773be81b13f2"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=863f8ecd9c5d5abf"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Schlechter-Test-3:-Empfindlich-gegen%C3%BCber-Refactoring-(ToString)">Schlechter Test 3: Empfindlich gegenüber Refactoring (ToString)<a class="anchor-link" href="#Schlechter-Test-3:-Empfindlich-gegen%C3%BCber-Refactoring-(ToString)">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
+<h3 id="Schlechter-Test-3">Schlechter Test 3<a class="anchor-link" href="#Schlechter-Test-3">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
 </div>
 </div>
 </div>
@@ -14375,7 +14381,7 @@ von <code>ToString()</code> verlässt.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=8f837a4505c6a945">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8f837a4505c6a945">
 <div class="input">
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
@@ -14399,10 +14405,10 @@ testen.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=39aa92eda4bfedb3"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d19c70e12b7e1435"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Schlechter-Test-4:-Zugriff-auf-interne-Strukturen">Schlechter Test 4: Zugriff auf interne Strukturen<a class="anchor-link" href="#Schlechter-Test-4:-Zugriff-auf-interne-Strukturen">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
+<h3 id="Schlechter-Test-4">Schlechter Test 4<a class="anchor-link" href="#Schlechter-Test-4">¶</a></h3><p>Was ist das Problem mit diesem Test?</p>
 </div>
 </div>
 </div>
@@ -14432,7 +14438,7 @@ testen.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=263712362cb9f045">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=263712362cb9f045">
 <div class="input">
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">

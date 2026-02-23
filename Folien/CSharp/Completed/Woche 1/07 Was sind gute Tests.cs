@@ -392,7 +392,7 @@ public class Scoreboard
 
 // %% [markdown]
 //
-// ### Schlechter Test 1: Trivial
+// ### Schlechter Test 1
 //
 // Was ist das Problem mit diesem Test?
 
@@ -416,7 +416,7 @@ TestScoreboardCount();
 
 // %% [markdown]
 //
-// ### Schlechter Test 2: Nichtdeterministisch
+// ### Schlechter Test 2
 //
 // Was ist das Problem mit diesem Test?
 
@@ -445,7 +445,7 @@ TestScoreboardCreatedToday();
 
 // %% [markdown]
 //
-// ### Schlechter Test 3: Empfindlich gegenüber Refactoring (ToString)
+// ### Schlechter Test 3
 //
 // Was ist das Problem mit diesem Test?
 
@@ -476,7 +476,7 @@ TestScoreboardOutput();
 
 // %% [markdown]
 //
-// ### Schlechter Test 4: Zugriff auf interne Strukturen
+// ### Schlechter Test 4
 //
 // Was ist das Problem mit diesem Test?
 

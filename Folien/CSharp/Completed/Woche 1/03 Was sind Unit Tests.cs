@@ -25,15 +25,17 @@
 // ## Wozu dienen Unit-Tests?
 //
 // <ul>
-//   <li class="fragment">Nach Testquadranten:</li>
+//   <li class="fragment">Nach Testquadranten:
 //     <ul>
 //       <li>Unterstützen das Team bei der Entwicklung</li>
 //       <li>Sind auf die Technik fokussiert</li>
 //     </ul>
-//   <li class="fragment">Nach Regression/Rückmeldung Trade-Off:</li>
+//   </li>
+//   <li class="fragment">Nach Regression/Rückmeldung Trade-Off:
 //     <ul>
 //       <li>Sind auf schnelles Feedback fokussiert</li>
 //       <li>Jeder Test findet relativ wenige Fehler</li>
 //     </ul>
+//   </li>
 //   <li class="fragment">Werden beim Schreiben von Code sehr häufig ausgeführt</li>
 // </ul>
