@@ -13087,7 +13087,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=87131d65d51856f2"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=a6597a38274feea7"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="C# Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEgCAYAAABb3q1QAAAEuGlUWHRYTUw6Y29tLmFkb2JlLnht
@@ -13367,7 +13367,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 " style="display:block;margin:auto;width:5%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>Mocking mit NSubstitute</b>
+<b>Mocking mit Moq</b>
 </div>
 <br>
 <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -13377,39 +13377,23 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=36471375c1773e85"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2e780f51290d8608"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Was-ist-NSubstitute?">Was ist NSubstitute?<a class="anchor-link" href="#Was-ist-NSubstitute?">¶</a></h1><ul>
-<li><a href="https://nsubstitute.github.io/">NSubstitute</a> ist ein Mocking-Framework
-fuer C#</li>
-<li>Einfachere, lesbarere Syntax als Moq</li>
-<li>Kein <code>.Object</code>-Property noetig: Substitute wird direkt verwendet</li>
-<li>Unterstuetzt Verifikation, Stubbing, Argument-Matcher</li>
+<h1 id="Das-Moq-Mocking-Framework-(f%C3%BCr-C%23)">Das Moq Mocking Framework (für C#)<a class="anchor-link" href="#Das-Moq-Mocking-Framework-(f%C3%BCr-C%23)">¶</a></h1><ul>
+<li><a href="https://github.com/moq/moq4">Moq</a> ist ein Mocking-Framework für C#</li>
+<li>Ermöglicht das Erstellen von Mock-Objekten</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=86bae0afbc117fe9">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4f9a66f4ee82748d">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NSubstitute, *"</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Moq, 4.17"</span>
 <span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f2d206743c4d4199">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NSubstitute</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">NSubstitute.ExceptionExtensions</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -13426,18 +13410,30 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=c7e52fd05b1344da"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fc640814aaf534ba"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Beispiel:-Mocken-einer-Liste">Beispiel: Mocken einer Liste<a class="anchor-link" href="#Beispiel:-Mocken-einer-Liste">¶</a></h2><ul>
-<li>Erstellen eines Substitute-Objekts fuer eine Liste</li>
-<li>Implementiert alle Methoden des <code>IList&lt;T&gt;</code>-Interfaces</li>
-<li>Kann verwendet werden, um Methodenaufrufe zu ueberpruefen</li>
+<li>Erstellen eines Mock-Objekts für eine Liste</li>
+<li>Implementiert alle Methoden des <code>IList</code>-Interfaces</li>
+<li>Kann verwendet werden, um Methodenaufrufe zu überprüfen</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=f4d70896d08d91d3">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=87667398dddb57a4">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">Moq</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f15a0e7bfe7c5139">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13448,7 +13444,7 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=6be5db057b2ed707">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=ab5d3e3aa571d6e0">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13459,29 +13455,18 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=a75fe868ec038439">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=456a7eeb34a83be5">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedList</span><span class="p">.</span><span class="n">Received</span><span class="p">().</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedList</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">list</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">list</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=3bed08494fcd71d0">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=f6995e4f91df194f">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=117c11c5a0603b0c">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13492,28 +13477,7 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=078ea99e5e2902ca"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Ueberpruefen-der-Anzahl-der-Aufrufe">Ueberpruefen der Anzahl der Aufrufe<a class="anchor-link" href="#Ueberpruefen-der-Anzahl-der-Aufrufe">¶</a></h2><ul>
-<li><code>Received(n)</code> prueft, ob eine Methode genau <code>n</code> Mal aufgerufen wurde</li>
-<li><code>DidNotReceive()</code> prueft, ob eine Methode nicht aufgerufen wurde</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=b5682731fa3b09da">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=4d40ee2a58af7592">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=3f51adc2999d2665">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13524,71 +13488,27 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=3be909fb870e2324">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=71aa19ad51fd1fb1">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=6c31fdab4ac96950">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=32e84240dbc91499">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=519daa7b8e3f75ee"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=4aeaa64b2fa8949a"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Ueberpruefen, dass eine Methode nicht aufgerufen wurde:</li>
+<li>Überprüfen der Anzahl der Aufrufe:</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8ffe8487f5d1120e">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=09cf45f7624f588d">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListNever</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=f6d6c5874735f292">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f46d7aedd2025bd2">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13599,41 +13519,71 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=2beef717fc10f37f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f25b792b5dfba4e2">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9f3d50a69512a109">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=fe6a58f0842fcb16">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=385a9e314dcbaceb">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=5eec1d53d6e6461d"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Argument-Matcher">Argument-Matcher<a class="anchor-link" href="#Argument-Matcher">¶</a></h2><ul>
-<li><code>Arg.Any&lt;T&gt;()</code>: beliebiger Wert vom Typ <code>T</code></li>
-<li><code>Arg.Is&lt;T&gt;(predicate)</code>: Wert, der das Praedikat erfuellt</li>
-<li>Koennen bei Verifikation und Stubbing verwendet werden</li>
+<ul>
+<li>Überprüfen, dass eine Methode nicht aufgerufen wurde:</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=001709765a198857">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=4fbcc8b91e32a253">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListMatchers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
-<span class="n">mockedListMatchers</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListNever</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=61535a7a8b1e8e8d">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=061e44812886545a">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9385484655032e52">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13644,75 +13594,32 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=b0f0359284862ca2">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=06a0b3b637eed15f">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListIsNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
-<span class="n">mockedListIsNull</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d9a50c0b4aa16c89">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=b84448967c9e7b76"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=c0225c4ff75a9a3d"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Stubbing-(Rueckgabewerte-und-Exceptions)">Stubbing (Rueckgabewerte und Exceptions)<a class="anchor-link" href="#Stubbing-(Rueckgabewerte-und-Exceptions)">¶</a></h2><ul>
-<li><code>method.Returns(value)</code>: definiert den Rueckgabewert</li>
-<li><code>method.Throws(exception)</code>: wirft eine Exception (erfordert
-<code>using NSubstitute.ExceptionExtensions;</code>)</li>
-<li>Kein <code>Setup()</code> noetig: direkt auf dem Substitute aufrufen</li>
+<ul>
+<li>Argument Matcher:<ul>
+<li><code>It.IsAny&lt;T&gt;()</code>, <code>It.IsAny&lt;string&gt;()</code>, ...</li>
+<li><code>It.IsNull()</code>, <code>It.EndsWith()</code>, <code>It.Is&lt;T&gt;(...)</code>, ...</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=96d82071b0113430">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=eb4d0969afc72066">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListStub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListMatchers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="n">mockedListMatchers</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=90a9e3332889d5d1">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=88c0a13127f17c4a">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=241859d916707ffa">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13723,7 +13630,7 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=c420825c19b44137">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=dca049f2f35c852c">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13734,7 +13641,7 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=24c19df18194be04">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2e36f060fb4381e6">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13745,7 +13652,7 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=9c13c71855693b6d">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=76fa691dd30bff02">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13756,7 +13663,19 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=381f06d25074247b">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=74d704a26915f6dc">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListIsNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="n">mockedListIsNull</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=054c8132a2ad1091">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13767,25 +13686,191 @@ fuer C#</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=8cab9f1a8d8f0f44"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=977fc0b13b505bfb"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Verwendung-von-NSubstitute-in-NUnit-Tests">Verwendung von NSubstitute in NUnit-Tests<a class="anchor-link" href="#Verwendung-von-NSubstitute-in-NUnit-Tests">¶</a></h2><ul>
-<li>In NUnit-Tests koennen Substitute-Objekte verwendet werden, um
-Abhaengigkeiten zu simulieren</li>
-<li><code>Received()</code> wirft eine Exception, wenn die Verifikation fehlschlaegt</li>
-<li>Das fuehrt zu einem fehlgeschlagenen Test</li>
+<ul>
+<li>Mindest- und Maximalanzahl von Aufrufen:</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=2d87470c06399bfd">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=ac155e07873f6a50">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NSubstitute</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListLimits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5d9f4d10225cdde6">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedListLimits</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Once!"</span><span class="p">);</span>
+<span class="n">mockedListLimits</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Twice!"</span><span class="p">);</span>
+<span class="n">mockedListLimits</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Twice!"</span><span class="p">);</span>
+<span class="n">mockedListLimits</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Three times!"</span><span class="p">);</span>
+<span class="n">mockedListLimits</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Three times!"</span><span class="p">);</span>
+<span class="n">mockedListLimits</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Three times!"</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=8fa28f2d15218f4a">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=918fa82b136e5df6">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a4f0b54f2b19d0e8">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=6bd9aa328482a216">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=993a9bd0600583e2"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Stubbing">Stubbing<a class="anchor-link" href="#Stubbing">¶</a></h2><ul>
+<li>Manchmal ist es notwendig, das Verhalten eines Mock-Objekts zu definieren</li>
+<li>Mit <code>Setup()</code> und <code>Returns()</code> und <code>Throws()</code> kann das Verhalten festgelegt werden</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=bc4e75c8f8dae161">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedListStub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=4ef04cf5b9f62563">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f22b4cb45741384f">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9f7214057dc8bba9">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=66d1c680dab7fef7">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=61fefe622ee9741d">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=92d24ab8b1e16906">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=b4ede7fcb619c3e5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Verwendung-von-Moq-in-Tests">Verwendung von Moq in Tests<a class="anchor-link" href="#Verwendung-von-Moq-in-Tests">¶</a></h2><ul>
+<li>In NUnit-Tests können Mock-Objekte verwendet werden, um Abhängigkeiten zu simulieren</li>
+<li>Die <code>Verify()</code>-Methode wirft eine Exception, wenn sie einen Fehler findet</li>
+<li>Das führt zu einem fehlgeschlagenen Test</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=aa2cad24681a5d65">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Moq</span><span class="p">;</span>
 
 <span class="na">[TestFixture]</span>
 <span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ListTest</span>
@@ -13793,21 +13878,21 @@ Abhaengigkeiten zu simulieren</li>
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestList</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mockedList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mockedList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
 
-<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Received</span><span class="p">().</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">FailedTest</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mockedList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Substitute</span><span class="p">.</span><span class="n">For</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">mockedList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IList</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;&gt;</span><span class="p">();</span>
 
-<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Received</span><span class="p">().</span><span class="n">Add</span><span class="p">(</span><span class="s">"World!"</span><span class="p">);</span><span class="w"> </span><span class="c1">// This will fail</span>
+<span class="w">        </span><span class="n">mockedList</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"World!"</span><span class="p">));</span><span class="w"> </span><span class="c1">// This will fail</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -13826,60 +13911,12 @@ Abhaengigkeiten zu simulieren</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=aed0364b1de90c07"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=61948e3dbad033cd"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vergleich:-NSubstitute-vs.-Moq">Vergleich: NSubstitute vs. Moq<a class="anchor-link" href="#Vergleich:-NSubstitute-vs.-Moq">¶</a></h2><table>
-<thead>
-<tr>
-<th>Moq</th>
-<th>NSubstitute</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>new Mock&lt;IFoo&gt;()</code></td>
-<td><code>Substitute.For&lt;IFoo&gt;()</code></td>
-</tr>
-<tr>
-<td><code>mock.Object</code></td>
-<td>direkt verwenden</td>
-</tr>
-<tr>
-<td><code>mock.Setup(x =&gt; x.M()).Returns(v)</code></td>
-<td><code>sub.M().Returns(v)</code></td>
-</tr>
-<tr>
-<td><code>mock.Verify(x =&gt; x.M())</code></td>
-<td><code>sub.Received().M()</code></td>
-</tr>
-<tr>
-<td><code>Times.Never</code></td>
-<td><code>DidNotReceive()</code></td>
-</tr>
-<tr>
-<td><code>Times.Exactly(n)</code></td>
-<td><code>Received(n)</code></td>
-</tr>
-<tr>
-<td><code>It.IsAny&lt;T&gt;()</code></td>
-<td><code>Arg.Any&lt;T&gt;()</code></td>
-</tr>
-<tr>
-<td><code>It.Is&lt;T&gt;(p)</code></td>
-<td><code>Arg.Is&lt;T&gt;(p)</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=f7efd4ca068a0df3"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Test-eines-Steuerungssystems-fuer-ein-Raumschiff">Workshop: Test eines Steuerungssystems fuer ein Raumschiff<a class="anchor-link" href="#Workshop:-Test-eines-Steuerungssystems-fuer-ein-Raumschiff">¶</a></h2><p>In diesem Workshop arbeiten Sie mit einem einfachen Steuerungssystem fuer ein
+<h2 id="Workshop:-Test-eines-Steuerungssystems-f%C3%BCr-ein-Raumschiff">Workshop: Test eines Steuerungssystems für ein Raumschiff<a class="anchor-link" href="#Workshop:-Test-eines-Steuerungssystems-f%C3%BCr-ein-Raumschiff">¶</a></h2><p>In diesem Workshop arbeiten Sie mit einem einfachen Steuerungssystem für ein
 Raumschiff. Das System interagiert mit verschiedenen Sensoren und einem
-Funksender. Ihre Aufgabe ist es, Tests fuer dieses System mit NSubstitute zu
+Funksender. Ihre Aufgabe ist es, Tests für dieses System mit Moq zu
 schreiben.</p>
 <p>Hier ist eine einfache Implementierung unseres Raumschiff-Steuerungssystems:</p>
 </div>
@@ -13968,10 +14005,10 @@ schreiben.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=c55a25f5ceed2803"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2608fde4ca57cfc4"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Beispiel">Beispiel<a class="anchor-link" href="#Beispiel">¶</a></h2><p>So koennten Sie dieses System verwenden:</p>
+<h2 id="Beispiel">Beispiel<a class="anchor-link" href="#Beispiel">¶</a></h2><p>So könnten Sie dieses System verwenden:</p>
 </div>
 </div>
 </div>
@@ -14062,64 +14099,63 @@ schreiben.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=a53872daf3482e62"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=34a5a9663dbab077"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Ihre Aufgabe ist es, Tests fuer das <code>SpacecraftControlSystem</code> unter Verwendung
-von NSubstitute zu schreiben. Implementieren Sie die folgenden Testfaelle:</p>
+<p>Ihre Aufgabe ist es, Tests für das <code>SpacecraftControlSystem</code> unter Verwendung
+von Moq zu schreiben. Implementieren Sie die folgenden Testfälle:</p>
 <ol>
 <li>Testen des normalen Betriebs:<ul>
-<li>Ueberpruefen Sie den normalen Betrieb des Raumschiffs, wenn die Temperatur
+<li>Überprüfen Sie den normalen Betrieb des Raumschiffs, wenn die Temperatur
 normal und der Kraftstoffstand ausreichend ist.</li>
 </ul>
 </li>
 <li>Testen der Warnung bei hoher Temperatur:<ul>
-<li>Ueberpruefen Sie, dass das Raumschiff eine Warnung bei einer Temperatur
-ueber 100 Grad uebertraegt.</li>
+<li>Überprüfen Sie, dass das Raumschiff eine Warnung bei einer Temperatur
+über 100 Grad überträgt.</li>
 </ul>
 </li>
 <li>Testen der Warnung bei niedrigem Kraftstoffstand:<ul>
-<li>Ueberpruefen Sie, dass das Raumschiff eine Warnung bei einem Kraftstoffstand
-unter 10 uebertraegt.</li>
+<li>Überprüfen Sie, dass das Raumschiff eine Warnung bei einem Kraftstoffstand
+unter 10 überträgt.</li>
 </ul>
 </li>
 <li>Testen mehrerer Warnungen:<ul>
-<li>Ueberpruefen Sie, dass das Raumschiff sowohl eine Warnung bei hoher Temperatur
-als auch bei niedrigem Kraftstoffstand uebertraegt, wenn beide Bedingungen
-erfuellt sind.</li>
+<li>Überprüfen Sie, dass das Raumschiff sowohl eine Warnung bei hoher Temperatur
+als auch bei niedrigem Kraftstoffstand überträgt, wenn beide Bedingungen
+erfüllt sind.</li>
 </ul>
 </li>
 </ol>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=f52a1e59a9993bbf"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=3b0bf7b4f9d207f5"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Bonusaufgabe:">Bonusaufgabe:<a class="anchor-link" href="#Bonusaufgabe:">¶</a></h4><ol start="5">
 <li>Testen der Fehlerbehandlung:<ul>
-<li>Aendern Sie das <code>SpacecraftControlSystem</code>, um Ausnahmen von den Sensoren
-zu behandeln, und schreiben Sie einen Test, um dieses Verhalten zu
-ueberpruefen.</li>
+<li>Ändern Sie das <code>SpacecraftControlSystem</code>, um Ausnahmen von den Sensoren
+zu behandeln, und schreiben Sie einen Test, um dieses Verhalten zu überprüfen.</li>
 </ul>
 </li>
 </ol>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=e6c8c5a320360cd1">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b3401be0bdefaf14">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NSubstitute</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Moq</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=f98b96962c061b15">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=9735b2d0d78fa018">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -14141,19 +14177,19 @@ ueberpruefen.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=483579b328dfe8a1">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3fa648c4b5e25ff5">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NSubstitute</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Moq</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=8b125ea432995a8f">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=4fc85dda2c66ca2a">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -14164,7 +14200,7 @@ ueberpruefen.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=83ebfb254c16ed58">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=387f7e8fc7a329a4">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
