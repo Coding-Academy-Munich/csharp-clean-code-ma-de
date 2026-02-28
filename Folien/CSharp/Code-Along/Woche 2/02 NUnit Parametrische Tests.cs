@@ -134,6 +134,23 @@ using System.Collections.Generic;
 // - Aehnlich wie `[MemberData]` in xUnit
 
 // %%
+[TestFixture]
+public class LeapYearTestsV5 {
+    private static IEnumerable<object[]> LeapYearData() {
+        yield return new object[] { 2004, true };
+        yield return new object[] { 2008, true };
+        yield return new object[] { 2000, true };
+        yield return new object[] { 2001, false };
+        yield return new object[] { 2002, false };
+        yield return new object[] { 2003, false };
+        yield return new object[] { 1900, false };
+    }
+
+    [TestCaseSource(nameof(LeapYearData))]
+    public void IsLeapYearReturnsCorrectResult(int year, bool expected) {
+        Assert.That(IsLeapYear(year), Is.EqualTo(expected));
+    }
+}
 
 // %% [markdown]
 //
@@ -144,6 +161,24 @@ using System.Collections.Generic;
 // - Erwartete Ergebnisse koennen mit `.Returns()` angegeben werden
 
 // %%
+[TestFixture]
+public class LeapYearTestsV6 {
+    private static IEnumerable<TestCaseData> LeapYearData() {
+        yield return new TestCaseData(2004).Returns(true)
+            .SetName("2004 is a leap year (divisible by 4)");
+        yield return new TestCaseData(2000).Returns(true)
+            .SetName("2000 is a leap year (divisible by 400)");
+        yield return new TestCaseData(1900).Returns(false)
+            .SetName("1900 is not a leap year (divisible by 100)");
+        yield return new TestCaseData(2001).Returns(false)
+            .SetName("2001 is not a leap year (not divisible by 4)");
+    }
+
+    [TestCaseSource(nameof(LeapYearData))]
+    public bool IsLeapYearFromSource(int year) {
+        return IsLeapYear(year);
+    }
+}
 
 // %% [markdown]
 //

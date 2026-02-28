@@ -13410,211 +13410,109 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-66028.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
-
-        The below script needs to be able to find the current output cell; this is an easy method to get it.
-
+<div id="dotnet-interactive-this-cell-65956.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+        The below script needs to be able to find the current output cell; this is an easy method to get it.
     </div>
-<script type="text/javascript">
-
-async function probeAddresses(probingAddresses) {
-
-    function timeout(ms, promise) {
-
-        return new Promise(function (resolve, reject) {
-
-            setTimeout(function () {
-
-                reject(new Error('timeout'))
-
-            }, ms)
-
-            promise.then(resolve, reject)
-
-        })
-
-    }
-
-
-
-    if (Array.isArray(probingAddresses)) {
-
-        for (let i = 0; i < probingAddresses.length; i++) {
-
-
-
-            let rootUrl = probingAddresses[i];
-
-
-
-            if (!rootUrl.endsWith('/')) {
-
-                rootUrl = `${rootUrl}/`;
-
-            }
-
-
-
-            try {
-
-                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
-
-                    method: 'POST',
-
-                    cache: 'no-cache',
-
-                    mode: 'cors',
-
-                    timeout: 1000,
-
-                    headers: {
-
-                        'Content-Type': 'text/plain'
-
-                    },
-
-                    body: probingAddresses[i]
-
-                }));
-
-
-
-                if (response.status == 200) {
-
-                    return rootUrl;
-
-                }
-
-            }
-
-            catch (e) { }
-
-        }
-
-    }
-
-}
-
-
-
-function loadDotnetInteractiveApi() {
-
-    probeAddresses(["http://192.168.178.24:2051/", "http://169.254.203.116:2051/", "http://169.254.194.28:2051/", "http://172.16.0.1:2051/", "http://172.30.96.1:2051/", "http://172.23.176.1:2051/", "http://127.0.0.1:2051/"])
-
-        .then((root) => {
-
-        // use probing to find host url and api resources
-
-        // load interactive helpers and language services
-
-        let dotnetInteractiveRequire = require.config({
-
-        context: '66028.Microsoft.DotNet.Interactive.Http.HttpPort',
-
-                paths:
-
-            {
-
-                'dotnet-interactive': `${root}resources`
-
-                }
-
-        }) || require;
-
-
-
-            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
-
-
-
-            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
-
-                let paths = {};
-
-                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
-
-                
-
-                let internalRequire = require.config({
-
-                    context: extensionCacheBuster,
-
-                    paths: paths,
-
-                    urlArgs: `cacheBuster=${extensionCacheBuster}`
-
-                    }) || require;
-
-
-
-                return internalRequire
-
-            };
-
-        
-
-            dotnetInteractiveRequire([
-
-                    'dotnet-interactive/dotnet-interactive'
-
-                ],
-
-                function (dotnet) {
-
-                    dotnet.init(window);
-
-                },
-
-                function (error) {
-
-                    console.log(error);
-
-                }
-
-            );
-
-        })
-
-        .catch(error => {console.log(error);});
-
-    }
-
-
-
-// ensure `require` is available globally
-
-if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
-
-    let require_script = document.createElement('script');
-
-    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
-
-    require_script.setAttribute('type', 'text/javascript');
-
-    
-
-    
-
-    require_script.onload = function() {
-
-        loadDotnetInteractiveApi();
-
-    };
-
-
-
-    document.getElementsByTagName('head')[0].appendChild(require_script);
-
-}
-
-else {
-
-    loadDotnetInteractiveApi();
-
-}
-
-
-
+<script type="text/javascript">
+async function probeAddresses(probingAddresses) {
+    function timeout(ms, promise) {
+        return new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                reject(new Error('timeout'))
+            }, ms)
+            promise.then(resolve, reject)
+        })
+    }
+
+    if (Array.isArray(probingAddresses)) {
+        for (let i = 0; i < probingAddresses.length; i++) {
+
+            let rootUrl = probingAddresses[i];
+
+            if (!rootUrl.endsWith('/')) {
+                rootUrl = `${rootUrl}/`;
+            }
+
+            try {
+                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
+                    method: 'POST',
+                    cache: 'no-cache',
+                    mode: 'cors',
+                    timeout: 1000,
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    body: probingAddresses[i]
+                }));
+
+                if (response.status == 200) {
+                    return rootUrl;
+                }
+            }
+            catch (e) { }
+        }
+    }
+}
+
+function loadDotnetInteractiveApi() {
+    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.30.96.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
+        .then((root) => {
+        // use probing to find host url and api resources
+        // load interactive helpers and language services
+        let dotnetInteractiveRequire = require.config({
+        context: '65956.Microsoft.DotNet.Interactive.Http.HttpPort',
+                paths:
+            {
+                'dotnet-interactive': `${root}resources`
+                }
+        }) || require;
+
+            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
+
+            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
+                let paths = {};
+                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
+                
+                let internalRequire = require.config({
+                    context: extensionCacheBuster,
+                    paths: paths,
+                    urlArgs: `cacheBuster=${extensionCacheBuster}`
+                    }) || require;
+
+                return internalRequire
+            };
+        
+            dotnetInteractiveRequire([
+                    'dotnet-interactive/dotnet-interactive'
+                ],
+                function (dotnet) {
+                    dotnet.init(window);
+                },
+                function (error) {
+                    console.log(error);
+                }
+            );
+        })
+        .catch(error => {console.log(error);});
+    }
+
+// ensure `require` is available globally
+if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
+    let require_script = document.createElement('script');
+    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
+    require_script.setAttribute('type', 'text/javascript');
+    
+    
+    require_script.onload = function() {
+        loadDotnetInteractiveApi();
+    };
+
+    document.getElementsByTagName('head')[0].appendChild(require_script);
+}
+else {
+    loadDotnetInteractiveApi();
+}
+
     </script>
 </div></div>
 </div>
@@ -13733,40 +13631,35 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear
-
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy400IsLeapYear
-
+<pre>[PASS] YearDivisibleBy400IsLeapYear
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears
-
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear
-
+<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 4, Passed: 4, Failed: 0
-
+<pre>Total tests: 4, Passed: 4, Failed: 0
 </pre>
 </div>
 </div>
@@ -13836,72 +13729,63 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2004)
-
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2004)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2008)
-
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2008)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2012)
-
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2012)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy400IsLeapYear(2000)
-
+<pre>[PASS] YearDivisibleBy400IsLeapYear(2000)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2001)
-
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2001)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2002)
-
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2002)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2003)
-
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2003)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear(1900)
-
+<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear(1900)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 8, Passed: 8, Failed: 0
-
+<pre>Total tests: 8, Passed: 8, Failed: 0
 </pre>
 </div>
 </div>
@@ -13961,56 +13845,49 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(2001)
-
+<pre>[PASS] NonLeapYears(2001)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(2002)
-
+<pre>[PASS] NonLeapYears(2002)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(2003)
-
+<pre>[PASS] NonLeapYears(2003)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(1900)
-
+<pre>[PASS] NonLeapYears(1900)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] LeapYears(2004)
-
+<pre>[PASS] LeapYears(2004)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] LeapYears(2000)
-
+<pre>[PASS] LeapYears(2000)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 6, Passed: 6, Failed: 0
-
+<pre>Total tests: 6, Passed: 6, Failed: 0
 </pre>
 </div>
 </div>
@@ -14066,64 +13943,56 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2004, True)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2004, True)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2008, True)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2008, True)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2000, True)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2000, True)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2001, False)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2001, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2002, False)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2002, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2003, False)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2003, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(1900, False)
-
+<pre>[PASS] IsLeapYearReturnsCorrectResult(1900, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 7, Passed: 7, Failed: 0
-
+<pre>Total tests: 7, Passed: 7, Failed: 0
 </pre>
 </div>
 </div>
@@ -14166,7 +14035,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=32e0be096c082e2a">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=32e0be096c082e2a">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
@@ -14204,7 +14073,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=8c66e5a860914189">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=8c66e5a860914189">
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
@@ -14320,168 +14189,147 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(1)
-
+<pre>[PASS] TestNonPrimes(1)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(4)
-
+<pre>[PASS] TestNonPrimes(4)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(6)
-
+<pre>[PASS] TestNonPrimes(6)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(8)
-
+<pre>[PASS] TestNonPrimes(8)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(9)
-
+<pre>[PASS] TestNonPrimes(9)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(10)
-
+<pre>[PASS] TestNonPrimes(10)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(12)
-
+<pre>[PASS] TestNonPrimes(12)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(14)
-
+<pre>[PASS] TestNonPrimes(14)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(15)
-
+<pre>[PASS] TestNonPrimes(15)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(16)
-
+<pre>[PASS] TestNonPrimes(16)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(18)
-
+<pre>[PASS] TestNonPrimes(18)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(20)
-
+<pre>[PASS] TestNonPrimes(20)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(2)
-
+<pre>[PASS] TestPrimes(2)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(3)
-
+<pre>[PASS] TestPrimes(3)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(5)
-
+<pre>[PASS] TestPrimes(5)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(7)
-
+<pre>[PASS] TestPrimes(7)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(11)
-
+<pre>[PASS] TestPrimes(11)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(13)
-
+<pre>[PASS] TestPrimes(13)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(17)
-
+<pre>[PASS] TestPrimes(17)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(19)
-
+<pre>[PASS] TestPrimes(19)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 20, Passed: 20, Failed: 0
-
+<pre>Total tests: 20, Passed: 20, Failed: 0
 </pre>
 </div>
 </div>
@@ -14546,88 +14394,77 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes()
-
+<pre>[PASS] TestPalindromes()
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(a)
-
+<pre>[PASS] TestPalindromes(a)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(aa)
-
+<pre>[PASS] TestPalindromes(aa)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(aba)
-
+<pre>[PASS] TestPalindromes(aba)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(abba)
-
+<pre>[PASS] TestPalindromes(abba)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(abcba)
-
+<pre>[PASS] TestPalindromes(abcba)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(ab)
-
+<pre>[PASS] TestNonPalindromes(ab)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(abc)
-
+<pre>[PASS] TestNonPalindromes(abc)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(abcd)
-
+<pre>[PASS] TestNonPalindromes(abcd)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(abcde)
-
+<pre>[PASS] TestNonPalindromes(abcde)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 10, Passed: 10, Failed: 0
-
+<pre>Total tests: 10, Passed: 10, Failed: 0
 </pre>
 </div>
 </div>
@@ -14684,56 +14521,49 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 1, True)
-
+<pre>[PASS] TestContainsDigit(123, 1, True)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 2, True)
-
+<pre>[PASS] TestContainsDigit(123, 2, True)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 3, True)
-
+<pre>[PASS] TestContainsDigit(123, 3, True)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 4, False)
-
+<pre>[PASS] TestContainsDigit(123, 4, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 5, False)
-
+<pre>[PASS] TestContainsDigit(123, 5, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 6, False)
-
+<pre>[PASS] TestContainsDigit(123, 6, False)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 6, Passed: 6, Failed: 0
-
+<pre>Total tests: 6, Passed: 6, Failed: 0
 </pre>
 </div>
 </div>
@@ -14793,96 +14623,66 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestSubstringFollowing(Hello, He, llo)
-
+<pre>[PASS] TestSubstringFollowing(Hello, He, llo)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestSubstringFollowing(Hello, Hel, lo)
-
+<pre>[PASS] TestSubstringFollowing(Hello, Hel, lo)
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestSubstringFollowing(Hello, Hello, )
-
+<pre>[PASS] TestSubstringFollowing(Hello, Hello, )
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[FAIL] TestSubstringFollowing(Hello, ello, Hello):   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
-
-  Expected string length 5 but was 0. Strings differ at index 0.
-
-  Expected: "Hello"
-
-  But was:  &lt;string.Empty&gt;
-
-  -----------^
-
-
-
+<pre>[FAIL] TestSubstringFollowing(Hello, ello, Hello):   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
+  Expected string length 5 but was 0. Strings differ at index 0.
+  Expected: "Hello"
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[FAIL] TestSubstringFollowing(Hello, o, Hello): Multiple failures or warnings in test:
-
-  1)   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
-
-  Expected string length 5 but was 0. Strings differ at index 0.
-
-  Expected: "Hello"
-
-  But was:  &lt;string.Empty&gt;
-
-  -----------^
-
-
-
-     at Submission#28.SubstringFollowingTests.TestSubstringFollowing(String s, String prefix, String expected)
-
-   at InvokeStub_SubstringFollowingTests.TestSubstringFollowing(Object, Span`1)
-
-
-
-  2)   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
-
-  Expected string length 5 but was 0. Strings differ at index 0.
-
-  Expected: "Hello"
-
-  But was:  &lt;string.Empty&gt;
-
-  -----------^
-
-
-
-     at Submission#28.SubstringFollowingTests.TestSubstringFollowing(String s, String prefix, String expected)
-
-   at InvokeStub_SubstringFollowingTests.TestSubstringFollowing(Object, Span`1)
-
-
-
-
-
+<pre>[FAIL] TestSubstringFollowing(Hello, o, Hello): Multiple failures or warnings in test:
+  1)   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
+  Expected string length 5 but was 0. Strings differ at index 0.
+  Expected: "Hello"
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+     at Submission#28.SubstringFollowingTests.TestSubstringFollowing(String s, String prefix, String expected)
+   at InvokeStub_SubstringFollowingTests.TestSubstringFollowing(Object, Span`1)
+
+  2)   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
+  Expected string length 5 but was 0. Strings differ at index 0.
+  Expected: "Hello"
+  But was:  &lt;string.Empty&gt;
+  -----------^
+
+     at Submission#28.SubstringFollowingTests.TestSubstringFollowing(String s, String prefix, String expected)
+   at InvokeStub_SubstringFollowingTests.TestSubstringFollowing(Object, Span`1)
+
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 5, Passed: 3, Failed: 2
-
+<pre>Total tests: 5, Passed: 3, Failed: 2
 </pre>
 </div>
 </div>

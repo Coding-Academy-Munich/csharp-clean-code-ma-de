@@ -13642,12 +13642,28 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=32e0be096c082e2a">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=32e0be096c082e2a">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+<div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV5</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2004</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2001</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2002</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2003</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="p">};</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">1900</span><span class="p">,</span><span class="w"> </span><span class="k">false</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[TestCaseSource(nameof(LeapYearData))]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -13664,12 +13680,29 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=8c66e5a860914189">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=8c66e5a860914189">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+<div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV6</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">TestCaseData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2004</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"2004 is a leap year (divisible by 4)"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2000</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"2000 is a leap year (divisible by 400)"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">1900</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"1900 is not a leap year (divisible by 100)"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2001</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">false</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"2001 is not a leap year (not divisible by 4)"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[TestCaseSource(nameof(LeapYearData))]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYearFromSource</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
