@@ -52,10 +52,10 @@ tests.TestAddition();
 // tests.TestFailure();
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %%
-using static NunitTestRunner;
+using static NUnitTestRunner;
 
 // %%
 RunTests<NUnitBasicsTest>();

@@ -22,7 +22,7 @@
 #r "nuget: NUnit, *"
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %% [markdown]
 //
@@ -204,7 +204,7 @@ public class ListTest
 }
 
 // %%
-NunitTestRunner.RunTests(typeof(ListTest));
+NUnitTestRunner.RunTests(typeof(ListTest));
 
 // %% [markdown]
 //
@@ -422,7 +422,7 @@ public class SpacecraftControlSystemTest
 }
 
 // %%
-NunitTestRunner.RunTests(typeof(SpacecraftControlSystemTest));
+NUnitTestRunner.RunTests(typeof(SpacecraftControlSystemTest));
 
 // %% [markdown]
 // ## Bonusaufgabe: Fehlerbehandlung
@@ -513,7 +513,7 @@ public class SpacecraftControlSystemWithExceptionHandlingTest
 }
 
 // %%
-NunitTestRunner.RunTests(typeof(SpacecraftControlSystemWithExceptionHandlingTest));
+NUnitTestRunner.RunTests(typeof(SpacecraftControlSystemWithExceptionHandlingTest));
 
 // %%
 using NUnit.Framework;
@@ -597,6 +597,6 @@ public class SpacecraftControlSystemTest
 }
 
 // %%
-NunitTestRunner.RunTests(typeof(SpacecraftControlSystemTest));
+NUnitTestRunner.RunTests(typeof(SpacecraftControlSystemTest));
 
 // %%

@@ -256,5 +256,5 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 // %%
-#load "NunitTestRunner.cs"
-using static NunitTestRunner;
+#load "NUnitTestRunner.cs"
+using static NUnitTestRunner;

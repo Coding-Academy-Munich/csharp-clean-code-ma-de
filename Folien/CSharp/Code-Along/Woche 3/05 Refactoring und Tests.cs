@@ -212,10 +212,10 @@ public class PriorityQueue<T>
 using NUnit.Framework;
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %%
-using static NunitTestRunner;
+using static NUnitTestRunner;
 
 // %%
 

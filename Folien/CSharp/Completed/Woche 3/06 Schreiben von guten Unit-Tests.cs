@@ -64,11 +64,11 @@
 #r "nuget: NUnit, *"
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %%
 using NUnit.Framework;
-using static NunitTestRunner;
+using static NUnitTestRunner;
 
 // %%
 using System;

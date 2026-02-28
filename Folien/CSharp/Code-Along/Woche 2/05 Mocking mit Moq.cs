@@ -22,7 +22,7 @@
 #r "nuget: NUnit, *"
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %% [markdown]
 //

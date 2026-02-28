@@ -687,8 +687,8 @@ using System.Collections.Generic;
 using NUnit.Framework;
 
 // %%
-#load "NunitTestRunner.cs"
-using static NunitTestRunner;
+#load "NUnitTestRunner.cs"
+using static NUnitTestRunner;
 
 // %%
 public class FizzBuzzSimple {
@@ -821,4 +821,4 @@ public class FizzBuzzTest {
 }
 
 // %%
-NunitTestRunner.RunTests<FizzBuzzTest>();
+NUnitTestRunner.RunTests<FizzBuzzTest>();

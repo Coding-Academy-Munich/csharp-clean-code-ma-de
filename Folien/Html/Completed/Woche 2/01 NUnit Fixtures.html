@@ -13377,7 +13377,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=b4d25314174cd17b"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=b8b2dbb6c61dc00b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Probleme-mit-einfachen-Tests">Probleme mit einfachen Tests<a class="anchor-link" href="#Probleme-mit-einfachen-Tests">¶</a></h2><ul>
@@ -13386,7 +13386,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <li>Schwer zu warten und verstehen</li>
 </ul>
 </li>
-<li>Viele aehnliche Tests</li>
+<li>Viele ähnliche Tests</li>
 </ul>
 </div>
 </div>
@@ -13422,7 +13422,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-60152.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-35020.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13511,7 +13511,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.30.96.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
+    probeAddresses(["http://192.168.178.24:2051/", "http://169.254.203.116:2051/", "http://169.254.194.28:2051/", "http://172.16.0.1:2051/", "http://172.30.96.1:2051/", "http://172.23.176.1:2051/", "http://127.0.0.1:2051/"])
 
         .then((root) => {
 
@@ -13521,7 +13521,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '60152.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '35020.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13633,7 +13633,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3a0420a239e8e6b4">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=c90645d5a5760dd1">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
@@ -13651,7 +13651,11 @@ else {
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_supplier</span><span class="p">.</span><span class="n">UnitCost</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">margin</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReleaseSupplierContract</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReleaseSupplierContract</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"  [Product] Released supplier contract"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Supplier</span><span class="w"> </span><span class="n">_supplier</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">margin</span><span class="p">;</span>
@@ -13661,7 +13665,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=272cdda30f09241e">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=8b6a685ca697afff">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
@@ -13672,6 +13676,7 @@ else {
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Total</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_product</span><span class="p">.</span><span class="n">Price</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_quantity</span><span class="p">;</span>
+
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -13783,23 +13788,23 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=0e7063b5adc6e281">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=eadfd1ac291e1c9d">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">load</span><span class="w"> </span><span class="s">"NunitTestRunner.cs"</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">load</span><span class="w"> </span><span class="s">"NUnitTestRunner.cs"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=99c0b028fe2925ed">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=906c90b09fea55ae">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">NunitTestRunner</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">NUnitTestRunner</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -13820,7 +13825,23 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>[PASS] TestTotal1
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
 
 </pre>
 </div>
@@ -13836,7 +13857,23 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>[PASS] TestTotal3
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
 
 </pre>
 </div>
@@ -13860,13 +13897,13 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=0fb7cd5bcf5d52ab"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=33cadac687b6637e"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Manuelle-Setup-Methode">Manuelle Setup-Methode<a class="anchor-link" href="#Manuelle-Setup-Methode">¶</a></h2><ul>
 <li>Wir können eine Setup-Methode definieren und sie in jedem Test aufrufen</li>
 <li>Das reduziert die Code-Duplikation</li>
-<li>Aber wir muessen daran denken, sie in jedem Test aufzurufen</li>
+<li>Aber wir müssen daran denken, sie in jedem Test aufzurufen</li>
 </ul>
 </div>
 </div>
@@ -13951,7 +13988,23 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>[PASS] TestTotal1
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
 
 </pre>
 </div>
@@ -13967,7 +14020,23 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>[PASS] TestTotal3
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
 
 </pre>
 </div>
@@ -14002,21 +14071,39 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1f6db14a21728c38">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7f62d166aa1d266e"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="%5BSetUp%5D-und-%5BTearDown%5D-zusammen"><code>[SetUp]</code> und <code>[TearDown]</code> zusammen<a class="anchor-link" href="#%5BSetUp%5D-und-%5BTearDown%5D-zusammen">¶</a></h2><ul>
+<li><code>[TearDown]</code> eignet sich ideal für Cleanup-Aufgaben</li>
+<li>Wird auch aufgerufen, wenn ein Test fehlschlägt</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4d7e5ec28225e392">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderLineTestWithSetUp</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderLineTestWithSetUpAndTearDown</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">_product</span><span class="p">;</span>
 
 <span class="w">    </span><span class="na">[SetUp]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetUp</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"  [SetUp] Running setup"</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Supplier</span><span class="w"> </span><span class="n">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Supplier</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">        </span><span class="n">_product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="n">supplier</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[TearDown]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TearDown</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"  [TearDown] Running teardown"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
@@ -14052,118 +14139,9 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=592a98e1317c5183">
-<div class="input">
-<div class="prompt input_prompt">In [13]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">OrderLineTestWithSetUp</span><span class="o">&gt;</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestTotal1
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestTotal2
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestTotal3
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestTotal4
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 4, Passed: 4, Failed: 0
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=83ae1f2575aab0ba"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%5BSetUp%5D-und-%5BTearDown%5D-zusammen"><code>[SetUp]</code> und <code>[TearDown]</code> zusammen<a class="anchor-link" href="#%5BSetUp%5D-und-%5BTearDown%5D-zusammen">¶</a></h2><ul>
-<li><code>[TearDown]</code> eignet sich ideal fuer Cleanup-Aufgaben</li>
-<li>Wird auch aufgerufen, wenn ein Test fehlschlaegt</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=d293c8669f9bbd3d">
-<div class="input">
-<div class="prompt input_prompt">In [14]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderLineTestWithSetUpAndTearDown</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">_product</span><span class="p">;</span>
-
-<span class="w">    </span><span class="na">[SetUp]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetUp</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"  [SetUp] Running setup"</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Supplier</span><span class="w"> </span><span class="n">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Supplier</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="n">_product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="n">supplier</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="na">[TearDown]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TearDown</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"  [TearDown] Running teardown"</span><span class="p">);</span>
-<span class="w">        </span><span class="n">_product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal1</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal2</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">600</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=40a216663d9ca27f">
 <div class="input">
-<div class="prompt input_prompt">In [15]:</div>
+<div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">OrderLineTestWithSetUpAndTearDown</span><span class="o">&gt;</span><span class="p">();</span>
@@ -14200,6 +14178,14 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>  [SetUp] Running setup
 
 </pre>
@@ -14224,7 +14210,79 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 2, Passed: 2, Failed: 0
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [SetUp] Running setup
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] TestTotal3
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [TearDown] Running teardown
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [SetUp] Running setup
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] TestTotal4
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [TearDown] Running teardown
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total tests: 4, Passed: 4, Failed: 0
 
 </pre>
 </div>
@@ -14232,24 +14290,24 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=de1e334f1be8dcfe"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=de74f4248ff93449"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="%5BOneTimeSetUp%5D-und-%5BOneTimeTearDown%5D"><code>[OneTimeSetUp]</code> und <code>[OneTimeTearDown]</code><a class="anchor-link" href="#%5BOneTimeSetUp%5D-und-%5BOneTimeTearDown%5D">¶</a></h2><ul>
 <li>Was, wenn Teile des Setups teuer sind (z.B. Datenbankverbindung)?</li>
-<li><code>[OneTimeSetUp]</code>: Wird <strong>einmal pro Testklasse</strong> ausgefuehrt</li>
-<li><code>[OneTimeTearDown]</code>: Wird <strong>einmal nach allen Tests</strong> ausgefuehrt</li>
+<li><code>[OneTimeSetUp]</code>: Wird <strong>einmal pro Testklasse</strong> ausgeführt</li>
+<li><code>[OneTimeTearDown]</code>: Wird <strong>einmal nach allen Tests</strong> ausgeführt</li>
 <li>Zustand wird zwischen allen Tests der Klasse geteilt</li>
 <li>Kann mit <code>[SetUp]</code>/<code>[TearDown]</code> kombiniert werden</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=34e7fda3834325b6"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=10cd407fc645ec03"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Ausfuehrungsreihenfolge:<ol>
+<li>Ausführungsreihenfolge:<ol>
 <li><code>[OneTimeSetUp]</code> (einmal)</li>
 <li><code>[SetUp]</code> (vor jedem Test)</li>
 <li>Test</li>
@@ -14261,9 +14319,9 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=fd54086ff452044d">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=191a5039bb944d32">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
@@ -14309,8 +14367,22 @@ else {
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal2</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">180</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal3</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">600</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal4</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1050</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -14320,7 +14392,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=6ec7308d42268ac7">
 <div class="input">
-<div class="prompt input_prompt">In [17]:</div>
+<div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">CombinedSetUpTest</span><span class="o">&gt;</span><span class="p">();</span>
@@ -14365,6 +14437,14 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>  [SetUp] Creating per-test product
 
 </pre>
@@ -14389,6 +14469,78 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [SetUp] Creating per-test product
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] TestTotal3
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [TearDown] Releasing supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [SetUp] Creating per-test product
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] TestTotal4
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [TearDown] Releasing supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  [Product] Released supplier contract
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
 <pre>  [OneTimeTearDown] Cleaning up shared supplier
 
 </pre>
@@ -14397,7 +14549,7 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 2, Passed: 2, Failed: 0
+<pre>Total tests: 4, Passed: 4, Failed: 0
 
 </pre>
 </div>
@@ -14405,20 +14557,20 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=4d6f1743fb50a737"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=534be93a62f5f04a"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-NUnit-Fixtures-fuer-einen-Musik-Streaming-Dienst">Workshop: NUnit Fixtures fuer einen Musik-Streaming-Dienst<a class="anchor-link" href="#Workshop:-NUnit-Fixtures-fuer-einen-Musik-Streaming-Dienst">¶</a></h2><p>In diesem Workshop werden wir Tests fuer ein einfaches Musik-Streaming-System
+<h2 id="Workshop:-NUnit-Fixtures-f%C3%BCr-einen-Musik-Streaming-Dienst">Workshop: NUnit Fixtures für einen Musik-Streaming-Dienst<a class="anchor-link" href="#Workshop:-NUnit-Fixtures-f%C3%BCr-einen-Musik-Streaming-Dienst">¶</a></h2><p>In diesem Workshop werden wir Tests für ein einfaches Musik-Streaming-System
 mit NUnit implementieren.</p>
 <p>In diesem System haben wir die Klassen <code>User</code>, <code>Song</code>, <code>PlaylistEntry</code> und
 <code>Playlist</code>.</p>
 <ul>
-<li>Die Klasse <code>User</code> repraesentiert einen Benutzer des Streaming-Dienstes.</li>
-<li>Ein <code>Song</code> repraesentiert ein Musikstueck, das im Streaming-Dienst
-verfuegbar ist.</li>
-<li>Ein <code>PlaylistEntry</code> repraesentiert einen Eintrag in einer Playlist, also
-ein Musikstueck und die Anzahl der Wiedergaben.</li>
-<li>Eine <code>Playlist</code> repraesentiert eine Sammlung von Musikstuecken, also eine
+<li>Die Klasse <code>User</code> repräsentiert einen Benutzer des Streaming-Dienstes.</li>
+<li>Ein <code>Song</code> repräsentiert ein Musikstück, das im Streaming-Dienst
+verfügbar ist.</li>
+<li>Ein <code>PlaylistEntry</code> repräsentiert einen Eintrag in einer Playlist, also
+ein Musikstück und die Anzahl der Wiedergaben.</li>
+<li>Eine <code>Playlist</code> repräsentiert eine Sammlung von Musikstücken, also eine
 Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </ul>
 </div>
@@ -14426,7 +14578,7 @@ Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=0b6feb2b866b0ecc">
 <div class="input">
-<div class="prompt input_prompt">In [18]:</div>
+<div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">User</span>
@@ -14449,7 +14601,7 @@ Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=5e0343283cc0de04">
 <div class="input">
-<div class="prompt input_prompt">In [19]:</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Song</span>
@@ -14472,7 +14624,7 @@ Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=5efa5a0cb7bccc7c">
 <div class="input">
-<div class="prompt input_prompt">In [20]:</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PlaylistEntry</span>
@@ -14498,7 +14650,7 @@ Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=0ae850a29fc4cfda">
 <div class="input">
-<div class="prompt input_prompt">In [21]:</div>
+<div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Playlist</span>
@@ -14547,26 +14699,26 @@ Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=f9a9cdd9809c7d95"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=82661dda80a1f83d"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Implementieren Sie Tests fuer dieses System mit NUnit. Verwenden Sie dabei
+<p>Implementieren Sie Tests für dieses System mit NUnit. Verwenden Sie dabei
 <code>[SetUp]</code> und <code>[OneTimeSetUp]</code>, um die Tests zu strukturieren und
 Code-Duplikation zu vermeiden.</p>
 <p>Beachten Sie bei der Implementierung der Tests die folgenden Aspekte:</p>
 <ul>
-<li>Grundlegende Funktionen wie das Hinzufuegen von Songs zu einer Playlist</li>
+<li>Grundlegende Funktionen wie das Hinzufügen von Songs zu einer Playlist</li>
 <li>Berechnung der Gesamtdauer einer Playlist</li>
 <li>Unterschiedliche Benutzerrechte (Premium vs. Nicht-Premium)</li>
-<li>Begrenzung der Playlist-Groesse fuer Nicht-Premium-Benutzer</li>
-<li>Zaehlung der Wiedergaben von Songs</li>
+<li>Begrenzung der Playlist-Größe für Nicht-Premium-Benutzer</li>
+<li>Zählung der Wiedergaben von Songs</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=0a6780c564005a78">
 <div class="input">
-<div class="prompt input_prompt">In [22]:</div>
+<div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
@@ -14603,7 +14755,7 @@ Code-Duplikation zu vermeiden.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=bdf3bcef35cc1a19">
 <div class="input">
-<div class="prompt input_prompt">In [23]:</div>
+<div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">PlaylistEntryTest</span><span class="p">));</span>
@@ -14642,7 +14794,7 @@ Code-Duplikation zu vermeiden.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=1e857eb63535fe8c">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
@@ -14697,7 +14849,7 @@ Code-Duplikation zu vermeiden.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=60c5dd6aa893eee3">
 <div class="input">
-<div class="prompt input_prompt">In [25]:</div>
+<div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="p">(</span><span class="k">typeof</span><span class="p">(</span><span class="n">PlaylistBasicsTest</span><span class="p">));</span>
@@ -14752,7 +14904,7 @@ Code-Duplikation zu vermeiden.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=8ed0e1191895502a">
 <div class="input">
-<div class="prompt input_prompt">In [26]:</div>
+<div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
@@ -14815,7 +14967,7 @@ Code-Duplikation zu vermeiden.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=b51a71082d194930">
 <div class="input">
-<div class="prompt input_prompt">In [27]:</div>
+<div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">PlaylistLimitsTest</span><span class="o">&gt;</span><span class="p">();</span>

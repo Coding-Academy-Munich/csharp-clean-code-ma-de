@@ -4,7 +4,7 @@ using System.Linq;
 using System.Collections.Generic;
 using NUnit.Framework;
 
-public class NunitTestRunner
+public class NUnitTestRunner
 {
     public static void RunTests<TTestClass>() where TTestClass : class
     {

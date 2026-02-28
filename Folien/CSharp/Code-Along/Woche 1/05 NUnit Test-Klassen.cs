@@ -34,7 +34,7 @@ using NUnit.Framework;
 // %%
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %%
 

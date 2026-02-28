@@ -17,7 +17,7 @@
 // - Kompliziertes Setup (und Teardown)
 //   - Wiederholung von Code
 //   - Schwer zu warten und verstehen
-// - Viele aehnliche Tests
+// - Viele ähnliche Tests
 
 // %%
 public class Supplier
@@ -51,7 +51,11 @@ public class Product
         return _supplier.UnitCost() + margin;
     }
 
-    public void ReleaseSupplierContract() { _supplier = null; }
+    public void ReleaseSupplierContract()
+    {
+        _supplier = null;
+        Console.WriteLine("  [Product] Released supplier contract");
+    }
 
     private Supplier _supplier;
     public int margin;
@@ -64,6 +68,7 @@ public class OrderLine
     public int Total()
     {
         int baseTotal = _product.Price() * _quantity;
+
         if (_quantity < 10) { return baseTotal; }
         else if (_quantity < 50) { return baseTotal * 90 / 100; }
         else if (_quantity < 100) { return baseTotal * 80 / 100; }
@@ -137,10 +142,10 @@ public class OrderLineTest1
 }
 
 // %%
-#load "NunitTestRunner.cs"
+#load "NUnitTestRunner.cs"
 
 // %%
-using static NunitTestRunner;
+using static NUnitTestRunner;
 
 // %%
 RunTests<OrderLineTest1>();
@@ -151,7 +156,7 @@ RunTests<OrderLineTest1>();
 //
 // - Wir können eine Setup-Methode definieren und sie in jedem Test aufrufen
 // - Das reduziert die Code-Duplikation
-// - Aber wir muessen daran denken, sie in jedem Test aufzurufen
+// - Aber wir müssen daran denken, sie in jedem Test aufzurufen
 
 // %%
 [TestFixture]
@@ -221,57 +226,12 @@ RunTests<OrderLineTest2>();
 // - `[SetUp]`: Methode wird **vor jedem Test** automatisch aufgerufen
 // - `[TearDown]`: Methode wird **nach jedem Test** automatisch aufgerufen
 
-// %%
-[TestFixture]
-public class OrderLineTestWithSetUp
-{
-    private Product _product;
-
-    [SetUp]
-    public void SetUp()
-    {
-        Supplier supplier = new Supplier(3, 1);
-        _product = new Product(supplier, 5);
-    }
-
-    [Test]
-    public void TestTotal1()
-    {
-        OrderLine unit = new OrderLine(_product, 5);
-        Assert.That(unit.Total(), Is.EqualTo(50));
-    }
-
-    [Test]
-    public void TestTotal2()
-    {
-        OrderLine unit = new OrderLine(_product, 20);
-        Assert.That(unit.Total(), Is.EqualTo(180));
-    }
-
-    [Test]
-    public void TestTotal3()
-    {
-        OrderLine unit = new OrderLine(_product, 75);
-        Assert.That(unit.Total(), Is.EqualTo(600));
-    }
-
-    [Test]
-    public void TestTotal4()
-    {
-        OrderLine unit = new OrderLine(_product, 150);
-        Assert.That(unit.Total(), Is.EqualTo(1050));
-    }
-}
-
-// %%
-RunTests<OrderLineTestWithSetUp>();
-
 // %% [markdown]
 //
 // ## `[SetUp]` und `[TearDown]` zusammen
 //
-// - `[TearDown]` eignet sich ideal fuer Cleanup-Aufgaben
-// - Wird auch aufgerufen, wenn ein Test fehlschlaegt
+// - `[TearDown]` eignet sich ideal für Cleanup-Aufgaben
+// - Wird auch aufgerufen, wenn ein Test fehlschlägt
 
 // %%
 [TestFixture]
@@ -304,8 +264,22 @@ public class OrderLineTestWithSetUpAndTearDown
     [Test]
     public void TestTotal2()
     {
+        OrderLine unit = new OrderLine(_product, 20);
+        Assert.That(unit.Total(), Is.EqualTo(180));
+    }
+
+    [Test]
+    public void TestTotal3()
+    {
         OrderLine unit = new OrderLine(_product, 75);
         Assert.That(unit.Total(), Is.EqualTo(600));
+    }
+
+    [Test]
+    public void TestTotal4()
+    {
+        OrderLine unit = new OrderLine(_product, 150);
+        Assert.That(unit.Total(), Is.EqualTo(1050));
     }
 }
 
@@ -317,14 +291,14 @@ RunTests<OrderLineTestWithSetUpAndTearDown>();
 // ## `[OneTimeSetUp]` und `[OneTimeTearDown]`
 //
 // - Was, wenn Teile des Setups teuer sind (z.B. Datenbankverbindung)?
-// - `[OneTimeSetUp]`: Wird **einmal pro Testklasse** ausgefuehrt
-// - `[OneTimeTearDown]`: Wird **einmal nach allen Tests** ausgefuehrt
+// - `[OneTimeSetUp]`: Wird **einmal pro Testklasse** ausgeführt
+// - `[OneTimeTearDown]`: Wird **einmal nach allen Tests** ausgeführt
 // - Zustand wird zwischen allen Tests der Klasse geteilt
 // - Kann mit `[SetUp]`/`[TearDown]` kombiniert werden
 
 // %% [markdown]
 //
-// - Ausfuehrungsreihenfolge:
+// - Ausführungsreihenfolge:
 //   1. `[OneTimeSetUp]` (einmal)
 //   2. `[SetUp]` (vor jedem Test)
 //   3. Test
@@ -375,8 +349,22 @@ public class CombinedSetUpTest
     [Test]
     public void TestTotal2()
     {
+        OrderLine unit = new OrderLine(_product, 20);
+        Assert.That(unit.Total(), Is.EqualTo(180));
+    }
+
+    [Test]
+    public void TestTotal3()
+    {
         OrderLine unit = new OrderLine(_product, 75);
         Assert.That(unit.Total(), Is.EqualTo(600));
+    }
+
+    [Test]
+    public void TestTotal4()
+    {
+        OrderLine unit = new OrderLine(_product, 150);
+        Assert.That(unit.Total(), Is.EqualTo(1050));
     }
 }
 
@@ -385,19 +373,19 @@ RunTests<CombinedSetUpTest>();
 
 // %% [markdown]
 //
-// ## Workshop: NUnit Fixtures fuer einen Musik-Streaming-Dienst
+// ## Workshop: NUnit Fixtures für einen Musik-Streaming-Dienst
 //
-// In diesem Workshop werden wir Tests fuer ein einfaches Musik-Streaming-System
+// In diesem Workshop werden wir Tests für ein einfaches Musik-Streaming-System
 // mit NUnit implementieren.
 //
 // In diesem System haben wir die Klassen `User`, `Song`, `PlaylistEntry` und
 // `Playlist`.
-// - Die Klasse `User` repraesentiert einen Benutzer des Streaming-Dienstes.
-// - Ein `Song` repraesentiert ein Musikstueck, das im Streaming-Dienst
-//   verfuegbar ist.
-// - Ein `PlaylistEntry` repraesentiert einen Eintrag in einer Playlist, also
-//   ein Musikstueck und die Anzahl der Wiedergaben.
-// - Eine `Playlist` repraesentiert eine Sammlung von Musikstuecken, also eine
+// - Die Klasse `User` repräsentiert einen Benutzer des Streaming-Dienstes.
+// - Ein `Song` repräsentiert ein Musikstück, das im Streaming-Dienst
+//   verfügbar ist.
+// - Ein `PlaylistEntry` repräsentiert einen Eintrag in einer Playlist, also
+//   ein Musikstück und die Anzahl der Wiedergaben.
+// - Eine `Playlist` repräsentiert eine Sammlung von Musikstücken, also eine
 //   Liste von `PlaylistEntry`-Objekten.
 
 // %%
@@ -493,16 +481,16 @@ public class Playlist
 
 // %% [markdown]
 //
-// Implementieren Sie Tests fuer dieses System mit NUnit. Verwenden Sie dabei
+// Implementieren Sie Tests für dieses System mit NUnit. Verwenden Sie dabei
 // `[SetUp]` und `[OneTimeSetUp]`, um die Tests zu strukturieren und
 // Code-Duplikation zu vermeiden.
 //
 // Beachten Sie bei der Implementierung der Tests die folgenden Aspekte:
-// - Grundlegende Funktionen wie das Hinzufuegen von Songs zu einer Playlist
+// - Grundlegende Funktionen wie das Hinzufügen von Songs zu einer Playlist
 // - Berechnung der Gesamtdauer einer Playlist
 // - Unterschiedliche Benutzerrechte (Premium vs. Nicht-Premium)
-// - Begrenzung der Playlist-Groesse fuer Nicht-Premium-Benutzer
-// - Zaehlung der Wiedergaben von Songs
+// - Begrenzung der Playlist-Größe für Nicht-Premium-Benutzer
+// - Zählung der Wiedergaben von Songs
 
 // %%
 [TestFixture]
