@@ -20,56 +20,57 @@
 // - Viele aehnliche Tests
 
 // %%
-public class Dependency1
+public class Supplier
 {
-    public Dependency1(int i, int j)
+    public Supplier(int baseCost, int qualityRating)
     {
-        this.i = i;
-        this.j = j;
+        this.baseCost = baseCost;
+        this.qualityRating = qualityRating;
     }
 
-    public int Value()
+    public int UnitCost()
     {
-        return i + 2 * j;
+        return baseCost + qualityRating * 2;
     }
 
-    private int i;
-    private int j;
+    private int baseCost;
+    private int qualityRating;
 }
 
 // %%
-public class Dependency2
+public class Product
 {
-    public Dependency2(Dependency1 d1, int k)
+    public Product(Supplier supplier, int margin)
     {
-        this.d1 = d1;
-        this.k = k + d1.Value();
+        this.supplier = supplier;
+        this.margin = margin;
     }
 
-    public int Value()
+    public int Price()
     {
-        return d1.Value() + 3 * k;
+        return supplier.UnitCost() + margin;
     }
 
-    private Dependency1 d1;
-    public int k;
+    private Supplier supplier;
+    public int margin;
 }
 
 // %%
-public class MyClass
+public class OrderLine
 {
-    public MyClass(Dependency2 d2, int m) { this.d2 = d2; this.m = m; }
-    public int Value()
+    public OrderLine(Product product, int quantity) { this.product = product; this.quantity = quantity; }
+    public int Total()
     {
-        if (m < - 10) { return d2.Value() + 2 * m; }
-        else if (m < 0) { return d2.Value() - 3 * m; }
-        else if (m < 10) { return d2.Value() + 4 * m; }
-        else { return d2.Value() - 5 * m; }
+        int baseTotal = product.Price() * quantity;
+        if (quantity < 10) { return baseTotal; }
+        else if (quantity < 50) { return baseTotal * 90 / 100; }
+        else if (quantity < 100) { return baseTotal * 80 / 100; }
+        else { return baseTotal * 70 / 100; }
     }
-    public void ReleaseResources() { d2 = null;  }
+    public void ReleaseReservation() { product = null; }
 
-    private Dependency2 d2;
-    private int m;
+    private Product product;
+    private int quantity;
 }
 
 // %% [markdown]
@@ -84,54 +85,54 @@ using NUnit.Framework;
 
 // %%
 [TestFixture]
-public class MyClassTest1
+public class OrderLineTest1
 {
     [Test]
-    public void TestValue1()
+    public void TestTotal1()
     {
-        Dependency1 d1 = new Dependency1(1, 2);
-        Dependency2 d2 = new Dependency2(d1, 3);
-        MyClass unit = new MyClass(d2, -11);
+        Supplier supplier = new Supplier(3, 1);
+        Product product = new Product(supplier, 5);
+        OrderLine unit = new OrderLine(product, 5);
 
-        Assert.That(unit.Value(), Is.EqualTo(7));
+        Assert.That(unit.Total(), Is.EqualTo(50));
 
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
     }
 
     [Test]
-    public void TestValue2()
+    public void TestTotal2()
     {
-        Dependency1 d1 = new Dependency1(1, 2);
-        Dependency2 d2 = new Dependency2(d1, 4);
-        MyClass unit = new MyClass(d2, -1);
+        Supplier supplier = new Supplier(3, 1);
+        Product product = new Product(supplier, 6);
+        OrderLine unit = new OrderLine(product, 20);
 
-        Assert.That(unit.Value(), Is.EqualTo(35));
+        Assert.That(unit.Total(), Is.EqualTo(198));
 
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
     }
 
     [Test]
-    public void TestValue3()
+    public void TestTotal3()
     {
-        Dependency1 d1 = new Dependency1(1, 2);
-        Dependency2 d2 = new Dependency2(d1, 3);
-        MyClass unit = new MyClass(d2, 1);
+        Supplier supplier = new Supplier(3, 1);
+        Product product = new Product(supplier, 5);
+        OrderLine unit = new OrderLine(product, 75);
 
-        Assert.That(unit.Value(), Is.EqualTo(33));
+        Assert.That(unit.Total(), Is.EqualTo(600));
 
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
     }
 
     [Test]
-    public void TestValue4()
+    public void TestTotal4()
     {
-        Dependency1 d1 = new Dependency1(1, 2);
-        Dependency2 d2 = new Dependency2(d1, 3);
-        MyClass unit = new MyClass(d2, 11);
+        Supplier supplier = new Supplier(3, 1);
+        Product product = new Product(supplier, 5);
+        OrderLine unit = new OrderLine(product, 150);
 
-        Assert.That(unit.Value(), Is.EqualTo(-26));
+        Assert.That(unit.Total(), Is.EqualTo(1050));
 
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
     }
 }
 
@@ -142,7 +143,7 @@ public class MyClassTest1
 using static NunitTestRunner;
 
 // %%
-RunTests<MyClassTest1>();
+RunTests<OrderLineTest1>();
 
 // %% [markdown]
 //
@@ -154,63 +155,63 @@ RunTests<MyClassTest1>();
 
 // %%
 [TestFixture]
-public class MyClassTest2
+public class OrderLineTest2
 {
     private void SetupDependencies()
     {
-        Dependency1 d1 = new Dependency1(1, 2);
-        d2 = new Dependency2(d1, 3);
+        Supplier supplier = new Supplier(3, 1);
+        product = new Product(supplier, 5);
     }
 
-    private Dependency2 d2;
+    private Product product;
 
     [Test]
-    public void TestValue1()
+    public void TestTotal1()
     {
         SetupDependencies();
-        MyClass unit = new MyClass(d2, -11);
+        OrderLine unit = new OrderLine(product, 5);
 
-        Assert.That(unit.Value(), Is.EqualTo(7));
+        Assert.That(unit.Total(), Is.EqualTo(50));
 
-        unit.ReleaseResources();
-    }
-
-    [Test]
-    public void TestValue2()
-    {
-        SetupDependencies();
-        MyClass unit = new MyClass(d2, -1);
-
-        Assert.That(unit.Value(), Is.EqualTo(32));
-
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
     }
 
     [Test]
-    public void TestValue3()
+    public void TestTotal2()
     {
         SetupDependencies();
-        MyClass unit = new MyClass(d2, 1);
+        OrderLine unit = new OrderLine(product, 20);
 
-        Assert.That(unit.Value(), Is.EqualTo(33));
+        Assert.That(unit.Total(), Is.EqualTo(180));
 
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
     }
 
     [Test]
-    public void TestValue4()
+    public void TestTotal3()
     {
         SetupDependencies();
-        MyClass unit = new MyClass(d2, 11);
+        OrderLine unit = new OrderLine(product, 75);
 
-        Assert.That(unit.Value(), Is.EqualTo(-26));
+        Assert.That(unit.Total(), Is.EqualTo(600));
 
-        unit.ReleaseResources();
+        unit.ReleaseReservation();
+    }
+
+    [Test]
+    public void TestTotal4()
+    {
+        SetupDependencies();
+        OrderLine unit = new OrderLine(product, 150);
+
+        Assert.That(unit.Total(), Is.EqualTo(1050));
+
+        unit.ReleaseReservation();
     }
 }
 
 // %%
-RunTests<MyClassTest2>();
+RunTests<OrderLineTest2>();
 
 // %% [markdown]
 //
@@ -223,48 +224,48 @@ RunTests<MyClassTest2>();
 
 // %%
 [TestFixture]
-public class MyClassTestWithSetUp
+public class OrderLineTestWithSetUp
 {
-    private Dependency2 _d2;
+    private Product _product;
 
     [SetUp]
     public void SetUp()
     {
-        Dependency1 d1 = new Dependency1(1, 2);
-        _d2 = new Dependency2(d1, 3);
+        Supplier supplier = new Supplier(3, 1);
+        _product = new Product(supplier, 5);
     }
 
     [Test]
-    public void TestValue1()
+    public void TestTotal1()
     {
-        MyClass unit = new MyClass(_d2, -11);
-        Assert.That(unit.Value(), Is.EqualTo(7));
+        OrderLine unit = new OrderLine(_product, 5);
+        Assert.That(unit.Total(), Is.EqualTo(50));
     }
 
     [Test]
-    public void TestValue2()
+    public void TestTotal2()
     {
-        MyClass unit = new MyClass(_d2, -1);
-        Assert.That(unit.Value(), Is.EqualTo(32));
+        OrderLine unit = new OrderLine(_product, 20);
+        Assert.That(unit.Total(), Is.EqualTo(180));
     }
 
     [Test]
-    public void TestValue3()
+    public void TestTotal3()
     {
-        MyClass unit = new MyClass(_d2, 1);
-        Assert.That(unit.Value(), Is.EqualTo(33));
+        OrderLine unit = new OrderLine(_product, 75);
+        Assert.That(unit.Total(), Is.EqualTo(600));
     }
 
     [Test]
-    public void TestValue4()
+    public void TestTotal4()
     {
-        MyClass unit = new MyClass(_d2, 11);
-        Assert.That(unit.Value(), Is.EqualTo(-26));
+        OrderLine unit = new OrderLine(_product, 150);
+        Assert.That(unit.Total(), Is.EqualTo(1050));
     }
 }
 
 // %%
-RunTests<MyClassTestWithSetUp>();
+RunTests<OrderLineTestWithSetUp>();
 
 // %% [markdown]
 //
@@ -275,17 +276,17 @@ RunTests<MyClassTestWithSetUp>();
 
 // %%
 [TestFixture]
-public class MyClassTestWithSetUpAndTearDown
+public class OrderLineTestWithSetUpAndTearDown
 {
-    private MyClass _unit;
-    private Dependency2 _d2;
+    private OrderLine _unit;
+    private Product _product;
 
     [SetUp]
     public void SetUp()
     {
         Console.WriteLine($"  [SetUp] Running setup");
-        Dependency1 d1 = new Dependency1(1, 2);
-        _d2 = new Dependency2(d1, 3);
+        Supplier supplier = new Supplier(3, 1);
+        _product = new Product(supplier, 5);
     }
 
     [TearDown]
@@ -294,28 +295,28 @@ public class MyClassTestWithSetUpAndTearDown
         Console.WriteLine($"  [TearDown] Running teardown");
         if (_unit != null)
         {
-            _unit.ReleaseResources();
+            _unit.ReleaseReservation();
             _unit = null;
         }
     }
 
     [Test]
-    public void TestValue1()
+    public void TestTotal1()
     {
-        _unit = new MyClass(_d2, -11);
-        Assert.That(_unit.Value(), Is.EqualTo(7));
+        _unit = new OrderLine(_product, 5);
+        Assert.That(_unit.Total(), Is.EqualTo(50));
     }
 
     [Test]
-    public void TestValue2()
+    public void TestTotal2()
     {
-        _unit = new MyClass(_d2, 1);
-        Assert.That(_unit.Value(), Is.EqualTo(33));
+        _unit = new OrderLine(_product, 75);
+        Assert.That(_unit.Total(), Is.EqualTo(600));
     }
 }
 
 // %%
-RunTests<MyClassTestWithSetUpAndTearDown>();
+RunTests<OrderLineTestWithSetUpAndTearDown>();
 
 // %% [markdown]
 //
@@ -328,16 +329,16 @@ RunTests<MyClassTestWithSetUpAndTearDown>();
 
 // %%
 [TestFixture]
-public class MyClassTestWithOneTimeSetUp
+public class OrderLineTestWithOneTimeSetUp
 {
-    private Dependency2 _d2;
+    private Product _product;
 
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
         Console.WriteLine("  [OneTimeSetUp] Creating shared dependencies");
-        Dependency1 d1 = new Dependency1(1, 2);
-        _d2 = new Dependency2(d1, 3);
+        Supplier supplier = new Supplier(3, 1);
+        _product = new Product(supplier, 5);
     }
 
     [OneTimeTearDown]
@@ -347,36 +348,36 @@ public class MyClassTestWithOneTimeSetUp
     }
 
     [Test]
-    public void TestValue1()
+    public void TestTotal1()
     {
-        MyClass unit = new MyClass(_d2, -11);
-        Assert.That(unit.Value(), Is.EqualTo(7));
+        OrderLine unit = new OrderLine(_product, 5);
+        Assert.That(unit.Total(), Is.EqualTo(50));
     }
 
     [Test]
-    public void TestValue2()
+    public void TestTotal2()
     {
-        MyClass unit = new MyClass(_d2, -1);
-        Assert.That(unit.Value(), Is.EqualTo(32));
+        OrderLine unit = new OrderLine(_product, 20);
+        Assert.That(unit.Total(), Is.EqualTo(180));
     }
 
     [Test]
-    public void TestValue3()
+    public void TestTotal3()
     {
-        MyClass unit = new MyClass(_d2, 1);
-        Assert.That(unit.Value(), Is.EqualTo(33));
+        OrderLine unit = new OrderLine(_product, 75);
+        Assert.That(unit.Total(), Is.EqualTo(600));
     }
 
     [Test]
-    public void TestValue4()
+    public void TestTotal4()
     {
-        MyClass unit = new MyClass(_d2, 11);
-        Assert.That(unit.Value(), Is.EqualTo(-26));
+        OrderLine unit = new OrderLine(_product, 150);
+        Assert.That(unit.Total(), Is.EqualTo(1050));
     }
 }
 
 // %%
-RunTests<MyClassTestWithOneTimeSetUp>();
+RunTests<OrderLineTestWithOneTimeSetUp>();
 
 // %% [markdown]
 //
@@ -396,15 +397,15 @@ RunTests<MyClassTestWithOneTimeSetUp>();
 [TestFixture]
 public class CombinedSetUpTest
 {
-    private Dependency2 _d2;
-    private MyClass _unit;
+    private Product _product;
+    private OrderLine _unit;
 
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
         Console.WriteLine("  [OneTimeSetUp] Creating shared dependencies");
-        Dependency1 d1 = new Dependency1(1, 2);
-        _d2 = new Dependency2(d1, 3);
+        Supplier supplier = new Supplier(3, 1);
+        _product = new Product(supplier, 5);
     }
 
     [SetUp]
@@ -419,7 +420,7 @@ public class CombinedSetUpTest
         Console.WriteLine("  [TearDown] Running per-test teardown");
         if (_unit != null)
         {
-            _unit.ReleaseResources();
+            _unit.ReleaseReservation();
             _unit = null;
         }
     }
@@ -431,17 +432,17 @@ public class CombinedSetUpTest
     }
 
     [Test]
-    public void TestValue1()
+    public void TestTotal1()
     {
-        _unit = new MyClass(_d2, -11);
-        Assert.That(_unit.Value(), Is.EqualTo(7));
+        _unit = new OrderLine(_product, 5);
+        Assert.That(_unit.Total(), Is.EqualTo(50));
     }
 
     [Test]
-    public void TestValue2()
+    public void TestTotal2()
     {
-        _unit = new MyClass(_d2, 1);
-        Assert.That(_unit.Value(), Is.EqualTo(33));
+        _unit = new OrderLine(_product, 75);
+        Assert.That(_unit.Total(), Is.EqualTo(600));
     }
 }
 
