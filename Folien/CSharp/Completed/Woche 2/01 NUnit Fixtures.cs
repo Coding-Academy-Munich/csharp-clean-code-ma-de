@@ -24,17 +24,17 @@ public class Supplier
 {
     public Supplier(int baseCost, int qualityRating)
     {
-        this.baseCost = baseCost;
-        this.qualityRating = qualityRating;
+        _baseCost = baseCost;
+        _qualityRating = qualityRating;
     }
 
     public int UnitCost()
     {
-        return baseCost + qualityRating * 2;
+        return _baseCost + _qualityRating * 2;
     }
 
-    private int baseCost;
-    private int qualityRating;
+    private int _baseCost;
+    private int _qualityRating;
 }
 
 // %%
@@ -42,35 +42,35 @@ public class Product
 {
     public Product(Supplier supplier, int margin)
     {
-        this.supplier = supplier;
+        _supplier = supplier;
         this.margin = margin;
     }
 
     public int Price()
     {
-        return supplier.UnitCost() + margin;
+        return _supplier.UnitCost() + margin;
     }
 
-    public void ReleaseSupplierContract() { supplier = null; }
+    public void ReleaseSupplierContract() { _supplier = null; }
 
-    private Supplier supplier;
+    private Supplier _supplier;
     public int margin;
 }
 
 // %%
 public class OrderLine
 {
-    public OrderLine(Product product, int quantity) { this.product = product; this.quantity = quantity; }
+    public OrderLine(Product product, int quantity) { _product = product; _quantity = quantity; }
     public int Total()
     {
-        int baseTotal = product.Price() * quantity;
-        if (quantity < 10) { return baseTotal; }
-        else if (quantity < 50) { return baseTotal * 90 / 100; }
-        else if (quantity < 100) { return baseTotal * 80 / 100; }
+        int baseTotal = _product.Price() * _quantity;
+        if (_quantity < 10) { return baseTotal; }
+        else if (_quantity < 50) { return baseTotal * 90 / 100; }
+        else if (_quantity < 100) { return baseTotal * 80 / 100; }
         else { return baseTotal * 70 / 100; }
     }
-    private Product product;
-    private int quantity;
+    private Product _product;
+    private int _quantity;
 }
 
 // %% [markdown]
@@ -160,53 +160,53 @@ public class OrderLineTest2
     private void SetupDependencies()
     {
         Supplier supplier = new Supplier(3, 1);
-        product = new Product(supplier, 5);
+        _product = new Product(supplier, 5);
     }
 
-    private Product product;
+    private Product _product;
 
     [Test]
     public void TestTotal1()
     {
         SetupDependencies();
-        OrderLine unit = new OrderLine(product, 5);
+        OrderLine unit = new OrderLine(_product, 5);
 
         Assert.That(unit.Total(), Is.EqualTo(50));
 
-        product.ReleaseSupplierContract();
+        _product.ReleaseSupplierContract();
     }
 
     [Test]
     public void TestTotal2()
     {
         SetupDependencies();
-        OrderLine unit = new OrderLine(product, 20);
+        OrderLine unit = new OrderLine(_product, 20);
 
         Assert.That(unit.Total(), Is.EqualTo(180));
 
-        product.ReleaseSupplierContract();
+        _product.ReleaseSupplierContract();
     }
 
     [Test]
     public void TestTotal3()
     {
         SetupDependencies();
-        OrderLine unit = new OrderLine(product, 75);
+        OrderLine unit = new OrderLine(_product, 75);
 
         Assert.That(unit.Total(), Is.EqualTo(600));
 
-        product.ReleaseSupplierContract();
+        _product.ReleaseSupplierContract();
     }
 
     [Test]
     public void TestTotal4()
     {
         SetupDependencies();
-        OrderLine unit = new OrderLine(product, 150);
+        OrderLine unit = new OrderLine(_product, 150);
 
         Assert.That(unit.Total(), Is.EqualTo(1050));
 
-        product.ReleaseSupplierContract();
+        _product.ReleaseSupplierContract();
     }
 }
 
@@ -385,18 +385,6 @@ RunTests<CombinedSetUpTest>();
 
 // %% [markdown]
 //
-// ## Vergleich: xUnit vs. NUnit Fixtures
-//
-// | Konzept | xUnit | NUnit |
-// |---------|-------|-------|
-// | Pro-Test Setup | Konstruktor | `[SetUp]` |
-// | Pro-Test Teardown | `IDisposable.Dispose()` | `[TearDown]` |
-// | Einmaliges Setup | `IClassFixture<T>` | `[OneTimeSetUp]` |
-// | Einmaliges Teardown | Fixture `IDisposable` | `[OneTimeTearDown]` |
-// | Test-Attribut | `[Fact]` | `[Test]` |
-
-// %% [markdown]
-//
 // ## Workshop: NUnit Fixtures fuer einen Musik-Streaming-Dienst
 //
 // In diesem Workshop werden wir Tests fuer ein einfaches Musik-Streaming-System
@@ -463,43 +451,43 @@ public class PlaylistEntry
 // %%
 public class Playlist
 {
-    private List<PlaylistEntry> entries = new List<PlaylistEntry>();
-    private User owner;
+    private List<PlaylistEntry> _entries = new List<PlaylistEntry>();
+    private User _owner;
     public string Name { get; }
 
     public Playlist(User owner, string name)
     {
-        this.owner = owner;
+        _owner = owner;
         Name = name;
     }
 
     public void AddSong(Song song)
     {
-        entries.Add(new PlaylistEntry(song));
+        _entries.Add(new PlaylistEntry(song));
     }
 
     public int GetTotalDuration()
     {
-        return entries.Sum(entry => entry.Song.DurationInSeconds);
+        return _entries.Sum(entry => entry.Song.DurationInSeconds);
     }
 
     public int GetTotalPlayCount()
     {
-        return entries.Sum(entry => entry.PlayCount);
+        return _entries.Sum(entry => entry.PlayCount);
     }
 
     public bool CanAddMoreSongs()
     {
-        if (owner.IsPremium)
+        if (_owner.IsPremium)
         {
             return true;
         }
-        return entries.Count < 100;
+        return _entries.Count < 100;
     }
 
     public List<PlaylistEntry> GetEntries()
     {
-        return new List<PlaylistEntry>(entries);
+        return new List<PlaylistEntry>(_entries);
     }
 }
 

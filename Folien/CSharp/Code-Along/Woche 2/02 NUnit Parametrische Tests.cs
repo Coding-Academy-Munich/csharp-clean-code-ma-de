@@ -147,17 +147,6 @@ using System.Collections.Generic;
 
 // %% [markdown]
 //
-// ## Vergleich: xUnit vs. NUnit
-//
-// | Feature | xUnit | NUnit |
-// |---------|-------|-------|
-// | Einfacher Test | `[Fact]` | `[Test]` |
-// | Inline-Daten | `[Theory]` + `[InlineData]` | `[TestCase]` |
-// | Factory-Methode | `[Theory]` + `[MemberData]` | `[TestCaseSource]` |
-// | Assertions | `Assert.True/False/Equal` | `Assert.That(..., Is.*)` |
-
-// %% [markdown]
-//
 // ## Workshop: Parametrisierte Tests (NUnit)
 //
 // - Schreiben Sie parametrisierte Tests fuer die folgenden Funktionen.

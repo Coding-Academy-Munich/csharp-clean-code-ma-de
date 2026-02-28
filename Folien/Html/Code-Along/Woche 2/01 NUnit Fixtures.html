@@ -13391,7 +13391,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=9b1af71d31e5c8e7">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=a80325cd8802d001">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13400,24 +13400,24 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Supplier</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">baseCost</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">qualityRating</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">baseCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baseCost</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">qualityRating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qualityRating</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_baseCost</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">baseCost</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_qualityRating</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">qualityRating</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">UnitCost</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">baseCost</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">qualityRating</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_baseCost</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">_qualityRating</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">baseCost</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">qualityRating</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_baseCost</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_qualityRating</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=8238cd8c1df1313f">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3a0420a239e8e6b4">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13426,18 +13426,18 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Product</span><span class="p">(</span><span class="n">Supplier</span><span class="w"> </span><span class="n">supplier</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">margin</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">supplier</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">supplier</span><span class="p">;</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">margin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">margin</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Price</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">supplier</span><span class="p">.</span><span class="n">UnitCost</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">margin</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_supplier</span><span class="p">.</span><span class="n">UnitCost</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">margin</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReleaseSupplierContract</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ReleaseSupplierContract</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Supplier</span><span class="w"> </span><span class="n">supplier</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Supplier</span><span class="w"> </span><span class="n">_supplier</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">margin</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -13445,24 +13445,24 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=555c8e27373423f9">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=272cdda30f09241e">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderLine</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">OrderLine</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">OrderLine</span><span class="p">(</span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">_product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">;</span><span class="w"> </span><span class="n">_quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Total</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">.</span><span class="n">Price</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_product</span><span class="p">.</span><span class="n">Price</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">_quantity</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="nf">if</span><span class="w"> </span><span class="p">(</span><span class="n">_quantity</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">80</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">baseTotal</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">70</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">_product</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">_quantity</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -13603,7 +13603,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=aab978e4b2bc927f">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=788100c6a95ccf64">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13614,53 +13614,53 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetupDependencies</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Supplier</span><span class="w"> </span><span class="n">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Supplier</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">        </span><span class="n">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="n">supplier</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Product</span><span class="p">(</span><span class="n">supplier</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="n">_product</span><span class="p">;</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal1</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">SetupDependencies</span><span class="p">();</span>
-<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
 
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
 
-<span class="w">        </span><span class="n">product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
+<span class="w">        </span><span class="n">_product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal2</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">SetupDependencies</span><span class="p">();</span>
-<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
+<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">);</span>
 
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">180</span><span class="p">));</span>
 
-<span class="w">        </span><span class="n">product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
+<span class="w">        </span><span class="n">_product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal3</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">SetupDependencies</span><span class="p">();</span>
-<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
+<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">75</span><span class="p">);</span>
 
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">600</span><span class="p">));</span>
 
-<span class="w">        </span><span class="n">product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
+<span class="w">        </span><span class="n">_product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTotal4</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">SetupDependencies</span><span class="p">();</span>
-<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">);</span>
+<span class="w">        </span><span class="n">OrderLine</span><span class="w"> </span><span class="n">unit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="n">_product</span><span class="p">,</span><span class="w"> </span><span class="mi">150</span><span class="p">);</span>
 
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">unit</span><span class="p">.</span><span class="n">Total</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1050</span><span class="p">));</span>
 
-<span class="w">        </span><span class="n">product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
+<span class="w">        </span><span class="n">_product</span><span class="p">.</span><span class="n">ReleaseSupplierContract</span><span class="p">();</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -13913,48 +13913,6 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=0630dd90b071794a"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vergleich:-xUnit-vs.-NUnit-Fixtures">Vergleich: xUnit vs. NUnit Fixtures<a class="anchor-link" href="#Vergleich:-xUnit-vs.-NUnit-Fixtures">¶</a></h2><table>
-<thead>
-<tr>
-<th>Konzept</th>
-<th>xUnit</th>
-<th>NUnit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Pro-Test Setup</td>
-<td>Konstruktor</td>
-<td><code>[SetUp]</code></td>
-</tr>
-<tr>
-<td>Pro-Test Teardown</td>
-<td><code>IDisposable.Dispose()</code></td>
-<td><code>[TearDown]</code></td>
-</tr>
-<tr>
-<td>Einmaliges Setup</td>
-<td><code>IClassFixture&lt;T&gt;</code></td>
-<td><code>[OneTimeSetUp]</code></td>
-</tr>
-<tr>
-<td>Einmaliges Teardown</td>
-<td>Fixture <code>IDisposable</code></td>
-<td><code>[OneTimeTearDown]</code></td>
-</tr>
-<tr>
-<td>Test-Attribut</td>
-<td><code>[Fact]</code></td>
-<td><code>[Test]</code></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=4d6f1743fb50a737"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -14046,50 +14004,50 @@ Liste von <code>PlaylistEntry</code>-Objekten.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=7066254a2aec8f19">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=0ae850a29fc4cfda">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Playlist</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">_entries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">User</span><span class="w"> </span><span class="n">_owner</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Playlist</span><span class="p">(</span><span class="n">User</span><span class="w"> </span><span class="n">owner</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_owner</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">owner</span><span class="p">;</span>
 <span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddSong</span><span class="p">(</span><span class="n">Song</span><span class="w"> </span><span class="n">song</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">entries</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PlaylistEntry</span><span class="p">(</span><span class="n">song</span><span class="p">));</span>
+<span class="w">        </span><span class="n">_entries</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PlaylistEntry</span><span class="p">(</span><span class="n">song</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetTotalDuration</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">entries</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">entry</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">Song</span><span class="p">.</span><span class="n">DurationInSeconds</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_entries</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">entry</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">Song</span><span class="p">.</span><span class="n">DurationInSeconds</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetTotalPlayCount</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">entries</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">entry</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">PlayCount</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_entries</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">entry</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">entry</span><span class="p">.</span><span class="n">PlayCount</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">CanAddMoreSongs</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">owner</span><span class="p">.</span><span class="n">IsPremium</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">_owner</span><span class="p">.</span><span class="n">IsPremium</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">entries</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">_entries</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetEntries</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="p">(</span><span class="n">entries</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">PlaylistEntry</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_entries</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
