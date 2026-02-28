@@ -51,6 +51,8 @@ public class Product
         return supplier.UnitCost() + margin;
     }
 
+    public void ReleaseSupplierContract() { supplier = null; }
+
     private Supplier supplier;
     public int margin;
 }
@@ -67,8 +69,6 @@ public class OrderLine
         else if (quantity < 100) { return baseTotal * 80 / 100; }
         else { return baseTotal * 70 / 100; }
     }
-    public void ReleaseReservation() { product = null; }
-
     private Product product;
     private int quantity;
 }
@@ -96,7 +96,7 @@ public class OrderLineTest1
 
         Assert.That(unit.Total(), Is.EqualTo(50));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -108,7 +108,7 @@ public class OrderLineTest1
 
         Assert.That(unit.Total(), Is.EqualTo(198));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -120,7 +120,7 @@ public class OrderLineTest1
 
         Assert.That(unit.Total(), Is.EqualTo(600));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -132,7 +132,7 @@ public class OrderLineTest1
 
         Assert.That(unit.Total(), Is.EqualTo(1050));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 }
 
@@ -173,7 +173,7 @@ public class OrderLineTest2
 
         Assert.That(unit.Total(), Is.EqualTo(50));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -184,7 +184,7 @@ public class OrderLineTest2
 
         Assert.That(unit.Total(), Is.EqualTo(180));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -195,7 +195,7 @@ public class OrderLineTest2
 
         Assert.That(unit.Total(), Is.EqualTo(600));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -206,7 +206,7 @@ public class OrderLineTest2
 
         Assert.That(unit.Total(), Is.EqualTo(1050));
 
-        unit.ReleaseReservation();
+        product.ReleaseSupplierContract();
     }
 }
 
@@ -220,7 +220,6 @@ RunTests<OrderLineTest2>();
 // - NUnit bietet die Attribute `[SetUp]` und `[TearDown]`
 // - `[SetUp]`: Methode wird **vor jedem Test** automatisch aufgerufen
 // - `[TearDown]`: Methode wird **nach jedem Test** automatisch aufgerufen
-// - NUnit erzeugt fuer jeden Test eine neue Instanz der Testklasse
 
 // %%
 [TestFixture]
@@ -278,7 +277,6 @@ RunTests<OrderLineTestWithSetUp>();
 [TestFixture]
 public class OrderLineTestWithSetUpAndTearDown
 {
-    private OrderLine _unit;
     private Product _product;
 
     [SetUp]
@@ -293,58 +291,7 @@ public class OrderLineTestWithSetUpAndTearDown
     public void TearDown()
     {
         Console.WriteLine($"  [TearDown] Running teardown");
-        if (_unit != null)
-        {
-            _unit.ReleaseReservation();
-            _unit = null;
-        }
-    }
-
-    [Test]
-    public void TestTotal1()
-    {
-        _unit = new OrderLine(_product, 5);
-        Assert.That(_unit.Total(), Is.EqualTo(50));
-    }
-
-    [Test]
-    public void TestTotal2()
-    {
-        _unit = new OrderLine(_product, 75);
-        Assert.That(_unit.Total(), Is.EqualTo(600));
-    }
-}
-
-// %%
-RunTests<OrderLineTestWithSetUpAndTearDown>();
-
-// %% [markdown]
-//
-// ## `[OneTimeSetUp]` und `[OneTimeTearDown]`
-//
-// - Manchmal ist das Setup teuer (z.B. Datenbankverbindung)
-// - `[OneTimeSetUp]`: Wird **einmal pro Testklasse** ausgefuehrt
-// - `[OneTimeTearDown]`: Wird **einmal nach allen Tests** ausgefuehrt
-// - Zustand wird zwischen allen Tests der Klasse geteilt
-
-// %%
-[TestFixture]
-public class OrderLineTestWithOneTimeSetUp
-{
-    private Product _product;
-
-    [OneTimeSetUp]
-    public void OneTimeSetUp()
-    {
-        Console.WriteLine("  [OneTimeSetUp] Creating shared dependencies");
-        Supplier supplier = new Supplier(3, 1);
-        _product = new Product(supplier, 5);
-    }
-
-    [OneTimeTearDown]
-    public void OneTimeTearDown()
-    {
-        Console.WriteLine("  [OneTimeTearDown] Cleaning up shared dependencies");
+        _product.ReleaseSupplierContract();
     }
 
     [Test]
@@ -357,35 +304,26 @@ public class OrderLineTestWithOneTimeSetUp
     [Test]
     public void TestTotal2()
     {
-        OrderLine unit = new OrderLine(_product, 20);
-        Assert.That(unit.Total(), Is.EqualTo(180));
-    }
-
-    [Test]
-    public void TestTotal3()
-    {
         OrderLine unit = new OrderLine(_product, 75);
         Assert.That(unit.Total(), Is.EqualTo(600));
-    }
-
-    [Test]
-    public void TestTotal4()
-    {
-        OrderLine unit = new OrderLine(_product, 150);
-        Assert.That(unit.Total(), Is.EqualTo(1050));
     }
 }
 
 // %%
-RunTests<OrderLineTestWithOneTimeSetUp>();
+RunTests<OrderLineTestWithSetUpAndTearDown>();
 
 // %% [markdown]
 //
-// ## Kombination von `[SetUp]` und `[OneTimeSetUp]`
+// ## `[OneTimeSetUp]` und `[OneTimeTearDown]`
 //
-// - Beide Arten von Setup können in derselben Testklasse verwendet werden
-// - `[OneTimeSetUp]` fuer teure, einmalige Initialisierung
-// - `[SetUp]` fuer leichtgewichtiges, pro-Test Setup
+// - Was, wenn Teile des Setups teuer sind (z.B. Datenbankverbindung)?
+// - `[OneTimeSetUp]`: Wird **einmal pro Testklasse** ausgefuehrt
+// - `[OneTimeTearDown]`: Wird **einmal nach allen Tests** ausgefuehrt
+// - Zustand wird zwischen allen Tests der Klasse geteilt
+// - Kann mit `[SetUp]`/`[TearDown]` kombiniert werden
+
+// %% [markdown]
+//
 // - Ausfuehrungsreihenfolge:
 //   1. `[OneTimeSetUp]` (einmal)
 //   2. `[SetUp]` (vor jedem Test)
@@ -397,52 +335,48 @@ RunTests<OrderLineTestWithOneTimeSetUp>();
 [TestFixture]
 public class CombinedSetUpTest
 {
+    private Supplier _supplier;
     private Product _product;
-    private OrderLine _unit;
 
     [OneTimeSetUp]
     public void OneTimeSetUp()
     {
-        Console.WriteLine("  [OneTimeSetUp] Creating shared dependencies");
-        Supplier supplier = new Supplier(3, 1);
-        _product = new Product(supplier, 5);
+        Console.WriteLine("  [OneTimeSetUp] Creating shared supplier");
+        _supplier = new Supplier(3, 1);
     }
 
     [SetUp]
     public void SetUp()
     {
-        Console.WriteLine("  [SetUp] Running per-test setup");
+        Console.WriteLine("  [SetUp] Creating per-test product");
+        _product = new Product(_supplier, 5);
     }
 
     [TearDown]
     public void TearDown()
     {
-        Console.WriteLine("  [TearDown] Running per-test teardown");
-        if (_unit != null)
-        {
-            _unit.ReleaseReservation();
-            _unit = null;
-        }
+        Console.WriteLine("  [TearDown] Releasing supplier contract");
+        _product.ReleaseSupplierContract();
     }
 
     [OneTimeTearDown]
     public void OneTimeTearDown()
     {
-        Console.WriteLine("  [OneTimeTearDown] Cleaning up shared dependencies");
+        Console.WriteLine("  [OneTimeTearDown] Cleaning up shared supplier");
     }
 
     [Test]
     public void TestTotal1()
     {
-        _unit = new OrderLine(_product, 5);
-        Assert.That(_unit.Total(), Is.EqualTo(50));
+        OrderLine unit = new OrderLine(_product, 5);
+        Assert.That(unit.Total(), Is.EqualTo(50));
     }
 
     [Test]
     public void TestTotal2()
     {
-        _unit = new OrderLine(_product, 75);
-        Assert.That(_unit.Total(), Is.EqualTo(600));
+        OrderLine unit = new OrderLine(_product, 75);
+        Assert.That(unit.Total(), Is.EqualTo(600));
     }
 }
 
