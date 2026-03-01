@@ -13087,7 +13087,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=8162205dc79b2523"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=b2eda6559c0051b9"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="C# Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEgCAYAAABb3q1QAAAEuGlUWHRYTUw6Y29tLmFkb2JlLnht
@@ -13367,7 +13367,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 " style="display:block;margin:auto;width:5%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>Isolation von Unit-Tests</b>
+<b>Isolation von Unit-Tests: Einführung</b>
 </div>
 <br>
 <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -13377,13 +13377,13 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7743b396c6bd290f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=142777e1b3c384e0"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Unit-Test">Unit-Test<a class="anchor-link" href="#Unit-Test">¶</a></h2><ul>
 <li>Testet einen kleinen Teil des Codes (eine <strong>"Unit"</strong>)</li>
 <li>Hat kurze Laufzeit</li>
-<li><em>Ist isoliert</em></li>
+<li><strong>Ist isoliert</strong></li>
 </ul>
 </div>
 </div>
@@ -13460,7 +13460,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-74892.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-66616.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13549,7 +13549,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2048/", "http://169.254.203.116:2048/", "http://169.254.194.28:2048/", "http://172.16.0.1:2048/", "http://172.23.192.1:2048/", "http://172.23.176.1:2048/", "http://127.0.0.1:2048/"])
+    probeAddresses(["http://192.168.178.24:2051/", "http://169.254.203.116:2051/", "http://169.254.194.28:2051/", "http://172.16.0.1:2051/", "http://172.30.96.1:2051/", "http://172.23.176.1:2051/", "http://127.0.0.1:2051/"])
 
         .then((root) => {
 
@@ -13559,7 +13559,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '74892.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '66616.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13671,39 +13671,53 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=1558a7d79a1d30dc">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=35e1907a4f1a3eab">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Check</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">condition</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">condition</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Test failed!"</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Success!"</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
+<span class="err">#</span><span class="n">load</span><span class="w"> </span><span class="s">"NUnitTestRunner.cs"</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">NUnitTestRunner</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_html rendered_html output_subarea"><div><div></div><div></div><div><strong>Installed Packages</strong><ul><li><span>NUnit, 4.5.0</span></li></ul></div></div></div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=eadde0d3f76864e5">
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=2960d2443c7597af">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TimeUtils</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">EventTrigger</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">GlobalTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">TimeSpan</span><span class="w"> </span><span class="n">Cooldown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TimeSpan</span><span class="p">.</span><span class="n">FromSeconds</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">LastTriggeredAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">MinValue</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PrintTime</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">time</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">CanTrigger</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{prefix}: {time.ToString("</span><span class="n">yyyy</span><span class="o">-</span><span class="n">MM</span><span class="o">-</span><span class="n">dd</span><span class="w"> </span><span class="n">HH</span><span class="p">:</span><span class="n">mm</span><span class="p">:</span><span class="n">ss</span><span class="s">")}"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">LastTriggeredAt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Cooldown</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">Trigger</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">DateTime</span><span class="w"> </span><span class="n">currentTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
+<span class="w">        </span><span class="n">DateTime</span><span class="w"> </span><span class="n">nextAllowed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LastTriggeredAt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Cooldown</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"  Current time:       {currentTime:yyyy-MM-dd HH:mm:ss}"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"  Triggering allowed: {nextAllowed:yyyy-MM-dd HH:mm:ss}"</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">CanTrigger</span><span class="p">())</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">        </span><span class="n">LastTriggeredAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">currentTime</span><span class="p">;</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -13711,12 +13725,12 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=f122e3a5644b56cc">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=e537bdb4d72cc82d">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">PrintTime</span><span class="p">(</span><span class="s">"The time is"</span><span class="p">,</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">);</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">EventTrigger</span><span class="p">.</span><span class="n">Trigger</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -13726,7 +13740,15 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>The time is: 2026-02-22 00:45:29
+<pre>  Current time:       2026-03-01 22:12:14
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Triggering allowed: 0001-01-01 00:00:01
 
 </pre>
 </div>
@@ -13734,48 +13756,52 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=2ed1dd9134a57e4e">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=773602ae5392e505">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Test1</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
-<span class="w">    </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">PrintTime</span><span class="p">(</span><span class="s">"Test 1 global_time: "</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">GlobalTime</span><span class="p">);</span>
-<span class="w">    </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">PrintTime</span><span class="p">(</span><span class="s">"Test 1 now:         "</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">GlobalTime</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">EventTrigger</span><span class="p">.</span><span class="n">Trigger</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=fd94e70d8b004023">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=4c8721152f9cd9ba">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Test2</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">DateTime</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
-<span class="w">    </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">GlobalTime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">PrintTime</span><span class="p">(</span><span class="s">"Test 2 global_time: "</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">GlobalTime</span><span class="p">);</span>
-<span class="w">    </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">PrintTime</span><span class="p">(</span><span class="s">"Test 2 now:         "</span><span class="p">,</span><span class="w"> </span><span class="n">now</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">now</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">TimeUtils</span><span class="p">.</span><span class="n">GlobalTime</span><span class="p">);</span>
+<span class="w">    </span><span class="n">EventTrigger</span><span class="p">.</span><span class="n">LastTriggeredAt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">AddSeconds</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">EventTrigger</span><span class="p">.</span><span class="n">Trigger</span><span class="p">(),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=9a1ae50e004d82e9">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=5ce39170c9ce702b">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">Test1</span><span class="p">();</span>
-<span class="n">Test2</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">RunTest</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Action</span><span class="w"> </span><span class="n">test</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">try</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">test</span><span class="p">();</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{name}: passed"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{name}: FAILED"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -13784,48 +13810,12 @@ else {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 1 global_time: : 2026-02-22 00:45:30
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
 
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 1 now:         : 2026-02-22 00:45:30
+(8,22): warning CS0168: The variable 'e' is declared but never used
 
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Test failed!
 
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 2 global_time: : 2026-02-22 00:45:31
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 2 now:         : 2026-02-22 00:45:30
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success!
 
 </pre>
 </div>
@@ -13833,13 +13823,13 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=da9fc3c881cf6da3">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=57536e8a47cb9f57">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">Test2</span><span class="p">();</span>
-<span class="n">Test1</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTest</span><span class="p">(</span><span class="s">"Test1"</span><span class="p">,</span><span class="w"> </span><span class="n">Test1</span><span class="p">);</span>
+<span class="n">RunTest</span><span class="p">(</span><span class="s">"Test2"</span><span class="p">,</span><span class="w"> </span><span class="n">Test2</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -13849,7 +13839,7 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 2 global_time: : 2026-02-22 00:45:31
+<pre>  Current time:       2026-03-01 22:12:14
 
 </pre>
 </div>
@@ -13857,7 +13847,7 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 2 now:         : 2026-02-22 00:45:30
+<pre>  Triggering allowed: 2026-03-01 22:12:15
 
 </pre>
 </div>
@@ -13865,7 +13855,7 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Success!
+<pre>Test1: FAILED
 
 </pre>
 </div>
@@ -13873,7 +13863,7 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 1 global_time: : 2026-02-22 00:45:31
+<pre>  Current time:       2026-03-01 22:12:14
 
 </pre>
 </div>
@@ -13881,7 +13871,7 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test 1 now:         : 2026-02-22 00:45:30
+<pre>  Triggering allowed: 2026-03-01 22:12:16
 
 </pre>
 </div>
@@ -13889,7 +13879,71 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Test failed!
+<pre>Test2: passed
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a38a33f2ea3f3a68">
+<div class="input">
+<div class="prompt input_prompt">In [9]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTest</span><span class="p">(</span><span class="s">"Test2"</span><span class="p">,</span><span class="w"> </span><span class="n">Test2</span><span class="p">);</span>
+<span class="n">RunTest</span><span class="p">(</span><span class="s">"Test1"</span><span class="p">,</span><span class="w"> </span><span class="n">Test1</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Current time:       2026-03-01 22:12:14
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Triggering allowed: 2026-03-01 22:12:16
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Test2: passed
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Current time:       2026-03-01 22:12:14
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>  Triggering allowed: 2026-03-01 22:12:16
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Test1: FAILED
 
 </pre>
 </div>
@@ -13907,496 +13961,41 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=943ed9e6708002d7"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=ee0f8605ba039ea9"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Isolation-der-getesteten-Unit">Isolation der getesteten Unit<a class="anchor-link" href="#Isolation-der-getesteten-Unit">¶</a></h2><ul>
+<h2 id="Isolation-der-getesteten-Unit-(London-School)">Isolation der getesteten Unit (London School)<a class="anchor-link" href="#Isolation-der-getesteten-Unit-(London-School)">¶</a></h2><ul>
 <li>Die getestete Unit wird von allen anderen Units isoliert</li>
 <li>Test-Doubles für alle Abhängigkeiten</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=58fdb6ea77f489af"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=8cca221d4b42a245"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Gegenbeispiel:-Nicht-isolierte-Unit">Gegenbeispiel: Nicht isolierte Unit<a class="anchor-link" href="#Gegenbeispiel:-Nicht-isolierte-Unit">¶</a></h3><ul>
-<li>Verkäufer von Veranstaltungs-Tickets</li>
-<li>Konkrete Klasse <code>Show</code> repräsentiert eine Veranstaltung</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=66db926f68b613a9">
-<div class="input">
-<div class="prompt input_prompt">In [9]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d626c06583543ed0">
-<div class="input">
-<div class="prompt input_prompt">In [10]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Show</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Show</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Capacity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numTickets</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Capacity</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">InvalidOperationException</span><span class="p">(</span><span class="s">"Not enough capacity"</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">Capacity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">numTickets</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=5c0ef93dda25bfdf">
-<div class="input">
-<div class="prompt input_prompt">In [11]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TicketOffice</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddShow</span><span class="p">(</span><span class="n">Show</span><span class="w"> </span><span class="n">show</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">shows</span><span class="p">[</span><span class="n">show</span><span class="p">.</span><span class="n">Name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">show</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Show</span><span class="w"> </span><span class="nf">GetShow</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">showName</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">shows</span><span class="p">[</span><span class="n">showName</span><span class="p">];</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">PurchaseTickets</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">showName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shows</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">showName</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">try</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">shows</span><span class="p">[</span><span class="n">showName</span><span class="p">].</span><span class="n">Purchase</span><span class="p">(</span><span class="n">numTickets</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidOperationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Cannot purchase {numTickets} tickets for {showName}"</span><span class="p">);</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="n">Show</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="n">Show</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=16576be29b0228dd">
-<div class="input">
-<div class="prompt input_prompt">In [12]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Xunit, *"</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_html rendered_html output_subarea"><div><div></div><div></div><div><strong>Installed Packages</strong><ul><li><span>Xunit, 2.9.3</span></li></ul></div></div></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=c26f9b16871ad3ed">
-<div class="input">
-<div class="prompt input_prompt">In [13]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">load</span><span class="w"> </span><span class="s">"XunitTestRunner.cs"</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3a9ab203be82b724">
-<div class="input">
-<div class="prompt input_prompt">In [14]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">Xunit</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">XunitTestRunner</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=33afdde1cd60fdf1">
-<div class="input">
-<div class="prompt input_prompt">In [15]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TestPurchaseTickets</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="na">[Fact]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PurchaseTickets_ReturnsTrueAndReducesCapacity</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">TicketOffice</span><span class="w"> </span><span class="n">ticketOffice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TicketOffice</span><span class="p">();</span>
-<span class="w">        </span><span class="n">Show</span><span class="w"> </span><span class="n">show</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Show</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
-<span class="w">        </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">AddShow</span><span class="p">(</span><span class="n">show</span><span class="p">);</span>
-
-<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">PurchaseTickets</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">GetShow</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">).</span><span class="n">Capacity</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=9a3198f93911cba8">
-<div class="input">
-<div class="prompt input_prompt">In [16]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">TestPurchaseTickets</span><span class="o">&gt;</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] PurchaseTickets_ReturnsTrueAndReducesCapacity
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 1, Passed: 1, Failed: 0
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=42945fb3c75b8f36">
-<div class="input">
-<div class="prompt input_prompt">In [17]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=a513d984be9d06ec">
-<div class="input">
-<div class="prompt input_prompt">In [18]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IShow</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">Capacity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b1801d8111303d54">
-<div class="input">
-<div class="prompt input_prompt">In [19]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ConcreteShow</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IShow</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">ConcreteShow</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Capacity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numTickets</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Capacity</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">InvalidOperationException</span><span class="p">(</span><span class="s">"Not enough capacity"</span><span class="p">);</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="n">Capacity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">numTickets</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=bcaa944d092d91b1">
-<div class="input">
-<div class="prompt input_prompt">In [20]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TicketOffice</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddShow</span><span class="p">(</span><span class="n">IShow</span><span class="w"> </span><span class="n">show</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">shows</span><span class="p">[</span><span class="n">show</span><span class="p">.</span><span class="n">Name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">show</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">IShow</span><span class="w"> </span><span class="nf">GetShow</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">showName</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">shows</span><span class="p">[</span><span class="n">showName</span><span class="p">];</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">PurchaseTickets</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">showName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shows</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">showName</span><span class="p">))</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="k">try</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">shows</span><span class="p">[</span><span class="n">showName</span><span class="p">].</span><span class="n">Purchase</span><span class="p">(</span><span class="n">numTickets</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">            </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidOperationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
-<span class="w">            </span><span class="p">{</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Cannot purchase {numTickets} tickets for {showName}"</span><span class="p">);</span>
-<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="n">IShow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="n">IShow</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=9b6ea9968c505f87"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Isolation-von-TicketOffice-f%C3%BCr-Tests">Isolation von <code>TicketOffice</code> für Tests<a class="anchor-link" href="#Isolation-von-TicketOffice-f%C3%BCr-Tests">¶</a></h3><ul>
-<li>Entkopplung von allen Abhängigkeiten</li>
-<li><code>ShowMock</code>-Implementierung für Shows</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=2df3d6881d6a3b4e">
-<div class="input">
-<div class="prompt input_prompt">In [21]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f12651ee021aa29a">
-<div class="input">
-<div class="prompt input_prompt">In [22]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ShowMock</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IShow</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">PurchaseArgs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">"C# Conference"</span><span class="p">;</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Capacity</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mi">90</span><span class="p">;</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">PurchaseArgs</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">numTickets</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=9957f50579879179">
-<div class="input">
-<div class="prompt input_prompt">In [23]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TestPurchaseTicketsWithMock</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="na">[Fact]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PurchaseTickets_CallsPurchaseWithNumberOfTickets</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">ticketOffice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TicketOffice</span><span class="p">();</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">showMock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShowMock</span><span class="p">();</span>
-<span class="w">        </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">AddShow</span><span class="p">(</span><span class="n">showMock</span><span class="p">);</span>
-<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
-
-<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">PurchaseTickets</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">,</span><span class="w"> </span><span class="n">numTickets</span><span class="p">);</span>
-
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">True</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="w"> </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">GetShow</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">).</span><span class="n">Capacity</span><span class="p">);</span>
-<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">Equal</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">numTickets</span><span class="w"> </span><span class="p">},</span><span class="w"> </span><span class="n">showMock</span><span class="p">.</span><span class="n">PurchaseArgs</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d3c38476d4596c78">
-<div class="input">
-<div class="prompt input_prompt">In [24]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">TestPurchaseTicketsWithMock</span><span class="o">&gt;</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] PurchaseTickets_CallsPurchaseWithNumberOfTickets
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 1, Passed: 1, Failed: 0
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7c17606ade0c2194"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorteile-der-Isolation-der-getesteten-Unit">Vorteile der Isolation der getesteten Unit<a class="anchor-link" href="#Vorteile-der-Isolation-der-getesteten-Unit">¶</a></h2><ul>
-<li>Einfache Struktur der Tests<ul>
-<li>Jeder Test gehört zu genau einer Unit</li>
+<h2 id="Wann-sind-Test-Doubles-sinnvoll?">Wann sind Test-Doubles sinnvoll?<a class="anchor-link" href="#Wann-sind-Test-Doubles-sinnvoll?">¶</a></h2><ul>
+<li>Beide Schulen verwenden Test-Doubles für:<ul>
+<li>Nicht-deterministische Abhängigkeiten (Zeit, Zufallszahlen)</li>
+<li>Langsame Abhängigkeiten (Datenbank, Netzwerk, Dateisystem)</li>
+<li>Externe Systeme (APIs, Services)</li>
 </ul>
 </li>
-<li>Genaue Identifikation von Fehlern</li>
-<li>Aufbrechen von Abhängigkeiten/des Objektgraphen</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=dadea4515de652e5"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Nachteile-der-Isolation-der-getesteten-Unit">Nachteile der Isolation der getesteten Unit<a class="anchor-link" href="#Nachteile-der-Isolation-der-getesteten-Unit">¶</a></h2><ul>
-<li>Potenziell höherer Aufwand (z.B. Mocks)</li>
-<li>Fehler in der Interaktion zwischen Units werden nicht gefunden</li>
-<li>Verleiten zum Schreiben von "Interaktionstests"</li>
-<li><strong>Risiko von Kopplung an Implementierungsdetails</strong></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=58476d93abb01a77"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Empfehlung">Empfehlung<a class="anchor-link" href="#Empfehlung">¶</a></h2><ul>
-<li>Verwenden Sie isolierte Unit-Tests (Detroit School)</li>
-<li>Isolieren Sie Abhängigkeiten, die "eine Rakete starten"<ul>
-<li>nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles Datum)</li>
-<li>langsam</li>
-<li>externe Systeme (z.B. Datenbank)</li>
-</ul>
-</li>
-<li>Isolieren Sie Abhängigkeiten, die ein komplexes Setup benötigen</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=cd17fe9c312c3e35"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Virtuelle-Universit%C3%A4t">Workshop: Virtuelle Universität<a class="anchor-link" href="#Workshop:-Virtuelle-Universit%C3%A4t">¶</a></h2><ul>
-<li>Im <code>code</code>-Ordner finden Sie eine Implementierung eins sehr einfachen
-Verwaltungssystems für eine Universität:</li>
-<li>Es gibt Kurse, Professoren, die die Kurse halten, Studenten, die Aufgaben
-bearbeiten und abgeben müssen.</li>
-<li>Der Code ist in <code>Code/StarterKits/virtual-university-sk</code> zu finden.</li>
-<li>Die <code>Main.cs</code>-Datei illustriert, wie die Klassen zusammenarbeiten und
-verwendet werden können.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=c846a3758a339c8d"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Identifizieren Sie, welche Klassen und Methoden zu den "wertvollsten"
-Unit-Tests führen.</li>
-<li>Implementieren Sie diese Unit-Tests mit xUnit.net.<ul>
-<li>Idealerweise implementieren sie Tests für alle Klassen, die sinnvolle
-Tests haben.</li>
-<li>Falls Sie dafür nicht genug Zeit haben, können Sie auch nur Tests für
-einen Teil des Codes schreiben.</li>
-<li>Die Klasse <code>Student</code> ist ein ganz guter Startpunkt, weil sie eine sehr
-begrenzte Funktionalität hat, die Sie mit relativ wenigen Tests abdecken
-können.</li>
-</ul>
-</li>
-<li>Sind Ihre Tests isoliert?<ul>
-<li>Nach der Detroit- oder London-School?</li>
+<li>London School geht weiter:<ul>
+<li><em>Alle</em> veränderlichen Abhängigkeiten ersetzen</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fed14049b8872c05"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=801c55a1af39b37b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<ul>
-<li>Falls Sie Ihre Tests nach der Detroit-School isoliert haben:<ul>
-<li>Überlegen Sie, wie Sie das System überarbeiten müssten, um die Klassen in
-Tests vollständig zu isolieren, also im London School Stil zu testen.</li>
-</ul>
-</li>
+<h2 id="Wie-geht-es-weiter?">Wie geht es weiter?<a class="anchor-link" href="#Wie-geht-es-weiter?">¶</a></h2><ul>
+<li>Taxonomie der Test-Doubles (Dummies, Stubs, Fakes, Spies, Mocks)</li>
+<li>Das Moq-Framework zum effizienten Erstellen von Test-Doubles</li>
+<li>Dann: Zurück zur London School mit einem konkreten Beispiel</li>
 </ul>
 </div>
 </div>

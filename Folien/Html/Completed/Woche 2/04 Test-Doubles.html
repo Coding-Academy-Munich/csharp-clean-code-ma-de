@@ -13377,6 +13377,21 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7f6264eec6d94f11"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Warum-Test-Doubles?">Warum Test-Doubles?<a class="anchor-link" href="#Warum-Test-Doubles?">¶</a></h2><ul>
+<li>Echte Abhängigkeiten können Tests problematisch machen:<ul>
+<li>Nicht-deterministisch (Zeit, Zufallszahlen)</li>
+<li>Langsam (Datenbank, Netzwerk, Dateisystem)</li>
+<li>Schwer aufzusetzen (komplexe Objektgraphen, externe Services)</li>
+</ul>
+</li>
+<li>Test-Doubles geben uns Kontrolle über diese Abhängigkeiten</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d5f194736e9b8ff4"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13426,15 +13441,17 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=8c368fe353d5215d"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=e9be15b75b3a232b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Stub">Stub<a class="anchor-link" href="#Stub">¶</a></h2><ul>
 <li>Objekt, das eine minimale Implementierung einer Abhängigkeit bereitstellt</li>
 <li>Gibt typischerweise immer den gleichen Wert zurück</li>
-<li>Wird verwendet um</li>
+<li>Wird verwendet um<ul>
 <li>komplexe Abhängigkeiten zu ersetzen</li>
 <li>Tests deterministisch zu machen</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -13482,14 +13499,29 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=4c3eef2145b58024">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=64f622517adcffdf"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Beispiel:-E-Commerce-System">Beispiel: E-Commerce System<a class="anchor-link" href="#Beispiel:-E-Commerce-System">¶</a></h2><p>Wir wollen einen Artikel in einen Warenkorb legen.</p>
+<ul>
+<li>Der <code>CartManager</code> ist die zu testende Klasse (System Under Test).</li>
+<li>Er benutzt einen <code>IProductPriceProvider</code>, um den Preis eines Artikels zu
+erfahren (eingehende Abhängigkeit).</li>
+<li>Er benutzt einen <code>IShoppingCart</code>, um den Artikel hinzuzufügen (ausgehende
+Abhängigkeit).</li>
+</ul>
+<p>Zuerst definieren wir die Interfaces für unsere Abhängigkeiten:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=e281aeba28f57913">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IDataSource</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IProductPriceProvider</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -13501,7 +13533,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-75328.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-71596.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13590,7 +13622,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2053/", "http://169.254.203.116:2053/", "http://169.254.194.28:2053/", "http://172.16.0.1:2053/", "http://172.23.192.1:2053/", "http://172.23.176.1:2053/", "http://127.0.0.1:2053/"])
+    probeAddresses(["http://192.168.178.24:2050/", "http://169.254.203.116:2050/", "http://169.254.194.28:2050/", "http://172.16.0.1:2050/", "http://172.30.96.1:2050/", "http://172.23.176.1:2050/", "http://127.0.0.1:2050/"])
 
         .then((root) => {
 
@@ -13600,7 +13632,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '75328.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '71596.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13712,40 +13744,48 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=dd6f67484960fc06">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=c50d0e8a1d5e15d7">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IDataSink</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IShoppingCart</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SetValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">AddItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=f171a8029931094a">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=0bf029f0a2664133"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Die-zu-testende-Klasse:-CartManager">Die zu testende Klasse: <code>CartManager</code><a class="anchor-link" href="#Die-zu-testende-Klasse:-CartManager">¶</a></h2><p>Der <code>CartManager</code> holt sich den Preis und fügt den Artikel dem Warenkorb
+hinzu.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=a5c77d9c7573c05d">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Processor</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CartManager</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">IDataSource</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">IDataSink</span><span class="w"> </span><span class="n">sink</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IProductPriceProvider</span><span class="w"> </span><span class="n">priceProvider</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IShoppingCart</span><span class="w"> </span><span class="n">cart</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Processor</span><span class="p">(</span><span class="n">IDataSource</span><span class="w"> </span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">IDataSink</span><span class="w"> </span><span class="n">sink</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">CartManager</span><span class="p">(</span><span class="n">IProductPriceProvider</span><span class="w"> </span><span class="n">priceProvider</span><span class="p">,</span><span class="w"> </span><span class="n">IShoppingCart</span><span class="w"> </span><span class="n">cart</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">sink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sink</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">priceProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">priceProvider</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">cart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cart</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Process</span><span class="p">()</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddToCart</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="n">GetValue</span><span class="p">();</span>
-<span class="w">        </span><span class="n">sink</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
+<span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">priceProvider</span><span class="p">.</span><span class="n">GetPrice</span><span class="p">(</span><span class="n">productId</span><span class="p">);</span>
+<span class="w">        </span><span class="n">cart</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -13753,36 +13793,57 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=c34c732f13cf1647">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7a82f886bcce1bdf"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Die-Test-Doubles:-Stub-und-Spy">Die Test-Doubles: Stub und Spy<a class="anchor-link" href="#Die-Test-Doubles:-Stub-und-Spy">¶</a></h2><ul>
+<li>Für den <code>IProductPriceProvider</code> verwenden wir einen <strong>Stub</strong>, der einen
+festen Preis zurückgibt.</li>
+<li>Für den <code>IShoppingCart</code> verwenden wir einen <strong>Spy</strong>, der sich merkt,
+welche Artikel hinzugefügt wurden.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=46431c54e8d8674f">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DataSourceStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IDataSource</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ProductPriceProviderStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IProductPriceProvider</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mf">99.99</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=ee1b732d80270513">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=370d474f26e6abc7">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">DataSinkSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IDataSink</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ShoppingCartSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IShoppingCart</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Values</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">record</span><span class="w"> </span><span class="nf">AddedItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">ProductId</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Price</span><span class="p">);</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">AddedItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Items</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Values</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">AddedItem</span><span class="p">(</span><span class="n">productId</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=8d14585d454f8119"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Im Test überprüfen wir, ob der <code>CartManager</code> den <code>IShoppingCart</code> korrekt
+verwendet hat.</p>
 </div>
 </div>
 </div>
@@ -13807,39 +13868,49 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=375f55a2239187e6">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=606275729ab9774d">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestProcessor</span><span class="p">()</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestCartManagerAddsItemWithCorrectPrice</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataSourceStub</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">sink</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DataSinkSpy</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">processor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Processor</span><span class="p">(</span><span class="n">source</span><span class="p">,</span><span class="w"> </span><span class="n">sink</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">priceProvider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ProductPriceProviderStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">cart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ShoppingCartSpy</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CartManager</span><span class="p">(</span><span class="n">priceProvider</span><span class="p">,</span><span class="w"> </span><span class="n">cart</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"book-123"</span><span class="p">;</span>
 
-<span class="w">    </span><span class="n">processor</span><span class="p">.</span><span class="n">Process</span><span class="p">();</span>
+<span class="w">    </span><span class="n">manager</span><span class="p">.</span><span class="n">AddToCart</span><span class="p">(</span><span class="n">productId</span><span class="p">);</span>
 
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">sink</span><span class="p">.</span><span class="n">Values</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">sink</span><span class="p">.</span><span class="n">Values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">cart</span><span class="p">.</span><span class="n">Items</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">cart</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">ProductId</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">productId</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">cart</span><span class="p">.</span><span class="n">Items</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">Price</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mf">99.99</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=af3408914dcd9976">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f295a104ba197440">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestProcessor</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">TestCartManagerAddsItemWithCorrectPrice</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="output_wrapper">
 <div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Success!
+
+</pre>
+</div>
+</div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
@@ -13871,316 +13942,324 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=854d789cae2437fd"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fae468768b040c8d"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Test-Doubles">Workshop: Test Doubles<a class="anchor-link" href="#Workshop:-Test-Doubles">¶</a></h2><p>Wir haben die folgenden Interfaces, die von der Funktion <code>TestMe()</code>
-verwendet werden:</p>
+<h2 id="Workshop:-Raumschiff-Steuerung-testen">Workshop: Raumschiff-Steuerung testen<a class="anchor-link" href="#Workshop:-Raumschiff-Steuerung-testen">¶</a></h2><p>Sie sollen eine Test-Suite für einen <code>SpacecraftCommandController</code>
+implementieren. Diese Klasse sendet Befehle an ein Raumschiff. Ihre
+Aufgaben sind:</p>
+<ul>
+<li>Die Missions-Sicherheit hat Priorität: Überprüfen Sie den Zustand des
+Systems (<code>ITelemetrySystem</code>), bevor Sie Befehle ausführen.</li>
+<li>Führen Sie Manöver mit den Schubdüsen durch (<code>IThrusterControl</code>).</li>
+<li>Benachrichtigen Sie die Bodenstation über den Status von Befehlen
+(<code>IGroundControlLink</code>).</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=98d607946e192f19">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=a25bc0a56a85c19a"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Zuerst die Interfaces für die Subsysteme des Raumschiffs:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3e1df81f0d0df15b">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IService1</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">();</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">SubSystem</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Core</span><span class="p">,</span><span class="w"> </span><span class="n">Thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">ScienceBay</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8b9a9a0c079fe6b8">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=043684d4935312d0">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IService2</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ITelemetrySystem</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SetValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="w"> </span><span class="n">system</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3d28f422af60c4ac">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=094dff33233d8237">
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestMe</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">IService1</span><span class="w"> </span><span class="n">service1</span><span class="p">,</span><span class="w"> </span><span class="n">IService2</span><span class="w"> </span><span class="n">service2</span><span class="p">)</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IThrusterControl</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">service1</span><span class="p">.</span><span class="n">GetValue</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">j</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">service2</span><span class="p">.</span><span class="n">SetValue</span><span class="p">(</span><span class="k">value</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">FireThrusters</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=a6cf68f194704d68"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Welche Arten von Test-Doubles brauchen Sie um die Funktion <code>TestMe()</code> für
-die angegebenen Werte von <code>i</code> und <code>j</code> zu testen?</p>
-<table>
-<thead>
-<tr>
-<th>i</th>
-<th>j</th>
-<th>Service1</th>
-<th>Service2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=fc0dea94e617995a"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<table>
-<thead>
-<tr>
-<th>i</th>
-<th>j</th>
-<th>Service1</th>
-<th>Service2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>Dummy</td>
-<td>Dummy</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>Dummy</td>
-<td>Spy/Mock</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>Stub</td>
-<td>Dummy</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>Stub</td>
-<td>Spy/Mock</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d6cb4e63664783a0"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Implementieren Sie die entsprechenden Doubles und schreiben Sie die Tests</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=1e4bbe0df44c839f">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9f4addc03ad15ebd">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Service1Stub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IService1</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IGroundControlLink</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetValue</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">42</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SendStatusReport</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">report</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=4e5d40591833a462">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=009eb52f7202f7c4"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Die zu testende Klasse: <code>SpacecraftCommandController</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=16caa1b6ddc84283">
 <div class="input">
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Service2Spy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IService2</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SpacecraftCommandController</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Values</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITelemetrySystem</span><span class="w"> </span><span class="n">telemetry</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IThrusterControl</span><span class="w"> </span><span class="n">thrusters</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IGroundControlLink</span><span class="w"> </span><span class="n">groundControl</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Values</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">value</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SpacecraftCommandController</span><span class="p">(</span>
+<span class="w">        </span><span class="n">ITelemetrySystem</span><span class="w"> </span><span class="n">telemetry</span><span class="p">,</span>
+<span class="w">        </span><span class="n">IThrusterControl</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span>
+<span class="w">        </span><span class="n">IGroundControlLink</span><span class="w"> </span><span class="n">groundControl</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetry</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thrusters</span><span class="p">;</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">groundControl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ExecuteBurnManeuver</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">powerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetry</span><span class="p">.</span><span class="n">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="p">.</span><span class="n">Thrusters</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">powerLevel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">groundControl</span><span class="p">.</span><span class="n">SendStatusReport</span><span class="p">(</span>
+<span class="w">                </span><span class="s">"ERROR: Thruster power too low for maneuver."</span><span class="p">);</span>
+<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">thrusters</span><span class="p">.</span><span class="n">FireThrusters</span><span class="p">(</span><span class="n">durationMs</span><span class="p">);</span>
+<span class="w">        </span><span class="n">groundControl</span><span class="p">.</span><span class="n">SendStatusReport</span><span class="p">(</span><span class="s">"SUCCESS: Maneuver executed."</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=2ae4b2e0700e0fa9">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2de8967537ad5a6e"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Ihre-Aufgabe">Ihre Aufgabe<a class="anchor-link" href="#Ihre-Aufgabe">¶</a></h2><p>Schreiben Sie Tests für die folgenden Szenarien. Implementieren Sie dafür
+die notwendigen Test-Doubles.</p>
+<ol>
+<li><strong>Erfolgreiches Manöver:</strong> Das Schubdüsen-System hat genug Energie
+(&gt;50%). Überprüfen Sie, ob der <code>FireThrusters</code>-Befehl gesendet wird und
+eine Erfolgsmeldung an die Bodenstation geht.</li>
+<li><strong>Manöver abgebrochen (zu wenig Energie):</strong> Das Schubdüsen-System hat
+zu wenig Energie (&lt;50%). Überprüfen Sie, ob die Schubdüsen <strong>nicht</strong>
+gezündet werden und eine Fehlermeldung an die Bodenstation geht.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=cf85353d813a18c1"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="L%C3%B6sung:-Test-Doubles">Lösung: Test-Doubles<a class="anchor-link" href="#L%C3%B6sung:-Test-Doubles">¶</a></h2><p>Wir benötigen einen konfigurierbaren Stub für <code>ITelemetrySystem</code> und Spies
+für <code>IThrusterControl</code> und <code>IGroundControlLink</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=af74bb23639637e5">
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTestMe_0_0</span><span class="p">()</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TelemetrySystemStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ITelemetrySystem</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">TestMe</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">PowerLevel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="w"> </span><span class="n">system</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">PowerLevel</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=9d1f8b75d338a0fa">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=25208af2b989239e">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestTestMe_0_0</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ThrusterControlSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IThrusterControl</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BurnDurationMs</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">TimesFired</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">FireThrusters</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TimesFired</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">BurnDurationMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">durationMs</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=8afae08280812856">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=fe4525a69b2300ed">
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTestMe_0_1</span><span class="p">()</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GroundControlLinkSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IGroundControlLink</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">service2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Service2Spy</span><span class="p">();</span>
-<span class="w">    </span><span class="n">TestMe</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w"> </span><span class="n">service2</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">service2</span><span class="p">.</span><span class="n">Values</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">service2</span><span class="p">.</span><span class="n">Values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Reports</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendStatusReport</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">report</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Reports</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=2e593625818df4e8">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=8eef8a421ecffd33"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="L%C3%B6sung:-Tests">Lösung: Tests<a class="anchor-link" href="#L%C3%B6sung:-Tests">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=29197e8f689e1194">
 <div class="input">
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestTestMe_0_1</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestSuccessfulBurnManeuver</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TelemetrySystemStub</span><span class="p">();</span>
+<span class="w">    </span><span class="n">telemetry</span><span class="p">.</span><span class="n">PowerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">75</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThrusterControlSpy</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GroundControlLinkSpy</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftCommandController</span><span class="p">(</span>
+<span class="w">        </span><span class="n">telemetry</span><span class="p">,</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">groundControl</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="n">ExecuteBurnManeuver</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">thrusters</span><span class="p">.</span><span class="n">TimesFired</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">thrusters</span><span class="p">.</span><span class="n">BurnDurationMs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">500</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"SUCCESS: Maneuver executed."</span><span class="p">);</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success!
-
-</pre>
 </div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Success!
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=e14f1af24494d919">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=e267047e35e5e300">
 <div class="input">
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTestMe_1_0</span><span class="p">()</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestAbortedManeuverDueToLowPower</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">service1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Service1Stub</span><span class="p">();</span>
-<span class="w">    </span><span class="n">TestMe</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">service1</span><span class="p">,</span><span class="w"> </span><span class="k">null</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TelemetrySystemStub</span><span class="p">();</span>
+<span class="w">    </span><span class="n">telemetry</span><span class="p">.</span><span class="n">PowerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThrusterControlSpy</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GroundControlLinkSpy</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftCommandController</span><span class="p">(</span>
+<span class="w">        </span><span class="n">telemetry</span><span class="p">,</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">groundControl</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="n">ExecuteBurnManeuver</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">thrusters</span><span class="p">.</span><span class="n">TimesFired</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="s">"ERROR: Thruster power too low for maneuver."</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=c0562ce322386dd1">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=2aa955bd11bbf309">
 <div class="input">
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestTestMe_1_0</span><span class="p">();</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=3fc7b918ff42d688">
-<div class="input">
-<div class="prompt input_prompt">In [20]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestTestMe_1_1</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">service1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Service1Stub</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">service2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Service2Spy</span><span class="p">();</span>
-<span class="w">    </span><span class="n">TestMe</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">service1</span><span class="p">,</span><span class="w"> </span><span class="n">service2</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">service2</span><span class="p">.</span><span class="n">Values</span><span class="p">.</span><span class="n">Count</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="n">Check</span><span class="p">(</span><span class="n">service2</span><span class="p">.</span><span class="n">Values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">42</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=33fc6aba9f81eb1c">
-<div class="input">
-<div class="prompt input_prompt">In [21]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestTestMe_1_1</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">TestSuccessfulBurnManeuver</span><span class="p">();</span>
+<span class="n">TestAbortedManeuverDueToLowPower</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="output_wrapper">
 <div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Success!
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Success!
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Success!
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Success!
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Success!
+
+</pre>
+</div>
+</div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">

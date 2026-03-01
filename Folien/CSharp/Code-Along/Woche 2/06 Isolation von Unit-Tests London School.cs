@@ -2,7 +2,7 @@
 // %% [markdown]
 //
 // <div style="text-align:center; font-size:200%;">
-//  <b>Isolation von Unit-Tests</b>
+//  <b>Isolation von Unit-Tests: London School</b>
 // </div>
 // <br/>
 // <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -12,59 +12,31 @@
 
 // %% [markdown]
 //
-// ## Unit-Test
+// ## Rückblick: Zwei Schulen des Unit-Testings
 //
-// - Testet einen kleinen Teil des Codes (eine **"Unit"**)
-// - Hat kurze Laufzeit
-// - *Ist isoliert*
+// - **Detroit School**: Isolation = Tests unabhängig voneinander
+//   - Unit = Verhalten (unit of behavior)
+//   - Verwende echte Abhängigkeiten, wenn möglich
+// - **London School**: Isolation = getestete Unit von Abhängigkeiten isoliert
+//   - Unit = Klasse (unit of code)
+//   - Ersetze alle veränderlichen Abhängigkeiten durch Test-Doubles
+
+// %%
+
+// %%
+#r "nuget: NUnit, *"
+#r "nuget: Moq, 4.17"
+#load "NUnitTestRunner.cs"
+using NUnit.Framework;
+using Moq;
+using static NUnitTestRunner;
 
 // %% [markdown]
 //
-// ## Was ist eine "Unit"?
+// ## Beispiel: Verkauf von Veranstaltungs-Tickets
 //
-// - Ein Verhalten?
-//   - *Unit of behavior*
-//   - Teil eines Szenarios/Use-Cases/...
-//   - Ursprüngliche Intention von Kent Beck
-// - Ein Code-Bestandteil?
-//   - *Unit of code*
-//   - Oft Unit = Klasse
-//   - In der Literatur weit verbreitete Ansicht
-
-// %% [markdown]
-//
-// ## Was bedeutet "isolierter" Test?
-//
-// - Keine Interaktion zwischen Tests?
-//   - Isolierte Testfälle
-//   - Klassische Unit-Tests (Detroit School, Kent Beck)
-// - Keine Interaktion zwischen getesteter Einheit und dem Rest des Systems?
-//   - Abhängigkeiten werden durch einfache Simulationen ersetzt (Test-Doubles)
-//   - London School
-
-// %% [markdown]
-//
-// ## Isolierte Testfälle (Detroit School)
-//
-// - Jeder Testfall ist unabhängig von den anderen
-// - Tests können in beliebiger Reihenfolge ausgeführt werden
-// - Tests können parallel ausgeführt werden
-
-// %% [markdown]
-//
-// ### Gegenbeispiel: Nicht isolierte Testfälle
-
-// %%
-
-// %%
-
-// %%
-
-// %%
-
-// %%
-
-// %%
+// - Klasse `Show` repräsentiert eine Veranstaltung
+// - Klasse `TicketOffice` verwaltet den Verkauf
 
 // %%
 
@@ -72,48 +44,11 @@
 
 // %% [markdown]
 //
-// ## Gründe für nicht isolierte Testfälle
-//
-// - Veränderlicher globaler/statischer Zustand
-// - Veränderliche externe Ressourcen (Dateien, Datenbanken, Netzwerk, ...)
-
-// %% [markdown]
-//
-// ## Isolation der getesteten Unit
-//
-// - Die getestete Unit wird von allen anderen Units isoliert
-// - Test-Doubles für alle Abhängigkeiten
-
-// %% [markdown]
-//
-// ### Gegenbeispiel: Nicht isolierte Unit
-//
-// - Verkäufer von Veranstaltungs-Tickets
-// - Konkrete Klasse `Show` repräsentiert eine Veranstaltung
+// ### Test im Detroit-School-Stil
 
 // %%
 
 // %%
-
-// %%
-
-// %%
-#r "nuget: Xunit, *"
-
-// %%
-#load "XunitTestRunner.cs"
-
-// %%
-using Xunit;
-using static XunitTestRunner;
-
-// %%
-
-// %%
-
-// %%
-using System;
-using System.Collections.Generic;
 
 // %%
 public interface IShow
@@ -185,42 +120,31 @@ public class TicketOffice
 // ### Isolation von `TicketOffice` für Tests
 //
 // - Entkopplung von allen Abhängigkeiten
-// - `ShowMock`-Implementierung für Shows
+// - `Mock<IShow>` mit Moq
 
 // %%
-using System.Collections.Generic;
-
-// %%
-public class ShowMock : IShow
+public class TestPurchaseTicketsLondonSchool
 {
-    public List<int> PurchaseArgs = new List<int>();
-
-    public string Name => "C# Conference";
-    public int Capacity => 90;
-    public void Purchase(int numTickets) => PurchaseArgs.Add(numTickets);
-}
-
-// %%
-public class TestPurchaseTicketsWithMock
-{
-    [Fact]
+    [Test]
     public void PurchaseTickets_CallsPurchaseWithNumberOfTickets()
     {
         var ticketOffice = new TicketOffice();
-        var showMock = new ShowMock();
-        ticketOffice.AddShow(showMock);
+        var showMock = new Mock<IShow>();
+        showMock.Setup(s => s.Name).Returns("C# Conference");
+        showMock.Setup(s => s.Capacity).Returns(90);
+        ticketOffice.AddShow(showMock.Object);
         const int numTickets = 10;
 
         bool result = ticketOffice.PurchaseTickets("C# Conference", numTickets);
 
-        Assert.True(result);
-        Assert.Equal(90, ticketOffice.GetShow("C# Conference").Capacity);
-        Assert.Equal(new List<int> { numTickets }, showMock.PurchaseArgs);
+        Assert.That(result, Is.True);
+        Assert.That(ticketOffice.GetShow("C# Conference").Capacity, Is.EqualTo(90));
+        showMock.Verify(s => s.Purchase(numTickets), Times.Once);
     }
 }
 
 // %%
-RunTests<TestPurchaseTicketsWithMock>();
+RunTests<TestPurchaseTicketsLondonSchool>();
 
 // %% [markdown]
 //
@@ -267,7 +191,7 @@ RunTests<TestPurchaseTicketsWithMock>();
 //
 // - Identifizieren Sie, welche Klassen und Methoden zu den "wertvollsten"
 //   Unit-Tests führen.
-// - Implementieren Sie diese Unit-Tests mit xUnit.net.
+// - Implementieren Sie diese Unit-Tests mit NUnit.
 //   - Idealerweise implementieren sie Tests für alle Klassen, die sinnvolle
 //     Tests haben.
 //   - Falls Sie dafür nicht genug Zeit haben, können Sie auch nur Tests für

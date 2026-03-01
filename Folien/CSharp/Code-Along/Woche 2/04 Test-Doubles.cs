@@ -12,6 +12,16 @@
 
 // %% [markdown]
 //
+// ## Warum Test-Doubles?
+//
+// - Echte Abhängigkeiten können Tests problematisch machen:
+//   - Nicht-deterministisch (Zeit, Zufallszahlen)
+//   - Langsam (Datenbank, Netzwerk, Dateisystem)
+//   - Schwer aufzusetzen (komplexe Objektgraphen, externe Services)
+// - Test-Doubles geben uns Kontrolle über diese Abhängigkeiten
+
+// %% [markdown]
+//
 // ## Test Doubles
 //
 // - Test Double: Vereinfachte Version einer Abhängigkeit im System
@@ -49,8 +59,8 @@
 // - Objekt, das eine minimale Implementierung einer Abhängigkeit bereitstellt
 // - Gibt typischerweise immer den gleichen Wert zurück
 // - Wird verwendet um
-//  - komplexe Abhängigkeiten zu ersetzen
-//  - Tests deterministisch zu machen
+//   - komplexe Abhängigkeiten zu ersetzen
+//   - Tests deterministisch zu machen
 
 // %% [markdown]
 //
@@ -80,53 +90,74 @@
 // - Wird verwendet um
 //   - zu überprüfen, ob eine Abhängigkeit korrekt verwendet wird
 
+// %% [markdown]
+// ## Beispiel: E-Commerce System
+//
+// Wir wollen einen Artikel in einen Warenkorb legen.
+//
+// - Der `CartManager` ist die zu testende Klasse (System Under Test).
+// - Er benutzt einen `IProductPriceProvider`, um den Preis eines Artikels zu
+//   erfahren (eingehende Abhängigkeit).
+// - Er benutzt einen `IShoppingCart`, um den Artikel hinzuzufügen (ausgehende
+//   Abhängigkeit).
+//
+// Zuerst definieren wir die Interfaces für unsere Abhängigkeiten:
+
 // %%
-public interface IDataSource
+public interface IProductPriceProvider
 {
-    int GetValue();
+    double GetPrice(string productId);
 }
 
 // %%
-public interface IDataSink
+public interface IShoppingCart
 {
-    void SetValue(int value);
+    void AddItem(string productId, double price);
 }
 
-// %%
-public class Processor
-{
-    private IDataSource source;
-    private IDataSink sink;
+// %% [markdown]
+//
+// ## Die zu testende Klasse: `CartManager`
+//
+// Der `CartManager` holt sich den Preis und fügt den Artikel dem Warenkorb
+// hinzu.
 
-    public Processor(IDataSource source, IDataSink sink)
+// %%
+public class CartManager
+{
+    private readonly IProductPriceProvider priceProvider;
+    private readonly IShoppingCart cart;
+
+    public CartManager(IProductPriceProvider priceProvider, IShoppingCart cart)
     {
-        this.source = source;
-        this.sink = sink;
+        this.priceProvider = priceProvider;
+        this.cart = cart;
     }
 
-    public void Process()
+    public void AddToCart(string productId)
     {
-        int value = source.GetValue();
-        sink.SetValue(value);
+        double price = priceProvider.GetPrice(productId);
+        cart.AddItem(productId, price);
     }
 }
 
-// %%
-public class DataSourceStub : IDataSource
-{
-    public int GetValue() { return 42; }
-}
+// %% [markdown]
+//
+// ## Die Test-Doubles: Stub und Spy
+//
+// - Für den `IProductPriceProvider` verwenden wir einen **Stub**, der einen
+//   festen Preis zurückgibt.
+// - Für den `IShoppingCart` verwenden wir einen **Spy**, der sich merkt,
+//   welche Artikel hinzugefügt wurden.
 
 // %%
-public class DataSinkSpy : IDataSink
-{
-    public List<int> Values { get; } = new List<int>();
 
-    public void SetValue(int value)
-    {
-        Values.Add(value);
-    }
-}
+// %%
+
+// %% [markdown]
+//
+// Im Test überprüfen wir, ob der `CartManager` den `IShoppingCart` korrekt
+// verwendet hat.
 
 // %%
 void Check(bool condition)
@@ -142,17 +173,6 @@ void Check(bool condition)
 }
 
 // %%
-void TestProcessor()
-{
-    var source = new DataSourceStub();
-    var sink = new DataSinkSpy();
-    var processor = new Processor(source, sink);
-
-    processor.Process();
-
-    Check(sink.Values.Count == 1);
-    Check(sink.Values[0] == 42);
-}
 
 // %%
 
@@ -167,57 +187,87 @@ void TestProcessor()
 
 // %% [markdown]
 //
-// ## Workshop: Test Doubles
+// ## Workshop: Raumschiff-Steuerung testen
 //
-// Wir haben die folgenden Interfaces, die von der Funktion `TestMe()`
-// verwendet werden:
+// Sie sollen eine Test-Suite für einen `SpacecraftCommandController`
+// implementieren. Diese Klasse sendet Befehle an ein Raumschiff. Ihre
+// Aufgaben sind:
+//
+// - Die Missions-Sicherheit hat Priorität: Überprüfen Sie den Zustand des
+//   Systems (`ITelemetrySystem`), bevor Sie Befehle ausführen.
+// - Führen Sie Manöver mit den Schubdüsen durch (`IThrusterControl`).
+// - Benachrichtigen Sie die Bodenstation über den Status von Befehlen
+//   (`IGroundControlLink`).
+
+// %% [markdown]
+// Zuerst die Interfaces für die Subsysteme des Raumschiffs:
 
 // %%
-public interface IService1
+public enum SubSystem { Core, Thrusters, ScienceBay }
+
+// %%
+public interface ITelemetrySystem
 {
-    int GetValue();
+    int GetPowerLevelPercent(SubSystem system);
 }
 
 // %%
-public interface IService2
+public interface IThrusterControl
 {
-    void SetValue(int value);
+    void FireThrusters(int durationMs);
 }
 
 // %%
-public void TestMe(int i, int j, IService1 service1, IService2 service2)
+public interface IGroundControlLink
 {
-    int value = 0;
-    if (i > 0)
+    void SendStatusReport(string report);
+}
+
+// %% [markdown]
+// Die zu testende Klasse: `SpacecraftCommandController`.
+
+// %%
+public class SpacecraftCommandController
+{
+    private readonly ITelemetrySystem telemetry;
+    private readonly IThrusterControl thrusters;
+    private readonly IGroundControlLink groundControl;
+
+    public SpacecraftCommandController(
+        ITelemetrySystem telemetry,
+        IThrusterControl thrusters,
+        IGroundControlLink groundControl)
     {
-        value = service1.GetValue();
+        this.telemetry = telemetry;
+        this.thrusters = thrusters;
+        this.groundControl = groundControl;
     }
-    if (j > 0)
+
+    public void ExecuteBurnManeuver(int durationMs)
     {
-        service2.SetValue(value);
+        int powerLevel = telemetry.GetPowerLevelPercent(SubSystem.Thrusters);
+        if (powerLevel < 50)
+        {
+            groundControl.SendStatusReport(
+                "ERROR: Thruster power too low for maneuver.");
+            return;
+        }
+
+        thrusters.FireThrusters(durationMs);
+        groundControl.SendStatusReport("SUCCESS: Maneuver executed.");
     }
 }
 
 // %% [markdown]
 //
-// Welche Arten von Test-Doubles brauchen Sie um die Funktion `TestMe()` für
-// die angegebenen Werte von `i` und `j` zu testen?
+// ## Ihre Aufgabe
 //
-// | i | j | Service1 | Service2 |
-// |---|---|----------|----------|
-// | 0 | 0 |          |          |
-// | 0 | 1 |          |          |
-// | 1 | 0 |          |          |
-// | 1 | 1 |          |          |
-
-// %% [markdown]
+// Schreiben Sie Tests für die folgenden Szenarien. Implementieren Sie dafür
+// die notwendigen Test-Doubles.
 //
-// Implementieren Sie die entsprechenden Doubles und schreiben Sie die Tests
-
-// %%
-
-// %%
-
-// %%
-
-// %%
+// 1.  **Erfolgreiches Manöver:** Das Schubdüsen-System hat genug Energie
+//     (>50%). Überprüfen Sie, ob der `FireThrusters`-Befehl gesendet wird und
+//     eine Erfolgsmeldung an die Bodenstation geht.
+// 2.  **Manöver abgebrochen (zu wenig Energie):** Das Schubdüsen-System hat
+//     zu wenig Energie (<50%). Überprüfen Sie, ob die Schubdüsen **nicht**
+//     gezündet werden und eine Fehlermeldung an die Bodenstation geht.

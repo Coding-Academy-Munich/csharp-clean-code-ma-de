@@ -13087,7 +13087,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=2e59ed99d8818733"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=23b8403e2fb391f2"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="C# Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEgCAYAAABb3q1QAAAEuGlUWHRYTUw6Y29tLmFkb2JlLnht
@@ -13367,7 +13367,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 " style="display:block;margin:auto;width:5%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>GRASP-Patterns: Überblick</b>
+<b>Isolation von Unit-Tests: London School</b>
 </div>
 <br>
 <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -13377,790 +13377,342 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=af1f58b3d1a7d446"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=36c98520b7f24f04"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Was-ist-GRASP?">Was ist GRASP?<a class="anchor-link" href="#Was-ist-GRASP?">¶</a></h2><p><strong>G</strong>eneral <strong>R</strong>esponsibility <strong>A</strong>ssignment <strong>S</strong>oftware <strong>P</strong>atterns</p>
-<ul>
-<li>Leitlinien zur Zuweisung von Verantwortlichkeiten zu Klassen</li>
-<li>Helfen bei der Frage: "Welche Klasse sollte das tun?"</li>
-<li>9 Patterns von Craig Larman</li>
-<li>Fundamentale Prinzipien des objektorientierten Entwurfs</li>
+<h2 id="R%C3%BCckblick:-Zwei-Schulen-des-Unit-Testings">Rückblick: Zwei Schulen des Unit-Testings<a class="anchor-link" href="#R%C3%BCckblick:-Zwei-Schulen-des-Unit-Testings">¶</a></h2><ul>
+<li><strong>Detroit School</strong>: Isolation = Tests unabhängig voneinander<ul>
+<li>Unit = Verhalten (unit of behavior)</li>
+<li>Verwende echte Abhängigkeiten, wenn möglich</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=86d9a4fbef4354c1"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Die-9-GRASP-Patterns">Die 9 GRASP-Patterns<a class="anchor-link" href="#Die-9-GRASP-Patterns">¶</a></h2><p><strong>Grundlegende Patterns:</strong></p>
-<ol>
-<li>Creator</li>
-<li>Information Expert</li>
-<li>Low Coupling</li>
-<li>High Cohesion</li>
-<li>Controller</li>
-</ol>
-<p><strong>Fortgeschrittene Patterns:</strong>
-6. Polymorphism
-7. Pure Fabrication
-8. Indirection
-9. Protected Variations</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4a0a3afea7ea0066">
-<div class="input">
-<div class="prompt input_prompt">In [1]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_html rendered_html output_subarea">
-<div>
-<div id="dotnet-interactive-this-cell-71580.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
-
-        The below script needs to be able to find the current output cell; this is an easy method to get it.
-
-    </div>
-<script type="text/javascript">
-
-async function probeAddresses(probingAddresses) {
-
-    function timeout(ms, promise) {
-
-        return new Promise(function (resolve, reject) {
-
-            setTimeout(function () {
-
-                reject(new Error('timeout'))
-
-            }, ms)
-
-            promise.then(resolve, reject)
-
-        })
-
-    }
-
-
-
-    if (Array.isArray(probingAddresses)) {
-
-        for (let i = 0; i < probingAddresses.length; i++) {
-
-
-
-            let rootUrl = probingAddresses[i];
-
-
-
-            if (!rootUrl.endsWith('/')) {
-
-                rootUrl = `${rootUrl}/`;
-
-            }
-
-
-
-            try {
-
-                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
-
-                    method: 'POST',
-
-                    cache: 'no-cache',
-
-                    mode: 'cors',
-
-                    timeout: 1000,
-
-                    headers: {
-
-                        'Content-Type': 'text/plain'
-
-                    },
-
-                    body: probingAddresses[i]
-
-                }));
-
-
-
-                if (response.status == 200) {
-
-                    return rootUrl;
-
-                }
-
-            }
-
-            catch (e) { }
-
-        }
-
-    }
-
-}
-
-
-
-function loadDotnetInteractiveApi() {
-
-    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.30.96.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
-
-        .then((root) => {
-
-        // use probing to find host url and api resources
-
-        // load interactive helpers and language services
-
-        let dotnetInteractiveRequire = require.config({
-
-        context: '71580.Microsoft.DotNet.Interactive.Http.HttpPort',
-
-                paths:
-
-            {
-
-                'dotnet-interactive': `${root}resources`
-
-                }
-
-        }) || require;
-
-
-
-            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
-
-
-
-            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
-
-                let paths = {};
-
-                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
-
-                
-
-                let internalRequire = require.config({
-
-                    context: extensionCacheBuster,
-
-                    paths: paths,
-
-                    urlArgs: `cacheBuster=${extensionCacheBuster}`
-
-                    }) || require;
-
-
-
-                return internalRequire
-
-            };
-
-        
-
-            dotnetInteractiveRequire([
-
-                    'dotnet-interactive/dotnet-interactive'
-
-                ],
-
-                function (dotnet) {
-
-                    dotnet.init(window);
-
-                },
-
-                function (error) {
-
-                    console.log(error);
-
-                }
-
-            );
-
-        })
-
-        .catch(error => {console.log(error);});
-
-    }
-
-
-
-// ensure `require` is available globally
-
-if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
-
-    let require_script = document.createElement('script');
-
-    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
-
-    require_script.setAttribute('type', 'text/javascript');
-
-    
-
-    
-
-    require_script.onload = function() {
-
-        loadDotnetInteractiveApi();
-
-    };
-
-
-
-    document.getElementsByTagName('head')[0].appendChild(require_script);
-
-}
-
-else {
-
-    loadDotnetInteractiveApi();
-
-}
-
-
-
-    </script>
-</div></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=10400c726967bdfc"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Creator">Creator<a class="anchor-link" href="#Creator">¶</a></h2><p><em>Wer sollte ein Objekt B erzeugen?</em></p>
-<p>Klasse A sollte B erzeugen, wenn A:</p>
-<ul>
-<li>B enthält oder zusammenfasst</li>
-<li>B eng verwendet</li>
-<li>Die Daten besitzt, um B zu initialisieren</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=073ca1752b0de4ce">
-<div class="input">
-<div class="prompt input_prompt">In [2]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OrderItem</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Quantity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">OrderItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Order</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// Order is the Creator of OrderItem (it contains/aggregates them)</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderItem</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">));</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Items</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">ToList</span><span class="p">();</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5ba0f8e4fa3266d6">
-<div class="input">
-<div class="prompt input_prompt">In [3]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Order</span><span class="p">();</span>
-<span class="n">order</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="s">"Laptop"</span><span class="p">,</span><span class="w"> </span><span class="mf">999.99m</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="n">order</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="s">"Mouse"</span><span class="p">,</span><span class="w"> </span><span class="mf">29.99m</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Items: {order.Items.Count}"</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Items: 2
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=b7ed01ee196fa423"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Information-Expert">Information Expert<a class="anchor-link" href="#Information-Expert">¶</a></h2><p><em>Wer sollte eine Verantwortlichkeit übernehmen?</em></p>
-<p>Die Klasse, die die notwendigen Informationen hat!</p>
-<ul>
-<li>Berechnung von Werten → Klasse mit den Daten</li>
-<li>Validierung → Klasse mit dem Wissen</li>
-<li>Formatierung → Klasse mit den Attributen</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=a0aa6b4565161535">
-<div class="input">
-<div class="prompt input_prompt">In [4]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OrderWithExpert</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">)</span>
-<span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderItem</span><span class="p">(</span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">));</span>
-
-<span class="w">    </span><span class="c1">// Order is the Information Expert for total calculation</span>
-<span class="w">    </span><span class="c1">// (it has the items and their prices)</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="nf">CalculateTotal</span><span class="p">()</span>
-<span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">Sum</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">Price</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">Quantity</span><span class="p">);</span>
-
-<span class="w">    </span><span class="c1">// Order is the Information Expert for item lookup</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">OrderItem</span><span class="w"> </span><span class="nf">FindItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">product</span><span class="p">)</span>
-<span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">.</span><span class="n">FirstOrDefault</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">i</span><span class="p">.</span><span class="n">Product</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">product</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=0a574a073773b014">
-<div class="input">
-<div class="prompt input_prompt">In [5]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">expertOrder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">OrderWithExpert</span><span class="p">();</span>
-<span class="n">expertOrder</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="s">"Laptop"</span><span class="p">,</span><span class="w"> </span><span class="mf">999.99m</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="n">expertOrder</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="s">"Mouse"</span><span class="p">,</span><span class="w"> </span><span class="mf">29.99m</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Total: {expertOrder.CalculateTotal():C}"</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Total: 1.059,97 €
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=2fe1c8b829f11a1a"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Low-Coupling-(Geringe-Kopplung)">Low Coupling (Geringe Kopplung)<a class="anchor-link" href="#Low-Coupling-(Geringe-Kopplung)">¶</a></h2><ul>
-<li>Minimiere Abhängigkeiten zwischen Klassen</li>
-<li>Weniger Kopplung → einfacher zu ändern und zu testen</li>
-<li>Arten der Kopplung:<ul>
-<li>Direkte Instanziierung</li>
-<li>Typ-Referenzen</li>
-<li>Methodenaufrufe</li>
-<li>Vererbung (stärkste Kopplung!)</li>
+</li>
+<li><strong>London School</strong>: Isolation = getestete Unit von Abhängigkeiten isoliert<ul>
+<li>Unit = Klasse (unit of code)</li>
+<li>Ersetze alle veränderlichen Abhängigkeiten durch Test-Doubles</li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=63b941334e517d40">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=42945fb3c75b8f36">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">interface</span><span class="w"> </span><span class="n">INotificationService</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span><span class="w"> </span><span class="p">}</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">EmailService</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">INotificationService</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">Send</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f9f840ddd193efd2">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=856ec382de883fb5">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// High coupling: OrderService directly depends on EmailService</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">HighCouplingExample</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">EmailService</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EmailService</span><span class="p">();</span><span class="w"> </span><span class="c1">// Tight coupling!</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PlaceOrder</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ... process order ...</span>
-<span class="w">        </span><span class="n">email</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"customer@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s">"Order placed"</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
+<span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Moq, 4.17"</span>
+<span class="err">#</span><span class="n">load</span><span class="w"> </span><span class="s">"NUnitTestRunner.cs"</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">Moq</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">NUnitTestRunner</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=e9bb72e18c9ecf5d">
-<div class="input">
-<div class="prompt input_prompt">In [8]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Low coupling: depends on abstraction</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">LowCouplingExample</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">INotificationService</span><span class="w"> </span><span class="n">notification</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">LowCouplingExample</span><span class="p">(</span><span class="n">INotificationService</span><span class="w"> </span><span class="n">notification</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">notification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notification</span><span class="p">;</span><span class="w"> </span><span class="c1">// Loose coupling via interface</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PlaceOrder</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="c1">// ... process order ...</span>
-<span class="w">        </span><span class="n">notification</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"customer@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s">"Order placed"</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=33010bb481eb628a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=eaeb3ba81c586a9a"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="High-Cohesion-(Hohe-Koh%C3%A4sion)">High Cohesion (Hohe Kohäsion)<a class="anchor-link" href="#High-Cohesion-(Hohe-Koh%C3%A4sion)">¶</a></h2><ul>
-<li>Alle Elemente einer Klasse gehören logisch zusammen</li>
-<li>Eine Klasse hat einen klaren, fokussierten Zweck</li>
-<li>Gegenteil: "God Class" die alles macht</li>
-<li>Eng verwandt mit SRP (Single Responsibility Principle)</li>
+<h2 id="Beispiel:-Verkauf-von-Veranstaltungs-Tickets">Beispiel: Verkauf von Veranstaltungs-Tickets<a class="anchor-link" href="#Beispiel:-Verkauf-von-Veranstaltungs-Tickets">¶</a></h2><ul>
+<li>Klasse <code>Show</code> repräsentiert eine Veranstaltung</li>
+<li>Klasse <code>TicketOffice</code> verwaltet den Verkauf</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=d4cbeefb877f6642">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=d626c06583543ed0">
 <div class="input">
-<div class="prompt input_prompt">In [9]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Low cohesion: class does too many unrelated things</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">CustomerGodClass</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5c0ef93dda25bfdf">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=63d63210bc7ca81f"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Test-im-Detroit-School-Stil">Test im Detroit-School-Stil<a class="anchor-link" href="#Test-im-Detroit-School-Stil">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=57425e2b64dc6501">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9a3198f93911cba8">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=a513d984be9d06ec">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IShow</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SaveCustomer</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendEmail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">GenerateInvoice</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CalculateTax</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">RenderHtml</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ConnectToDatabase</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">Capacity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=00d7b59616827176">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b1801d8111303d54">
 <div class="input">
-<div class="prompt input_prompt">In [10]:</div>
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// High cohesion: each class has a focused purpose</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">CustomerRepository</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">Save</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">CustomerNotification</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">SendEmail</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">InvoiceGenerator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">Generate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ConcreteShow</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IShow</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">ConcreteShow</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">capacity</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">        </span><span class="n">Capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Capacity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Purchase</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">numTickets</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">Capacity</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">InvalidOperationException</span><span class="p">(</span><span class="s">"Not enough capacity"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">Capacity</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">numTickets</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=8643ec3cc27c88b0"><div class="prompt input_prompt">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=bcaa944d092d91b1">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TicketOffice</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddShow</span><span class="p">(</span><span class="n">IShow</span><span class="w"> </span><span class="n">show</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">shows</span><span class="p">[</span><span class="n">show</span><span class="p">.</span><span class="n">Name</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">show</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">IShow</span><span class="w"> </span><span class="nf">GetShow</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">showName</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">shows</span><span class="p">[</span><span class="n">showName</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">PurchaseTickets</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">showName</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">shows</span><span class="p">.</span><span class="n">ContainsKey</span><span class="p">(</span><span class="n">showName</span><span class="p">))</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="k">try</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">shows</span><span class="p">[</span><span class="n">showName</span><span class="p">].</span><span class="n">Purchase</span><span class="p">(</span><span class="n">numTickets</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">InvalidOperationException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Cannot purchase {numTickets} tickets for {showName}"</span><span class="p">);</span>
+<span class="w">                </span><span class="n">Console</span><span class="p">.</span><span class="n">Error</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="n">IShow</span><span class="o">&gt;</span><span class="w"> </span><span class="n">shows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="n">IShow</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=41e8df638f33b970"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Controller">Controller<a class="anchor-link" href="#Controller">¶</a></h2><p><em>Wer soll eingehende System-Ereignisse behandeln?</em></p>
+<h3 id="Isolation-von-TicketOffice-f%C3%BCr-Tests">Isolation von <code>TicketOffice</code> für Tests<a class="anchor-link" href="#Isolation-von-TicketOffice-f%C3%BCr-Tests">¶</a></h3><ul>
+<li>Entkopplung von allen Abhängigkeiten</li>
+<li><code>Mock&lt;IShow&gt;</code> mit Moq</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=0b6616da18f151c9">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TestPurchaseTicketsLondonSchool</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PurchaseTickets_CallsPurchaseWithNumberOfTickets</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">ticketOffice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TicketOffice</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">showMock</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IShow</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="w">        </span><span class="n">showMock</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Name</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">);</span>
+<span class="w">        </span><span class="n">showMock</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Capacity</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="mi">90</span><span class="p">);</span>
+<span class="w">        </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">AddShow</span><span class="p">(</span><span class="n">showMock</span><span class="p">.</span><span class="n">Object</span><span class="p">);</span>
+<span class="w">        </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">numTickets</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+
+<span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">PurchaseTickets</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">,</span><span class="w"> </span><span class="n">numTickets</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">result</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">ticketOffice</span><span class="p">.</span><span class="n">GetShow</span><span class="p">(</span><span class="s">"C# Conference"</span><span class="p">).</span><span class="n">Capacity</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">90</span><span class="p">));</span>
+<span class="w">        </span><span class="n">showMock</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Purchase</span><span class="p">(</span><span class="n">numTickets</span><span class="p">),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Once</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=78f0b914eded3bdf">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">TestPurchaseTicketsLondonSchool</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7c17606ade0c2194"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Vorteile-der-Isolation-der-getesteten-Unit">Vorteile der Isolation der getesteten Unit<a class="anchor-link" href="#Vorteile-der-Isolation-der-getesteten-Unit">¶</a></h2><ul>
+<li>Einfache Struktur der Tests<ul>
+<li>Jeder Test gehört zu genau einer Unit</li>
+</ul>
+</li>
+<li>Genaue Identifikation von Fehlern</li>
+<li>Aufbrechen von Abhängigkeiten/des Objektgraphen</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=dadea4515de652e5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Nachteile-der-Isolation-der-getesteten-Unit">Nachteile der Isolation der getesteten Unit<a class="anchor-link" href="#Nachteile-der-Isolation-der-getesteten-Unit">¶</a></h2><ul>
+<li>Potenziell höherer Aufwand (z.B. Mocks)</li>
+<li>Fehler in der Interaktion zwischen Units werden nicht gefunden</li>
+<li>Verleiten zum Schreiben von "Interaktionstests"</li>
+<li><strong>Risiko von Kopplung an Implementierungsdetails</strong></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=58476d93abb01a77"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Empfehlung">Empfehlung<a class="anchor-link" href="#Empfehlung">¶</a></h2><ul>
+<li>Verwenden Sie isolierte Unit-Tests (Detroit School)</li>
+<li>Isolieren Sie Abhängigkeiten, die "eine Rakete starten"<ul>
+<li>nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles Datum)</li>
+<li>langsam</li>
+<li>externe Systeme (z.B. Datenbank)</li>
+</ul>
+</li>
+<li>Isolieren Sie Abhängigkeiten, die ein komplexes Setup benötigen</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=cd17fe9c312c3e35"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Workshop:-Virtuelle-Universit%C3%A4t">Workshop: Virtuelle Universität<a class="anchor-link" href="#Workshop:-Virtuelle-Universit%C3%A4t">¶</a></h2><ul>
+<li>Im <code>code</code>-Ordner finden Sie eine Implementierung eins sehr einfachen
+Verwaltungssystems für eine Universität:</li>
+<li>Es gibt Kurse, Professoren, die die Kurse halten, Studenten, die Aufgaben
+bearbeiten und abgeben müssen.</li>
+<li>Der Code ist in <code>Code/StarterKits/virtual-university-sk</code> zu finden.</li>
+<li>Die <code>Main.cs</code>-Datei illustriert, wie die Klassen zusammenarbeiten und
+verwendet werden können.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=e947bd945bddddfd"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <ul>
-<li>Ein Controller empfängt und koordiniert System-Operationen</li>
-<li>Enthält keine Geschäftslogik</li>
-<li>Delegiert an die richtigen Objekte</li>
-<li>Typisch: Use-Case-Controller oder Fassaden-Controller</li>
+<li>Identifizieren Sie, welche Klassen und Methoden zu den "wertvollsten"
+Unit-Tests führen.</li>
+<li>Implementieren Sie diese Unit-Tests mit NUnit.<ul>
+<li>Idealerweise implementieren sie Tests für alle Klassen, die sinnvolle
+Tests haben.</li>
+<li>Falls Sie dafür nicht genug Zeit haben, können Sie auch nur Tests für
+einen Teil des Codes schreiben.</li>
+<li>Die Klasse <code>Student</code> ist ein ganz guter Startpunkt, weil sie eine sehr
+begrenzte Funktionalität hat, die Sie mit relativ wenigen Tests abdecken
+können.</li>
+</ul>
+</li>
+<li>Sind Ihre Tests isoliert?<ul>
+<li>Nach der Detroit- oder London-School?</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3e473dc40097731f">
-<div class="input">
-<div class="prompt input_prompt">In [11]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">OrderCalculator</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">CalculateTotal</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mf">0m</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">OrderRepository</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">Save</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">OrderNotification</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="n">SendConfirmation</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=7d96741d3ac136b7">
-<div class="input">
-<div class="prompt input_prompt">In [12]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Controller coordinates but doesn't do the work itself</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">OrderController</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">OrderCalculator</span><span class="w"> </span><span class="n">calculator</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">repository</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">OrderNotification</span><span class="w"> </span><span class="n">notification</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">OrderController</span><span class="p">(</span><span class="n">OrderCalculator</span><span class="w"> </span><span class="n">calculator</span><span class="p">,</span>
-<span class="w">        </span><span class="n">OrderRepository</span><span class="w"> </span><span class="n">repository</span><span class="p">,</span><span class="w"> </span><span class="n">OrderNotification</span><span class="w"> </span><span class="n">notification</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">calculator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculator</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">repository</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repository</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">notification</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notification</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">PlaceOrder</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">orderId</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">email</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calculator</span><span class="p">.</span><span class="n">CalculateTotal</span><span class="p">(</span><span class="n">items</span><span class="p">);</span>
-<span class="w">        </span><span class="n">repository</span><span class="p">.</span><span class="n">Save</span><span class="p">(</span><span class="n">orderId</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
-<span class="w">        </span><span class="n">notification</span><span class="p">.</span><span class="n">SendConfirmation</span><span class="p">(</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">orderId</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=1a91a19247183471"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fed14049b8872c05"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Fortgeschrittene-Patterns-(Kurz%C3%BCbersicht)">Fortgeschrittene Patterns (Kurzübersicht)<a class="anchor-link" href="#Fortgeschrittene-Patterns-(Kurz%C3%BCbersicht)">¶</a></h2><ul>
-<li><strong>Polymorphism</strong>: Verwende Polymorphismus statt Typ-Abfragen</li>
-<li><strong>Pure Fabrication</strong>: Erstelle Hilfsklassen, die keinem Domänen-Konzept
-entsprechen (z.B. Repository, Service)</li>
-<li><strong>Indirection</strong>: Füge eine Zwischenschicht ein, um Kopplung zu reduzieren</li>
-<li><strong>Protected Variations</strong>: Schütze vor Änderungen durch stabile Interfaces</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=60dfcdf07a96d9ba"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Zusammenfassung">Zusammenfassung<a class="anchor-link" href="#Zusammenfassung">¶</a></h2><table>
-<thead>
-<tr>
-<th>Pattern</th>
-<th>Frage</th>
-<th>Antwort</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Creator</td>
-<td>Wer erzeugt B?</td>
-<td>Wer B enthält/aggregiert</td>
-</tr>
-<tr>
-<td>Expert</td>
-<td>Wer berechnet X?</td>
-<td>Wer die Daten hat</td>
-</tr>
-<tr>
-<td>Low Coupling</td>
-<td>Wie wenig Abhängigkeiten?</td>
-<td>Über Abstraktionen</td>
-</tr>
-<tr>
-<td>High Cohesion</td>
-<td>Wie fokussiert?</td>
-<td>Eine Verantwortlichkeit</td>
-</tr>
-<tr>
-<td>Controller</td>
-<td>Wer koordiniert?</td>
-<td>Dedizierter Controller</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=a464f623d20d914c"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Verantwortlichkeiten-zuweisen">Workshop: Verantwortlichkeiten zuweisen<a class="anchor-link" href="#Workshop:-Verantwortlichkeiten-zuweisen">¶</a></h2><p>Sie entwerfen ein einfaches Bibliothekssystem mit folgenden Konzepten:</p>
 <ul>
-<li>Bücher (Titel, Autor, ISBN)</li>
-<li>Mitglieder (Name, Mitgliedsnummer)</li>
-<li>Ausleihen (Buch, Mitglied, Datum)</li>
+<li>Falls Sie Ihre Tests nach der Detroit-School isoliert haben:<ul>
+<li>Überlegen Sie, wie Sie das System überarbeiten müssten, um die Klassen in
+Tests vollständig zu isolieren, also im London School Stil zu testen.</li>
 </ul>
-<p>Beantworten Sie mit GRASP-Prinzipien:</p>
-<ol>
-<li>Welche Klasse sollte <code>Loan</code>-Objekte erzeugen? (Creator)</li>
-<li>Welche Klasse berechnet die Leihgebühr? (Expert)</li>
-<li>Wie halten Sie die Kopplung gering? (Low Coupling)</li>
-<li>Welche Klasse koordiniert den Ausleih-Vorgang? (Controller)</li>
-</ol>
-<p>Implementieren Sie Ihre Lösung.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b83c15da6c3f97e0">
-<div class="input">
-<div class="prompt input_prompt">In [13]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Linq</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=7b2af98e32973acf">
-<div class="input">
-<div class="prompt input_prompt">In [14]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">record</span><span class="w"> </span><span class="nf">Book</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">Title</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Author</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Isbn</span><span class="p">);</span>
-
-<span class="k">record</span><span class="w"> </span><span class="nf">Member</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">MemberNumber</span><span class="p">);</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">Loan</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="n">Book</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">LoanDate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">DateTime</span><span class="w"> </span><span class="n">DueDate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">DateTime</span><span class="o">?</span><span class="w"> </span><span class="n">ReturnDate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">Loan</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="n">member</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">book</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">member</span><span class="p">;</span>
-<span class="w">        </span><span class="n">LoanDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
-<span class="w">        </span><span class="n">DueDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LoanDate</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="mi">14</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Information Expert: Loan has the dates to calculate late fee</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="nf">CalculateLateFee</span><span class="p">()</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ReturnDate</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">ReturnDate</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">DueDate</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">daysLate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">ReturnDate</span><span class="p">.</span><span class="n">Value</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">DueDate</span><span class="p">).</span><span class="n">Days</span><span class="p">;</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">daysLate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">0.50m</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Return</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">ReturnDate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=7b899918d4e2befe">
-<div class="input">
-<div class="prompt input_prompt">In [15]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Library</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Loan</span><span class="o">&gt;</span><span class="w"> </span><span class="n">activeLoans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="c1">// Creator: Library contains/aggregates Loans</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="nf">LendBook</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="n">member</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Loan</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">member</span><span class="p">);</span>
-<span class="w">        </span><span class="n">activeLoans</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">loan</span><span class="p">);</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">loan</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="c1">// Information Expert: Library has all loans</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Loan</span><span class="o">&gt;</span><span class="w"> </span><span class="n">GetLoansForMember</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">memberNumber</span><span class="p">)</span>
-<span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">activeLoans</span><span class="p">.</span><span class="n">Where</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">l</span><span class="p">.</span><span class="n">Member</span><span class="p">.</span><span class="n">MemberNumber</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">memberNumber</span><span class="p">).</span><span class="n">ToList</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="c1">// Controller coordinates the process</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">LibraryController</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">Library</span><span class="w"> </span><span class="n">library</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">LibraryController</span><span class="p">(</span><span class="n">Library</span><span class="w"> </span><span class="n">library</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="n">library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">library</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">Loan</span><span class="w"> </span><span class="nf">CheckOutBook</span><span class="p">(</span><span class="n">Book</span><span class="w"> </span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">Member</span><span class="w"> </span><span class="n">member</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">library</span><span class="p">.</span><span class="n">LendBook</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">member</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=e1d7778f4f496a19">
-<div class="input">
-<div class="prompt input_prompt">In [16]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">library</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Library</span><span class="p">();</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LibraryController</span><span class="p">(</span><span class="n">library</span><span class="p">);</span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">book</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Book</span><span class="p">(</span><span class="s">"Clean Code"</span><span class="p">,</span><span class="w"> </span><span class="s">"Robert C. Martin"</span><span class="p">,</span><span class="w"> </span><span class="s">"978-0132350884"</span><span class="p">);</span>
-<span class="kt">var</span><span class="w"> </span><span class="n">member</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Member</span><span class="p">(</span><span class="s">"Alice"</span><span class="p">,</span><span class="w"> </span><span class="s">"M001"</span><span class="p">);</span>
-
-<span class="kt">var</span><span class="w"> </span><span class="n">loan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">controller</span><span class="p">.</span><span class="n">CheckOutBook</span><span class="p">(</span><span class="n">book</span><span class="p">,</span><span class="w"> </span><span class="n">member</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Lent '{loan.Book.Title}' to {loan.Member.Name}"</span><span class="p">);</span>
-<span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"Due: {loan.DueDate:d}"</span><span class="p">);</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Lent 'Clean Code' to Alice
-
-</pre>
-</div>
-</div>
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Due: 15/03/2026
-
-</pre>
-</div>
-</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
