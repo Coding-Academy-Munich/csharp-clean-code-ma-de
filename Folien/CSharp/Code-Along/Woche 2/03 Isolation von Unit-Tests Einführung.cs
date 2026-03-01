@@ -55,6 +55,7 @@
 // ### Gegenbeispiel: Nicht isolierte Testfälle
 
 // %%
+using System;
 
 // %%
 #r "nuget: NUnit, *"
@@ -63,6 +64,28 @@ using NUnit.Framework;
 using static NUnitTestRunner;
 
 // %%
+public static class EventTrigger
+{
+    public static readonly TimeSpan Cooldown = TimeSpan.FromSeconds(1);
+    public static DateTime LastTriggeredAt = DateTime.MinValue;
+
+    public static bool CanTrigger()
+    {
+        return DateTime.Now >= LastTriggeredAt + Cooldown;
+    }
+
+    public static bool Trigger()
+    {
+        DateTime currentTime = DateTime.Now;
+        DateTime nextAllowed = LastTriggeredAt + Cooldown;
+        Console.WriteLine($"  Current time:       {currentTime:yyyy-MM-dd HH:mm:ss}");
+        Console.WriteLine($"  Triggering allowed: {nextAllowed:yyyy-MM-dd HH:mm:ss}");
+        if (!CanTrigger())
+            return false;
+        LastTriggeredAt = currentTime;
+        return true;
+    }
+}
 
 // %%
 
