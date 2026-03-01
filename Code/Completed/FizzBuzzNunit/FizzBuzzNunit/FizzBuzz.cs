@@ -1,4 +1,4 @@
-namespace FizzBuzzNunit;
+namespace FizzBuzzNUnit;
 
 using System;
 using System.Collections.Generic;

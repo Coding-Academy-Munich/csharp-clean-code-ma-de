@@ -71,7 +71,7 @@
 // # Der Code-Ordner
 //
 // - `StarterKits`: Projekt-Gerüste für größere Workshops
-//   - Haben ein `Sk`-Suffix im Namen (z.B. `FizzBuzzNunitSk`)
+//   - Haben ein `Sk`-Suffix im Namen (z.B. `FizzBuzzNUnitSk`)
 // - `Completed`: Fertige Projekte und Musterlösungen
 //   - Zu jedem StarterKit gibt es ein fertiges Projekt
 // - Projekte sind .NET-Solutions (`.sln` + `.csproj`)

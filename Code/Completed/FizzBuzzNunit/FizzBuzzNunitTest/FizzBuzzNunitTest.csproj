@@ -16,6 +16,6 @@
         <Using Include="NUnit.Framework"/>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\FizzBuzzNunit\FizzBuzzNunit.csproj" />
+      <ProjectReference Include="..\FizzBuzzNUnit\FizzBuzzNUnit.csproj" />
     </ItemGroup>
 </Project>

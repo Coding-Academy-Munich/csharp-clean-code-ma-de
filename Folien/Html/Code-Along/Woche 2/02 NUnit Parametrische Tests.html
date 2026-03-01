@@ -13392,12 +13392,13 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=f67c6168316d6c95">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=de345f6df9a918aa">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -13460,12 +13461,40 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=8d5c5c71d3a78e95">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=0b128fbadeb791af">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+<div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV1</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2004</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2001</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2002</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2003</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[Test]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">1900</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -13494,32 +13523,37 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_start celltag_subslide" id="cell-id=a3f334b8ff56bc5f">
+<div class="cell border-box-sizing code_cell rendered celltag_start celltag_subslide" id="cell-id=acacd07e512e2050">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV2</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV2</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2004</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2001</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2002</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2003</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">1900</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -13551,12 +13585,30 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=471baac38d4b581c">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=9454ae4827e3c531">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+<div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV3</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[TestCase(2001)]</span>
+<span class="w">    </span><span class="na">[TestCase(2002)]</span>
+<span class="w">    </span><span class="na">[TestCase(2003)]</span>
+<span class="w">    </span><span class="na">[TestCase(1900)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NonLeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="na">[TestCase(2004)]</span>
+<span class="w">    </span><span class="na">[TestCase(2000)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">LeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -13584,12 +13636,26 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=084281273f0b6e74">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=b902ad2c9ca8c4d0">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+<div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV4</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="na">[TestCase(2004, true)]</span>
+<span class="w">    </span><span class="na">[TestCase(2008, true)]</span>
+<span class="w">    </span><span class="na">[TestCase(2000, true)]</span>
+<span class="w">    </span><span class="na">[TestCase(2001, false)]</span>
+<span class="w">    </span><span class="na">[TestCase(2002, false)]</span>
+<span class="w">    </span><span class="na">[TestCase(2003, false)]</span>
+<span class="w">    </span><span class="na">[TestCase(1900, false)]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -13642,14 +13708,16 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=32e0be096c082e2a">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=78966778dd1d990e">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV5</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV5</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2004</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
@@ -13660,10 +13728,22 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCaseSource(nameof(LeapYearData))]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=9c36c976e5f9a7ad">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -13680,14 +13760,16 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=8c66e5a860914189">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=d8406c871e23d0ad">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV6</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">TestCaseData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV6</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">TestCaseData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2004</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"2004 is a leap year (divisible by 4)"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2000</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
@@ -13699,10 +13781,22 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCaseSource(nameof(LeapYearData))]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYearFromSource</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYearFromSource</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=1bedc27c8ff865d2">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
 </pre></div>
 </div>
 </div>
@@ -13720,17 +13814,21 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=105beeb14515ce87">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4c319202c07be521">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPrime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPrime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -13741,7 +13839,7 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=931840a885a524f9">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=785599e4d559acb7">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13763,12 +13861,13 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=576e9af9679f3a46">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=2e7d1fa0c0ec8292">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPalindrome</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPalindrome</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">Reverse</span><span class="p">().</span><span class="n">ToArray</span><span class="p">()));</span>
 <span class="p">}</span>
 </pre></div>
@@ -13776,7 +13875,7 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=2fe68ade359da252">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=ed8c5ef2a0dd7314">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13798,12 +13897,13 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3de77fb591bc322c">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1b91273f31a3b9c0">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ContainsDigit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ContainsDigit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="n">digit</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -13811,7 +13911,7 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=e5efe5ad50f86055">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=7bb0c76c96aeca66">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13833,14 +13933,16 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1db8c6e37883681f">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=14cd0c4f9cfc407e">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SubstringFollowing</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SubstringFollowing</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">prefix</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
@@ -13850,7 +13952,7 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=6dec625b937e6a99">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=bb754bf6a87d0aa2">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">

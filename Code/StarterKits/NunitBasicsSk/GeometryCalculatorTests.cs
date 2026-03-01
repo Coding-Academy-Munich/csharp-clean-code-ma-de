@@ -1,4 +1,4 @@
-namespace NunitBasicsSk;
+namespace NUnitBasicsSk;
 
 // ReSharper disable once RedundantUsingDirective
 using static GeometryCalculator;

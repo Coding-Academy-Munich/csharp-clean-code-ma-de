@@ -1,4 +1,4 @@
-namespace RecipesNunitSk;
+namespace RecipesNUnitSk;
 
 [TestFixture]
 public class ManyTest

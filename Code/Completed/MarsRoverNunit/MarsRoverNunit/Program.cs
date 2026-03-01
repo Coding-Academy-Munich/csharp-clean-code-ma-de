@@ -1,4 +1,4 @@
-using MarsRoverNunit;
+using MarsRoverNUnit;
 
 Grid grid = new(10, 10);
 Rover rover = new(grid);

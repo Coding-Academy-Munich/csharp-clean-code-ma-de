@@ -1,13 +1,13 @@
-namespace MarsRoverNunitSkTest;
+namespace MarsRoverNUnitSkTest;
 
-using MarsRoverNunitSk;
+using MarsRoverNUnitSk;
 
 [TestFixture]
-public class MarsRoverNunitSkTests
+public class MarsRoverNUnitSkTests
 {
     [Test]
     public void Test_Message()
     {
-        Assert.That(MarsRoverNunitSk.Message, Is.EqualTo("Mars Rover Starter Kit"));
+        Assert.That(MarsRoverNUnitSk.Message, Is.EqualTo("Mars Rover Starter Kit"));
     }
 }

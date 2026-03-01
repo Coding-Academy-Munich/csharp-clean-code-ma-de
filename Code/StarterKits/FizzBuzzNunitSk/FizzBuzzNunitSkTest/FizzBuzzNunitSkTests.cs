@@ -1,11 +1,11 @@
-namespace FizzBuzzNunitSkTest;
+namespace FizzBuzzNUnitSkTest;
 
 [TestFixture]
-public class FizzBuzzNunitSkTests
+public class FizzBuzzNUnitSkTests
 {
     [Test]
     public void Test_Message()
     {
-        Assert.That(FizzBuzzNunitSk.FizzBuzzNunitSk.Message, Is.EqualTo("FizzBuzz Starter Kit"));
+        Assert.That(FizzBuzzNUnitSk.FizzBuzzNUnitSk.Message, Is.EqualTo("FizzBuzz Starter Kit"));
     }
 }

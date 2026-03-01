@@ -1,8 +1,8 @@
 // ReSharper disable RedundantArgumentDefaultValue
 
-namespace MarsRoverNunitTest;
+namespace MarsRoverNUnitTest;
 
-using MarsRoverNunit;
+using MarsRoverNUnit;
 
 [TestFixture]
 public class MarsRoverTests

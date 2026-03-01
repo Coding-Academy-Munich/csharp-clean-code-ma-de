@@ -1,4 +1,4 @@
-namespace NunitBasics;
+namespace NUnitBasics;
 
 using static GeometryCalculator;
 

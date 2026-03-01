@@ -1,4 +1,4 @@
-using static FizzBuzzNunit.FizzBuzz;
+using static FizzBuzzNUnit.FizzBuzz;
 
 WriteSeparator();
 PrintFizzBuzz(16);

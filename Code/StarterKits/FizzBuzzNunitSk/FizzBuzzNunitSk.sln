@@ -1,8 +1,8 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzNunitSk", "FizzBuzzNunitSk\FizzBuzzNunitSk.csproj", "{D3E4F5A6-B7C8-9012-DEFA-234567890123}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzNUnitSk", "FizzBuzzNUnitSk\FizzBuzzNUnitSk.csproj", "{D3E4F5A6-B7C8-9012-DEFA-234567890123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzNunitSkTest", "FizzBuzzNunitSkTest\FizzBuzzNunitSkTest.csproj", "{E4F5A6B7-C8D9-0123-EFAB-345678901234}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzzNUnitSkTest", "FizzBuzzNUnitSkTest\FizzBuzzNUnitSkTest.csproj", "{E4F5A6B7-C8D9-0123-EFAB-345678901234}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

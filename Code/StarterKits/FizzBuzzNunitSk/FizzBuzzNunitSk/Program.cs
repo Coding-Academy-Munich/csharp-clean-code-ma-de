@@ -1,6 +1,6 @@
-namespace FizzBuzzNunitSk;
+namespace FizzBuzzNUnitSk;
 
-public static class FizzBuzzNunitSk
+public static class FizzBuzzNUnitSk
 {
     public const string Message = "FizzBuzz Starter Kit";
 

@@ -14,8 +14,8 @@
 //
 // ## Ein einfacher Test mit NUnit im IDE
 //
-// - Starter-Kit: `Code/StarterKits/NunitBasicsSk/`
-// - Vollständige Implementierung: `Code/Completed/NunitBasics/`
+// - Starter-Kit: `Code/StarterKits/NUnitBasicsSk/`
+// - Vollständige Implementierung: `Code/Completed/NUnitBasics/`
 
 // %% [markdown]
 //

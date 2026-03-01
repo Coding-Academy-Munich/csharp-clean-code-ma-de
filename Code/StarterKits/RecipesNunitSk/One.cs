@@ -1,4 +1,4 @@
-namespace RecipesNunitSk;
+namespace RecipesNUnitSk;
 
 public class One(string aaa, List<string> bbb_, string ccc, int ddd = -1)
 {

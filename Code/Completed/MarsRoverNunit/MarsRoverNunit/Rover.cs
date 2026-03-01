@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace MarsRoverNunit;
+namespace MarsRoverNUnit;
 
 /// <summary>
 /// The position of the Rover on the grid.

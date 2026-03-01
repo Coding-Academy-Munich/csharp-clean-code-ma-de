@@ -1,4 +1,4 @@
-namespace RecipesNunit;
+namespace RecipesNUnit;
 
 public class RecipeBook
 {

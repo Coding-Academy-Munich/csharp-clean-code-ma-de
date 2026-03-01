@@ -35,10 +35,11 @@ public class NUnitTestRunner
             .Where(m => m.GetCustomAttributes(typeof(TearDownAttribute), true).Any())
             .ToList();
 
-        // Find test methods: [Test] or [TestCase]
+        // Find test methods: [Test], [TestCase], or [TestCaseSource]
         var testMethods = testClassType.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly)
             .Where(m => m.GetCustomAttributes(typeof(TestAttribute), true).Any() ||
-                        m.GetCustomAttributes(typeof(TestCaseAttribute), true).Any())
+                        m.GetCustomAttributes(typeof(TestCaseAttribute), true).Any() ||
+                        m.GetCustomAttributes(typeof(TestCaseSourceAttribute), true).Any())
             .ToList();
 
         // Create a shared instance for [OneTimeSetUp] / [OneTimeTearDown]
@@ -74,6 +75,91 @@ public class NUnitTestRunner
                     catch (TargetInvocationException ex)
                     {
                         Console.WriteLine($"[FAIL] {method.Name}({FormatParameters(testCase.Arguments)}): {ex.InnerException?.Message ?? ex.Message}");
+                        failedTests++;
+                    }
+                    finally
+                    {
+                        foreach (var tearDown in tearDownMethods)
+                        {
+                            try { tearDown.Invoke(testInstance, null); } catch { }
+                        }
+                        if (testInstance is IDisposable disposable) disposable.Dispose();
+                    }
+                }
+            }
+            else if (method.GetCustomAttributes(typeof(TestCaseSourceAttribute), true).FirstOrDefault()
+                     is TestCaseSourceAttribute sourceAttr)
+            {
+                // Handle [TestCaseSource] methods with external data
+                string sourceName = sourceAttr.SourceName;
+                Type sourceType = sourceAttr.SourceType ?? testClassType;
+
+                var sourceMember = (MemberInfo)sourceType.GetMethod(sourceName,
+                        BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy)
+                    ?? sourceType.GetProperty(sourceName,
+                        BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.FlattenHierarchy);
+
+                System.Collections.IEnumerable testDataItems;
+                if (sourceMember is MethodInfo sourceMethod)
+                    testDataItems = (System.Collections.IEnumerable)sourceMethod.Invoke(null, null);
+                else if (sourceMember is PropertyInfo sourceProp)
+                    testDataItems = (System.Collections.IEnumerable)sourceProp.GetValue(null);
+                else
+                    throw new InvalidOperationException(
+                        $"Could not find static method or property '{sourceName}' on type '{sourceType.Name}'");
+
+                foreach (var dataItem in testDataItems)
+                {
+                    totalTests++;
+                    var testInstance = Activator.CreateInstance(testClassType);
+                    CopyOneTimeSetUpState(sharedInstance, testInstance, testClassType);
+
+                    try
+                    {
+                        foreach (var setUp in setUpMethods) setUp.Invoke(testInstance, null);
+
+                        if (dataItem is TestCaseData testCaseData)
+                        {
+                            object result = method.Invoke(testInstance, testCaseData.Arguments);
+                            if (testCaseData.HasExpectedResult)
+                            {
+                                Assert.That(result, Is.EqualTo(testCaseData.ExpectedResult));
+                            }
+                            string testName = testCaseData.TestName
+                                ?? $"{method.Name}({FormatParameters(testCaseData.Arguments)})";
+                            Console.WriteLine($"[PASS] {testName}");
+                        }
+                        else if (dataItem is object[] argsArray)
+                        {
+                            method.Invoke(testInstance, argsArray);
+                            Console.WriteLine($"[PASS] {method.Name}({FormatParameters(argsArray)})");
+                        }
+                        else
+                        {
+                            var args = new object[] { dataItem };
+                            method.Invoke(testInstance, args);
+                            Console.WriteLine($"[PASS] {method.Name}({FormatParameters(args)})");
+                        }
+                        passedTests++;
+                    }
+                    catch (TargetInvocationException ex)
+                    {
+                        string testName = dataItem is TestCaseData tcd
+                            ? (tcd.TestName ?? $"{method.Name}({FormatParameters(tcd.Arguments)})")
+                            : dataItem is object[] arr
+                                ? $"{method.Name}({FormatParameters(arr)})"
+                                : $"{method.Name}({dataItem})";
+                        Console.WriteLine($"[FAIL] {testName}: {ex.InnerException?.Message ?? ex.Message}");
+                        failedTests++;
+                    }
+                    catch (Exception ex)
+                    {
+                        string testName = dataItem is TestCaseData tcd
+                            ? (tcd.TestName ?? $"{method.Name}({FormatParameters(tcd.Arguments)})")
+                            : dataItem is object[] arr
+                                ? $"{method.Name}({FormatParameters(arr)})"
+                                : $"{method.Name}({dataItem})";
+                        Console.WriteLine($"[FAIL] {testName}: {ex.Message}");
                         failedTests++;
                     }
                     finally

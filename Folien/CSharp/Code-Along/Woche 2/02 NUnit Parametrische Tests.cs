@@ -21,7 +21,8 @@
 //   - Aber durch 400 teilbar: **doch** Schaltjahr
 
 // %%
-static bool IsLeapYear(int year) {
+static bool IsLeapYear(int year)
+{
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
@@ -46,6 +47,35 @@ using static NUnitTestRunner;
 // - Viel syntaktischer Overhead
 
 // %%
+[TestFixture]
+public class LeapYearTestsV1
+{
+    [Test]
+    public void YearDivisibleBy4ButNot100IsLeapYear()
+    {
+        Assert.That(IsLeapYear(2004), Is.True);
+    }
+
+    [Test]
+    public void YearDivisibleBy400IsLeapYear()
+    {
+        Assert.That(IsLeapYear(2000), Is.True);
+    }
+
+    [Test]
+    public void YearsNotDivisibleBy4AreNotLeapYears()
+    {
+        Assert.That(IsLeapYear(2001), Is.False);
+        Assert.That(IsLeapYear(2002), Is.False);
+        Assert.That(IsLeapYear(2003), Is.False);
+    }
+
+    [Test]
+    public void YearDivisibleBy100ButNot400IsNotLeapYear()
+    {
+        Assert.That(IsLeapYear(1900), Is.False);
+    }
+}
 
 // %%
 
@@ -60,26 +90,31 @@ using static NUnitTestRunner;
 
 // %%
 [TestFixture]
-public class LeapYearTestsV2 {
+public class LeapYearTestsV2
+{
     [Test]
-    public void YearDivisibleBy4ButNot100IsLeapYear() {
+    public void YearDivisibleBy4ButNot100IsLeapYear()
+    {
         Assert.That(IsLeapYear(2004), Is.True);
     }
 
     [Test]
-    public void YearDivisibleBy400IsLeapYear() {
+    public void YearDivisibleBy400IsLeapYear()
+    {
         Assert.That(IsLeapYear(2000), Is.True);
     }
 
     [Test]
-    public void YearsNotDivisibleBy4AreNotLeapYears() {
+    public void YearsNotDivisibleBy4AreNotLeapYears()
+    {
         Assert.That(IsLeapYear(2001), Is.False);
         Assert.That(IsLeapYear(2002), Is.False);
         Assert.That(IsLeapYear(2003), Is.False);
     }
 
     [Test]
-    public void YearDivisibleBy100ButNot400IsNotLeapYear() {
+    public void YearDivisibleBy100ButNot400IsNotLeapYear()
+    {
         Assert.That(IsLeapYear(1900), Is.False);
     }
 }
@@ -96,6 +131,25 @@ public class LeapYearTestsV2 {
 // - Nachteil: Weniger informative Testnamen
 
 // %%
+[TestFixture]
+public class LeapYearTestsV3
+{
+    [TestCase(2001)]
+    [TestCase(2002)]
+    [TestCase(2003)]
+    [TestCase(1900)]
+    public void NonLeapYears(int year)
+    {
+        Assert.That(IsLeapYear(year), Is.False);
+    }
+
+    [TestCase(2004)]
+    [TestCase(2000)]
+    public void LeapYears(int year)
+    {
+        Assert.That(IsLeapYear(year), Is.True);
+    }
+}
 
 // %%
 
@@ -108,6 +162,21 @@ public class LeapYearTestsV2 {
 // - Ermoeglicht Kombination von Eingabe und erwartetem Ergebnis
 
 // %%
+[TestFixture]
+public class LeapYearTestsV4
+{
+    [TestCase(2004, true)]
+    [TestCase(2008, true)]
+    [TestCase(2000, true)]
+    [TestCase(2001, false)]
+    [TestCase(2002, false)]
+    [TestCase(2003, false)]
+    [TestCase(1900, false)]
+    public void IsLeapYearReturnsCorrectResult(int year, bool expected)
+    {
+        Assert.That(IsLeapYear(year), Is.EqualTo(expected));
+    }
+}
 
 // %%
 
@@ -135,8 +204,10 @@ using System.Collections.Generic;
 
 // %%
 [TestFixture]
-public class LeapYearTestsV5 {
-    private static IEnumerable<object[]> LeapYearData() {
+public class LeapYearTestsV5
+{
+    private static IEnumerable<object[]> LeapYearData()
+    {
         yield return new object[] { 2004, true };
         yield return new object[] { 2008, true };
         yield return new object[] { 2000, true };
@@ -147,10 +218,13 @@ public class LeapYearTestsV5 {
     }
 
     [TestCaseSource(nameof(LeapYearData))]
-    public void IsLeapYearReturnsCorrectResult(int year, bool expected) {
+    public void IsLeapYearReturnsCorrectResult(int year, bool expected)
+    {
         Assert.That(IsLeapYear(year), Is.EqualTo(expected));
     }
 }
+
+// %%
 
 // %% [markdown]
 //
@@ -162,8 +236,10 @@ public class LeapYearTestsV5 {
 
 // %%
 [TestFixture]
-public class LeapYearTestsV6 {
-    private static IEnumerable<TestCaseData> LeapYearData() {
+public class LeapYearTestsV6
+{
+    private static IEnumerable<TestCaseData> LeapYearData()
+    {
         yield return new TestCaseData(2004).Returns(true)
             .SetName("2004 is a leap year (divisible by 4)");
         yield return new TestCaseData(2000).Returns(true)
@@ -175,10 +251,13 @@ public class LeapYearTestsV6 {
     }
 
     [TestCaseSource(nameof(LeapYearData))]
-    public bool IsLeapYearFromSource(int year) {
+    public bool IsLeapYearFromSource(int year)
+    {
         return IsLeapYear(year);
     }
 }
+
+// %%
 
 // %% [markdown]
 //
@@ -190,12 +269,16 @@ public class LeapYearTestsV6 {
 //   fuer Assertions.
 
 // %%
-static bool IsPrime(int n) {
-    if (n <= 1) {
+static bool IsPrime(int n)
+{
+    if (n <= 1)
+    {
         return false;
     }
-    for (int i = 2; i <= Math.Sqrt(n); i++) {
-        if (n % i == 0) {
+    for (int i = 2; i <= Math.Sqrt(n); i++)
+    {
+        if (n % i == 0)
+        {
             return false;
         }
     }
@@ -208,7 +291,8 @@ static bool IsPrime(int n) {
 RunTests<PrimeTests>();
 
 // %%
-static bool IsPalindrome(string s) {
+static bool IsPalindrome(string s)
+{
     return s.Equals(new string(s.Reverse().ToArray()));
 }
 
@@ -218,7 +302,8 @@ static bool IsPalindrome(string s) {
 RunTests<PalindromeTests>();
 
 // %%
-static bool ContainsDigit(int n, int digit) {
+static bool ContainsDigit(int n, int digit)
+{
     return n.ToString().Contains(digit.ToString());
 }
 
@@ -228,9 +313,11 @@ static bool ContainsDigit(int n, int digit) {
 RunTests<ContainsDigitTests>();
 
 // %%
-static string SubstringFollowing(string s, string prefix) {
+static string SubstringFollowing(string s, string prefix)
+{
     int index = s.IndexOf(prefix);
-    if (index == -1) {
+    if (index == -1)
+    {
         return s;
     }
     return s.Substring(index + prefix.Length);

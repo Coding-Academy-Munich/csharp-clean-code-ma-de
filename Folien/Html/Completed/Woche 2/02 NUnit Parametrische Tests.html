@@ -13392,12 +13392,13 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=f67c6168316d6c95">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=de345f6df9a918aa">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">year</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">400</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -13410,109 +13411,211 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-65956.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
-        The below script needs to be able to find the current output cell; this is an easy method to get it.
+<div id="dotnet-interactive-this-cell-72612.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+
+        The below script needs to be able to find the current output cell; this is an easy method to get it.
+
     </div>
-<script type="text/javascript">
-async function probeAddresses(probingAddresses) {
-    function timeout(ms, promise) {
-        return new Promise(function (resolve, reject) {
-            setTimeout(function () {
-                reject(new Error('timeout'))
-            }, ms)
-            promise.then(resolve, reject)
-        })
-    }
-
-    if (Array.isArray(probingAddresses)) {
-        for (let i = 0; i < probingAddresses.length; i++) {
-
-            let rootUrl = probingAddresses[i];
-
-            if (!rootUrl.endsWith('/')) {
-                rootUrl = `${rootUrl}/`;
-            }
-
-            try {
-                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
-                    method: 'POST',
-                    cache: 'no-cache',
-                    mode: 'cors',
-                    timeout: 1000,
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    body: probingAddresses[i]
-                }));
-
-                if (response.status == 200) {
-                    return rootUrl;
-                }
-            }
-            catch (e) { }
-        }
-    }
-}
-
-function loadDotnetInteractiveApi() {
-    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.30.96.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
-        .then((root) => {
-        // use probing to find host url and api resources
-        // load interactive helpers and language services
-        let dotnetInteractiveRequire = require.config({
-        context: '65956.Microsoft.DotNet.Interactive.Http.HttpPort',
-                paths:
-            {
-                'dotnet-interactive': `${root}resources`
-                }
-        }) || require;
-
-            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
-
-            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
-                let paths = {};
-                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
-                
-                let internalRequire = require.config({
-                    context: extensionCacheBuster,
-                    paths: paths,
-                    urlArgs: `cacheBuster=${extensionCacheBuster}`
-                    }) || require;
-
-                return internalRequire
-            };
-        
-            dotnetInteractiveRequire([
-                    'dotnet-interactive/dotnet-interactive'
-                ],
-                function (dotnet) {
-                    dotnet.init(window);
-                },
-                function (error) {
-                    console.log(error);
-                }
-            );
-        })
-        .catch(error => {console.log(error);});
-    }
-
-// ensure `require` is available globally
-if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
-    let require_script = document.createElement('script');
-    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
-    require_script.setAttribute('type', 'text/javascript');
-    
-    
-    require_script.onload = function() {
-        loadDotnetInteractiveApi();
-    };
-
-    document.getElementsByTagName('head')[0].appendChild(require_script);
-}
-else {
-    loadDotnetInteractiveApi();
-}
-
+<script type="text/javascript">
+
+async function probeAddresses(probingAddresses) {
+
+    function timeout(ms, promise) {
+
+        return new Promise(function (resolve, reject) {
+
+            setTimeout(function () {
+
+                reject(new Error('timeout'))
+
+            }, ms)
+
+            promise.then(resolve, reject)
+
+        })
+
+    }
+
+
+
+    if (Array.isArray(probingAddresses)) {
+
+        for (let i = 0; i < probingAddresses.length; i++) {
+
+
+
+            let rootUrl = probingAddresses[i];
+
+
+
+            if (!rootUrl.endsWith('/')) {
+
+                rootUrl = `${rootUrl}/`;
+
+            }
+
+
+
+            try {
+
+                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
+
+                    method: 'POST',
+
+                    cache: 'no-cache',
+
+                    mode: 'cors',
+
+                    timeout: 1000,
+
+                    headers: {
+
+                        'Content-Type': 'text/plain'
+
+                    },
+
+                    body: probingAddresses[i]
+
+                }));
+
+
+
+                if (response.status == 200) {
+
+                    return rootUrl;
+
+                }
+
+            }
+
+            catch (e) { }
+
+        }
+
+    }
+
+}
+
+
+
+function loadDotnetInteractiveApi() {
+
+    probeAddresses(["http://192.168.178.24:2048/", "http://169.254.203.116:2048/", "http://169.254.194.28:2048/", "http://172.16.0.1:2048/", "http://172.30.96.1:2048/", "http://172.23.176.1:2048/", "http://127.0.0.1:2048/"])
+
+        .then((root) => {
+
+        // use probing to find host url and api resources
+
+        // load interactive helpers and language services
+
+        let dotnetInteractiveRequire = require.config({
+
+        context: '72612.Microsoft.DotNet.Interactive.Http.HttpPort',
+
+                paths:
+
+            {
+
+                'dotnet-interactive': `${root}resources`
+
+                }
+
+        }) || require;
+
+
+
+            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
+
+
+
+            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
+
+                let paths = {};
+
+                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
+
+                
+
+                let internalRequire = require.config({
+
+                    context: extensionCacheBuster,
+
+                    paths: paths,
+
+                    urlArgs: `cacheBuster=${extensionCacheBuster}`
+
+                    }) || require;
+
+
+
+                return internalRequire
+
+            };
+
+        
+
+            dotnetInteractiveRequire([
+
+                    'dotnet-interactive/dotnet-interactive'
+
+                ],
+
+                function (dotnet) {
+
+                    dotnet.init(window);
+
+                },
+
+                function (error) {
+
+                    console.log(error);
+
+                }
+
+            );
+
+        })
+
+        .catch(error => {console.log(error);});
+
+    }
+
+
+
+// ensure `require` is available globally
+
+if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
+
+    let require_script = document.createElement('script');
+
+    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
+
+    require_script.setAttribute('type', 'text/javascript');
+
+    
+
+    
+
+    require_script.onload = function() {
+
+        loadDotnetInteractiveApi();
+
+    };
+
+
+
+    document.getElementsByTagName('head')[0].appendChild(require_script);
+
+}
+
+else {
+
+    loadDotnetInteractiveApi();
+
+}
+
+
+
     </script>
 </div></div>
 </div>
@@ -13582,32 +13685,37 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=8d5c5c71d3a78e95">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=0b128fbadeb791af">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV1</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV1</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2004</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2000</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2001</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2002</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">2003</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[Test]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="mi">1900</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -13631,35 +13739,40 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy400IsLeapYear
+<pre>[PASS] YearDivisibleBy400IsLeapYear
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear
+<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 4, Passed: 4, Failed: 0
+<pre>Total tests: 4, Passed: 4, Failed: 0
+
 </pre>
 </div>
 </div>
@@ -13678,34 +13791,39 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=83155b1320e516ba">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=a16669b0d5f18203">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV2</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV2</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase(2004)]</span>
 <span class="w">    </span><span class="na">[TestCase(2008)]</span>
 <span class="w">    </span><span class="na">[TestCase(2012)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy4ButNot100IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCase(2000)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy400IsLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCase(2001)]</span>
 <span class="w">    </span><span class="na">[TestCase(2002)]</span>
 <span class="w">    </span><span class="na">[TestCase(2003)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearsNotDivisibleBy4AreNotLeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCase(1900)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">YearDivisibleBy100ButNot400IsNotLeapYear</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -13729,63 +13847,72 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2004)
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2004)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2008)
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2008)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2012)
+<pre>[PASS] YearDivisibleBy4ButNot100IsLeapYear(2012)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy400IsLeapYear(2000)
+<pre>[PASS] YearDivisibleBy400IsLeapYear(2000)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2001)
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2001)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2002)
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2002)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2003)
+<pre>[PASS] YearsNotDivisibleBy4AreNotLeapYears(2003)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear(1900)
+<pre>[PASS] YearDivisibleBy100ButNot400IsNotLeapYear(1900)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 8, Passed: 8, Failed: 0
+<pre>Total tests: 8, Passed: 8, Failed: 0
+
 </pre>
 </div>
 </div>
@@ -13804,24 +13931,27 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=471baac38d4b581c">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=9454ae4827e3c531">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV3</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV3</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase(2001)]</span>
 <span class="w">    </span><span class="na">[TestCase(2002)]</span>
 <span class="w">    </span><span class="na">[TestCase(2003)]</span>
 <span class="w">    </span><span class="na">[TestCase(1900)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NonLeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">NonLeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCase(2004)]</span>
 <span class="w">    </span><span class="na">[TestCase(2000)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">LeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">LeapYears</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -13845,49 +13975,56 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(2001)
+<pre>[PASS] NonLeapYears(2001)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(2002)
+<pre>[PASS] NonLeapYears(2002)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(2003)
+<pre>[PASS] NonLeapYears(2003)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] NonLeapYears(1900)
+<pre>[PASS] NonLeapYears(1900)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] LeapYears(2004)
+<pre>[PASS] LeapYears(2004)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] LeapYears(2000)
+<pre>[PASS] LeapYears(2000)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 6, Passed: 6, Failed: 0
+<pre>Total tests: 6, Passed: 6, Failed: 0
+
 </pre>
 </div>
 </div>
@@ -13905,13 +14042,14 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=084281273f0b6e74">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=b902ad2c9ca8c4d0">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV4</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV4</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase(2004, true)]</span>
 <span class="w">    </span><span class="na">[TestCase(2008, true)]</span>
 <span class="w">    </span><span class="na">[TestCase(2000, true)]</span>
@@ -13919,7 +14057,8 @@ else {
 <span class="w">    </span><span class="na">[TestCase(2002, false)]</span>
 <span class="w">    </span><span class="na">[TestCase(2003, false)]</span>
 <span class="w">    </span><span class="na">[TestCase(1900, false)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -13943,56 +14082,64 @@ else {
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2004, True)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2004, True)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2008, True)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2008, True)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2000, True)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2000, True)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2001, False)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2001, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2002, False)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2002, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(2003, False)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2003, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] IsLeapYearReturnsCorrectResult(1900, False)
+<pre>[PASS] IsLeapYearReturnsCorrectResult(1900, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 7, Passed: 7, Failed: 0
+<pre>Total tests: 7, Passed: 7, Failed: 0
+
 </pre>
 </div>
 </div>
@@ -14035,14 +14182,16 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=32e0be096c082e2a">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=78966778dd1d990e">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV5</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV5</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="kt">object</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2004</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2008</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">object</span><span class="p">[]</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">2000</span><span class="p">,</span><span class="w"> </span><span class="k">true</span><span class="w"> </span><span class="p">};</span>
@@ -14053,11 +14202,91 @@ else {
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCaseSource(nameof(LeapYearData))]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">IsLeapYearReturnsCorrectResult</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=9c36c976e5f9a7ad">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">LeapYearTestsV5</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2004, True)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2008, True)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2000, True)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2001, False)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2002, False)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(2003, False)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] IsLeapYearReturnsCorrectResult(1900, False)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total tests: 7, Passed: 7, Failed: 0
+
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -14073,14 +14302,16 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=8c66e5a860914189">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=d8406c871e23d0ad">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV6</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">TestCaseData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">LeapYearTestsV6</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="n">IEnumerable</span><span class="o">&lt;</span><span class="n">TestCaseData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">LeapYearData</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2004</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
 <span class="w">            </span><span class="p">.</span><span class="n">SetName</span><span class="p">(</span><span class="s">"2004 is a leap year (divisible by 4)"</span><span class="p">);</span>
 <span class="w">        </span><span class="k">yield</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">TestCaseData</span><span class="p">(</span><span class="mi">2000</span><span class="p">).</span><span class="n">Returns</span><span class="p">(</span><span class="k">true</span><span class="p">)</span>
@@ -14092,11 +14323,67 @@ else {
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="na">[TestCaseSource(nameof(LeapYearData))]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYearFromSource</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsLeapYearFromSource</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nf">IsLeapYear</span><span class="p">(</span><span class="n">year</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=1bedc27c8ff865d2">
+<div class="input">
+<div class="prompt input_prompt">In [18]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">LeapYearTestsV6</span><span class="o">&gt;</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] 2004 is a leap year (divisible by 4)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] 2000 is a leap year (divisible by 400)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] 1900 is not a leap year (divisible by 100)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] 2001 is not a leap year (not divisible by 4)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total tests: 4, Passed: 4, Failed: 0
+
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -14113,17 +14400,21 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=105beeb14515ce87">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4c319202c07be521">
 <div class="input">
-<div class="prompt input_prompt">In [17]:</div>
+<div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPrime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPrime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">);</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
@@ -14134,13 +14425,14 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=931840a885a524f9">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=785599e4d559acb7">
 <div class="input">
-<div class="prompt input_prompt">In [18]:</div>
+<div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PrimeTests</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PrimeTests</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase(1)]</span>
 <span class="w">    </span><span class="na">[TestCase(4)]</span>
 <span class="w">    </span><span class="na">[TestCase(6)]</span>
@@ -14153,7 +14445,8 @@ fuer Assertions.</li>
 <span class="w">    </span><span class="na">[TestCase(16)]</span>
 <span class="w">    </span><span class="na">[TestCase(18)]</span>
 <span class="w">    </span><span class="na">[TestCase(20)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestNonPrimes</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestNonPrimes</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsPrime</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -14165,7 +14458,8 @@ fuer Assertions.</li>
 <span class="w">    </span><span class="na">[TestCase(13)]</span>
 <span class="w">    </span><span class="na">[TestCase(17)]</span>
 <span class="w">    </span><span class="na">[TestCase(19)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestPrimes</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestPrimes</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsPrime</span><span class="p">(</span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -14176,7 +14470,7 @@ fuer Assertions.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=131f4c0b77d778b0">
 <div class="input">
-<div class="prompt input_prompt">In [19]:</div>
+<div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">PrimeTests</span><span class="o">&gt;</span><span class="p">();</span>
@@ -14189,159 +14483,181 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(1)
+<pre>[PASS] TestNonPrimes(1)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(4)
+<pre>[PASS] TestNonPrimes(4)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(6)
+<pre>[PASS] TestNonPrimes(6)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(8)
+<pre>[PASS] TestNonPrimes(8)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(9)
+<pre>[PASS] TestNonPrimes(9)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(10)
+<pre>[PASS] TestNonPrimes(10)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(12)
+<pre>[PASS] TestNonPrimes(12)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(14)
+<pre>[PASS] TestNonPrimes(14)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(15)
+<pre>[PASS] TestNonPrimes(15)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(16)
+<pre>[PASS] TestNonPrimes(16)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(18)
+<pre>[PASS] TestNonPrimes(18)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPrimes(20)
+<pre>[PASS] TestNonPrimes(20)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(2)
+<pre>[PASS] TestPrimes(2)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(3)
+<pre>[PASS] TestPrimes(3)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(5)
+<pre>[PASS] TestPrimes(5)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(7)
+<pre>[PASS] TestPrimes(7)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(11)
+<pre>[PASS] TestPrimes(11)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(13)
+<pre>[PASS] TestPrimes(13)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(17)
+<pre>[PASS] TestPrimes(17)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPrimes(19)
+<pre>[PASS] TestPrimes(19)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 20, Passed: 20, Failed: 0
+<pre>Total tests: 20, Passed: 20, Failed: 0
+
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=576e9af9679f3a46">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=2e7d1fa0c0ec8292">
 <div class="input">
-<div class="prompt input_prompt">In [20]:</div>
+<div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPalindrome</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsPalindrome</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Equals</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="kt">string</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">Reverse</span><span class="p">().</span><span class="n">ToArray</span><span class="p">()));</span>
 <span class="p">}</span>
 </pre></div>
@@ -14349,20 +14665,22 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=2fe68ade359da252">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=ed8c5ef2a0dd7314">
 <div class="input">
-<div class="prompt input_prompt">In [21]:</div>
+<div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PalindromeTests</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PalindromeTests</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase("")]</span>
 <span class="w">    </span><span class="na">[TestCase("a")]</span>
 <span class="w">    </span><span class="na">[TestCase("aa")]</span>
 <span class="w">    </span><span class="na">[TestCase("aba")]</span>
 <span class="w">    </span><span class="na">[TestCase("abba")]</span>
 <span class="w">    </span><span class="na">[TestCase("abcba")]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestPalindromes</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestPalindromes</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsPalindrome</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">True</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 
@@ -14370,7 +14688,8 @@ fuer Assertions.</li>
 <span class="w">    </span><span class="na">[TestCase("abc")]</span>
 <span class="w">    </span><span class="na">[TestCase("abcd")]</span>
 <span class="w">    </span><span class="na">[TestCase("abcde")]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestNonPalindromes</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestNonPalindromes</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">IsPalindrome</span><span class="p">(</span><span class="n">s</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">False</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -14381,7 +14700,7 @@ fuer Assertions.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=e565d24633c87c98">
 <div class="input">
-<div class="prompt input_prompt">In [22]:</div>
+<div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">PalindromeTests</span><span class="o">&gt;</span><span class="p">();</span>
@@ -14394,89 +14713,101 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes()
+<pre>[PASS] TestPalindromes()
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(a)
+<pre>[PASS] TestPalindromes(a)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(aa)
+<pre>[PASS] TestPalindromes(aa)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(aba)
+<pre>[PASS] TestPalindromes(aba)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(abba)
+<pre>[PASS] TestPalindromes(abba)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestPalindromes(abcba)
+<pre>[PASS] TestPalindromes(abcba)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(ab)
+<pre>[PASS] TestNonPalindromes(ab)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(abc)
+<pre>[PASS] TestNonPalindromes(abc)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(abcd)
+<pre>[PASS] TestNonPalindromes(abcd)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestNonPalindromes(abcde)
+<pre>[PASS] TestNonPalindromes(abcde)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 10, Passed: 10, Failed: 0
+<pre>Total tests: 10, Passed: 10, Failed: 0
+
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=3de77fb591bc322c">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1b91273f31a3b9c0">
 <div class="input">
-<div class="prompt input_prompt">In [23]:</div>
+<div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ContainsDigit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">ContainsDigit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="p">.</span><span class="n">ToString</span><span class="p">().</span><span class="n">Contains</span><span class="p">(</span><span class="n">digit</span><span class="p">.</span><span class="n">ToString</span><span class="p">());</span>
 <span class="p">}</span>
 </pre></div>
@@ -14484,20 +14815,22 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=e5efe5ad50f86055">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=7bb0c76c96aeca66">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ContainsDigitTests</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ContainsDigitTests</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase(123, 1, true)]</span>
 <span class="w">    </span><span class="na">[TestCase(123, 2, true)]</span>
 <span class="w">    </span><span class="na">[TestCase(123, 3, true)]</span>
 <span class="w">    </span><span class="na">[TestCase(123, 4, false)]</span>
 <span class="w">    </span><span class="na">[TestCase(123, 5, false)]</span>
 <span class="w">    </span><span class="na">[TestCase(123, 6, false)]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestContainsDigit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestContainsDigit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">digit</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">ContainsDigit</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">digit</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -14508,7 +14841,7 @@ fuer Assertions.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=f4ddc2188d68766f">
 <div class="input">
-<div class="prompt input_prompt">In [25]:</div>
+<div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">ContainsDigitTests</span><span class="o">&gt;</span><span class="p">();</span>
@@ -14521,63 +14854,72 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 1, True)
+<pre>[PASS] TestContainsDigit(123, 1, True)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 2, True)
+<pre>[PASS] TestContainsDigit(123, 2, True)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 3, True)
+<pre>[PASS] TestContainsDigit(123, 3, True)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 4, False)
+<pre>[PASS] TestContainsDigit(123, 4, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 5, False)
+<pre>[PASS] TestContainsDigit(123, 5, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestContainsDigit(123, 6, False)
+<pre>[PASS] TestContainsDigit(123, 6, False)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 6, Passed: 6, Failed: 0
+<pre>Total tests: 6, Passed: 6, Failed: 0
+
 </pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=1db8c6e37883681f">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=14cd0c4f9cfc407e">
 <div class="input">
-<div class="prompt input_prompt">In [26]:</div>
+<div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SubstringFollowing</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">SubstringFollowing</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">)</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">IndexOf</span><span class="p">(</span><span class="n">prefix</span><span class="p">);</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">prefix</span><span class="p">.</span><span class="n">Length</span><span class="p">);</span>
@@ -14587,19 +14929,23 @@ fuer Assertions.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=6dec625b937e6a99">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=bb754bf6a87d0aa2">
 <div class="input">
-<div class="prompt input_prompt">In [27]:</div>
+<div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="na">[TestFixture]</span>
-<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SubstringFollowingTests</span><span class="w"> </span><span class="p">{</span>
+<span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SubstringFollowingTests</span>
+<span class="p">{</span>
 <span class="w">    </span><span class="na">[TestCase("Hello", "He", "llo")]</span>
 <span class="w">    </span><span class="na">[TestCase("Hello", "Hel", "lo")]</span>
 <span class="w">    </span><span class="na">[TestCase("Hello", "Hello", "")]</span>
-<span class="w">    </span><span class="na">[TestCase("Hello", "ello", "Hello")]</span>
-<span class="w">    </span><span class="na">[TestCase("Hello", "o", "Hello")]</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestSubstringFollowing</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">[TestCase("Hello", "el", "lo")]</span>
+<span class="w">    </span><span class="na">[TestCase("Hello", "ello", "")]</span>
+<span class="w">    </span><span class="na">[TestCase("Hello", "o", "")]</span>
+<span class="w">    </span><span class="na">[TestCase("Hello", "xyz", "Hello")]</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">TestSubstringFollowing</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">prefix</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">SubstringFollowing</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">prefix</span><span class="p">),</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="n">expected</span><span class="p">));</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -14610,7 +14956,7 @@ fuer Assertions.</li>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=dbeb54add8e94a59">
 <div class="input">
-<div class="prompt input_prompt">In [28]:</div>
+<div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">RunTests</span><span class="o">&lt;</span><span class="n">SubstringFollowingTests</span><span class="o">&gt;</span><span class="p">();</span>
@@ -14623,66 +14969,64 @@ fuer Assertions.</li>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestSubstringFollowing(Hello, He, llo)
+<pre>[PASS] TestSubstringFollowing(Hello, He, llo)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestSubstringFollowing(Hello, Hel, lo)
+<pre>[PASS] TestSubstringFollowing(Hello, Hel, lo)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[PASS] TestSubstringFollowing(Hello, Hello, )
+<pre>[PASS] TestSubstringFollowing(Hello, Hello, )
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[FAIL] TestSubstringFollowing(Hello, ello, Hello):   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
-  Expected string length 5 but was 0. Strings differ at index 0.
-  Expected: "Hello"
-  But was:  &lt;string.Empty&gt;
-  -----------^
-
+<pre>[PASS] TestSubstringFollowing(Hello, el, lo)
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[FAIL] TestSubstringFollowing(Hello, o, Hello): Multiple failures or warnings in test:
-  1)   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
-  Expected string length 5 but was 0. Strings differ at index 0.
-  Expected: "Hello"
-  But was:  &lt;string.Empty&gt;
-  -----------^
-
-     at Submission#28.SubstringFollowingTests.TestSubstringFollowing(String s, String prefix, String expected)
-   at InvokeStub_SubstringFollowingTests.TestSubstringFollowing(Object, Span`1)
-
-  2)   Assert.That(SubstringFollowing(s, prefix), Is.EqualTo(expected))
-  Expected string length 5 but was 0. Strings differ at index 0.
-  Expected: "Hello"
-  But was:  &lt;string.Empty&gt;
-  -----------^
-
-     at Submission#28.SubstringFollowingTests.TestSubstringFollowing(String s, String prefix, String expected)
-   at InvokeStub_SubstringFollowingTests.TestSubstringFollowing(Object, Span`1)
-
-
+<pre>[PASS] TestSubstringFollowing(Hello, ello, )
+
 </pre>
 </div>
 </div>
 <div class="output_area">
 <div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Total tests: 5, Passed: 3, Failed: 2
+<pre>[PASS] TestSubstringFollowing(Hello, o, )
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[PASS] TestSubstringFollowing(Hello, xyz, Hello)
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Total tests: 7, Passed: 7, Failed: 0
+
 </pre>
 </div>
 </div>

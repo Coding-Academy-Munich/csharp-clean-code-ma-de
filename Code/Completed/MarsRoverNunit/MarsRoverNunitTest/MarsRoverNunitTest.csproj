@@ -16,6 +16,6 @@
         <Using Include="NUnit.Framework"/>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\MarsRoverNunit\MarsRoverNunit.csproj" />
+      <ProjectReference Include="..\MarsRoverNUnit\MarsRoverNUnit.csproj" />
     </ItemGroup>
 </Project>

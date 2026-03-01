@@ -1,4 +1,4 @@
-namespace FizzBuzzNunitTest;
+namespace FizzBuzzNUnitTest;
 
 [TestFixture]
 public class FizzBuzzTests
@@ -11,7 +11,7 @@ public class FizzBuzzTests
             "1", "2", "Fizz", "4", "Buzz", "Fizz", "7", "8", "Fizz", "Buzz",
             "11", "Fizz", "13", "14", "FizzBuzz"
         };
-        var result = FizzBuzzNunit.FizzBuzz.GenerateFizzBuzz(15);
+        var result = FizzBuzzNUnit.FizzBuzz.GenerateFizzBuzz(15);
         Assert.That(result, Is.EqualTo(expected));
     }
 
@@ -21,27 +21,27 @@ public class FizzBuzzTests
     [TestCase(15, "FizzBuzz")]
     public void GenerateFizzBuzz_ReturnsCorrectValueForSpecificNumbers(int number, string expected)
     {
-        var result = FizzBuzzNunit.FizzBuzz.GenerateFizzBuzz(number);
+        var result = FizzBuzzNUnit.FizzBuzz.GenerateFizzBuzz(number);
         Assert.That(result[^1], Is.EqualTo(expected));
     }
 
     [Test]
     public void GenerateFizzBuzz_ReturnsEmptyListForZero()
     {
-        var result = FizzBuzzNunit.FizzBuzz.GenerateFizzBuzz(0);
+        var result = FizzBuzzNUnit.FizzBuzz.GenerateFizzBuzz(0);
         Assert.That(result, Is.Empty);
     }
 
     [Test]
     public void GenerateFizzBuzz_ThrowsArgumentExceptionForNegativeNumber()
     {
-        Assert.Throws<ArgumentException>(() => FizzBuzzNunit.FizzBuzz.GenerateFizzBuzz(-1));
+        Assert.Throws<ArgumentException>(() => FizzBuzzNUnit.FizzBuzz.GenerateFizzBuzz(-1));
     }
 
     [Test]
     public void GenerateFizzBuzz_ReturnsCorrectSequenceFor100()
     {
-        var result = FizzBuzzNunit.FizzBuzz.GenerateFizzBuzz(100);
+        var result = FizzBuzzNUnit.FizzBuzz.GenerateFizzBuzz(100);
         Assert.That(result, Has.Count.EqualTo(100));
         Assert.That(result[0], Is.EqualTo("1"));
         Assert.That(result[1], Is.EqualTo("2"));
@@ -59,7 +59,7 @@ public class FizzBuzzTests
     public void PrintFizzBuzz_WritesToProvidedTextWriter()
     {
         using var stringWriter = new StringWriter();
-        FizzBuzzNunit.FizzBuzz.PrintFizzBuzz(5, stringWriter);
+        FizzBuzzNUnit.FizzBuzz.PrintFizzBuzz(5, stringWriter);
         var result = stringWriter.ToString().Trim().Split(Environment.NewLine);
         Assert.That(result, Is.EqualTo(new[] { "1", "2", "Fizz", "4", "Buzz" }));
     }
@@ -72,7 +72,7 @@ public class FizzBuzzTests
         {
             using var stringWriter = new StringWriter();
             Console.SetOut(stringWriter);
-            FizzBuzzNunit.FizzBuzz.PrintFizzBuzz(3);
+            FizzBuzzNUnit.FizzBuzz.PrintFizzBuzz(3);
             var result = stringWriter.ToString().Trim().Split(Environment.NewLine);
             Assert.That(result, Is.EqualTo(new[] { "1", "2", "Fizz" }));
         }

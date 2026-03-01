@@ -1,8 +1,8 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverNunit", "MarsRoverNunit\MarsRoverNunit.csproj", "{F5A6B7C8-D9E0-1234-ABCD-456789012345}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverNUnit", "MarsRoverNUnit\MarsRoverNUnit.csproj", "{F5A6B7C8-D9E0-1234-ABCD-456789012345}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverNunitTest", "MarsRoverNunitTest\MarsRoverNunitTest.csproj", "{A6B7C8D9-E0F1-2345-BCDE-567890123456}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarsRoverNUnitTest", "MarsRoverNUnitTest\MarsRoverNUnitTest.csproj", "{A6B7C8D9-E0F1-2345-BCDE-567890123456}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

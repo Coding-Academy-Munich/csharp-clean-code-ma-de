@@ -1,6 +1,6 @@
-namespace MarsRoverNunitSk;
+namespace MarsRoverNUnitSk;
 
-public static class MarsRoverNunitSk
+public static class MarsRoverNUnitSk
 {
     public const string Message = "Mars Rover Starter Kit";
 

@@ -1,4 +1,4 @@
-namespace RecipesNunit;
+namespace RecipesNUnit;
 
 public class Recipe(string name, List<string> ingredients, string description, int rating = -1)
 {
