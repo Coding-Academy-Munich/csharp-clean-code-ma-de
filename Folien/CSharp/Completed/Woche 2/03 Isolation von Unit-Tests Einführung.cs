@@ -88,7 +88,7 @@ public static class EventTrigger
 }
 
 // %%
-EventTrigger.Trigger();
+// EventTrigger.Trigger();
 
 // %%
 public void Test1()
@@ -111,7 +111,7 @@ void RunTest(string name, Action test)
         test();
         Console.WriteLine($"{name}: passed");
     }
-    catch (Exception e)
+    catch (Exception)
     {
         Console.WriteLine($"{name}: FAILED");
     }

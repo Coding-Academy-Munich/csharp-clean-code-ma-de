@@ -54,6 +54,14 @@
 
 // %% [markdown]
 //
+// ## Beispiel: Dummy
+//
+// ```csharp
+// var manager = new CartManager(priceProvider, cart: null!);
+// ```
+
+// %% [markdown]
+//
 // ## Stub
 //
 // - Objekt, das eine minimale Implementierung einer Abhängigkeit bereitstellt
@@ -61,6 +69,17 @@
 // - Wird verwendet um
 //   - komplexe Abhängigkeiten zu ersetzen
 //   - Tests deterministisch zu machen
+
+// %% [markdown]
+//
+// ## Beispiel: Stub
+//
+// ```csharp
+// public class FixedPriceProvider : IProductPriceProvider
+// {
+//     public double GetPrice(string productId) => 99.99;
+// }
+// ```
 
 // %% [markdown]
 //
@@ -74,11 +93,36 @@
 
 // %% [markdown]
 //
+// ## Beispiel: Fake
+//
+// ```csharp
+// public class InMemoryProductCatalog : IProductCatalog
+// {
+//     private readonly Dictionary<string, double> prices = new();
+//     public void SetPrice(string id, double price) => prices[id] = price;
+//     public double GetPrice(string id) => prices[id];
+// }
+// ```
+
+// %% [markdown]
+//
 // ## Spy
 //
 // - Objekt, das Informationen über die Interaktion mit ihm speichert
 // - Wird verwendet um
 //   - zu überprüfen, ob eine Abhängigkeit korrekt verwendet wird
+
+// %% [markdown]
+//
+// ## Beispiel: Spy
+//
+// ```csharp
+// public class CartSpy : IShoppingCart
+// {
+//     public List<(string Id, double Price)> AddedItems { get; } = new();
+//     public void AddItem(string id, double price) => AddedItems.Add((id, price));
+// }
+// ```
 
 // %% [markdown]
 //
@@ -89,6 +133,16 @@
 // - Automatisierte Implementierung von Spies
 // - Wird verwendet um
 //   - zu überprüfen, ob eine Abhängigkeit korrekt verwendet wird
+
+// %% [markdown]
+//
+// ## Beispiel: Mock
+//
+// ```csharp
+// var mockCart = new Mock<IShoppingCart>();
+// // ... use mockCart.Object in test ...
+// mockCart.Verify(c => c.AddItem("book-123", 99.99), Times.Once);
+// ```
 
 // %% [markdown]
 // ## Beispiel: E-Commerce System
@@ -174,17 +228,10 @@ public class ShoppingCartSpy : IShoppingCart
 // verwendet hat.
 
 // %%
-void Check(bool condition)
-{
-    if (!condition)
-    {
-        Console.WriteLine("Test failed!");
-    }
-    else
-    {
-        Console.WriteLine("Success!");
-    }
-}
+#r "nuget: NUnit, *"
+#load "NUnitTestRunner.cs"
+using NUnit.Framework;
+using static NUnitTestRunner;
 
 // %%
 void TestCartManagerAddsItemWithCorrectPrice()
@@ -196,9 +243,9 @@ void TestCartManagerAddsItemWithCorrectPrice()
 
     manager.AddToCart(productId);
 
-    Check(cart.Items.Count == 1);
-    Check(cart.Items[0].ProductId == productId);
-    Check(cart.Items[0].Price == 99.99);
+    Assert.That(cart.Items.Count, Is.EqualTo(1));
+    Assert.That(cart.Items[0].ProductId, Is.EqualTo(productId));
+    Assert.That(cart.Items[0].Price, Is.EqualTo(99.99));
 }
 
 // %%
@@ -354,10 +401,10 @@ void TestSuccessfulBurnManeuver()
 
     controller.ExecuteBurnManeuver(500);
 
-    Check(thrusters.TimesFired == 1);
-    Check(thrusters.BurnDurationMs == 500);
-    Check(groundControl.Reports.Count == 1);
-    Check(groundControl.Reports[0] == "SUCCESS: Maneuver executed.");
+    Assert.That(thrusters.TimesFired, Is.EqualTo(1));
+    Assert.That(thrusters.BurnDurationMs, Is.EqualTo(500));
+    Assert.That(groundControl.Reports.Count, Is.EqualTo(1));
+    Assert.That(groundControl.Reports[0], Is.EqualTo("SUCCESS: Maneuver executed."));
 }
 
 // %%
@@ -374,10 +421,10 @@ void TestAbortedManeuverDueToLowPower()
 
     controller.ExecuteBurnManeuver(500);
 
-    Check(thrusters.TimesFired == 0);
-    Check(groundControl.Reports.Count == 1);
-    Check(groundControl.Reports[0] ==
-        "ERROR: Thruster power too low for maneuver.");
+    Assert.That(thrusters.TimesFired, Is.EqualTo(0));
+    Assert.That(groundControl.Reports.Count, Is.EqualTo(1));
+    Assert.That(groundControl.Reports[0],
+        Is.EqualTo("ERROR: Thruster power too low for maneuver."));
 }
 
 // %%

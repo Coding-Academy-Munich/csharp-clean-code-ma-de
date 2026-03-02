@@ -54,6 +54,14 @@
 
 // %% [markdown]
 //
+// ## Beispiel: Dummy
+//
+// ```csharp
+// var manager = new CartManager(priceProvider, cart: null!);
+// ```
+
+// %% [markdown]
+//
 // ## Stub
 //
 // - Objekt, das eine minimale Implementierung einer Abhängigkeit bereitstellt
@@ -61,6 +69,17 @@
 // - Wird verwendet um
 //   - komplexe Abhängigkeiten zu ersetzen
 //   - Tests deterministisch zu machen
+
+// %% [markdown]
+//
+// ## Beispiel: Stub
+//
+// ```csharp
+// public class FixedPriceProvider : IProductPriceProvider
+// {
+//     public double GetPrice(string productId) => 99.99;
+// }
+// ```
 
 // %% [markdown]
 //
@@ -74,11 +93,36 @@
 
 // %% [markdown]
 //
+// ## Beispiel: Fake
+//
+// ```csharp
+// public class InMemoryProductCatalog : IProductCatalog
+// {
+//     private readonly Dictionary<string, double> prices = new();
+//     public void SetPrice(string id, double price) => prices[id] = price;
+//     public double GetPrice(string id) => prices[id];
+// }
+// ```
+
+// %% [markdown]
+//
 // ## Spy
 //
 // - Objekt, das Informationen über die Interaktion mit ihm speichert
 // - Wird verwendet um
 //   - zu überprüfen, ob eine Abhängigkeit korrekt verwendet wird
+
+// %% [markdown]
+//
+// ## Beispiel: Spy
+//
+// ```csharp
+// public class CartSpy : IShoppingCart
+// {
+//     public List<(string Id, double Price)> AddedItems { get; } = new();
+//     public void AddItem(string id, double price) => AddedItems.Add((id, price));
+// }
+// ```
 
 // %% [markdown]
 //
@@ -89,6 +133,16 @@
 // - Automatisierte Implementierung von Spies
 // - Wird verwendet um
 //   - zu überprüfen, ob eine Abhängigkeit korrekt verwendet wird
+
+// %% [markdown]
+//
+// ## Beispiel: Mock
+//
+// ```csharp
+// var mockCart = new Mock<IShoppingCart>();
+// // ... use mockCart.Object in test ...
+// mockCart.Verify(c => c.AddItem("book-123", 99.99), Times.Once);
+// ```
 
 // %% [markdown]
 // ## Beispiel: E-Commerce System
@@ -160,17 +214,10 @@ public class CartManager
 // verwendet hat.
 
 // %%
-void Check(bool condition)
-{
-    if (!condition)
-    {
-        Console.WriteLine("Test failed!");
-    }
-    else
-    {
-        Console.WriteLine("Success!");
-    }
-}
+#r "nuget: NUnit, *"
+#load "NUnitTestRunner.cs"
+using NUnit.Framework;
+using static NUnitTestRunner;
 
 // %%
 
@@ -271,3 +318,5 @@ public class SpacecraftCommandController
 // 2.  **Manöver abgebrochen (zu wenig Energie):** Das Schubdüsen-System hat
 //     zu wenig Energie (<50%). Überprüfen Sie, ob die Schubdüsen **nicht**
 //     gezündet werden und eine Fehlermeldung an die Bodenstation geht.
+
+// %%

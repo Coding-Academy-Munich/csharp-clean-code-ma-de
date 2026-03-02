@@ -13441,6 +13441,14 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2be1827db8818a28"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Beispiel:-Dummy">Beispiel: Dummy<a class="anchor-link" href="#Beispiel:-Dummy">¶</a></h2><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">manager</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">CartManager</span><span class="p">(</span><span class="n">priceProvider</span><span class="p">,</span><span class="w"> </span><span class="n">cart</span><span class="p">:</span><span class="w"> </span><span class="k">null</span><span class="o">!</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=e9be15b75b3a232b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13453,6 +13461,17 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=6145e94d76b86593"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Beispiel:-Stub">Beispiel: Stub<a class="anchor-link" href="#Beispiel:-Stub">¶</a></h2><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FixedPriceProvider</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IProductPriceProvider</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">productId</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mf">99.99</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -13471,6 +13490,19 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=41b3bd31208ad0ff"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Beispiel:-Fake">Beispiel: Fake<a class="anchor-link" href="#Beispiel:-Fake">¶</a></h2><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">InMemoryProductCatalog</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IProductCatalog</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">prices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SetPrice</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="n">id</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetPrice</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">prices</span><span class="p">[</span><span class="n">id</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=0b683ec83c76569c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13481,6 +13513,18 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=5ef03a51b21017c5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Beispiel:-Spy">Beispiel: Spy<a class="anchor-link" href="#Beispiel:-Spy">¶</a></h2><div class="highlight"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">CartSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IShoppingCart</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">Id</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Price</span><span class="p">)</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AddedItems</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">AddItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">price</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">AddedItems</span><span class="p">.</span><span class="n">Add</span><span class="p">((</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -13496,6 +13540,16 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </ul>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=5f46b07ef30181e5"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Beispiel:-Mock">Beispiel: Mock<a class="anchor-link" href="#Beispiel:-Mock">¶</a></h2><div class="highlight"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockCart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IShoppingCart</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="c1">// ... use mockCart.Object in test ...</span>
+<span class="n">mockCart</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">c</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">AddItem</span><span class="p">(</span><span class="s">"book-123"</span><span class="p">,</span><span class="w"> </span><span class="mf">99.99</span><span class="p">),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Once</span><span class="p">);</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -13619,28 +13673,21 @@ verwendet hat.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=7ace7bd34ce077a7">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=35e1907a4f1a3eab">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">Check</span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="n">condition</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">condition</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Test failed!"</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">else</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Success!"</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
+<span class="err">#</span><span class="n">load</span><span class="w"> </span><span class="s">"NUnitTestRunner.cs"</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">NUnit.Framework</span><span class="p">;</span>
+<span class="k">using</span><span class="w"> </span><span class="nn">static</span><span class="w"> </span><span class="n">NUnitTestRunner</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=606275729ab9774d">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=4474d53ded492ca7">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13810,6 +13857,17 @@ eine Erfolgsmeldung an die Bodenstation geht.</li>
 zu wenig Energie (&lt;50%). Überprüfen Sie, ob die Schubdüsen <strong>nicht</strong>
 gezündet werden und eine Fehlermeldung an die Bodenstation geht.</li>
 </ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=af74bb23639637e5">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
