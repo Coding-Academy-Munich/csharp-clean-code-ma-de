@@ -13377,6 +13377,22 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=c46ce88fc3d0ed29"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Namensregeln-im-%C3%9Cberblick">Namensregeln im Überblick<a class="anchor-link" href="#Namensregeln-im-%C3%9Cberblick">¶</a></h2><p>Gute Namen</p>
+<ul>
+<li>sind selbsterklärend</li>
+<li>sind aussprechbar</li>
+<li>beschreiben das Problem, nicht die Implementierung</li>
+<li>vermeiden Kodierungen und Füllwörter</li>
+<li>verwenden die richtige Wortart</li>
+<li>vermeiden Disinformation und benennen sinnvolle Unterscheidungen</li>
+<li>verwenden die Regeln für Umfang und Länge</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d0aa1dfbe9c9654d"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13403,7 +13419,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-62300.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-26540.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13492,7 +13508,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.30.96.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
+    probeAddresses(["http://192.168.178.24:2051/", "http://169.254.203.116:2051/", "http://169.254.194.28:2051/", "http://172.16.0.1:2051/", "http://172.31.192.1:2051/", "http://172.23.176.1:2051/", "http://127.0.0.1:2051/"])
 
         .then((root) => {
 
@@ -13502,7 +13518,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '62300.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '26540.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13681,14 +13697,14 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=9619c5e1362968d9">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=17a2740676e11c3e">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">ComputeYearlySalary</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">monthlySalaries</span><span class="p">)</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">ComputeTotalInventory</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">warehouseStockCounts</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">monthlySalaries</span><span class="p">.</span><span class="n">Sum</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">warehouseStockCounts</span><span class="p">.</span><span class="n">Sum</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -13753,6 +13769,18 @@ else {
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=cb337bfed4c9a109"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="C%23-Namenskonventionen">C#-Namenskonventionen<a class="anchor-link" href="#C%23-Namenskonventionen">¶</a></h3><ul>
+<li>PascalCase für Klassen, Methoden, Properties</li>
+<li>camelCase für lokale Variablen und Parameter</li>
+<li>Interfaces beginnen mit <code>I</code></li>
+<li>Siehe: <a href="https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions">C# Coding Conventions</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -13840,12 +13868,12 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d3db1a0b516c0476">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c96458cab3f98b0c">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PersonRecord</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Person</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="p">;</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Age</span><span class="p">;</span>
@@ -13861,11 +13889,11 @@ else {
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
 
-(3,20): warning CS0169: The field 'PersonRecord.Name' is never used
+(3,20): warning CS0169: The field 'Person.Name' is never used
 
 
 
-(4,17): warning CS0169: The field 'PersonRecord.Age' is never used
+(4,17): warning CS0169: The field 'Person.Age' is never used
 
 
 
@@ -13875,10 +13903,10 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=fe6e1975b033694f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=32a8c3ca73821c63"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Disinformation-vermeiden">Disinformation vermeiden<a class="anchor-link" href="#Disinformation-vermeiden">¶</a></h2><ul>
+<h2 id="Vermeide-Disinformation">Vermeide Disinformation<a class="anchor-link" href="#Vermeide-Disinformation">¶</a></h2><ul>
 <li>Der Name darf nicht etwas anderes implizieren als der Code tut</li>
 <li>Keinen Typ in den Namen aufnehmen, wenn er nicht stimmt</li>
 <li>Vorsicht bei Namen, die sich nur minimal unterscheiden</li>
@@ -14009,9 +14037,235 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=51423dd4b217cc9e">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5e6fa76a330444e6">
 <div class="input">
 <div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theLoopCounterOfThisForLoop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">theLoopCounterOfThisForLoop</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">theLoopCounterOfThisForLoop</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{theLoopCounterOfThisForLoop}^2 = {theLoopCounterOfThisForLoop * theLoopCounterOfThisForLoop}"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0^2 = 0
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1^2 = 1
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2^2 = 4
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3^2 = 9
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4^2 = 16
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5^2 = 25
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6^2 = 36
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>7^2 = 49
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>8^2 = 64
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>9^2 = 81
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=b44e4414f75dfe28">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">$"{i}^2 = {i * i}"</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0^2 = 0
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1^2 = 1
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>2^2 = 4
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>3^2 = 9
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>4^2 = 16
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>5^2 = 25
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>6^2 = 36
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>7^2 = 49
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>8^2 = 64
+
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>9^2 = 81
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=28cf3f837abeff31">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">P</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=b444246cd622e911">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=51423dd4b217cc9e">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">FixedSizeOrderedCollectionIndexedByInts</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
@@ -14020,9 +14274,9 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=463964662f125455">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=463964662f125455">
 <div class="input">
-<div class="prompt input_prompt">In [22]:</div>
+<div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Array</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
@@ -14041,7 +14295,7 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=6c5396f53d4aebd3">
 <div class="input">
-<div class="prompt input_prompt">In [23]:</div>
+<div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">dtprcssor</span>
@@ -14072,7 +14326,7 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=9c7135a27aedc0c7">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SalesReportCalculator</span>
@@ -14101,31 +14355,134 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=ee00f2c4db6d1069">
+<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=57050e5dbf2fc1da"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>Klasse: Substantiv, aussprechbar, beschreibt den Zweck</li>
+<li>Attribute: beschreiben ihren Inhalt, Bool als Prädikat</li>
+<li>Methode: Verb, beschreibt was sie tut</li>
+<li>Property statt Getter-Methode (C#-Konvention)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=94934c3387730800">
 <div class="input">
-<div class="prompt input_prompt">In [25]:</div>
+<div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">86400</span><span class="p">;</span>
-<span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"admin"</span><span class="p">;</span>
-<span class="kt">bool</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">computeSecondsInADay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=f8db612529f44c4d">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9e6e30b8141bd468">
 <div class="input">
-<div class="prompt input_prompt">In [26]:</div>
+<div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">secondsPerDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">86400</span><span class="p">;</span>
-<span class="kt">string</span><span class="w"> </span><span class="n">defaultUserRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"admin"</span><span class="p">;</span>
-<span class="kt">bool</span><span class="w"> </span><span class="n">isFeatureEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">secondsPerDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=48b79cb0a399908d"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Falsche Wortart: <code>computeSecondsInADay</code> klingt wie eine Methode, aber es ist
+eine Variable</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8e39d40c2a843dc5">
+<div class="input">
+<div class="prompt input_prompt">In [31]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"admin"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Default role for new users</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=e2a58a947cfbdd1d">
+<div class="input">
+<div class="prompt input_prompt">In [32]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">defaultUserRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"admin"</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=7a1292bb68dc487a"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Kurzer Name wird in einem großen Geltungsbereich verwendet, beschreibt aber
+nicht, was er repräsentiert</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=a5e786a76c21a071">
+<div class="input">
+<div class="prompt input_prompt">In [33]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">b_FtrFlg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Feature flag: If true, the feature is enabled</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=3a708dea56cc93d4">
+<div class="input">
+<div class="prompt input_prompt">In [34]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">isFeatureEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=e64df2460a006d08"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ungarische Notation (<code>b_</code>), unverständlicher Name (<code>FtrFlg</code>), und der
+Kommentar ist nötig, um zu verstehen, was die Variable bedeutet</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=0d2404bcb33e3669">
+<div class="input">
+<div class="prompt input_prompt">In [35]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=867bccea9e2c2975">
+<div class="input">
+<div class="prompt input_prompt">In [36]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=8ba8d07b1aeac7ab"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><code>theList</code> sagt nichts über den Inhalt aus — was ist das für eine Liste?</p>
 </div>
 </div>
 </div>

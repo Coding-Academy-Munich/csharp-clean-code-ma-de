@@ -262,125 +262,127 @@ TestCartManagerAddsItemWithCorrectPrice();
 
 // %% [markdown]
 //
-// ## Workshop: Raumschiff-Steuerung testen
+// ## Workshop: Test eines Steuerungssystems für ein Raumschiff
 //
-// Sie sollen eine Test-Suite für einen `SpacecraftCommandController`
-// implementieren. Diese Klasse sendet Befehle an ein Raumschiff. Ihre
-// Aufgaben sind:
-//
-// - Die Missions-Sicherheit hat Priorität: Überprüfen Sie den Zustand des
-//   Systems (`ITelemetrySystem`), bevor Sie Befehle ausführen.
-// - Führen Sie Manöver mit den Schubdüsen durch (`IThrusterControl`).
-// - Benachrichtigen Sie die Bodenstation über den Status von Befehlen
-//   (`IGroundControlLink`).
+// In diesem Workshop arbeiten Sie mit einem einfachen Steuerungssystem für ein
+// Raumschiff. Das System interagiert mit verschiedenen Sensoren und einem
+// Funksender. Ihre Aufgabe ist es, Tests für dieses System mit
+// handgeschriebenen Test-Doubles zu schreiben.
 
 // %% [markdown]
-// Zuerst die Interfaces für die Subsysteme des Raumschiffs:
+//
+// Hier ist eine einfache Implementierung unseres Raumschiff-Steuerungssystems:
 
 // %%
-public enum SubSystem { Core, Thrusters, ScienceBay }
-
-// %%
-public interface ITelemetrySystem
+public interface ITemperatureSensor
 {
-    int GetPowerLevelPercent(SubSystem system);
+    double GetTemperature();
 }
 
 // %%
-public interface IThrusterControl
+public interface IFuelSensor
 {
-    void FireThrusters(int durationMs);
+    double GetFuelLevel();
 }
 
 // %%
-public interface IGroundControlLink
+public interface IRadioTransmitter
 {
-    void SendStatusReport(string report);
+    void Transmit(string message);
 }
 
-// %% [markdown]
-// Die zu testende Klasse: `SpacecraftCommandController`.
-
 // %%
-public class SpacecraftCommandController
+public class SpacecraftControlSystem
 {
-    private readonly ITelemetrySystem telemetry;
-    private readonly IThrusterControl thrusters;
-    private readonly IGroundControlLink groundControl;
+    private readonly ITemperatureSensor _tempSensor;
+    private readonly IFuelSensor _fuelSensor;
+    private readonly IRadioTransmitter _radio;
 
-    public SpacecraftCommandController(
-        ITelemetrySystem telemetry,
-        IThrusterControl thrusters,
-        IGroundControlLink groundControl)
+    public SpacecraftControlSystem(ITemperatureSensor tempSensor, IFuelSensor fuelSensor, IRadioTransmitter radio)
     {
-        this.telemetry = telemetry;
-        this.thrusters = thrusters;
-        this.groundControl = groundControl;
+        _tempSensor = tempSensor;
+        _fuelSensor = fuelSensor;
+        _radio = radio;
     }
 
-    public void ExecuteBurnManeuver(int durationMs)
+    public void CheckAndReportStatus()
     {
-        int powerLevel = telemetry.GetPowerLevelPercent(SubSystem.Thrusters);
-        if (powerLevel < 50)
+        var temp = _tempSensor.GetTemperature();
+        var fuel = _fuelSensor.GetFuelLevel();
+
+        if (temp > 100)
         {
-            groundControl.SendStatusReport(
-                "ERROR: Thruster power too low for maneuver.");
-            return;
+            _radio.Transmit("Warning: High temperature!");
         }
 
-        thrusters.FireThrusters(durationMs);
-        groundControl.SendStatusReport("SUCCESS: Maneuver executed.");
+        if (fuel < 10)
+        {
+            _radio.Transmit("Warning: Low fuel!");
+        }
+
+        _radio.Transmit($"Status: Temperature {temp}, Fuel {fuel}");
     }
 }
 
 // %% [markdown]
 //
-// ## Ihre Aufgabe
+// Ihre Aufgabe ist es, Tests für das `SpacecraftControlSystem` unter
+// Verwendung von handgeschriebenen Test-Doubles zu schreiben. Implementieren
+// Sie die folgenden Testfälle:
 //
-// Schreiben Sie Tests für die folgenden Szenarien. Implementieren Sie dafür
-// die notwendigen Test-Doubles.
-//
-// 1.  **Erfolgreiches Manöver:** Das Schubdüsen-System hat genug Energie
-//     (>50%). Überprüfen Sie, ob der `FireThrusters`-Befehl gesendet wird und
-//     eine Erfolgsmeldung an die Bodenstation geht.
-// 2.  **Manöver abgebrochen (zu wenig Energie):** Das Schubdüsen-System hat
-//     zu wenig Energie (<50%). Überprüfen Sie, ob die Schubdüsen **nicht**
-//     gezündet werden und eine Fehlermeldung an die Bodenstation geht.
+// 1. Testen des normalen Betriebs:
+//    - Überprüfen Sie den normalen Betrieb des Raumschiffs, wenn die
+//      Temperatur normal und der Kraftstoffstand ausreichend ist.
+//    - Stellen Sie sicher, dass keine Warnungen gesendet werden.
+// 2. Testen der Warnung bei hoher Temperatur:
+//    - Überprüfen Sie, dass eine Warnung gesendet wird, wenn die Temperatur
+//      über 100 Grad liegt.
+// 3. Testen der Warnung bei niedrigem Kraftstoffstand:
+//    - Überprüfen Sie, dass eine Warnung gesendet wird, wenn der
+//      Kraftstoffstand unter 10 liegt.
+// 4. Testen mehrerer Warnungen:
+//    - Überprüfen Sie, dass sowohl eine Warnung bei hoher Temperatur als
+//      auch bei niedrigem Kraftstoffstand gesendet wird, wenn beide
+//      Bedingungen erfüllt sind.
 
 // %% [markdown]
+//
+// #### Bonusaufgabe:
+//
+// 5. Testen der Fehlerbehandlung:
+//    - Ändern Sie das `SpacecraftControlSystem`, um Ausnahmen von den
+//      Sensoren zu behandeln, und schreiben Sie einen Test, um dieses
+//      Verhalten zu überprüfen.
+
+// %% [markdown]
+//
 // ## Lösung: Test-Doubles
 //
-// Wir benötigen einen konfigurierbaren Stub für `ITelemetrySystem` und Spies
-// für `IThrusterControl` und `IGroundControlLink`.
+// Wir benötigen konfigurierbare Stubs für `ITemperatureSensor` und
+// `IFuelSensor` und einen Spy für `IRadioTransmitter`.
 
 // %%
-public class TelemetrySystemStub : ITelemetrySystem
+public class TemperatureSensorStub : ITemperatureSensor
 {
-    public int PowerLevel { get; set; } = 100;
-    public int GetPowerLevelPercent(SubSystem system) { return PowerLevel; }
+    public double Temperature { get; set; } = 75.0;
+    public double GetTemperature() { return Temperature; }
 }
 
 // %%
-public class ThrusterControlSpy : IThrusterControl
+public class FuelSensorStub : IFuelSensor
 {
-    public int BurnDurationMs { get; private set; }
-    public int TimesFired { get; private set; }
-
-    public void FireThrusters(int durationMs)
-    {
-        TimesFired++;
-        BurnDurationMs = durationMs;
-    }
+    public double FuelLevel { get; set; } = 50.0;
+    public double GetFuelLevel() { return FuelLevel; }
 }
 
 // %%
-public class GroundControlLinkSpy : IGroundControlLink
+public class RadioTransmitterSpy : IRadioTransmitter
 {
-    public List<string> Reports { get; } = new();
+    public List<string> Messages { get; } = new();
 
-    public void SendStatusReport(string report)
+    public void Transmit(string message)
     {
-        Reports.Add(report);
+        Messages.Add(message);
     }
 }
 
@@ -388,45 +390,138 @@ public class GroundControlLinkSpy : IGroundControlLink
 // ## Lösung: Tests
 
 // %%
-void TestSuccessfulBurnManeuver()
+void TestNormalOperation()
 {
-    var telemetry = new TelemetrySystemStub();
-    telemetry.PowerLevel = 75;
+    var tempSensor = new TemperatureSensorStub();
+    var fuelSensor = new FuelSensorStub();
+    var radio = new RadioTransmitterSpy();
 
-    var thrusters = new ThrusterControlSpy();
-    var groundControl = new GroundControlLinkSpy();
+    var spacecraft = new SpacecraftControlSystem(tempSensor, fuelSensor, radio);
+    spacecraft.CheckAndReportStatus();
 
-    var controller = new SpacecraftCommandController(
-        telemetry, thrusters, groundControl);
-
-    controller.ExecuteBurnManeuver(500);
-
-    Assert.That(thrusters.TimesFired, Is.EqualTo(1));
-    Assert.That(thrusters.BurnDurationMs, Is.EqualTo(500));
-    Assert.That(groundControl.Reports.Count, Is.EqualTo(1));
-    Assert.That(groundControl.Reports[0], Is.EqualTo("SUCCESS: Maneuver executed."));
+    Assert.That(radio.Messages.Count, Is.EqualTo(1));
+    Assert.That(radio.Messages[0], Is.EqualTo("Status: Temperature 75, Fuel 50"));
 }
 
 // %%
-void TestAbortedManeuverDueToLowPower()
+void TestHighTemperatureWarning()
 {
-    var telemetry = new TelemetrySystemStub();
-    telemetry.PowerLevel = 40;
+    var tempSensor = new TemperatureSensorStub { Temperature = 110.0 };
+    var fuelSensor = new FuelSensorStub();
+    var radio = new RadioTransmitterSpy();
 
-    var thrusters = new ThrusterControlSpy();
-    var groundControl = new GroundControlLinkSpy();
+    var spacecraft = new SpacecraftControlSystem(tempSensor, fuelSensor, radio);
+    spacecraft.CheckAndReportStatus();
 
-    var controller = new SpacecraftCommandController(
-        telemetry, thrusters, groundControl);
-
-    controller.ExecuteBurnManeuver(500);
-
-    Assert.That(thrusters.TimesFired, Is.EqualTo(0));
-    Assert.That(groundControl.Reports.Count, Is.EqualTo(1));
-    Assert.That(groundControl.Reports[0],
-        Is.EqualTo("ERROR: Thruster power too low for maneuver."));
+    Assert.That(radio.Messages, Does.Contain("Warning: High temperature!"));
+    Assert.That(radio.Messages, Does.Contain("Status: Temperature 110, Fuel 50"));
+    Assert.That(radio.Messages, Does.Not.Contain("Warning: Low fuel!"));
 }
 
 // %%
-TestSuccessfulBurnManeuver();
-TestAbortedManeuverDueToLowPower();
+void TestLowFuelWarning()
+{
+    var tempSensor = new TemperatureSensorStub();
+    var fuelSensor = new FuelSensorStub { FuelLevel = 5.0 };
+    var radio = new RadioTransmitterSpy();
+
+    var spacecraft = new SpacecraftControlSystem(tempSensor, fuelSensor, radio);
+    spacecraft.CheckAndReportStatus();
+
+    Assert.That(radio.Messages, Does.Contain("Warning: Low fuel!"));
+    Assert.That(radio.Messages, Does.Contain("Status: Temperature 75, Fuel 5"));
+    Assert.That(radio.Messages, Does.Not.Contain("Warning: High temperature!"));
+}
+
+// %%
+void TestMultipleWarnings()
+{
+    var tempSensor = new TemperatureSensorStub { Temperature = 110.0 };
+    var fuelSensor = new FuelSensorStub { FuelLevel = 5.0 };
+    var radio = new RadioTransmitterSpy();
+
+    var spacecraft = new SpacecraftControlSystem(tempSensor, fuelSensor, radio);
+    spacecraft.CheckAndReportStatus();
+
+    Assert.That(radio.Messages, Does.Contain("Warning: High temperature!"));
+    Assert.That(radio.Messages, Does.Contain("Warning: Low fuel!"));
+    Assert.That(radio.Messages, Does.Contain("Status: Temperature 110, Fuel 5"));
+}
+
+// %%
+TestNormalOperation();
+TestHighTemperatureWarning();
+TestLowFuelWarning();
+TestMultipleWarnings();
+
+// %% [markdown]
+// ## Bonusaufgabe: Fehlerbehandlung
+
+// %%
+public class SpacecraftControlSystemWithExceptionHandling
+{
+    private readonly ITemperatureSensor _tempSensor;
+    private readonly IFuelSensor _fuelSensor;
+    private readonly IRadioTransmitter _radio;
+
+    public SpacecraftControlSystemWithExceptionHandling(
+        ITemperatureSensor tempSensor, IFuelSensor fuelSensor, IRadioTransmitter radio)
+    {
+        _tempSensor = tempSensor;
+        _fuelSensor = fuelSensor;
+        _radio = radio;
+    }
+
+    public void CheckAndReportStatus()
+    {
+        try
+        {
+            var temp = _tempSensor.GetTemperature();
+            var fuel = _fuelSensor.GetFuelLevel();
+
+            if (temp > 100)
+            {
+                _radio.Transmit("Warning: High temperature!");
+            }
+
+            if (fuel < 10)
+            {
+                _radio.Transmit("Warning: Low fuel!");
+            }
+
+            _radio.Transmit($"Status: Temperature {temp}, Fuel {fuel}");
+        }
+        catch (Exception e)
+        {
+            _radio.Transmit("Error: Sensor malfunction - " + e.Message);
+        }
+    }
+}
+
+// %%
+public class ThrowingTemperatureSensorStub : ITemperatureSensor
+{
+    public double GetTemperature()
+    {
+        throw new Exception("Temperature sensor failure");
+    }
+}
+
+// %%
+void TestExceptionHandling()
+{
+    var tempSensor = new ThrowingTemperatureSensorStub();
+    var fuelSensor = new FuelSensorStub();
+    var radio = new RadioTransmitterSpy();
+
+    var spacecraft = new SpacecraftControlSystemWithExceptionHandling(
+        tempSensor, fuelSensor, radio);
+    spacecraft.CheckAndReportStatus();
+
+    Assert.That(radio.Messages.Count, Is.EqualTo(1));
+    Assert.That(radio.Messages[0],
+        Is.EqualTo("Error: Sensor malfunction - Temperature sensor failure"));
+}
+
+// %%
+TestExceptionHandling();

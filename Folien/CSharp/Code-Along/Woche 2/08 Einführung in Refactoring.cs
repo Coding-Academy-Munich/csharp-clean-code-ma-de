@@ -26,16 +26,6 @@
 
 // %% [markdown]
 //
-// ## Warum Refactoring?
-//
-// - Code wird verständlicher
-// - Code wird einfacher zu warten
-// - Code wird einfacher zu erweitern
-// - Code wird einfacher zu testen
-// - ...
-
-// %% [markdown]
-//
 // ## Was ist Refactoring nicht?
 //
 // - Große Änderungen am Code in einem Schritt
@@ -50,21 +40,28 @@
 // - Wenn Code verstanden werden muss
 // - Wenn Code erweitert werden muss
 // - Wenn wir schlechten Code finden, den wir ändern müssen
-// - ...
 //
-// **Fast immer, wenn wir am Code arbeiten**
+// **Refactoring ist keine Aktivität, die vom Programmieren getrennt ist -
+// genauso wenig, wie Sie Zeit zum Schreiben von if-Anweisungen einplanen.**
+//
+// (Martin Fowler)
 
 // %% [markdown]
 //
-// ## Sollen wir extra Zeit für Refactoring einplanen?
+// ## Tests als Sicherheitsnetz
 //
-// - Normalerweise nicht
-// - Refactoring ist Teil der Entwicklung und sollte permanent stattfinden
-// - Möglicherweise:
-//   - Zeit zum Refaktorisieren einplanen, wenn wir an Code arbeiten, der
-//     schlecht ist
+// - Refactoring ohne Tests ist gefährlich
+// - Tests nach jedem kleinen Schritt laufen lassen
+// - Wenn Tests fehlschlagen: Verhalten hat sich geändert!
+// - Deshalb: Erst testen lernen, dann refaktorisieren
+
+// %% [markdown]
 //
-// *Refactoring ist keine Aktivität, die vom Programmieren getrennt ist -
-// genauso wenig, wie Sie Zeit zum Schreiben von if-Anweisungen einplanen.*
+// ## Werkzeuge für Refactoring
 //
-// (Martin Fowler)
+// - **IDE-Refactoring-Tools** (Rider, Visual Studio, VS Code)
+//   - Sicher, schnell, automatisch
+// - **KI-Assistenten** (Copilot, Claude, ChatGPT)
+//   - Erkennen Code-Smells, schlagen Refactorings vor
+// - **Manuelles Refactoring**
+//   - Als letzter Ausweg, wenn IDE/KI nicht helfen

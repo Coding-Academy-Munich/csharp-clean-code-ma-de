@@ -13392,19 +13392,6 @@ geschrieben wurde.</em></p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=0a60b6524959af72"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Warum-Refactoring?">Warum Refactoring?<a class="anchor-link" href="#Warum-Refactoring?">¶</a></h2><ul>
-<li>Code wird verständlicher</li>
-<li>Code wird einfacher zu warten</li>
-<li>Code wird einfacher zu erweitern</li>
-<li>Code wird einfacher zu testen</li>
-<li>...</li>
-</ul>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d0d47dd54c3e38ea"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -13417,34 +13404,49 @@ geschrieben wurde.</em></p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=ed809fe5f6c49f1b"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=78ddcef16c0112b2"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Wann-Refactoring?">Wann Refactoring?<a class="anchor-link" href="#Wann-Refactoring?">¶</a></h2><ul>
 <li>Wenn Code verstanden werden muss</li>
 <li>Wenn Code erweitert werden muss</li>
 <li>Wenn wir schlechten Code finden, den wir ändern müssen</li>
-<li>...</li>
 </ul>
-<p><strong>Fast immer, wenn wir am Code arbeiten</strong></p>
+<p><strong>Refactoring ist keine Aktivität, die vom Programmieren getrennt ist -
+genauso wenig, wie Sie Zeit zum Schreiben von if-Anweisungen einplanen.</strong></p>
+<p>(Martin Fowler)</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=f03ee705a5b12439"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=ef0516cfeeb13af2"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Sollen-wir-extra-Zeit-f%C3%BCr-Refactoring-einplanen?">Sollen wir extra Zeit für Refactoring einplanen?<a class="anchor-link" href="#Sollen-wir-extra-Zeit-f%C3%BCr-Refactoring-einplanen?">¶</a></h2><ul>
-<li>Normalerweise nicht</li>
-<li>Refactoring ist Teil der Entwicklung und sollte permanent stattfinden</li>
-<li>Möglicherweise:<ul>
-<li>Zeit zum Refaktorisieren einplanen, wenn wir an Code arbeiten, der
-schlecht ist</li>
+<h2 id="Tests-als-Sicherheitsnetz">Tests als Sicherheitsnetz<a class="anchor-link" href="#Tests-als-Sicherheitsnetz">¶</a></h2><ul>
+<li>Refactoring ohne Tests ist gefährlich</li>
+<li>Tests nach jedem kleinen Schritt laufen lassen</li>
+<li>Wenn Tests fehlschlagen: Verhalten hat sich geändert!</li>
+<li>Deshalb: Erst testen lernen, dann refaktorisieren</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=5cc657582abfbaa7"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Werkzeuge-f%C3%BCr-Refactoring">Werkzeuge für Refactoring<a class="anchor-link" href="#Werkzeuge-f%C3%BCr-Refactoring">¶</a></h2><ul>
+<li><strong>IDE-Refactoring-Tools</strong> (Rider, Visual Studio, VS Code)<ul>
+<li>Sicher, schnell, automatisch</li>
+</ul>
+</li>
+<li><strong>KI-Assistenten</strong> (Copilot, Claude, ChatGPT)<ul>
+<li>Erkennen Code-Smells, schlagen Refactorings vor</li>
+</ul>
+</li>
+<li><strong>Manuelles Refactoring</strong><ul>
+<li>Als letzter Ausweg, wenn IDE/KI nicht helfen</li>
 </ul>
 </li>
 </ul>
-<p><em>Refactoring ist keine Aktivität, die vom Programmieren getrennt ist -
-genauso wenig, wie Sie Zeit zum Schreiben von if-Anweisungen einplanen.</em></p>
-<p>(Martin Fowler)</p>
 </div>
 </div>
 </div>

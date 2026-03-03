@@ -12,6 +12,20 @@
 
 // %% [markdown]
 //
+// ## Namensregeln im Überblick
+//
+// Gute Namen
+//
+// - sind selbsterklärend
+// - sind aussprechbar
+// - beschreiben das Problem, nicht die Implementierung
+// - vermeiden Kodierungen und Füllwörter
+// - verwenden die richtige Wortart
+// - vermeiden Disinformation und benennen sinnvolle Unterscheidungen
+// - verwenden die Regeln für Umfang und Länge
+
+// %% [markdown]
+//
 // ## Selbsterklärende Namen
 //
 // - Der Name sollte alles sagen, was man wissen muss
@@ -74,6 +88,15 @@ public class PointGood
 
 // %% [markdown]
 //
+// ### C#-Namenskonventionen
+//
+// - PascalCase für Klassen, Methoden, Properties
+// - camelCase für lokale Variablen und Parameter
+// - Interfaces beginnen mit `I`
+// - Siehe: [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
+
+// %% [markdown]
+//
 // ## Verwende die richtige Wortart
 //
 // - Klassen und Variablen: Substantive (`ServerConnection`)
@@ -112,7 +135,7 @@ class DataInfoManager
 
 // %% [markdown]
 //
-// ## Disinformation vermeiden
+// ## Vermeide Disinformation
 //
 // - Der Name darf nicht etwas anderes implizieren als der Code tut
 // - Keinen Typ in den Namen aufnehmen, wenn er nicht stimmt
@@ -173,10 +196,26 @@ string filePath = Path.Combine("file-loc");
 // **Faustregel:** Verwende lange, beschreibende Namen für lange Geltungsbereiche
 
 // %%
+for (int theLoopCounterOfThisForLoop = 0; theLoopCounterOfThisForLoop < 10; theLoopCounterOfThisForLoop++)
+{
+    Console.WriteLine($"{theLoopCounterOfThisForLoop}^2 = {theLoopCounterOfThisForLoop * theLoopCounterOfThisForLoop}");
+}
+
+// %%
+
+// %%
+class P
+{
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
+// %%
+
+// %%
 class FixedSizeOrderedCollectionIndexedByInts { }
 
 // %%
-class Array { }
 
 // %% [markdown]
 //
@@ -211,9 +250,21 @@ class dtprcssor
 // %%
 
 // %%
-int d = 86400;
-string s = "admin";
-bool b = true;
+int computeSecondsInADay = 24 * 60 * 60;
+
+// %%
+
+// %%
+string s = "admin"; // Default role for new users
+
+// %%
+
+// %%
+bool b_FtrFlg = true; // Feature flag: If true, the feature is enabled
+
+// %%
+
+// %%
 List<string> theList = new List<string> { "read", "write", "execute" };
 
 // %%

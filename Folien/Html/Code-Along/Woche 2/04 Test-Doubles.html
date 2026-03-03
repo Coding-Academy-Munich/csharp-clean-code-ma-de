@@ -13721,122 +13721,99 @@ verwendet hat.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fae468768b040c8d"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d44728124dd4c94a"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Raumschiff-Steuerung-testen">Workshop: Raumschiff-Steuerung testen<a class="anchor-link" href="#Workshop:-Raumschiff-Steuerung-testen">¶</a></h2><p>Sie sollen eine Test-Suite für einen <code>SpacecraftCommandController</code>
-implementieren. Diese Klasse sendet Befehle an ein Raumschiff. Ihre
-Aufgaben sind:</p>
-<ul>
-<li>Die Missions-Sicherheit hat Priorität: Überprüfen Sie den Zustand des
-Systems (<code>ITelemetrySystem</code>), bevor Sie Befehle ausführen.</li>
-<li>Führen Sie Manöver mit den Schubdüsen durch (<code>IThrusterControl</code>).</li>
-<li>Benachrichtigen Sie die Bodenstation über den Status von Befehlen
-(<code>IGroundControlLink</code>).</li>
-</ul>
+<h2 id="Workshop:-Test-eines-Steuerungssystems-f%C3%BCr-ein-Raumschiff">Workshop: Test eines Steuerungssystems für ein Raumschiff<a class="anchor-link" href="#Workshop:-Test-eines-Steuerungssystems-f%C3%BCr-ein-Raumschiff">¶</a></h2><p>In diesem Workshop arbeiten Sie mit einem einfachen Steuerungssystem für ein
+Raumschiff. Das System interagiert mit verschiedenen Sensoren und einem
+Funksender. Ihre Aufgabe ist es, Tests für dieses System mit
+handgeschriebenen Test-Doubles zu schreiben.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=a25bc0a56a85c19a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7992b74f7ffede93"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Zuerst die Interfaces für die Subsysteme des Raumschiffs:</p>
+<p>Hier ist eine einfache Implementierung unseres Raumschiff-Steuerungssystems:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3e1df81f0d0df15b">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b263508116ff664d">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">SubSystem</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Core</span><span class="p">,</span><span class="w"> </span><span class="n">Thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">ScienceBay</span><span class="w"> </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=043684d4935312d0">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ITelemetrySystem</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ITemperatureSensor</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="w"> </span><span class="n">system</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetTemperature</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=094dff33233d8237">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5c73fd0556d70db3">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IThrusterControl</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IFuelSensor</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">FireThrusters</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetFuelLevel</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9f4addc03ad15ebd">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=433fd756e2ccea3e">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IGroundControlLink</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IRadioTransmitter</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SendStatusReport</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">report</span><span class="p">);</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Transmit</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=009eb52f7202f7c4"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Die zu testende Klasse: <code>SpacecraftCommandController</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=16caa1b6ddc84283">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=8e775a5e89970921">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SpacecraftCommandController</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SpacecraftControlSystem</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITelemetrySystem</span><span class="w"> </span><span class="n">telemetry</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IThrusterControl</span><span class="w"> </span><span class="n">thrusters</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IGroundControlLink</span><span class="w"> </span><span class="n">groundControl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITemperatureSensor</span><span class="w"> </span><span class="n">_tempSensor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IFuelSensor</span><span class="w"> </span><span class="n">_fuelSensor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IRadioTransmitter</span><span class="w"> </span><span class="n">_radio</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SpacecraftCommandController</span><span class="p">(</span>
-<span class="w">        </span><span class="n">ITelemetrySystem</span><span class="w"> </span><span class="n">telemetry</span><span class="p">,</span>
-<span class="w">        </span><span class="n">IThrusterControl</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span>
-<span class="w">        </span><span class="n">IGroundControlLink</span><span class="w"> </span><span class="n">groundControl</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SpacecraftControlSystem</span><span class="p">(</span><span class="n">ITemperatureSensor</span><span class="w"> </span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">IFuelSensor</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">IRadioTransmitter</span><span class="w"> </span><span class="n">radio</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetry</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thrusters</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">groundControl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempSensor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ExecuteBurnManeuver</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CheckAndReportStatus</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">powerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetry</span><span class="p">.</span><span class="n">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="p">.</span><span class="n">Thrusters</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">powerLevel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_tempSensor</span><span class="p">.</span><span class="n">GetTemperature</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">fuel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_fuelSensor</span><span class="p">.</span><span class="n">GetFuelLevel</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">groundControl</span><span class="p">.</span><span class="n">SendStatusReport</span><span class="p">(</span>
-<span class="w">                </span><span class="s">"ERROR: Thruster power too low for maneuver."</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Warning: High temperature!"</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">thrusters</span><span class="p">.</span><span class="n">FireThrusters</span><span class="p">(</span><span class="n">durationMs</span><span class="p">);</span>
-<span class="w">        </span><span class="n">groundControl</span><span class="p">.</span><span class="n">SendStatusReport</span><span class="p">(</span><span class="s">"SUCCESS: Maneuver executed."</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fuel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Warning: Low fuel!"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">$"Status: Temperature {temp}, Fuel {fuel}"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -13844,30 +13821,50 @@ Systems (<code>ITelemetrySystem</code>), bevor Sie Befehle ausführen.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2de8967537ad5a6e"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=40070a8a3f159dde"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Ihre-Aufgabe">Ihre Aufgabe<a class="anchor-link" href="#Ihre-Aufgabe">¶</a></h2><p>Schreiben Sie Tests für die folgenden Szenarien. Implementieren Sie dafür
-die notwendigen Test-Doubles.</p>
+<p>Ihre Aufgabe ist es, Tests für das <code>SpacecraftControlSystem</code> unter
+Verwendung von handgeschriebenen Test-Doubles zu schreiben. Implementieren
+Sie die folgenden Testfälle:</p>
 <ol>
-<li><strong>Erfolgreiches Manöver:</strong> Das Schubdüsen-System hat genug Energie
-(&gt;50%). Überprüfen Sie, ob der <code>FireThrusters</code>-Befehl gesendet wird und
-eine Erfolgsmeldung an die Bodenstation geht.</li>
-<li><strong>Manöver abgebrochen (zu wenig Energie):</strong> Das Schubdüsen-System hat
-zu wenig Energie (&lt;50%). Überprüfen Sie, ob die Schubdüsen <strong>nicht</strong>
-gezündet werden und eine Fehlermeldung an die Bodenstation geht.</li>
+<li>Testen des normalen Betriebs:<ul>
+<li>Überprüfen Sie den normalen Betrieb des Raumschiffs, wenn die
+Temperatur normal und der Kraftstoffstand ausreichend ist.</li>
+<li>Stellen Sie sicher, dass keine Warnungen gesendet werden.</li>
+</ul>
+</li>
+<li>Testen der Warnung bei hoher Temperatur:<ul>
+<li>Überprüfen Sie, dass eine Warnung gesendet wird, wenn die Temperatur
+über 100 Grad liegt.</li>
+</ul>
+</li>
+<li>Testen der Warnung bei niedrigem Kraftstoffstand:<ul>
+<li>Überprüfen Sie, dass eine Warnung gesendet wird, wenn der
+Kraftstoffstand unter 10 liegt.</li>
+</ul>
+</li>
+<li>Testen mehrerer Warnungen:<ul>
+<li>Überprüfen Sie, dass sowohl eine Warnung bei hoher Temperatur als
+auch bei niedrigem Kraftstoffstand gesendet wird, wenn beide
+Bedingungen erfüllt sind.</li>
+</ul>
+</li>
 </ol>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=af74bb23639637e5">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2685d8d0e7155d80"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Bonusaufgabe:">Bonusaufgabe:<a class="anchor-link" href="#Bonusaufgabe:">¶</a></h4><ol start="5">
+<li>Testen der Fehlerbehandlung:<ul>
+<li>Ändern Sie das <code>SpacecraftControlSystem</code>, um Ausnahmen von den
+Sensoren zu behandeln, und schreiben Sie einen Test, um dieses
+Verhalten zu überprüfen.</li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 </div>

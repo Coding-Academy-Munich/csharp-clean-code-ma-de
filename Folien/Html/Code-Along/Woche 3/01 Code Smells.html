@@ -13087,7 +13087,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=4ffe1386114a6957"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=e5fc9b6d90211048"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="C# Logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEgCAYAAABb3q1QAAAEuGlUWHRYTUw6Y29tLmFkb2JlLnht
@@ -13367,7 +13367,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 " style="display:block;margin:auto;width:5%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>Refactoring: Extrahiere Variable</b>
+<b>Code Smells</b>
 </div>
 <br>
 <div style="text-align:center; font-size:120%;">Dr. Matthias Hölzl</div>
@@ -13377,154 +13377,125 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=1f099b26ce433960"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=6ba1a44f8605fa40"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Extrahiere-Variable">Extrahiere Variable<a class="anchor-link" href="#Extrahiere-Variable">¶</a></h3>
+<h2 id="Was-sind-Code-Smells?">Was sind Code Smells?<a class="anchor-link" href="#Was-sind-Code-Smells?">¶</a></h2><ul>
+<li>Hinweise darauf, dass Code verbessert werden sollte</li>
+<li>Keine Bugs, aber Anzeichen für tiefere Probleme</li>
+<li>Zeigen an, wo Refactoring sinnvoll wäre</li>
+</ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=42945fb3c75b8f36">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
-<span class="k">using</span><span class="w"> </span><span class="nn">System.Collections.Generic</span><span class="p">;</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=2e2588195475ca3f">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">OrderLine</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Product</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Quantity</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">Price</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">OrderLine</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">product</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">quantity</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">price</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">product</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Quantity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">quantity</span><span class="p">;</span>
-<span class="w">        </span><span class="n">Price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">price</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=f2b0f37c1da8b480">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderLine</span><span class="o">&gt;</span><span class="w"> </span><span class="n">MakeOrderLines</span><span class="p">()</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderLine</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderLines</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderLine</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="w">    </span><span class="n">orderLines</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="s">"Apple"</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5m</span><span class="p">));</span>
-<span class="w">    </span><span class="n">orderLines</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="s">"Banana"</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mf">0.3m</span><span class="p">));</span>
-<span class="w">    </span><span class="n">orderLines</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OrderLine</span><span class="p">(</span><span class="s">"Orange"</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.8m</span><span class="p">));</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">orderLines</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=f5a2d03126ec4610">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Refactoring</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="nf">ComputeTotal</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderLine</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderLines</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0m</span><span class="p">;</span>
-<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">OrderLine</span><span class="w"> </span><span class="n">orderLine</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">orderLines</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">orderLine</span><span class="p">.</span><span class="n">Quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">orderLine</span><span class="p">.</span><span class="n">Price</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5194c55ca84aebc6">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">Refactoring</span><span class="p">.</span><span class="n">ComputeTotal</span><span class="p">(</span><span class="n">MakeOrderLines</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_start celltag_subslide" id="cell-id=4e3ef0cf24336bbb">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Refactoring</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="nf">ComputeTotal</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">OrderLine</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orderLines</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0m</span><span class="p">;</span>
-<span class="w">        </span><span class="k">foreach</span><span class="w"> </span><span class="p">(</span><span class="n">OrderLine</span><span class="w"> </span><span class="n">orderLine</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">orderLines</span><span class="p">)</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">total</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">orderLine</span><span class="p">.</span><span class="n">Quantity</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">orderLine</span><span class="p">.</span><span class="n">Price</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">total</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=bf406523f8536828">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">Refactoring</span><span class="p">.</span><span class="n">ComputeTotal</span><span class="p">(</span><span class="n">MakeOrderLines</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2229508eb1877a2c"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=0ac081f6e9dd3928"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Motivation">Motivation<a class="anchor-link" href="#Motivation">¶</a></h4><ul>
-<li>Hilft dabei, komplexe Ausdrücke zu verstehen<ul>
-<li>Erklärende Variablen/Konstanten</li>
+<h2 id="Smells,-die-Sie-schon-kennen">Smells, die Sie schon kennen<a class="anchor-link" href="#Smells,-die-Sie-schon-kennen">¶</a></h2><p>Diese Smells haben Sie in den Workshops bereits in der Praxis gesehen:</p>
+<ul>
+<li><strong>Mysteriöser Name</strong>: Namen verschleiern statt zu klären<ul>
+<li>IDE-Workshop: <code>Mgr</code>, <code>Calc</code>, <code>n</code>, <code>s</code>, <code>y</code></li>
 </ul>
 </li>
-<li>Debugging oft einfacher</li>
+<li><strong>Lange Funktion</strong>: Funktion macht zu viele Dinge<ul>
+<li>KI-Workshop: <code>Report.Generate()</code></li>
+</ul>
+</li>
+<li><strong>Feature-Neid</strong>: Logik gehört in eine andere Klasse<ul>
+<li>KI-Workshop: Formatierungslogik in <code>Report</code></li>
+</ul>
+</li>
+<li><strong>Primitive Obsession</strong>: Eingebaute Typen statt sinnvoller Klassen<ul>
+<li>KI-Workshop: <code>type</code> als String statt Enum/Polymorphismus</li>
+</ul>
+</li>
+<li><strong>Switch Statements</strong>: if/else-Ketten über die gleichen Daten<ul>
+<li>KI-Workshop: if/else-Kette auf String-Typ in <code>Report</code></li>
+</ul>
+</li>
+<li><strong>Veränderliche Daten</strong>: Unkontrollierter Zugriff auf veränderliche Daten<ul>
+<li>KI-Workshop: <code>sent</code>-Flag als öffentliches Feld</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=383959683bf3fd76"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=619ecd0acef32d02"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Mechanik">Mechanik<a class="anchor-link" href="#Mechanik">¶</a></h4><ul>
-<li>Stelle sicher, dass der Ausdruck frei von Seiteneffekten ist</li>
-<li>Erzeuge eine neue konstante Variable</li>
-<li>Initialisiere sie mit dem Ausdruck</li>
-<li>Ersetze den Ausdruck durch die Variable</li>
-<li>Teste das Programm</li>
+<h2 id="Weitere-wichtige-Smells">Weitere wichtige Smells<a class="anchor-link" href="#Weitere-wichtige-Smells">¶</a></h2><ul>
+<li><strong>Duplizierter Code</strong>: Identischer oder ähnlicher Code an mehreren Stellen<ul>
+<li>Refactoring: Extrahiere Funktion, Extrahiere Klasse</li>
+</ul>
+</li>
+<li><strong>Lange Parameterliste</strong>: Funktion braucht zu viele Parameter<ul>
+<li>Refactoring: Introduce Parameter Object, Preserve Whole Object</li>
+</ul>
+</li>
+<li><strong>Globale Daten</strong>: Daten, auf die jeder zugreifen kann<ul>
+<li>Refactoring: Encapsulate Variable</li>
+</ul>
+</li>
+<li><strong>Datenklumpen</strong>: Gleiche Daten erscheinen immer zusammen<ul>
+<li>Refactoring: Introduce Parameter Object, Extract Class</li>
+</ul>
+</li>
+<li><strong>Divergente Änderung</strong>: Ein Modul ändert sich bei vielen verschiedenen
+Anforderungen<ul>
+<li>Refactoring: Extract Class, Split Phase</li>
+</ul>
+</li>
+<li><strong>Schrotflinten-Operation</strong>: Einfache Änderungen betreffen viele Module<ul>
+<li>Refactoring: Move Function, Combine Functions into Class</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2849bbb8308d9e7d"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Smells-in-der-Klassenstruktur">Smells in der Klassenstruktur<a class="anchor-link" href="#Smells-in-der-Klassenstruktur">¶</a></h2><ul>
+<li><strong>Faules Element</strong>: Programmelemente, die keinen Mehrwert haben<ul>
+<li>Refactoring: Inline Function, Collapse Hierarchy</li>
+</ul>
+</li>
+<li><strong>Spekulative Allgemeinheit</strong>: Flexibilität, die momentan nicht benötigt
+wird (YAGNI)<ul>
+<li>Refactoring: Collapse Hierarchy, Remove Dead Code</li>
+</ul>
+</li>
+<li><strong>Große Klasse</strong>: Klasse hat zu viele Verantwortlichkeiten<ul>
+<li>Refactoring: Extract Class, Extract Subclass</li>
+</ul>
+</li>
+<li><strong>Datenklasse</strong>: Klasse hat nur Getter und Setter, keine Logik<ul>
+<li>Refactoring: Move Function (Logik in die Klasse verschieben)</li>
+</ul>
+</li>
+<li><strong>Verweigerte Erbschaft</strong>: Unterklassen erben Funktionalität, die sie
+nicht brauchen<ul>
+<li>Refactoring: Replace Inheritance with Delegation, Strategy Pattern</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=c74a973681e80dcf"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Weitere-Smells">Weitere Smells<a class="anchor-link" href="#Weitere-Smells">¶</a></h2><ul>
+<li><strong>Temporäres Feld</strong>: Attribute, die nur zeitweise gültig sind</li>
+<li><strong>Ketten von Nachrichten</strong>: Lange Ketten von Getter-Aufrufen</li>
+<li><strong>Mittelsmann</strong>: Klasse delegiert nur an eine andere Klasse</li>
+<li><strong>Insider Trading</strong>: Klassen kennen zu viele Interna anderer Klassen</li>
+<li><strong>Alternative Klassen mit unterschiedlichen Interfaces</strong>: Klassen, die
+austauschbar sein sollten, aber nicht sind</li>
+<li><strong>Schleifen</strong>: Können oft durch LINQ ersetzt werden</li>
+<li><strong>Kommentare</strong>: Falls sie nur da sind, weil der Code schlecht ist</li>
 </ul>
 </div>
 </div>

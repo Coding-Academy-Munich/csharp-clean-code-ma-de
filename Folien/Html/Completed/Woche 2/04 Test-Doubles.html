@@ -13587,109 +13587,211 @@ Abhängigkeit).</li>
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-79408.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
-        The below script needs to be able to find the current output cell; this is an easy method to get it.
+<div id="dotnet-interactive-this-cell-64376.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+
+        The below script needs to be able to find the current output cell; this is an easy method to get it.
+
     </div>
-<script type="text/javascript">
-async function probeAddresses(probingAddresses) {
-    function timeout(ms, promise) {
-        return new Promise(function (resolve, reject) {
-            setTimeout(function () {
-                reject(new Error('timeout'))
-            }, ms)
-            promise.then(resolve, reject)
-        })
-    }
-
-    if (Array.isArray(probingAddresses)) {
-        for (let i = 0; i < probingAddresses.length; i++) {
-
-            let rootUrl = probingAddresses[i];
-
-            if (!rootUrl.endsWith('/')) {
-                rootUrl = `${rootUrl}/`;
-            }
-
-            try {
-                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
-                    method: 'POST',
-                    cache: 'no-cache',
-                    mode: 'cors',
-                    timeout: 1000,
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    body: probingAddresses[i]
-                }));
-
-                if (response.status == 200) {
-                    return rootUrl;
-                }
-            }
-            catch (e) { }
-        }
-    }
-}
-
-function loadDotnetInteractiveApi() {
-    probeAddresses(["http://192.168.178.24:2050/", "http://169.254.203.116:2050/", "http://169.254.194.28:2050/", "http://172.16.0.1:2050/", "http://172.30.96.1:2050/", "http://172.23.176.1:2050/", "http://127.0.0.1:2050/"])
-        .then((root) => {
-        // use probing to find host url and api resources
-        // load interactive helpers and language services
-        let dotnetInteractiveRequire = require.config({
-        context: '79408.Microsoft.DotNet.Interactive.Http.HttpPort',
-                paths:
-            {
-                'dotnet-interactive': `${root}resources`
-                }
-        }) || require;
-
-            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
-
-            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
-                let paths = {};
-                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
-                
-                let internalRequire = require.config({
-                    context: extensionCacheBuster,
-                    paths: paths,
-                    urlArgs: `cacheBuster=${extensionCacheBuster}`
-                    }) || require;
-
-                return internalRequire
-            };
-        
-            dotnetInteractiveRequire([
-                    'dotnet-interactive/dotnet-interactive'
-                ],
-                function (dotnet) {
-                    dotnet.init(window);
-                },
-                function (error) {
-                    console.log(error);
-                }
-            );
-        })
-        .catch(error => {console.log(error);});
-    }
-
-// ensure `require` is available globally
-if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
-    let require_script = document.createElement('script');
-    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
-    require_script.setAttribute('type', 'text/javascript');
-    
-    
-    require_script.onload = function() {
-        loadDotnetInteractiveApi();
-    };
-
-    document.getElementsByTagName('head')[0].appendChild(require_script);
-}
-else {
-    loadDotnetInteractiveApi();
-}
-
+<script type="text/javascript">
+
+async function probeAddresses(probingAddresses) {
+
+    function timeout(ms, promise) {
+
+        return new Promise(function (resolve, reject) {
+
+            setTimeout(function () {
+
+                reject(new Error('timeout'))
+
+            }, ms)
+
+            promise.then(resolve, reject)
+
+        })
+
+    }
+
+
+
+    if (Array.isArray(probingAddresses)) {
+
+        for (let i = 0; i < probingAddresses.length; i++) {
+
+
+
+            let rootUrl = probingAddresses[i];
+
+
+
+            if (!rootUrl.endsWith('/')) {
+
+                rootUrl = `${rootUrl}/`;
+
+            }
+
+
+
+            try {
+
+                let response = await timeout(1000, fetch(`${rootUrl}discovery`, {
+
+                    method: 'POST',
+
+                    cache: 'no-cache',
+
+                    mode: 'cors',
+
+                    timeout: 1000,
+
+                    headers: {
+
+                        'Content-Type': 'text/plain'
+
+                    },
+
+                    body: probingAddresses[i]
+
+                }));
+
+
+
+                if (response.status == 200) {
+
+                    return rootUrl;
+
+                }
+
+            }
+
+            catch (e) { }
+
+        }
+
+    }
+
+}
+
+
+
+function loadDotnetInteractiveApi() {
+
+    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.31.192.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
+
+        .then((root) => {
+
+        // use probing to find host url and api resources
+
+        // load interactive helpers and language services
+
+        let dotnetInteractiveRequire = require.config({
+
+        context: '64376.Microsoft.DotNet.Interactive.Http.HttpPort',
+
+                paths:
+
+            {
+
+                'dotnet-interactive': `${root}resources`
+
+                }
+
+        }) || require;
+
+
+
+            window.dotnetInteractiveRequire = dotnetInteractiveRequire;
+
+
+
+            window.configureRequireFromExtension = function(extensionName, extensionCacheBuster) {
+
+                let paths = {};
+
+                paths[extensionName] = `${root}extensions/${extensionName}/resources/`;
+
+                
+
+                let internalRequire = require.config({
+
+                    context: extensionCacheBuster,
+
+                    paths: paths,
+
+                    urlArgs: `cacheBuster=${extensionCacheBuster}`
+
+                    }) || require;
+
+
+
+                return internalRequire
+
+            };
+
+        
+
+            dotnetInteractiveRequire([
+
+                    'dotnet-interactive/dotnet-interactive'
+
+                ],
+
+                function (dotnet) {
+
+                    dotnet.init(window);
+
+                },
+
+                function (error) {
+
+                    console.log(error);
+
+                }
+
+            );
+
+        })
+
+        .catch(error => {console.log(error);});
+
+    }
+
+
+
+// ensure `require` is available globally
+
+if ((typeof(require) !==  typeof(Function)) || (typeof(require.config) !== typeof(Function))) {
+
+    let require_script = document.createElement('script');
+
+    require_script.setAttribute('src', 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js');
+
+    require_script.setAttribute('type', 'text/javascript');
+
+    
+
+    
+
+    require_script.onload = function() {
+
+        loadDotnetInteractiveApi();
+
+    };
+
+
+
+    document.getElementsByTagName('head')[0].appendChild(require_script);
+
+}
+
+else {
+
+    loadDotnetInteractiveApi();
+
+}
+
+
+
     </script>
 </div></div>
 </div>
@@ -13867,122 +13969,99 @@ verwendet hat.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fae468768b040c8d"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=d44728124dd4c94a"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Raumschiff-Steuerung-testen">Workshop: Raumschiff-Steuerung testen<a class="anchor-link" href="#Workshop:-Raumschiff-Steuerung-testen">¶</a></h2><p>Sie sollen eine Test-Suite für einen <code>SpacecraftCommandController</code>
-implementieren. Diese Klasse sendet Befehle an ein Raumschiff. Ihre
-Aufgaben sind:</p>
-<ul>
-<li>Die Missions-Sicherheit hat Priorität: Überprüfen Sie den Zustand des
-Systems (<code>ITelemetrySystem</code>), bevor Sie Befehle ausführen.</li>
-<li>Führen Sie Manöver mit den Schubdüsen durch (<code>IThrusterControl</code>).</li>
-<li>Benachrichtigen Sie die Bodenstation über den Status von Befehlen
-(<code>IGroundControlLink</code>).</li>
-</ul>
+<h2 id="Workshop:-Test-eines-Steuerungssystems-f%C3%BCr-ein-Raumschiff">Workshop: Test eines Steuerungssystems für ein Raumschiff<a class="anchor-link" href="#Workshop:-Test-eines-Steuerungssystems-f%C3%BCr-ein-Raumschiff">¶</a></h2><p>In diesem Workshop arbeiten Sie mit einem einfachen Steuerungssystem für ein
+Raumschiff. Das System interagiert mit verschiedenen Sensoren und einem
+Funksender. Ihre Aufgabe ist es, Tests für dieses System mit
+handgeschriebenen Test-Doubles zu schreiben.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=a25bc0a56a85c19a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7992b74f7ffede93"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Zuerst die Interfaces für die Subsysteme des Raumschiffs:</p>
+<p>Hier ist eine einfache Implementierung unseres Raumschiff-Steuerungssystems:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3e1df81f0d0df15b">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=b263508116ff664d">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="n">SubSystem</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Core</span><span class="p">,</span><span class="w"> </span><span class="n">Thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">ScienceBay</span><span class="w"> </span><span class="p">}</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ITemperatureSensor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetTemperature</span><span class="p">();</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=043684d4935312d0">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5c73fd0556d70db3">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">ITelemetrySystem</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IFuelSensor</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="w"> </span><span class="n">system</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetFuelLevel</span><span class="p">();</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=094dff33233d8237">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=433fd756e2ccea3e">
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IThrusterControl</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IRadioTransmitter</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">FireThrusters</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">);</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Transmit</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9f4addc03ad15ebd">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=8e775a5e89970921">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">interface</span><span class="w"> </span><span class="n">IGroundControlLink</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SpacecraftControlSystem</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">SendStatusReport</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">report</span><span class="p">);</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=009eb52f7202f7c4"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Die zu testende Klasse: <code>SpacecraftCommandController</code>.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=16caa1b6ddc84283">
-<div class="input">
-<div class="prompt input_prompt">In [13]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SpacecraftCommandController</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITelemetrySystem</span><span class="w"> </span><span class="n">telemetry</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IThrusterControl</span><span class="w"> </span><span class="n">thrusters</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IGroundControlLink</span><span class="w"> </span><span class="n">groundControl</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITemperatureSensor</span><span class="w"> </span><span class="n">_tempSensor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IFuelSensor</span><span class="w"> </span><span class="n">_fuelSensor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IRadioTransmitter</span><span class="w"> </span><span class="n">_radio</span><span class="p">;</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SpacecraftCommandController</span><span class="p">(</span>
-<span class="w">        </span><span class="n">ITelemetrySystem</span><span class="w"> </span><span class="n">telemetry</span><span class="p">,</span>
-<span class="w">        </span><span class="n">IThrusterControl</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span>
-<span class="w">        </span><span class="n">IGroundControlLink</span><span class="w"> </span><span class="n">groundControl</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SpacecraftControlSystem</span><span class="p">(</span><span class="n">ITemperatureSensor</span><span class="w"> </span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">IFuelSensor</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">IRadioTransmitter</span><span class="w"> </span><span class="n">radio</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetry</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">thrusters</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">groundControl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempSensor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ExecuteBurnManeuver</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CheckAndReportStatus</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">powerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">telemetry</span><span class="p">.</span><span class="n">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="p">.</span><span class="n">Thrusters</span><span class="p">);</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">powerLevel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">50</span><span class="p">)</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_tempSensor</span><span class="p">.</span><span class="n">GetTemperature</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">var</span><span class="w"> </span><span class="n">fuel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_fuelSensor</span><span class="p">.</span><span class="n">GetFuelLevel</span><span class="p">();</span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
 <span class="w">        </span><span class="p">{</span>
-<span class="w">            </span><span class="n">groundControl</span><span class="p">.</span><span class="n">SendStatusReport</span><span class="p">(</span>
-<span class="w">                </span><span class="s">"ERROR: Thruster power too low for maneuver."</span><span class="p">);</span>
-<span class="w">            </span><span class="k">return</span><span class="p">;</span>
+<span class="w">            </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Warning: High temperature!"</span><span class="p">);</span>
 <span class="w">        </span><span class="p">}</span>
 
-<span class="w">        </span><span class="n">thrusters</span><span class="p">.</span><span class="n">FireThrusters</span><span class="p">(</span><span class="n">durationMs</span><span class="p">);</span>
-<span class="w">        </span><span class="n">groundControl</span><span class="p">.</span><span class="n">SendStatusReport</span><span class="p">(</span><span class="s">"SUCCESS: Maneuver executed."</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fuel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Warning: Low fuel!"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">$"Status: Temperature {temp}, Fuel {fuel}"</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -13990,78 +14069,103 @@ Systems (<code>ITelemetrySystem</code>), bevor Sie Befehle ausführen.</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2de8967537ad5a6e"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=40070a8a3f159dde"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Ihre-Aufgabe">Ihre Aufgabe<a class="anchor-link" href="#Ihre-Aufgabe">¶</a></h2><p>Schreiben Sie Tests für die folgenden Szenarien. Implementieren Sie dafür
-die notwendigen Test-Doubles.</p>
+<p>Ihre Aufgabe ist es, Tests für das <code>SpacecraftControlSystem</code> unter
+Verwendung von handgeschriebenen Test-Doubles zu schreiben. Implementieren
+Sie die folgenden Testfälle:</p>
 <ol>
-<li><strong>Erfolgreiches Manöver:</strong> Das Schubdüsen-System hat genug Energie
-(&gt;50%). Überprüfen Sie, ob der <code>FireThrusters</code>-Befehl gesendet wird und
-eine Erfolgsmeldung an die Bodenstation geht.</li>
-<li><strong>Manöver abgebrochen (zu wenig Energie):</strong> Das Schubdüsen-System hat
-zu wenig Energie (&lt;50%). Überprüfen Sie, ob die Schubdüsen <strong>nicht</strong>
-gezündet werden und eine Fehlermeldung an die Bodenstation geht.</li>
+<li>Testen des normalen Betriebs:<ul>
+<li>Überprüfen Sie den normalen Betrieb des Raumschiffs, wenn die
+Temperatur normal und der Kraftstoffstand ausreichend ist.</li>
+<li>Stellen Sie sicher, dass keine Warnungen gesendet werden.</li>
+</ul>
+</li>
+<li>Testen der Warnung bei hoher Temperatur:<ul>
+<li>Überprüfen Sie, dass eine Warnung gesendet wird, wenn die Temperatur
+über 100 Grad liegt.</li>
+</ul>
+</li>
+<li>Testen der Warnung bei niedrigem Kraftstoffstand:<ul>
+<li>Überprüfen Sie, dass eine Warnung gesendet wird, wenn der
+Kraftstoffstand unter 10 liegt.</li>
+</ul>
+</li>
+<li>Testen mehrerer Warnungen:<ul>
+<li>Überprüfen Sie, dass sowohl eine Warnung bei hoher Temperatur als
+auch bei niedrigem Kraftstoffstand gesendet wird, wenn beide
+Bedingungen erfüllt sind.</li>
+</ul>
+</li>
 </ol>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=cf85353d813a18c1"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2685d8d0e7155d80"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="L%C3%B6sung:-Test-Doubles">Lösung: Test-Doubles<a class="anchor-link" href="#L%C3%B6sung:-Test-Doubles">¶</a></h2><p>Wir benötigen einen konfigurierbaren Stub für <code>ITelemetrySystem</code> und Spies
-für <code>IThrusterControl</code> und <code>IGroundControlLink</code>.</p>
+<h4 id="Bonusaufgabe:">Bonusaufgabe:<a class="anchor-link" href="#Bonusaufgabe:">¶</a></h4><ol start="5">
+<li>Testen der Fehlerbehandlung:<ul>
+<li>Ändern Sie das <code>SpacecraftControlSystem</code>, um Ausnahmen von den
+Sensoren zu behandeln, und schreiben Sie einen Test, um dieses
+Verhalten zu überprüfen.</li>
+</ul>
+</li>
+</ol>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=af74bb23639637e5">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=2bd54dc3bb734496"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="L%C3%B6sung:-Test-Doubles">Lösung: Test-Doubles<a class="anchor-link" href="#L%C3%B6sung:-Test-Doubles">¶</a></h2><p>Wir benötigen konfigurierbare Stubs für <code>ITemperatureSensor</code> und
+<code>IFuelSensor</code> und einen Spy für <code>IRadioTransmitter</code>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=a46ee4fc9d8087d8">
+<div class="input">
+<div class="prompt input_prompt">In [13]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TemperatureSensorStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ITemperatureSensor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Temperature</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">75.0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetTemperature</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">Temperature</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=79a54bb0e66b671c">
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">TelemetrySystemStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ITelemetrySystem</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">FuelSensorStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IFuelSensor</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">PowerLevel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetPowerLevelPercent</span><span class="p">(</span><span class="n">SubSystem</span><span class="w"> </span><span class="n">system</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">PowerLevel</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">FuelLevel</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50.0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetFuelLevel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">FuelLevel</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=25208af2b989239e">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=51dcb23b3b82d7de">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ThrusterControlSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IThrusterControl</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">RadioTransmitterSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IRadioTransmitter</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">BurnDurationMs</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">TimesFired</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">private</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Messages</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">FireThrusters</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">durationMs</span><span class="p">)</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Transmit</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">message</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">TimesFired</span><span class="o">++</span><span class="p">;</span>
-<span class="w">        </span><span class="n">BurnDurationMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">durationMs</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=fe4525a69b2300ed">
-<div class="input">
-<div class="prompt input_prompt">In [16]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">GroundControlLinkSpy</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IGroundControlLink</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Reports</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
-
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendStatusReport</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">report</span><span class="p">)</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Reports</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Messages</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">message</span><span class="p">);</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -14076,69 +14180,214 @@ für <code>IThrusterControl</code> und <code>IGroundControlLink</code>.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=a2f3747182c53551">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=adaeee5fba51b0fd">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestNormalOperation</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemperatureSensorStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FuelSensorStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RadioTransmitterSpy</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">spacecraft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftControlSystem</span><span class="p">(</span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">spacecraft</span><span class="p">.</span><span class="n">CheckAndReportStatus</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">"Status: Temperature 75, Fuel 50"</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=1a46a4ec7f53e1c2">
 <div class="input">
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestSuccessfulBurnManeuver</span><span class="p">()</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestHighTemperatureWarning</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TelemetrySystemStub</span><span class="p">();</span>
-<span class="w">    </span><span class="n">telemetry</span><span class="p">.</span><span class="n">PowerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">75</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemperatureSensorStub</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">110.0</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FuelSensorStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RadioTransmitterSpy</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThrusterControlSpy</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GroundControlLinkSpy</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">spacecraft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftControlSystem</span><span class="p">(</span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">spacecraft</span><span class="p">.</span><span class="n">CheckAndReportStatus</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftCommandController</span><span class="p">(</span>
-<span class="w">        </span><span class="n">telemetry</span><span class="p">,</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">groundControl</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="n">ExecuteBurnManeuver</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">thrusters</span><span class="p">.</span><span class="n">TimesFired</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">thrusters</span><span class="p">.</span><span class="n">BurnDurationMs</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">500</span><span class="p">));</span>
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">"SUCCESS: Maneuver executed."</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Warning: High temperature!"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Status: Temperature 110, Fuel 50"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Not</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Warning: Low fuel!"</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=031c20d9ded3a718">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=88b85396a8bcdf69">
 <div class="input">
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestAbortedManeuverDueToLowPower</span><span class="p">()</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestLowFuelWarning</span><span class="p">()</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">telemetry</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TelemetrySystemStub</span><span class="p">();</span>
-<span class="w">    </span><span class="n">telemetry</span><span class="p">.</span><span class="n">PowerLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemperatureSensorStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FuelSensorStub</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">FuelLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RadioTransmitterSpy</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">thrusters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThrusterControlSpy</span><span class="p">();</span>
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">groundControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GroundControlLinkSpy</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">spacecraft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftControlSystem</span><span class="p">(</span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">spacecraft</span><span class="p">.</span><span class="n">CheckAndReportStatus</span><span class="p">();</span>
 
-<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">controller</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftCommandController</span><span class="p">(</span>
-<span class="w">        </span><span class="n">telemetry</span><span class="p">,</span><span class="w"> </span><span class="n">thrusters</span><span class="p">,</span><span class="w"> </span><span class="n">groundControl</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">controller</span><span class="p">.</span><span class="n">ExecuteBurnManeuver</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
-
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">thrusters</span><span class="p">.</span><span class="n">TimesFired</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
-<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">groundControl</span><span class="p">.</span><span class="n">Reports</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-<span class="w">        </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">"ERROR: Thruster power too low for maneuver."</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Warning: Low fuel!"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Status: Temperature 75, Fuel 5"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Not</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Warning: High temperature!"</span><span class="p">));</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=2aa955bd11bbf309">
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=d4436e663a60c237">
 <div class="input">
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">TestSuccessfulBurnManeuver</span><span class="p">();</span>
-<span class="n">TestAbortedManeuverDueToLowPower</span><span class="p">();</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestMultipleWarnings</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">TemperatureSensorStub</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Temperature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">110.0</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FuelSensorStub</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">FuelLevel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span><span class="w"> </span><span class="p">};</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RadioTransmitterSpy</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">spacecraft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftControlSystem</span><span class="p">(</span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">spacecraft</span><span class="p">.</span><span class="n">CheckAndReportStatus</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Warning: High temperature!"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Warning: Low fuel!"</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">,</span><span class="w"> </span><span class="n">Does</span><span class="p">.</span><span class="n">Contain</span><span class="p">(</span><span class="s">"Status: Temperature 110, Fuel 5"</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=da051eba730da5c7">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">TestNormalOperation</span><span class="p">();</span>
+<span class="n">TestHighTemperatureWarning</span><span class="p">();</span>
+<span class="n">TestLowFuelWarning</span><span class="p">();</span>
+<span class="n">TestMultipleWarnings</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=60c42e4caa918fac"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Bonusaufgabe:-Fehlerbehandlung">Bonusaufgabe: Fehlerbehandlung<a class="anchor-link" href="#Bonusaufgabe:-Fehlerbehandlung">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=bae2b9607dc44ee0">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">SpacecraftControlSystemWithExceptionHandling</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">ITemperatureSensor</span><span class="w"> </span><span class="n">_tempSensor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IFuelSensor</span><span class="w"> </span><span class="n">_fuelSensor</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">IRadioTransmitter</span><span class="w"> </span><span class="n">_radio</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">SpacecraftControlSystemWithExceptionHandling</span><span class="p">(</span>
+<span class="w">        </span><span class="n">ITemperatureSensor</span><span class="w"> </span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">IFuelSensor</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">IRadioTransmitter</span><span class="w"> </span><span class="n">radio</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tempSensor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">;</span>
+<span class="w">        </span><span class="n">_radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">radio</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">CheckAndReportStatus</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">try</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">temp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_tempSensor</span><span class="p">.</span><span class="n">GetTemperature</span><span class="p">();</span>
+<span class="w">            </span><span class="kt">var</span><span class="w"> </span><span class="n">fuel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">_fuelSensor</span><span class="p">.</span><span class="n">GetFuelLevel</span><span class="p">();</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">temp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Warning: High temperature!"</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">fuel</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Warning: Low fuel!"</span><span class="p">);</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">            </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">$"Status: Temperature {temp}, Fuel {fuel}"</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">Exception</span><span class="w"> </span><span class="n">e</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">_radio</span><span class="p">.</span><span class="n">Transmit</span><span class="p">(</span><span class="s">"Error: Sensor malfunction - "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">Message</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=978a1160ac225559">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">ThrowingTemperatureSensorStub</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ITemperatureSensor</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">GetTemperature</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="nf">Exception</span><span class="p">(</span><span class="s">"Temperature sensor failure"</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt celltag_subslide" id="cell-id=0fc19e83fbf21cb5">
+<div class="input">
+<div class="prompt input_prompt">In [23]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">TestExceptionHandling</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">tempSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ThrowingTemperatureSensorStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">fuelSensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">FuelSensorStub</span><span class="p">();</span>
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">radio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RadioTransmitterSpy</span><span class="p">();</span>
+
+<span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">spacecraft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">SpacecraftControlSystemWithExceptionHandling</span><span class="p">(</span>
+<span class="w">        </span><span class="n">tempSensor</span><span class="p">,</span><span class="w"> </span><span class="n">fuelSensor</span><span class="p">,</span><span class="w"> </span><span class="n">radio</span><span class="p">);</span>
+<span class="w">    </span><span class="n">spacecraft</span><span class="p">.</span><span class="n">CheckAndReportStatus</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">.</span><span class="n">Count</span><span class="p">,</span><span class="w"> </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="n">Assert</span><span class="p">.</span><span class="n">That</span><span class="p">(</span><span class="n">radio</span><span class="p">.</span><span class="n">Messages</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="w">        </span><span class="n">Is</span><span class="p">.</span><span class="n">EqualTo</span><span class="p">(</span><span class="s">"Error: Sensor malfunction - Temperature sensor failure"</span><span class="p">));</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=158cfc22451e08c5">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">TestExceptionHandling</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>

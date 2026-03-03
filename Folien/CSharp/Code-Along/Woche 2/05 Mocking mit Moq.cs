@@ -15,7 +15,8 @@
 // # Das Moq Mocking Framework (für C#)
 //
 // - [Moq](https://github.com/moq/moq4) ist ein Mocking-Framework für C#
-// - Ermöglicht das Erstellen von Mock-Objekten
+// - Erzeugt automatisch Mock-Objekte für Interfaces
+// - Ersetzt handgeschriebene Stubs und Spies
 
 // %%
 #r "nuget: Moq, 4.17"
@@ -26,39 +27,28 @@
 
 // %% [markdown]
 //
-// ## Beispiel: Mocken einer Liste
+// ## Mocks erstellen
 //
-// - Erstellen eines Mock-Objekts für eine Liste
-// - Implementiert alle Methoden des `IList`-Interfaces
-// - Kann verwendet werden, um Methodenaufrufe zu überprüfen
+// - `new Mock<T>()` erzeugt einen Mock für ein Interface `T`
+// - `.Object` liefert das Proxy-Objekt, das das Interface implementiert
+// - Alle Methoden haben Standardverhalten (nichts tun / Defaultwerte)
+// - Der Mock-Wrapper zeichnet jeden Aufruf auf
+
+// %% [markdown]
+//
+// ## Beispiel: Mocken eines Service
 
 // %%
 using Moq;
 using System.Collections.Generic;
 
 // %%
-
-// %%
-
-// %%
-mockedList.Verify(list => list.Add("Hello!"));
-
-// %%
-
-// %%
-
-// %% [markdown]
-//
-// - Überprüfen der Anzahl der Aufrufe:
-
-// %%
-var mockedListCount = new Mock<IList<string>>();
-
-// %%
-
-// %%
-
-// %%
+public interface IMessageService
+{
+    void Send(string message);
+    string GetMessage(int index);
+    void ClearAll();
+}
 
 // %%
 
@@ -66,55 +56,238 @@ var mockedListCount = new Mock<IList<string>>();
 
 // %% [markdown]
 //
-// - Überprüfen, dass eine Methode nicht aufgerufen wurde:
+// ## Aufrufe überprüfen
+//
+// - `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
+// - Wirft `MockException` bei Fehlschlag (mit Diagnosemeldung)
+// - Kann exakte Argumente oder Argument Matcher prüfen
+// - Kann Anzahl der Aufrufe mit `Times` einschränken
 
 // %%
-var mockedListNever = new Mock<IList<string>>();
+mockedService.Verify(svc => svc.Send("Hello!"));
 
 // %%
 
 // %% [markdown]
 //
-// - Argument Matcher:
-//   - `It.IsAny<T>()`, `It.IsAny<string>()`, ...
-//   - `It.IsNull()`, `It.EndsWith()`, `It.Is<T>(...)`, ...
+// ## Vergleich: Handgeschriebener Spy vs. Moq
+//
+// **Vorher** (handgeschriebener Spy):
+// ```csharp
+// public class CartSpy : IShoppingCart
+// {
+//     public List<(string Id, double Price)> AddedItems { get; } = new();
+//     public void AddItem(string id, double price)
+//         => AddedItems.Add((id, price));
+// }
+//
+// // Im Test:
+// var spy = new CartSpy();
+// manager.AddToCart("book-123");
+// Assert.That(spy.AddedItems[0].Id, Is.EqualTo("book-123"));
+// ```
+//
+// **Nachher** (mit Moq):
+// ```csharp
+// var mock = new Mock<IShoppingCart>();
+// manager.AddToCart("book-123");
+// mock.Verify(c => c.AddItem("book-123", It.IsAny<double>()));
+// ```
+
+// %% [markdown]
+//
+// ###  Überprüfen der Anzahl der Aufrufe
+//
+// - `Times.Exactly(n)`: genau n Aufrufe
+// - `Times.Never`:
+//    - Bestätigt, dass eine Methode **nicht** aufgerufen wurde
+//    - Sehr nützlich für negative Tests
+//    - Ersetzt die Überprüfung `spy.CallCount == 0` von handgeschriebenen
+//      Doubles
+// - `Times.AtLeastOnce()`, `Times.AtLeast(n)`, `Times.AtMost(n)` für Bereichsprüfungen
 
 // %%
-var mockedListMatchers = new Mock<IList<string>>();
-mockedListMatchers.Object.Add("Hello!");
+var mockedServiceCount = new Mock<IMessageService>();
+mockedServiceCount.Object.Send("Hello!");
+
+// %% [markdown]
+//
+// Wurde `Send("Hello!")` mindestens einmal aufgerufen?
 
 // %%
 
 // %%
+mockedServiceCount.Object.Send("Hello!");
 
-// %%
-
-// %%
-
-// %%
-var mockedListIsNull = new Mock<IList<string>>();
-mockedListIsNull.Object.Add(null);
+// %% [markdown]
+//
+// Gilt das immer noch?
 
 // %%
 
 // %% [markdown]
 //
-// - Mindest- und Maximalanzahl von Aufrufen:
-
-// %%
-var mockedListLimits = new Mock<IList<string>>();
-
-// %%
-mockedListLimits.Object.Add("Once!");
-mockedListLimits.Object.Add("Twice!");
-mockedListLimits.Object.Add("Twice!");
-mockedListLimits.Object.Add("Three times!");
-mockedListLimits.Object.Add("Three times!");
-mockedListLimits.Object.Add("Three times!");
+// Wurde `Send("Hello!")` genau zweimal aufgerufen?
 
 // %%
 
+// %% [markdown]
+//
+// #### Überprüfen, dass eine Methode nicht aufgerufen wurde:
+
 // %%
+var mockedServiceNever = new Mock<IMessageService>();
+
+// %%
+
+// %% [markdown]
+//
+// ### Mindest- und Maximalanzahl von Aufrufen:
+
+// %%
+var mockedServiceLimits = new Mock<IMessageService>();
+
+// %%
+mockedServiceLimits.Object.Send("Once!");
+mockedServiceLimits.Object.Send("Twice!");
+mockedServiceLimits.Object.Send("Twice!");
+mockedServiceLimits.Object.Send("Three times!");
+mockedServiceLimits.Object.Send("Three times!");
+mockedServiceLimits.Object.Send("Three times!");
+
+// %% [markdown]
+//
+// Wurde `Send("Once!")` mindestens einmal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send("Once!")` mindestens zweimal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send("Twice!")` mindestens einmal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send("Twice!")` mindestens zweimal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send("Three times!")` höchstens dreimal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send("Three times!")` höchstens zweimal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `ClearAll()` höchstens zweimal aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// ## Argument Matcher
+//
+// - Überprüfung ohne genaue Argumentwerte
+// - `It.IsAny<T>()` — passt auf jeden Wert vom Typ T
+// - `It.Is<T>(Prädikat)` — passt, wenn das Prädikat true ergibt
+// - `It.IsNotNull<T>()` — Kurzform für Null-Check
+// - Funktionieren in `Verify()` und `Setup()`
+
+// %%
+var mockedServiceMatchers = new Mock<IMessageService>();
+mockedServiceMatchers.Object.Send("Hello!");
+
+// %% [markdown]
+//
+// Wurde `Send()` mit irgendeinem String aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send()` mit einem nicht-null String aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send()` mit einem String aufgerufen, der mit "lo!" endet?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send()` mit einem String aufgerufen, der mit "No" beginnt?
+
+// %%
+
+// %% [markdown]
+//
+// ### Null-Argumente überprüfen
+
+// %%
+var mockedServiceIsNull = new Mock<IMessageService>();
+mockedServiceIsNull.Object.Send(null);
+
+// %% [markdown]
+//
+// Wurde `Send()` mit einem null-Argument aufgerufen?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send()` mit irgendeinem String aufgerufen (einschließlich null)?
+
+// %%
+
+// %% [markdown]
+//
+// Wurde `Send()` mit einem String Argument aufgerufen, das nicht null ist?
+
+// %%
+
+// %% [markdown]
+//
+// ## Stubbing mit Setup/Returns/Throws
+//
+// - Bisher haben wir Aufrufe überprüft (ausgehendes Verhalten)
+// - Jetzt konfigurieren wir Rückgabewerte (eingehendes Verhalten)
+// - `Setup().Returns()` ersetzt handgeschriebene Stub-Klassen
+// - `Setup().Throws()` simuliert Ausnahmen
+
+// %%
+var mockedServiceStub = new Mock<IMessageService>();
+
+// %% [markdown]
+//
+// `mockedServiceStub.GetMessage(0)` soll "Hello!" zurückgeben
+
+// %%
+
+// %% [markdown]
+//
+// `mockedServiceStub.GetMessage(1)` soll eine Exception werfen
+
+// %%
+
+// %% [markdown]
+//
+// Setup prüfen:
 
 // %%
 
@@ -122,59 +295,90 @@ mockedListLimits.Object.Add("Three times!");
 
 // %% [markdown]
 //
-// ## Stubbing
+// `Verify()` funktioniert auch bei Stubs:
+
+// %%
+
+// %%
+
+// %% [markdown]
 //
-// - Manchmal ist es notwendig, das Verhalten eines Mock-Objekts zu definieren
-// - Mit `Setup()` und `Returns()` und `Throws()` kann das Verhalten festgelegt werden
+// ## Setup vs. Verify
+//
+// - **Setup** (Stubbing): konfiguriert, was der Mock **zurückgibt** oder
+//   **wirft** — kontrolliert eingehende Daten
+// - **Verify** (Mocking): prüft, was das SUT mit dem Mock **gemacht hat**
+//   — überprüft ausgehendes Verhalten
+// - Ein einzelnes `Mock<T>` kann gleichzeitig Stub und Mock sein
 
-// %%
-var mockedListStub = new Mock<IList<string>>();
-
-// %%
-
-// %%
-
-// %%
-
-// %%
-
-// %%
-
-// %%
+// %% [markdown]
+//
+// ## Mock-Verhalten: Strict vs. Loose
+//
+// - Standardmäßig verwendet Moq `MockBehavior.Loose`
+// - **Loose** (Standard): Nicht konfigurierte Aufrufe geben Defaultwerte
+//   zurück (0, null, false)
+// - **Strict**: Nicht konfigurierte Aufrufe werfen eine Exception
+// - `new Mock<T>(MockBehavior.Strict)` für strenges Verhalten
+// - In den meisten Fällen ist Loose empfohlen
 
 // %% [markdown]
 //
 // ## Verwendung von Moq in Tests
 //
-// - In NUnit-Tests können Mock-Objekte verwendet werden, um Abhängigkeiten zu simulieren
-// - Die `Verify()`-Methode wirft eine Exception, wenn sie einen Fehler findet
+// - In NUnit-Tests können Mock-Objekte verwendet werden, um Abhängigkeiten
+//   zu simulieren
+// - Die `Verify()`-Methode wirft eine Exception, wenn sie einen Fehler
+//   findet
 // - Das führt zu einem fehlgeschlagenen Test
 
 // %%
 using NUnit.Framework;
 using Moq;
 
+public class MessageRelay
+{
+    private readonly IMessageService _service;
+    public MessageRelay(IMessageService service) => _service = service;
+    public void Relay(string message) => _service.Send(message);
+    public string GetFirstMessage() => _service.GetMessage(0);
+}
+
+// %%
 [TestFixture]
-public class ListTest
+public class MessageServiceTest
 {
     [Test]
-    public void TestList()
+    public void TestRelay()
     {
-        var mockedList = new Mock<IList<string>>();
+        var mockedService = new Mock<IMessageService>();
+        var relay = new MessageRelay(mockedService.Object);
 
-        mockedList.Object.Add("Hello!");
+        relay.Relay("Hello!");
 
-        mockedList.Verify(m => m.Add("Hello!"));
+        mockedService.Verify(m => m.Send("Hello!"));
     }
 
     [Test]
     public void FailedTest()
     {
-        var mockedList = new Mock<IList<string>>();
+        var mockedService = new Mock<IMessageService>();
+        var relay = new MessageRelay(mockedService.Object);
 
-        mockedList.Object.Add("Hello!");
+        relay.Relay("Hello!");
 
-        mockedList.Verify(m => m.Add("World!")); // This will fail
+        mockedService.Verify(m => m.Send("World!")); // This will fail
+    }
+
+    [Test]
+    public void TestWithSetup()
+    {
+        var mockedService = new Mock<IMessageService>();
+        mockedService.Setup(m => m.GetMessage(0)).Returns("Hello!");
+
+        var relay = new MessageRelay(mockedService.Object);
+
+        Assert.That(relay.GetFirstMessage(), Is.EqualTo("Hello!"));
     }
 }
 
@@ -182,137 +386,108 @@ public class ListTest
 
 // %% [markdown]
 //
-// ## Workshop: Test eines Steuerungssystems für ein Raumschiff
+// ## Workshop: Testen eines Bestellsystems
 //
-// In diesem Workshop arbeiten Sie mit einem einfachen Steuerungssystem für ein
-// Raumschiff. Das System interagiert mit verschiedenen Sensoren und einem
-// Funksender. Ihre Aufgabe ist es, Tests für dieses System mit Moq zu
-// schreiben.
+// In diesem Workshop arbeiten Sie mit einem einfachen Bestellsystem. Das
+// System interagiert mit einem Produktkatalog, einem Zahlungs-Gateway und
+// einem Benachrichtigungsdienst.
+
+// %% [markdown]
 //
-// Hier ist eine einfache Implementierung unseres Raumschiff-Steuerungssystems:
+// Hier sind die Interfaces für die Abhängigkeiten des Systems:
 
 // %%
-public interface ITemperatureSensor
+public interface IProductCatalog
 {
-    double GetTemperature();
+    double GetPrice(string productId);
+    bool IsInStock(string productId);
 }
 
 // %%
-public interface IFuelSensor
+public interface IPaymentGateway
 {
-    double GetFuelLevel();
+    bool ProcessPayment(string customerId, double amount);
 }
 
 // %%
-public interface IRadioTransmitter
+public interface INotificationService
 {
-    void Transmit(string message);
+    void SendConfirmation(string customerId, string message);
 }
 
-// %%
-public class SpacecraftControlSystem
-{
-    private readonly ITemperatureSensor _tempSensor;
-    private readonly IFuelSensor _fuelSensor;
-    private readonly IRadioTransmitter _radio;
+// %% [markdown]
+//
+// Die zu testende Klasse:
 
-    public SpacecraftControlSystem(ITemperatureSensor tempSensor, IFuelSensor fuelSensor, IRadioTransmitter radio)
+// %%
+public class OrderProcessor
+{
+    private readonly IProductCatalog _catalog;
+    private readonly IPaymentGateway _payment;
+    private readonly INotificationService _notifications;
+
+    public OrderProcessor(
+        IProductCatalog catalog,
+        IPaymentGateway payment,
+        INotificationService notifications)
     {
-        _tempSensor = tempSensor;
-        _fuelSensor = fuelSensor;
-        _radio = radio;
+        _catalog = catalog;
+        _payment = payment;
+        _notifications = notifications;
     }
 
-    public void CheckAndReportStatus()
+    public bool PlaceOrder(string customerId, string productId, int quantity)
     {
-        var temp = _tempSensor.GetTemperature();
-        var fuel = _fuelSensor.GetFuelLevel();
-
-        if (temp > 100)
+        if (!_catalog.IsInStock(productId))
         {
-            _radio.Transmit("Warning: High temperature!");
+            _notifications.SendConfirmation(customerId,
+                $"Product {productId} is out of stock.");
+            return false;
         }
 
-        if (fuel < 10)
+        double price = _catalog.GetPrice(productId);
+        double total = price * quantity;
+
+        if (!_payment.ProcessPayment(customerId, total))
         {
-            _radio.Transmit("Warning: Low fuel!");
+            _notifications.SendConfirmation(customerId,
+                "Payment failed. Please try again.");
+            return false;
         }
 
-        _radio.Transmit($"Status: Temperature {temp}, Fuel {fuel}");
+        _notifications.SendConfirmation(customerId,
+            $"Order confirmed: {quantity}x {productId} for {total:F2}.");
+        return true;
     }
 }
 
 // %% [markdown]
 //
-// ## Beispiel
-//
-// So könnten Sie dieses System verwenden:
-
-// %%
-public class RealTemperatureSensor : ITemperatureSensor
-{
-    public double GetTemperature()
-    {
-        return 75.0; // Simulated temperature reading
-    }
-}
-
-// %%
-public class RealFuelSensor : IFuelSensor
-{
-    public double GetFuelLevel()
-    {
-        return 50.0; // Simulated fuel level
-    }
-}
-
-// %%
-public class RealRadioTransmitter : IRadioTransmitter
-{
-    public void Transmit(string message)
-    {
-        Console.WriteLine("Transmitting: " + message);
-    }
-}
-
-// %%
-ITemperatureSensor realTempSensor = new RealTemperatureSensor();
-IFuelSensor realFuelSensor = new RealFuelSensor();
-IRadioTransmitter realRadio = new RealRadioTransmitter();
-
-// %%
-SpacecraftControlSystem spacecraft = new SpacecraftControlSystem(
-                                            realTempSensor, realFuelSensor, realRadio);
-
-// %%
-spacecraft.CheckAndReportStatus();
-
-// %% [markdown]
-//
-// Ihre Aufgabe ist es, Tests für das `SpacecraftControlSystem` unter Verwendung
+// Ihre Aufgabe ist es, Tests für den `OrderProcessor` unter Verwendung
 // von Moq zu schreiben. Implementieren Sie die folgenden Testfälle:
 //
-// 1. Testen des normalen Betriebs:
-//    - Überprüfen Sie den normalen Betrieb des Raumschiffs, wenn die Temperatur
-//      normal und der Kraftstoffstand ausreichend ist.
-// 2. Testen der Warnung bei hoher Temperatur:
-//    - Überprüfen Sie, dass das Raumschiff eine Warnung bei einer Temperatur
-//      über 100 Grad überträgt.
-// 3. Testen der Warnung bei niedrigem Kraftstoffstand:
-//    - Überprüfen Sie, dass das Raumschiff eine Warnung bei einem Kraftstoffstand
-//      unter 10 überträgt.
-// 4. Testen mehrerer Warnungen:
-//    - Überprüfen Sie, dass das Raumschiff sowohl eine Warnung bei hoher Temperatur
-//      als auch bei niedrigem Kraftstoffstand überträgt, wenn beide Bedingungen
-//      erfüllt sind.
+// 1. Erfolgreiche Bestellung:
+//    - Produkt ist auf Lager, Zahlung erfolgreich
+//    - Überprüfen Sie, dass eine Bestätigung gesendet wird
+// 2. Produkt nicht auf Lager:
+//    - Überprüfen Sie, dass keine Zahlung verarbeitet wird
+//    - Überprüfen Sie, dass eine "nicht auf Lager"-Nachricht gesendet wird
+// 3. Zahlung fehlgeschlagen:
+//    - Produkt ist auf Lager, aber die Zahlung schlägt fehl
+//    - Überprüfen Sie, dass eine Fehlermeldung gesendet wird
+// 4. Korrekter Betrag an Zahlungs-Gateway:
+//    - Verwenden Sie Argument Matcher, um zu überprüfen, dass der richtige
+//      Betrag (Preis * Menge) an das Payment-Gateway übergeben wird
 
 // %% [markdown]
 //
 // #### Bonusaufgabe:
 //
-// 5. Testen der Fehlerbehandlung:
-//    - Ändern Sie das `SpacecraftControlSystem`, um Ausnahmen von den Sensoren
-//      zu behandeln, und schreiben Sie einen Test, um dieses Verhalten zu überprüfen.
+// 5. Katalog wirft eine Exception:
+//    - Verwenden Sie `Setup().Throws()`, um einen Katalogfehler zu
+//      simulieren
+//    - Ändern Sie den `OrderProcessor`, um Ausnahmen zu behandeln, und
+//      schreiben Sie einen Test dafür
 
 // %%
 using NUnit.Framework;
@@ -322,12 +497,21 @@ using Moq;
 
 // %%
 
-// %%
-using NUnit.Framework;
-using Moq;
-
-// %%
-
-// %%
+// %% [markdown]
+//
+// ## Optionaler Workshop: Raumschiff-Steuerung mit Moq
+//
+// Im vorherigen Workshop (Test Doubles) haben wir das
+// `SpacecraftControlSystem` mit handgeschriebenen Stubs und Spies getestet.
+// Implementieren Sie die gleichen Tests jetzt mit Moq und vergleichen
+// Sie die Ergebnisse:
+//
+// - Ersetzen Sie die handgeschriebenen Stubs (`TemperatureSensorStub`,
+//   `FuelSensorStub`) durch `Mock<ITemperatureSensor>` und
+//   `Mock<IFuelSensor>` mit `Setup/Returns`
+// - Ersetzen Sie den `RadioTransmitterSpy` durch `Mock<IRadioTransmitter>`
+//   mit `Verify`
+// - Vergleichen Sie den Code: Welche Version ist kürzer? Welche ist
+//   verständlicher?
 
 // %%

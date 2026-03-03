@@ -12,6 +12,20 @@
 
 // %% [markdown]
 //
+// ## Namensregeln im Überblick
+//
+// Gute Namen
+//
+// - sind selbsterklärend
+// - sind aussprechbar
+// - beschreiben das Problem, nicht die Implementierung
+// - vermeiden Kodierungen und Füllwörter
+// - verwenden die richtige Wortart
+// - vermeiden Disinformation und benennen sinnvolle Unterscheidungen
+// - verwenden die Regeln für Umfang und Länge
+
+// %% [markdown]
+//
 // ## Selbsterklärende Namen
 //
 // - Der Name sollte alles sagen, was man wissen muss
@@ -50,9 +64,9 @@ int AddElements(List<int> lst)
 }
 
 // %%
-int ComputeYearlySalary(List<int> monthlySalaries)
+int ComputeTotalInventory(List<int> warehouseStockCounts)
 {
-    return monthlySalaries.Sum();
+    return warehouseStockCounts.Sum();
 }
 
 // %% [markdown]
@@ -76,6 +90,15 @@ public class PointGood
     public int X { get; set; }
     public int Y { get; set; }
 }
+
+// %% [markdown]
+//
+// ### C#-Namenskonventionen
+//
+// - PascalCase für Klassen, Methoden, Properties
+// - camelCase für lokale Variablen und Parameter
+// - Interfaces beginnen mit `I`
+// - Siehe: [C# Coding Conventions](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions)
 
 // %% [markdown]
 //
@@ -114,7 +137,7 @@ class DataInfoManager
 }
 
 // %%
-class PersonRecord
+class Person
 {
     private string Name;
     private int Age;
@@ -122,7 +145,7 @@ class PersonRecord
 
 // %% [markdown]
 //
-// ## Disinformation vermeiden
+// ## Vermeide Disinformation
 //
 // - Der Name darf nicht etwas anderes implizieren als der Code tut
 // - Keinen Typ in den Namen aufnehmen, wenn er nicht stimmt
@@ -183,6 +206,32 @@ string filePath = Path.Combine("file-loc");
 // **Faustregel:** Verwende lange, beschreibende Namen für lange Geltungsbereiche
 
 // %%
+for (int theLoopCounterOfThisForLoop = 0; theLoopCounterOfThisForLoop < 10; theLoopCounterOfThisForLoop++)
+{
+    Console.WriteLine($"{theLoopCounterOfThisForLoop}^2 = {theLoopCounterOfThisForLoop * theLoopCounterOfThisForLoop}");
+}
+
+// %%
+for (int i = 0; i < 10; i++)
+{
+    Console.WriteLine($"{i}^2 = {i * i}");
+}
+
+// %%
+class P
+{
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
+// %%
+class Point
+{
+    public double X { get; set; }
+    public double Y { get; set; }
+}
+
+// %%
 class FixedSizeOrderedCollectionIndexedByInts { }
 
 // %%
@@ -241,14 +290,52 @@ class SalesReportCalculator
     public bool HasBeenCalculated => hasBeenCalculated;
 }
 
+// %% [markdown]
+//
+// - Klasse: Substantiv, aussprechbar, beschreibt den Zweck
+// - Attribute: beschreiben ihren Inhalt, Bool als Prädikat
+// - Methode: Verb, beschreibt was sie tut
+// - Property statt Getter-Methode (C#-Konvention)
+
 // %%
-int d = 86400;
-string s = "admin";
-bool b = true;
+int computeSecondsInADay = 24 * 60 * 60;
+
+// %%
+int secondsPerDay = 24 * 60 * 60;
+
+// %% [markdown]
+//
+// Falsche Wortart: `computeSecondsInADay` klingt wie eine Methode, aber es ist
+// eine Variable
+
+// %%
+string s = "admin"; // Default role for new users
+
+// %%
+string defaultUserRole = "admin";
+
+// %% [markdown]
+//
+// Kurzer Name wird in einem großen Geltungsbereich verwendet, beschreibt aber
+// nicht, was er repräsentiert
+
+// %%
+bool b_FtrFlg = true; // Feature flag: If true, the feature is enabled
+
+// %%
+bool isFeatureEnabled = true;
+
+// %% [markdown]
+//
+// Ungarische Notation (`b_`), unverständlicher Name (`FtrFlg`), und der
+// Kommentar ist nötig, um zu verstehen, was die Variable bedeutet
+
+// %%
 List<string> theList = new List<string> { "read", "write", "execute" };
 
 // %%
-int secondsPerDay = 86400;
-string defaultUserRole = "admin";
-bool isFeatureEnabled = true;
 List<string> permissions = new List<string> { "read", "write", "execute" };
+
+// %% [markdown]
+//
+// `theList` sagt nichts über den Inhalt aus — was ist das für eine Liste?
