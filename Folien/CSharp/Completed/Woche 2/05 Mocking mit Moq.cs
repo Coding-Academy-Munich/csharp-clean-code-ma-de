@@ -19,7 +19,7 @@
 // - Ersetzt handgeschriebene Stubs und Spies
 
 // %%
-#r "nuget: Moq, *"
+#r "nuget: Moq, 4.17"
 #r "nuget: NUnit, *"
 
 // %%

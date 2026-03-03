@@ -19,7 +19,7 @@
 // - Ersetzt handgeschriebene Stubs und Spies
 
 // %%
-#r "nuget: Moq, *"
+#r "nuget: Moq, 4.17"
 #r "nuget: NUnit, *"
 
 // %%
@@ -66,7 +66,6 @@ public interface IMessageService
 // - Kann Anzahl der Aufrufe mit `Times` einschränken
 
 // %%
-mockedService.Verify(service => service.Send("Hello!"));
 
 // %%
 

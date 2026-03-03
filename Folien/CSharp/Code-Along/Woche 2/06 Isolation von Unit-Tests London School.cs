@@ -25,7 +25,7 @@
 
 // %%
 #r "nuget: NUnit, *"
-#r "nuget: Moq, *"
+#r "nuget: Moq, 4.17"
 #load "NUnitTestRunner.cs"
 using NUnit.Framework;
 using Moq;

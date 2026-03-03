@@ -13388,12 +13388,12 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=93111a20d668ae92">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4f9a66f4ee82748d">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Moq, *"</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Moq, 4.17"</span>
 <span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
 </pre></div>
 </div>
@@ -13405,7 +13405,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-71908.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-65908.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
         The below script needs to be able to find the current output cell; this is an easy method to get it.
     </div>
 <script type="text/javascript">
@@ -13450,12 +13450,12 @@ async function probeAddresses(probingAddresses) {
 }
 
 function loadDotnetInteractiveApi() {
-    probeAddresses(["http://192.168.178.24:2050/", "http://169.254.203.116:2050/", "http://169.254.194.28:2050/", "http://172.16.0.1:2050/", "http://172.31.192.1:2050/", "http://172.23.176.1:2050/", "http://127.0.0.1:2050/"])
+    probeAddresses(["http://192.168.178.24:2052/", "http://169.254.203.116:2052/", "http://169.254.194.28:2052/", "http://172.16.0.1:2052/", "http://172.31.192.1:2052/", "http://172.23.176.1:2052/", "http://127.0.0.1:2052/"])
         .then((root) => {
         // use probing to find host url and api resources
         // load interactive helpers and language services
         let dotnetInteractiveRequire = require.config({
-        context: '71908.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '65908.Microsoft.DotNet.Interactive.Http.HttpPort',
                 paths:
             {
                 'dotnet-interactive': `${root}resources`
@@ -13513,7 +13513,7 @@ else {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_html rendered_html output_subarea"><div><div></div><div></div><div><strong>Installed Packages</strong><ul><li><span>Moq, 4.20.72</span></li><li><span>NUnit, 4.5.0</span></li></ul></div></div></div>
+<div class="output_html rendered_html output_subarea"><div><div></div><div></div><div><strong>Installed Packages</strong><ul><li><span>Moq, 4.17.1</span></li><li><span>NUnit, 4.5.0</span></li></ul></div></div></div>
 </div>
 </div>
 </div>
@@ -13611,26 +13611,13 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=b5b86b847376c1aa">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=b5b86b847376c1aa">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedService</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -13716,19 +13703,6 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=e8f04f77dd427050">
 <div class="input">
@@ -13758,19 +13732,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=ba213fbc60e7386b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13786,19 +13747,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Exactly</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -13828,19 +13776,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceNever</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">(),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Never</span><span class="p">);</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -13896,19 +13831,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=eb5a2dbf18a4764f"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13945,19 +13867,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=40e563eaa945c83b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -13976,19 +13885,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=23c8af478a05ebd5"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14004,19 +13900,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceLimits</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Three times!"</span><span class="p">),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">AtMost</span><span class="p">(</span><span class="mi">3</span><span class="p">));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14053,19 +13936,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceLimits</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">(),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">AtMost</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14112,19 +13982,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=5b73e247935adb03"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14143,19 +14000,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=45496fbafd96eec2"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14171,21 +14015,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceMatchers</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">It</span><span class="p">.</span><span class="n">Is</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">EndsWith</span><span class="p">(</span><span class="s">"lo!"</span><span class="p">))));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14244,19 +14073,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=0b6411563b4b003b"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14272,19 +14088,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceIsNull</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">It</span><span class="p">.</span><span class="n">IsAny</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">()));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14347,19 +14150,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered" id="cell-id=507979024f818e00"><div class="prompt input_prompt">
 </div><div class="inner_cell">
@@ -14375,19 +14165,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceStub</span><span class="p">.</span><span class="n">Setup</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="mi">1</span><span class="p">)).</span><span class="n">Throws</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">System</span><span class="p">.</span><span class="n">Exception</span><span class="p">(</span><span class="s">"No Value!"</span><span class="p">));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14445,19 +14222,6 @@ warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceStub</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14575,23 +14339,6 @@ findet</li>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14919,59 +14666,6 @@ schreiben Sie einen Test dafür</li>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-warning CS1701: Assuming assembly reference 'System.Linq.Expressions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' used by 'Moq' matches identity 'System.Linq.Expressions, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' of 'System.Linq.Expressions', you may need to supply runtime policy
-
-</pre>
-</div>
 </div>
 </div>
 </div>
