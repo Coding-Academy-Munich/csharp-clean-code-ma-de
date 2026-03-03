@@ -19,7 +19,7 @@
 // - Ersetzt handgeschriebene Stubs und Spies
 
 // %%
-#r "nuget: Moq, 4.17"
+#r "nuget: Moq, *"
 #r "nuget: NUnit, *"
 
 // %%
@@ -60,16 +60,18 @@ mockedService.Object.Send("Hello!");
 //
 // ## Aufrufe überprüfen
 //
-// - `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
+// `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
+//
+// - Beispiel: `mockedService.Verify(service => service.Send("Hello!")`
 // - Wirft `MockException` bei Fehlschlag (mit Diagnosemeldung)
 // - Kann exakte Argumente oder Argument Matcher prüfen
 // - Kann Anzahl der Aufrufe mit `Times` einschränken
 
 // %%
-mockedService.Verify(svc => svc.Send("Hello!"));
+mockedService.Verify(service => service.Send("Hello!"));
 
 // %%
-// mockedService.Verify(svc => svc.Send("World!"));
+// mockedService.Verify(service => service.Send("World!"));
 
 // %% [markdown]
 //
@@ -118,7 +120,7 @@ mockedServiceCount.Object.Send("Hello!");
 // Wurde `Send("Hello!")` mindestens einmal aufgerufen?
 
 // %%
-mockedServiceCount.Verify(svc => svc.Send("Hello!"));
+mockedServiceCount.Verify(service => service.Send("Hello!"));
 
 // %%
 mockedServiceCount.Object.Send("Hello!");
@@ -128,14 +130,14 @@ mockedServiceCount.Object.Send("Hello!");
 // Gilt das immer noch?
 
 // %%
-mockedServiceCount.Verify(svc => svc.Send("Hello!"));
+mockedServiceCount.Verify(service => service.Send("Hello!"));
 
 // %% [markdown]
 //
 // Wurde `Send("Hello!")` genau zweimal aufgerufen?
 
 // %%
-mockedServiceCount.Verify(svc => svc.Send("Hello!"), Times.Exactly(2));
+mockedServiceCount.Verify(service => service.Send("Hello!"), Times.Exactly(2));
 
 // %% [markdown]
 //
@@ -145,7 +147,7 @@ mockedServiceCount.Verify(svc => svc.Send("Hello!"), Times.Exactly(2));
 var mockedServiceNever = new Mock<IMessageService>();
 
 // %%
-mockedServiceNever.Verify(svc => svc.ClearAll(), Times.Never);
+mockedServiceNever.Verify(service => service.ClearAll(), Times.Never);
 
 // %% [markdown]
 //
@@ -209,7 +211,7 @@ mockedServiceLimits.Verify(m => m.Send("Three times!"), Times.AtMost(3));
 // Wurde `ClearAll()` höchstens zweimal aufgerufen?
 
 // %%
-mockedServiceLimits.Verify(svc => svc.ClearAll(), Times.AtMost(2));
+mockedServiceLimits.Verify(service => service.ClearAll(), Times.AtMost(2));
 
 // %% [markdown]
 //

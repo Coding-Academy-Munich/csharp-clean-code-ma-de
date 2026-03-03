@@ -19,7 +19,7 @@
 // - Ersetzt handgeschriebene Stubs und Spies
 
 // %%
-#r "nuget: Moq, 4.17"
+#r "nuget: Moq, *"
 #r "nuget: NUnit, *"
 
 // %%
@@ -58,13 +58,15 @@ public interface IMessageService
 //
 // ## Aufrufe überprüfen
 //
-// - `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
+// `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
+//
+// - Beispiel: `mockedService.Verify(service => service.Send("Hello!")`
 // - Wirft `MockException` bei Fehlschlag (mit Diagnosemeldung)
 // - Kann exakte Argumente oder Argument Matcher prüfen
 // - Kann Anzahl der Aufrufe mit `Times` einschränken
 
 // %%
-mockedService.Verify(svc => svc.Send("Hello!"));
+mockedService.Verify(service => service.Send("Hello!"));
 
 // %%
 

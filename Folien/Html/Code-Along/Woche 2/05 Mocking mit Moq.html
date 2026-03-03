@@ -13388,12 +13388,12 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4f9a66f4ee82748d">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=93111a20d668ae92">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Moq, 4.17"</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: Moq, *"</span>
 <span class="err">#</span><span class="n">r</span><span class="w"> </span><span class="s">"nuget: NUnit, *"</span>
 </pre></div>
 </div>
@@ -13480,11 +13480,12 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=facdd30577b0a187"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=1e4ceb53ca3c1574"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Aufrufe-%C3%BCberpr%C3%BCfen">Aufrufe überprüfen<a class="anchor-link" href="#Aufrufe-%C3%BCberpr%C3%BCfen">¶</a></h2><ul>
-<li><code>Verify(Ausdruck)</code> prüft, ob eine Methode aufgerufen wurde</li>
+<h2 id="Aufrufe-%C3%BCberpr%C3%BCfen">Aufrufe überprüfen<a class="anchor-link" href="#Aufrufe-%C3%BCberpr%C3%BCfen">¶</a></h2><p><code>Verify(Ausdruck)</code> prüft, ob eine Methode aufgerufen wurde</p>
+<ul>
+<li>Beispiel: <code>mockedService.Verify(service =&gt; service.Send("Hello!")</code></li>
 <li>Wirft <code>MockException</code> bei Fehlschlag (mit Diagnosemeldung)</li>
 <li>Kann exakte Argumente oder Argument Matcher prüfen</li>
 <li>Kann Anzahl der Aufrufe mit <code>Times</code> einschränken</li>
@@ -13492,18 +13493,18 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=c7a60808516dde2e">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=b5b86b847376c1aa">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedService</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">svc</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">svc</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedService</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=ca84eb4f74df8032">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=70ad97c138d10214">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13574,7 +13575,7 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=e93cf7bd556387fe">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=7080932d421fe660">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13603,7 +13604,7 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=ed1fc29706ff2583">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2c228e786066927b">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13621,7 +13622,7 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d83a98ec33e9f937">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a02d32920426a0d1">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13650,7 +13651,7 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=da57c7a704594e78">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2544cb44a5fd6446">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13810,7 +13811,7 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=76cfb81b0b12dd76">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=57cd5019bcaa27b4">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
