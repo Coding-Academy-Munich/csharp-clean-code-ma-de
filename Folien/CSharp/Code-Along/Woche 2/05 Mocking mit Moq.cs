@@ -60,7 +60,7 @@ public interface IMessageService
 //
 // `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
 //
-// - Beispiel: `mockedService.Verify(service => service.Send("Hello!")`
+// - Beispiel: `mockedService.Verify(m => m.Send("Hello!"))`
 // - Wirft `MockException` bei Fehlschlag (mit Diagnosemeldung)
 // - Kann exakte Argumente oder Argument Matcher prüfen
 // - Kann Anzahl der Aufrufe mit `Times` einschränken
@@ -241,8 +241,8 @@ mockedServiceMatchers.Object.Send("Hello!");
 // ### Null-Argumente überprüfen
 
 // %%
-var mockedServiceIsNull = new Mock<IMessageService>();
-mockedServiceIsNull.Object.Send(null);
+var mockedServiceNull = new Mock<IMessageService>();
+mockedServiceNull.Object.Send(null);
 
 // %% [markdown]
 //
@@ -268,8 +268,8 @@ mockedServiceIsNull.Object.Send(null);
 //
 // - Bisher haben wir Aufrufe überprüft (ausgehendes Verhalten)
 // - Jetzt konfigurieren wir Rückgabewerte (eingehendes Verhalten)
-// - `Setup().Returns()` ersetzt handgeschriebene Stub-Klassen
-// - `Setup().Throws()` simuliert Ausnahmen
+// - `Setup(expression).Returns(value)` ersetzt handgeschriebene Stub-Klassen
+// - `Setup(expression).Throws(exception)` simuliert Ausnahmen
 
 // %%
 var mockedServiceStub = new Mock<IMessageService>();
@@ -288,7 +288,7 @@ var mockedServiceStub = new Mock<IMessageService>();
 
 // %% [markdown]
 //
-// Setup prüfen:
+// Setup in Aktion:
 
 // %%
 
@@ -299,6 +299,12 @@ var mockedServiceStub = new Mock<IMessageService>();
 // `Verify()` funktioniert auch bei Stubs:
 
 // %%
+
+// %% [markdown]
+//
+// **Achtung:** `Verify()` prüft nur, ob `GetMessage(0)` **aufgerufen** wurde
+// — nicht, welcher Wert zurückgegeben wurde. Rückgabewerte testet man mit
+// regulären Assertions (z.B. `Assert.That(...)`)
 
 // %%
 
@@ -496,6 +502,7 @@ using Moq;
 
 // %%
 
+
 // %%
 
 // %% [markdown]
@@ -514,5 +521,3 @@ using Moq;
 //   mit `Verify`
 // - Vergleichen Sie den Code: Welche Version ist kürzer? Welche ist
 //   verständlicher?
-
-// %%

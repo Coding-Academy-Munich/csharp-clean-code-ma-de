@@ -62,16 +62,16 @@ mockedService.Object.Send("Hello!");
 //
 // `Verify(Ausdruck)` prüft, ob eine Methode aufgerufen wurde
 //
-// - Beispiel: `mockedService.Verify(service => service.Send("Hello!")`
+// - Beispiel: `mockedService.Verify(m => m.Send("Hello!"))`
 // - Wirft `MockException` bei Fehlschlag (mit Diagnosemeldung)
 // - Kann exakte Argumente oder Argument Matcher prüfen
 // - Kann Anzahl der Aufrufe mit `Times` einschränken
 
 // %%
-mockedService.Verify(service => service.Send("Hello!"));
+mockedService.Verify(m => m.Send("Hello!"));
 
 // %%
-// mockedService.Verify(service => service.Send("World!"));
+// mockedService.Verify(m => m.Send("World!"));
 
 // %% [markdown]
 //
@@ -120,7 +120,7 @@ mockedServiceCount.Object.Send("Hello!");
 // Wurde `Send("Hello!")` mindestens einmal aufgerufen?
 
 // %%
-mockedServiceCount.Verify(service => service.Send("Hello!"));
+mockedServiceCount.Verify(m => m.Send("Hello!"));
 
 // %%
 mockedServiceCount.Object.Send("Hello!");
@@ -130,14 +130,14 @@ mockedServiceCount.Object.Send("Hello!");
 // Gilt das immer noch?
 
 // %%
-mockedServiceCount.Verify(service => service.Send("Hello!"));
+mockedServiceCount.Verify(m => m.Send("Hello!"));
 
 // %% [markdown]
 //
 // Wurde `Send("Hello!")` genau zweimal aufgerufen?
 
 // %%
-mockedServiceCount.Verify(service => service.Send("Hello!"), Times.Exactly(2));
+mockedServiceCount.Verify(m => m.Send("Hello!"), Times.Exactly(2));
 
 // %% [markdown]
 //
@@ -147,7 +147,7 @@ mockedServiceCount.Verify(service => service.Send("Hello!"), Times.Exactly(2));
 var mockedServiceNever = new Mock<IMessageService>();
 
 // %%
-mockedServiceNever.Verify(service => service.ClearAll(), Times.Never);
+mockedServiceNever.Verify(m => m.ClearAll(), Times.Never);
 
 // %% [markdown]
 //
@@ -211,7 +211,7 @@ mockedServiceLimits.Verify(m => m.Send("Three times!"), Times.AtMost(3));
 // Wurde `ClearAll()` höchstens zweimal aufgerufen?
 
 // %%
-mockedServiceLimits.Verify(service => service.ClearAll(), Times.AtMost(2));
+mockedServiceLimits.Verify(m => m.ClearAll(), Times.AtMost(2));
 
 // %% [markdown]
 //
@@ -260,29 +260,29 @@ mockedServiceMatchers.Verify(m => m.Send(It.Is<string>(s => s.EndsWith("lo!"))))
 // ### Null-Argumente überprüfen
 
 // %%
-var mockedServiceIsNull = new Mock<IMessageService>();
-mockedServiceIsNull.Object.Send(null);
+var mockedServiceNull = new Mock<IMessageService>();
+mockedServiceNull.Object.Send(null);
 
 // %% [markdown]
 //
 // Wurde `Send()` mit einem null-Argument aufgerufen?
 
 // %%
-mockedServiceIsNull.Verify(m => m.Send(null));
+mockedServiceNull.Verify(m => m.Send(null));
 
 // %% [markdown]
 //
 // Wurde `Send()` mit irgendeinem String aufgerufen (einschließlich null)?
 
 // %%
-mockedServiceIsNull.Verify(m => m.Send(It.IsAny<string>()));
+mockedServiceNull.Verify(m => m.Send(It.IsAny<string>()));
 
 // %% [markdown]
 //
 // Wurde `Send()` mit einem String Argument aufgerufen, das nicht null ist?
 
 // %%
-// mockedServiceIsNull.Verify(m => m.Send(It.IsNotNull<string>()));
+// mockedServiceNull.Verify(m => m.Send(It.IsNotNull<string>()));
 
 // %% [markdown]
 //
@@ -290,8 +290,8 @@ mockedServiceIsNull.Verify(m => m.Send(It.IsAny<string>()));
 //
 // - Bisher haben wir Aufrufe überprüft (ausgehendes Verhalten)
 // - Jetzt konfigurieren wir Rückgabewerte (eingehendes Verhalten)
-// - `Setup().Returns()` ersetzt handgeschriebene Stub-Klassen
-// - `Setup().Throws()` simuliert Ausnahmen
+// - `Setup(expression).Returns(value)` ersetzt handgeschriebene Stub-Klassen
+// - `Setup(expression).Throws(exception)` simuliert Ausnahmen
 
 // %%
 var mockedServiceStub = new Mock<IMessageService>();
@@ -312,7 +312,7 @@ mockedServiceStub.Setup(m => m.GetMessage(1)).Throws(new System.Exception("No Va
 
 // %% [markdown]
 //
-// Setup prüfen:
+// Setup in Aktion:
 
 // %%
 mockedServiceStub.Object.GetMessage(0)
@@ -326,6 +326,12 @@ mockedServiceStub.Object.GetMessage(0)
 
 // %%
 mockedServiceStub.Verify(m => m.GetMessage(0));
+
+// %% [markdown]
+//
+// **Achtung:** `Verify()` prüft nur, ob `GetMessage(0)` **aufgerufen** wurde
+// — nicht, welcher Wert zurückgegeben wurde. Rückgabewerte testet man mit
+// regulären Assertions (z.B. `Assert.That(...)`)
 
 // %%
 // mockedServiceStub.Verify(m => m.GetMessage(1));
@@ -618,6 +624,7 @@ public class OrderProcessorTest
     }
 }
 
+
 // %%
 NUnitTestRunner.RunTests(typeof(OrderProcessorTest));
 
@@ -637,5 +644,3 @@ NUnitTestRunner.RunTests(typeof(OrderProcessorTest));
 //   mit `Verify`
 // - Vergleichen Sie den Code: Welche Version ist kürzer? Welche ist
 //   verständlicher?
-
-// %%

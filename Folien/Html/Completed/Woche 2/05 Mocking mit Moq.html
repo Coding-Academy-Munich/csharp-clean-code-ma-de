@@ -13405,7 +13405,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-65908.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-57524.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
         The below script needs to be able to find the current output cell; this is an easy method to get it.
     </div>
 <script type="text/javascript">
@@ -13450,12 +13450,12 @@ async function probeAddresses(probingAddresses) {
 }
 
 function loadDotnetInteractiveApi() {
-    probeAddresses(["http://192.168.178.24:2052/", "http://169.254.203.116:2052/", "http://169.254.194.28:2052/", "http://172.16.0.1:2052/", "http://172.31.192.1:2052/", "http://172.23.176.1:2052/", "http://127.0.0.1:2052/"])
+    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.31.192.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
         .then((root) => {
         // use probing to find host url and api resources
         // load interactive helpers and language services
         let dotnetInteractiveRequire = require.config({
-        context: '65908.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '57524.Microsoft.DotNet.Interactive.Http.HttpPort',
                 paths:
             {
                 'dotnet-interactive': `${root}resources`
@@ -13598,12 +13598,12 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=1e4ceb53ca3c1574"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7db3d0c8021ff000"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Aufrufe-%C3%BCberpr%C3%BCfen">Aufrufe überprüfen<a class="anchor-link" href="#Aufrufe-%C3%BCberpr%C3%BCfen">¶</a></h2><p><code>Verify(Ausdruck)</code> prüft, ob eine Methode aufgerufen wurde</p>
 <ul>
-<li>Beispiel: <code>mockedService.Verify(service =&gt; service.Send("Hello!")</code></li>
+<li>Beispiel: <code>mockedService.Verify(m =&gt; m.Send("Hello!"))</code></li>
 <li>Wirft <code>MockException</code> bei Fehlschlag (mit Diagnosemeldung)</li>
 <li>Kann exakte Argumente oder Argument Matcher prüfen</li>
 <li>Kann Anzahl der Aufrufe mit <code>Times</code> einschränken</li>
@@ -13611,23 +13611,23 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=b5b86b847376c1aa">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=40a4289f61fbf47f">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedService</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedService</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=70ad97c138d10214">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=aaae5ad1ea3974d9">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// mockedService.Verify(service =&gt; service.Send("World!"));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// mockedService.Verify(m =&gt; m.Send("World!"));</span>
 </pre></div>
 </div>
 </div>
@@ -13693,12 +13693,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=7080932d421fe660">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=b8ae67007e82efe7">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -13722,12 +13722,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=2c228e786066927b">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c757701b04a176b2">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -13740,12 +13740,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=a02d32920426a0d1">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=42f9081558b75aa9">
 <div class="input">
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Exactly</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceCount</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="s">"Hello!"</span><span class="p">),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Exactly</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -13769,12 +13769,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=2544cb44a5fd6446">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=99978c2087c22391">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceNever</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">(),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Never</span><span class="p">);</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceNever</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">(),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">Never</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -13929,12 +13929,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=57cd5019bcaa27b4">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=4c3fda29c9ec79cb">
 <div class="input">
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceLimits</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">service</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">service</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">(),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">AtMost</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceLimits</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">ClearAll</span><span class="p">(),</span><span class="w"> </span><span class="n">Times</span><span class="p">.</span><span class="n">AtMost</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -14044,13 +14044,13 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=49f910263af52e4f">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=224b5529dd4fa753">
 <div class="input">
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedServiceIsNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IMessageService</span><span class="o">&gt;</span><span class="p">();</span>
-<span class="n">mockedServiceIsNull</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">mockedServiceNull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Mock</span><span class="o">&lt;</span><span class="n">IMessageService</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">mockedServiceNull</span><span class="p">.</span><span class="n">Object</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -14063,12 +14063,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=e296043667ca677e">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5dd54e43e1b2aef1">
 <div class="input">
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceIsNull</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="k">null</span><span class="p">));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceNull</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="k">null</span><span class="p">));</span>
 </pre></div>
 </div>
 </div>
@@ -14081,12 +14081,12 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=91adfda590ddc058">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=a9f7c035f90b5c1b">
 <div class="input">
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceIsNull</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">It</span><span class="p">.</span><span class="n">IsAny</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">()));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceNull</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">It</span><span class="p">.</span><span class="n">IsAny</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="p">()));</span>
 </pre></div>
 </div>
 </div>
@@ -14099,25 +14099,25 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=5a7e898ae5e36321">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=15047c15dafd36ad">
 <div class="input">
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="c1">// mockedServiceIsNull.Verify(m =&gt; m.Send(It.IsNotNull&lt;string&gt;()));</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// mockedServiceNull.Verify(m =&gt; m.Send(It.IsNotNull&lt;string&gt;()));</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=5add7f070adceb0b"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fa57e5c2916daeb0"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Stubbing-mit-Setup/Returns/Throws">Stubbing mit Setup/Returns/Throws<a class="anchor-link" href="#Stubbing-mit-Setup/Returns/Throws">¶</a></h2><ul>
 <li>Bisher haben wir Aufrufe überprüft (ausgehendes Verhalten)</li>
 <li>Jetzt konfigurieren wir Rückgabewerte (eingehendes Verhalten)</li>
-<li><code>Setup().Returns()</code> ersetzt handgeschriebene Stub-Klassen</li>
-<li><code>Setup().Throws()</code> simuliert Ausnahmen</li>
+<li><code>Setup(expression).Returns(value)</code> ersetzt handgeschriebene Stub-Klassen</li>
+<li><code>Setup(expression).Throws(exception)</code> simuliert Ausnahmen</li>
 </ul>
 </div>
 </div>
@@ -14169,10 +14169,10 @@ Doubles</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=4bceb3216db5331e"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=643628b538b89b41"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Setup prüfen:</p>
+<p>Setup in Aktion:</p>
 </div>
 </div>
 </div>
@@ -14223,6 +14223,15 @@ Doubles</li>
 <div class="highlight hl-csharp"><pre><span></span><span class="n">mockedServiceStub</span><span class="p">.</span><span class="n">Verify</span><span class="p">(</span><span class="n">m</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m</span><span class="p">.</span><span class="n">GetMessage</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
 </pre></div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=7622c350d04fba54"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Achtung:</strong> <code>Verify()</code> prüft nur, ob <code>GetMessage(0)</code> <strong>aufgerufen</strong> wurde
+— nicht, welcher Wert zurückgegeben wurde. Rückgabewerte testet man mit
+regulären Assertions (z.B. <code>Assert.That(...)</code>)</p>
 </div>
 </div>
 </div>
@@ -14744,17 +14753,6 @@ mit <code>Verify</code></li>
 <li>Vergleichen Sie den Code: Welche Version ist kürzer? Welche ist
 verständlicher?</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=6b4e03423667dbb7">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="w"> </span>
-</pre></div>
-</div>
 </div>
 </div>
 </div>
