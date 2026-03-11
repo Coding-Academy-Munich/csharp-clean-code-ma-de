@@ -80,17 +80,23 @@ int ComputeTotalInventory(List<int> warehouseStockCounts)
 // - C#-Ausnahme: Interfaces beginnen mit `I` (z.B. `IEnumerable`)
 
 // %%
-public class PointBad
+public class Point
 {
-    public int m_X;
-    public int m_Y;
+    private int m_X;
+    private int m_Y;
+
+    public int X { get => m_X; }
+    public int Y { get => m_Y; }
 }
 
 // %%
-public class PointGood
+public class Point
 {
-    public int X { get; set; }
-    public int Y { get; set; }
+    private int x;
+    private int y;
+
+    public int X { get => x; }
+    public int Y { get => y; }
 }
 
 // %% [markdown]
@@ -132,7 +138,7 @@ public class ServerConnection
 // Vermeide bedeutungslose Wörter: Manager, Processor, Data, Info
 
 // %%
-class DataInfoManager
+class PersonDataInfoManager
 {
     private string strName;
     private int iAge;
@@ -158,11 +164,13 @@ class Person
 bool verifyConfiguration = false;
 if (verifyConfiguration)
 {
-    Console.WriteLine("Deleting configuration files...");
+    // Delete configuration files
 }
 
 // %%
 int vectorOfCards = 0;    // Not a vector!
+
+// %%
 List<int> cardArray = new List<int>();  // Not an array!
 
 // %%
@@ -255,8 +263,8 @@ class Array { }
 // %%
 class dtprcssor
 {
-    private List<int> lst;
-    private bool flag;
+    private List<int> lst; // List of monthly sales figures
+    private bool flag;  // true if the total has been calculated
 
     public dtprcssor(List<int> d)
     {
@@ -264,6 +272,7 @@ class dtprcssor
         flag = false;
     }
 
+    // Calculates the total sales and sets the flag to true
     public int Calc()
     {
         int r = 0;
@@ -272,6 +281,7 @@ class dtprcssor
         return r;
     }
 
+    // Returns true if the total has been calculated, false otherwise
     public bool getflag() { return flag; }
 }
 
@@ -324,8 +334,8 @@ string defaultUserRole = "admin";
 
 // %% [markdown]
 //
-// Kurzer Name wird in einem großen Geltungsbereich verwendet, beschreibt aber
-// nicht, was er repräsentiert
+// Kurzer Name wird (wahrscheinlich) in einem großen Geltungsbereich verwendet,
+// beschreibt aber nicht, was er repräsentiert
 
 // %%
 bool b_FtrFlg = true; // Feature flag: If true, the feature is enabled
@@ -339,6 +349,7 @@ bool isFeatureEnabled = true;
 // Kommentar ist nötig, um zu verstehen, was die Variable bedeutet
 
 // %%
+// Permissions for the current user
 List<string> theList = new List<string> { "read", "write", "execute" };
 
 // %%

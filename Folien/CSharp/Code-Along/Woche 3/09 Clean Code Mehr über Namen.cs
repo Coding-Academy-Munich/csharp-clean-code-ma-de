@@ -37,7 +37,6 @@
 int d = 0;
 
 // %%
-int elapsedTimeInDays = 0;
 
 // %% [markdown]
 //
@@ -50,7 +49,6 @@ int elapsedTimeInDays = 0;
 List<int> hwCrsrPxy = new List<int> { 0, 0 };
 
 // %%
-List<int> hardwareCursorPosition = new List<int> { 0, 0 };
 
 // %% [markdown]
 //
@@ -66,10 +64,6 @@ int AddElements(List<int> lst)
 }
 
 // %%
-int ComputeTotalInventory(List<int> warehouseStockCounts)
-{
-    return warehouseStockCounts.Sum();
-}
 
 // %% [markdown]
 //
@@ -80,17 +74,13 @@ int ComputeTotalInventory(List<int> warehouseStockCounts)
 // - C#-Ausnahme: Interfaces beginnen mit `I` (z.B. `IEnumerable`)
 
 // %%
-public class PointBad
+public class Point
 {
-    public int m_X;
-    public int m_Y;
-}
+    private int m_X;
+    private int m_Y;
 
-// %%
-public class PointGood
-{
-    public int X { get; set; }
-    public int Y { get; set; }
+    public int X { get => m_X; }
+    public int Y { get => m_Y; }
 }
 
 // %% [markdown]
@@ -119,11 +109,6 @@ public class GoToTheServer
 }
 
 // %%
-public class ServerConnection
-{
-    public void Connect() { }
-    public bool IsServerAvailable() { return true; }
-}
 
 // %% [markdown]
 //
@@ -132,18 +117,13 @@ public class ServerConnection
 // Vermeide bedeutungslose Wörter: Manager, Processor, Data, Info
 
 // %%
-class DataInfoManager
+class PersonDataInfoManager
 {
     private string strName;
     private int iAge;
 }
 
 // %%
-class Person
-{
-    private string Name;
-    private int Age;
-}
 
 // %% [markdown]
 //
@@ -158,15 +138,16 @@ class Person
 bool verifyConfiguration = false;
 if (verifyConfiguration)
 {
-    Console.WriteLine("Deleting configuration files...");
+    // Delete configuration files
 }
 
 // %%
 int vectorOfCards = 0;    // Not a vector!
+
+// %%
 List<int> cardArray = new List<int>();  // Not an array!
 
 // %%
-List<int> cards = new List<int>();  // Better
 
 // %% [markdown]
 //
@@ -229,11 +210,6 @@ class P
 }
 
 // %%
-class Point
-{
-    public double X { get; set; }
-    public double Y { get; set; }
-}
 
 // %%
 class FixedSizeOrderedCollectionIndexedByInts { }
@@ -250,8 +226,8 @@ class FixedSizeOrderedCollectionIndexedByInts { }
 // %%
 class dtprcssor
 {
-    private List<int> lst;
-    private bool flag;
+    private List<int> lst; // List of monthly sales figures
+    private bool flag;  // true if the total has been calculated
 
     public dtprcssor(List<int> d)
     {
@@ -259,6 +235,7 @@ class dtprcssor
         flag = false;
     }
 
+    // Calculates the total sales and sets the flag to true
     public int Calc()
     {
         int r = 0;
@@ -267,6 +244,7 @@ class dtprcssor
         return r;
     }
 
+    // Returns true if the total has been calculated, false otherwise
     public bool getflag() { return flag; }
 }
 
@@ -288,6 +266,7 @@ bool b_FtrFlg = true; // Feature flag: If true, the feature is enabled
 // %%
 
 // %%
+// Permissions for the current user
 List<string> theList = new List<string> { "read", "write", "execute" };
 
 // %%

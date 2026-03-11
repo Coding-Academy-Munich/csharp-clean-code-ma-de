@@ -13419,7 +13419,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-82372.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-47540.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13508,7 +13508,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2049/", "http://169.254.203.116:2049/", "http://169.254.194.28:2049/", "http://172.16.0.1:2049/", "http://172.24.48.1:2049/", "http://172.23.176.1:2049/", "http://127.0.0.1:2049/"])
+    probeAddresses(["http://192.168.178.24:2048/", "http://169.254.203.116:2048/", "http://169.254.194.28:2048/", "http://172.17.208.1:2048/", "http://172.23.176.1:2048/", "http://127.0.0.1:2048/"])
 
         .then((root) => {
 
@@ -13518,7 +13518,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '82372.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '47540.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13630,7 +13630,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=bbbcc72d2416c799">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=bbbcc72d2416c799">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
@@ -13662,7 +13662,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=2458c3b7cc2c5cb9">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2458c3b7cc2c5cb9">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
@@ -13683,7 +13683,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=26e3f96ff4a29776">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=26e3f96ff4a29776">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
@@ -13697,7 +13697,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=17a2740676e11c3e">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=17a2740676e11c3e">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
@@ -13722,15 +13722,18 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=f18ffeed331c56b8">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=96ba248384dccc1f">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PointBad</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_X</span><span class="p">;</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_Y</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_X</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">m_Y</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m_X</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">m_Y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -13743,11 +13746,11 @@ else {
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
 
-(4,16): warning CS0649: Field 'PointBad.m_Y' is never assigned to, and will always have its default value 0
+(3,17): warning CS0649: Field 'Point.m_X' is never assigned to, and will always have its default value 0
 
 
 
-(3,16): warning CS0649: Field 'PointBad.m_X' is never assigned to, and will always have its default value 0
+(4,17): warning CS0649: Field 'Point.m_Y' is never assigned to, and will always have its default value 0
 
 
 
@@ -13757,17 +13760,40 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=4f9149f4aa553b8b">
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=77e48dbd111ce20a">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">PointGood</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">public</span><span class="w"> </span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="p">;</span><span class="w"> </span><span class="k">set</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">X</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Y</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>
+
+(3,17): warning CS0649: Field 'Point.x' is never assigned to, and will always have its default value 0
+
+
+
+(4,17): warning CS0649: Field 'Point.y' is never assigned to, and will always have its default value 0
+
+
+
+</pre>
+</div>
 </div>
 </div>
 </div>
@@ -13796,7 +13822,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=8fe3bee869d391d0">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8fe3bee869d391d0">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
@@ -13811,7 +13837,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9c70a777bff6e110">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9c70a777bff6e110">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
@@ -13833,12 +13859,12 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f0d0332dd8e17577">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=bce7c83baa5a974a">
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">DataInfoManager</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">PersonDataInfoManager</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">strName</span><span class="p">;</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iAge</span><span class="p">;</span>
@@ -13854,11 +13880,11 @@ else {
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
 
-(3,20): warning CS0169: The field 'DataInfoManager.strName' is never used
+(4,17): warning CS0169: The field 'PersonDataInfoManager.iAge' is never used
 
 
 
-(4,17): warning CS0169: The field 'DataInfoManager.iAge' is never used
+(3,20): warning CS0169: The field 'PersonDataInfoManager.strName' is never used
 
 
 
@@ -13868,7 +13894,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=c96458cab3f98b0c">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=c96458cab3f98b0c">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
@@ -13889,11 +13915,11 @@ else {
 <div class="output_subarea output_stream output_stderr output_text">
 <pre>
 
-(3,20): warning CS0169: The field 'Person.Name' is never used
-
-
-
 (4,17): warning CS0169: The field 'Person.Age' is never used
+
+
+
+(3,20): warning CS0169: The field 'Person.Name' is never used
 
 
 
@@ -13915,7 +13941,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=c67805d16b2260a8">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=37ef3ba237b2dc48">
 <div class="input">
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
@@ -13923,28 +13949,38 @@ else {
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">verifyConfiguration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">verifyConfiguration</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Deleting configuration files..."</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// Delete configuration files</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=04f7e035071c4f3b">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=4518167a17832c6d">
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">vectorOfCards</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">    </span><span class="c1">// Not a vector!</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cardArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span><span class="w">  </span><span class="c1">// Not an array!</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5e3c206c9c4ee4ec">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9432e2b9becf0527">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cardArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span><span class="w">  </span><span class="c1">// Not an array!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=5e3c206c9c4ee4ec">
+<div class="input">
+<div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cards</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">();</span><span class="w">  </span><span class="c1">// Better</span>
@@ -13965,7 +14001,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5ca641709df95120">
 <div class="input">
-<div class="prompt input_prompt">In [16]:</div>
+<div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Fluffy"</span><span class="p">;</span>
@@ -13977,7 +14013,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8f5c557f967eff9a">
 <div class="input">
-<div class="prompt input_prompt">In [17]:</div>
+<div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">myDog</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Fluffy"</span><span class="p">;</span>
@@ -13989,7 +14025,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=73d287be68182657">
 <div class="input">
-<div class="prompt input_prompt">In [18]:</div>
+<div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System.IO</span><span class="p">;</span>
@@ -14007,7 +14043,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=103f509569c72c53">
 <div class="input">
-<div class="prompt input_prompt">In [19]:</div>
+<div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">myPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="s">"my-data"</span><span class="p">);</span>
@@ -14027,7 +14063,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=c904fba8bceac4af">
 <div class="input">
-<div class="prompt input_prompt">In [20]:</div>
+<div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">myPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Path</span><span class="p">.</span><span class="n">Combine</span><span class="p">(</span><span class="s">"my-data"</span><span class="p">);</span>
@@ -14051,7 +14087,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5e6fa76a330444e6">
 <div class="input">
-<div class="prompt input_prompt">In [21]:</div>
+<div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">theLoopCounterOfThisForLoop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">theLoopCounterOfThisForLoop</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">theLoopCounterOfThisForLoop</span><span class="o">++</span><span class="p">)</span>
@@ -14149,7 +14185,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=b44e4414f75dfe28">
 <div class="input">
-<div class="prompt input_prompt">In [22]:</div>
+<div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -14247,7 +14283,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=28cf3f837abeff31">
 <div class="input">
-<div class="prompt input_prompt">In [23]:</div>
+<div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">P</span>
@@ -14260,9 +14296,9 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=b444246cd622e911">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=b444246cd622e911">
 <div class="input">
-<div class="prompt input_prompt">In [24]:</div>
+<div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Point</span>
@@ -14277,7 +14313,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=51423dd4b217cc9e">
 <div class="input">
-<div class="prompt input_prompt">In [25]:</div>
+<div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">FixedSizeOrderedCollectionIndexedByInts</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
@@ -14288,7 +14324,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=463964662f125455">
 <div class="input">
-<div class="prompt input_prompt">In [26]:</div>
+<div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Array</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
@@ -14305,15 +14341,15 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=6c5396f53d4aebd3">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=a471faf61fec2fae">
 <div class="input">
-<div class="prompt input_prompt">In [27]:</div>
+<div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">dtprcssor</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lst</span><span class="p">;</span>
-<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lst</span><span class="p">;</span><span class="w"> </span><span class="c1">// List of monthly sales figures</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span><span class="w">  </span><span class="c1">// true if the total has been calculated</span>
 
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="nf">dtprcssor</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">)</span>
 <span class="w">    </span><span class="p">{</span>
@@ -14321,6 +14357,7 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 <span class="w">        </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">false</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// Calculates the total sales and sets the flag to true</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">Calc</span><span class="p">()</span>
 <span class="w">    </span><span class="p">{</span>
 <span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -14329,6 +14366,7 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
+<span class="w">    </span><span class="c1">// Returns true if the total has been calculated, false otherwise</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">getflag</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">flag</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
@@ -14338,7 +14376,7 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=9c7135a27aedc0c7">
 <div class="input">
-<div class="prompt input_prompt">In [28]:</div>
+<div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SalesReportCalculator</span>
@@ -14379,9 +14417,9 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=94934c3387730800">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=94934c3387730800">
 <div class="input">
-<div class="prompt input_prompt">In [29]:</div>
+<div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">computeSecondsInADay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
@@ -14392,7 +14430,7 @@ welche Namensregeln verletzt werden, und schreiben Sie den Code um.</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=9e6e30b8141bd468">
 <div class="input">
-<div class="prompt input_prompt">In [30]:</div>
+<div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">secondsPerDay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">24</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span>
@@ -14411,7 +14449,7 @@ eine Variable</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8e39d40c2a843dc5">
 <div class="input">
-<div class="prompt input_prompt">In [31]:</div>
+<div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"admin"</span><span class="p">;</span><span class="w"> </span><span class="c1">// Default role for new users</span>
@@ -14422,7 +14460,7 @@ eine Variable</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=e2a58a947cfbdd1d">
 <div class="input">
-<div class="prompt input_prompt">In [32]:</div>
+<div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">string</span><span class="w"> </span><span class="n">defaultUserRole</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"admin"</span><span class="p">;</span>
@@ -14431,17 +14469,17 @@ eine Variable</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=7a1292bb68dc487a"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_alt" id="cell-id=1a87094cb5bc4c09"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Kurzer Name wird in einem großen Geltungsbereich verwendet, beschreibt aber
-nicht, was er repräsentiert</p>
+<p>Kurzer Name wird (wahrscheinlich) in einem großen Geltungsbereich verwendet,
+beschreibt aber nicht, was er repräsentiert</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=a5e786a76c21a071">
 <div class="input">
-<div class="prompt input_prompt">In [33]:</div>
+<div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">b_FtrFlg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Feature flag: If true, the feature is enabled</span>
@@ -14452,7 +14490,7 @@ nicht, was er repräsentiert</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=3a708dea56cc93d4">
 <div class="input">
-<div class="prompt input_prompt">In [34]:</div>
+<div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="n">isFeatureEnabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
@@ -14469,12 +14507,13 @@ Kommentar ist nötig, um zu verstehen, was die Variable bedeutet</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=0d2404bcb33e3669">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=8d45fc534948a6b5">
 <div class="input">
-<div class="prompt input_prompt">In [35]:</div>
+<div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="c1">// Permissions for the current user</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">theList</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
 </pre></div>
 </div>
 </div>
@@ -14482,7 +14521,7 @@ Kommentar ist nötig, um zu verstehen, was die Variable bedeutet</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered" id="cell-id=867bccea9e2c2975">
 <div class="input">
-<div class="prompt input_prompt">In [36]:</div>
+<div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">permissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">"read"</span><span class="p">,</span><span class="w"> </span><span class="s">"write"</span><span class="p">,</span><span class="w"> </span><span class="s">"execute"</span><span class="w"> </span><span class="p">};</span>
