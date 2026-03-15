@@ -50,7 +50,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN:
+// #### GRÜN:
 //
 // - `Rover`-Klasse, `Point` (record struct) und `Direction` (enum) erstellen
 // - Test besteht
@@ -99,7 +99,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN:
+// #### GRÜN:
 //
 // - `ExecuteCommands`-Methode mit einfacher Logik implementieren
 
@@ -108,7 +108,7 @@
 // ```csharp
 // public void ExecuteCommands(string commands)
 // {
-//     if (command == "R")
+//     if (commands == "R")
 //     {
 //         Direction = Direction.E;
 //     }
@@ -137,7 +137,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN:
+// #### GRÜN:
 // - `ExecuteCommands` um `"RR"`-Fall erweitern
 
 // %% [markdown]
@@ -145,11 +145,11 @@
 // ```csharp
 // public void ExecuteCommands(string commands)
 // {
-//     if (command == "R")
+//     if (commands == "R")
 //     {
 //         Direction = Direction.E;
 //     }
-//     else if (command == "RR")
+//     else if (commands == "RR")
 //     {
 //         Direction = Direction.S;
 //     }
@@ -267,7 +267,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - `TurnRight` um alle vier Richtungen erweitern
 // - Parametrisierter Test ist jetzt grün
@@ -317,7 +317,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - `TurnLeft`-Methode implementieren
 // - `ExecuteCommands` um `L`-Befehl erweitern
@@ -376,7 +376,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - Bewegungslogik für Richtung `N` implementieren
 // - Test ist jetzt grün
@@ -441,7 +441,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - `Move`-Methode um alle vier Richtungen erweitern
 // - Parametrisierter Test ist jetzt grün
@@ -505,7 +505,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - Test deckt Designproblem auf: Rover kennt zu viele Welt-Regeln
 // - Designverbesserung:

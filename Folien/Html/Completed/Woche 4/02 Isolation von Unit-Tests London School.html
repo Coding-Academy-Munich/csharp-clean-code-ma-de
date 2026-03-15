@@ -13412,7 +13412,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-45572.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-40472.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13501,7 +13501,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2050/", "http://169.254.203.116:2050/", "http://169.254.194.28:2050/", "http://172.16.0.1:2050/", "http://172.24.48.1:2050/", "http://172.23.176.1:2050/", "http://127.0.0.1:2050/"])
+    probeAddresses(["http://192.168.178.24:2051/", "http://169.254.203.116:2051/", "http://169.254.194.28:2051/", "http://172.25.192.1:2051/", "http://172.23.176.1:2051/", "http://127.0.0.1:2051/"])
 
         .then((root) => {
 
@@ -13511,7 +13511,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '45572.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '40472.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13657,7 +13657,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=d626c06583543ed0">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d626c06583543ed0">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
@@ -13687,7 +13687,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered" id="cell-id=5c0ef93dda25bfdf">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5c0ef93dda25bfdf">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
@@ -13737,7 +13737,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=57425e2b64dc6501">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=57425e2b64dc6501">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
@@ -13952,10 +13952,10 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7c17606ade0c2194"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=6098245de9826ec1"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Vorteile-der-Isolation-der-getesteten-Unit">Vorteile der Isolation der getesteten Unit<a class="anchor-link" href="#Vorteile-der-Isolation-der-getesteten-Unit">¶</a></h2><ul>
+<h2 id="Vorteile-der-London-School">Vorteile der London School<a class="anchor-link" href="#Vorteile-der-London-School">¶</a></h2><ul>
 <li>Einfache Struktur der Tests<ul>
 <li>Jeder Test gehört zu genau einer Unit</li>
 </ul>
@@ -13966,10 +13966,10 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=dadea4515de652e5"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=1d225d9e2c4e4227"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Nachteile-der-Isolation-der-getesteten-Unit">Nachteile der Isolation der getesteten Unit<a class="anchor-link" href="#Nachteile-der-Isolation-der-getesteten-Unit">¶</a></h2><ul>
+<h2 id="Nachteile-der-London-School">Nachteile der London School<a class="anchor-link" href="#Nachteile-der-London-School">¶</a></h2><ul>
 <li>Potenziell höherer Aufwand (z.B. Mocks)</li>
 <li>Fehler in der Interaktion zwischen Units werden nicht gefunden</li>
 <li>Verleiten zum Schreiben von "Interaktionstests"</li>
@@ -13978,18 +13978,21 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=58476d93abb01a77"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=2001a567a6d02677"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Empfehlung">Empfehlung<a class="anchor-link" href="#Empfehlung">¶</a></h2><ul>
-<li>Verwenden Sie isolierte Unit-Tests (Detroit School)</li>
+<li>Verwenden Sie typischerweise isolierte Unit-Tests (Detroit School)</li>
 <li>Isolieren Sie Abhängigkeiten, die "eine Rakete starten"<ul>
-<li>nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles Datum)</li>
+<li>nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles
+Datum)</li>
 <li>langsam</li>
 <li>externe Systeme (z.B. Datenbank)</li>
 </ul>
 </li>
 <li>Isolieren Sie Abhängigkeiten, die ein komplexes Setup benötigen</li>
+<li>Verwenden Sie die London School, wenn das Setup sehr komplex ist oder es
+schwierig ist, an den benötigten Zustand zu kommen.</li>
 </ul>
 </div>
 </div>

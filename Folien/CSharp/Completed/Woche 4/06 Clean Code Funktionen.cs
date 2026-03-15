@@ -16,7 +16,7 @@
 //
 // ## Funktionen als Strukturierungsmittel
 //
-// Fasse logisch zusammengehörige Operationen als sorgfältig benannte
+// Fassen Sie logisch zusammengehörige Operationen als sorgfältig benannte
 // Funktionen zusammen:
 //
 // - Besser lesbar
@@ -67,12 +67,16 @@ void DoStuff(int a, int b, List<int> results)
 // %%
 int GetMeasurement(int a, int b) => a + b;
 
+// %%
 int ComputeResult(int measurement) => measurement + 1;
 
+// %%
 bool IsValidResult(int result) => result > 0;
 
+// %%
 void SaveResult(int result, List<int> results) => results.Add(result);
 
+// %%
 void PrintResults(List<int> results)
 {
     foreach (int result in results)
@@ -263,5 +267,23 @@ var testData = new List<double> { 10, -5, 200, 1500, 42, 88 };
 ProcessData(testData, true)
 
 // %%
+static List<double> RemoveInvalidValues(List<double> data)
+{
+    return data.Where(d => d >= 0 && d <= 1000).ToList();
+}
+
+static double CalculateAverage(List<double> values)
+{
+    return values.Count > 0 ? values.Average() : 0;
+}
+
+static void PrintSummary(int count, double average)
+{
+    Console.WriteLine($"Processed {count} values, average: {average:F2}");
+}
 
 // %%
+var rawData = new List<double> { 10, -5, 200, 1500, 42, 88 };
+var validData = RemoveInvalidValues(rawData);
+double average = CalculateAverage(validData);
+PrintSummary(validData.Count, average);

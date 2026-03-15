@@ -221,7 +221,7 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 
 // %% [markdown]
 //
-// ## Vorteile der Isolation der getesteten Unit
+// ## Vorteile der London School
 //
 // - Einfache Struktur der Tests
 //   - Jeder Test gehört zu genau einer Unit
@@ -230,7 +230,7 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 
 // %% [markdown]
 //
-// ## Nachteile der Isolation der getesteten Unit
+// ## Nachteile der London School
 //
 // - Potenziell höherer Aufwand (z.B. Mocks)
 // - Fehler in der Interaktion zwischen Units werden nicht gefunden
@@ -241,12 +241,15 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 //
 // ## Empfehlung
 //
-// - Verwenden Sie isolierte Unit-Tests (Detroit School)
+// - Verwenden Sie typischerweise isolierte Unit-Tests (Detroit School)
 // - Isolieren Sie Abhängigkeiten, die "eine Rakete starten"
-//   - nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles Datum)
+//   - nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles
+//     Datum)
 //   - langsam
 //   - externe Systeme (z.B. Datenbank)
 // - Isolieren Sie Abhängigkeiten, die ein komplexes Setup benötigen
+// - Verwenden Sie die London School, wenn das Setup sehr komplex ist oder es
+//   schwierig ist, an den benötigten Zustand zu kommen.
 
 // %% [markdown]
 //

@@ -13416,12 +13416,12 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=79e31253f1ae1e02"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=0710e180104ed3be"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Kritisch:-Tests-sind-unverzichtbar!">Kritisch: Tests sind unverzichtbar!<a class="anchor-link" href="#Kritisch:-Tests-sind-unverzichtbar!">¶</a></h2><ul>
 <li>KI-generierter Code kann subtile Fehler enthalten</li>
-<li>Die KI "versteht" den Kontext nicht vollständig</li>
+<li>Die KI "versteht" den Problem-Kontext nicht vollständig</li>
 <li>Tests sind das Sicherheitsnetz</li>
 <li><strong>Ohne Tests ist KI-gestütztes Refactoring gefährlich!</strong></li>
 </ul>
@@ -13435,7 +13435,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=42945fb3c75b8f36">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=42945fb3c75b8f36">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
@@ -13452,7 +13452,7 @@ wVgkEiEgwL/Pz8+vy8fHu9nLy7va19fn5y+LHsoiqZ3ieqgB8JRl07PTzGbzVLFYdEIkEh+lWXn8
 <div class="prompt"></div>
 <div class="output_html rendered_html output_subarea">
 <div>
-<div id="dotnet-interactive-this-cell-82620.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
+<div id="dotnet-interactive-this-cell-49064.Microsoft.DotNet.Interactive.Http.HttpPort" style="display: none">
 
         The below script needs to be able to find the current output cell; this is an easy method to get it.
 
@@ -13541,7 +13541,7 @@ async function probeAddresses(probingAddresses) {
 
 function loadDotnetInteractiveApi() {
 
-    probeAddresses(["http://192.168.178.24:2048/", "http://169.254.203.116:2048/", "http://169.254.194.28:2048/", "http://172.16.0.1:2048/", "http://172.24.48.1:2048/", "http://172.23.176.1:2048/", "http://127.0.0.1:2048/"])
+    probeAddresses(["http://192.168.178.24:2048/", "http://169.254.203.116:2048/", "http://169.254.194.28:2048/", "http://172.25.192.1:2048/", "http://172.23.176.1:2048/", "http://127.0.0.1:2048/"])
 
         .then((root) => {
 
@@ -13551,7 +13551,7 @@ function loadDotnetInteractiveApi() {
 
         let dotnetInteractiveRequire = require.config({
 
-        context: '82620.Microsoft.DotNet.Interactive.Http.HttpPort',
+        context: '49064.Microsoft.DotNet.Interactive.Http.HttpPort',
 
                 paths:
 
@@ -13747,7 +13747,7 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=51b1f72aec30576b">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=89513282f2449eaa">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
@@ -13756,20 +13756,47 @@ else {
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="nf">Format</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
 <span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">HtmlFormatter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IReportFormatter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=116c5c7e36f097b2">
+<div class="input">
+<div class="prompt input_prompt">In [4]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">HtmlFormatter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IReportFormatter</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Format</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">$"&lt;html&gt;&lt;body&gt;{string.Join("", data.Select(d =&gt; $"</span><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">{</span><span class="n">d</span><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span><span class="s">"))}&lt;/body&gt;&lt;/html&gt;"</span><span class="p">;</span>
 <span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">CsvFormatter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IReportFormatter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5f8ac41ae93737f3">
+<div class="input">
+<div class="prompt input_prompt">In [5]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CsvFormatter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IReportFormatter</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Format</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">string</span><span class="p">.</span><span class="n">Join</span><span class="p">(</span><span class="s">","</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
 <span class="p">}</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">JsonFormatter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IReportFormatter</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=077d93aafb88e5e7">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">JsonFormatter</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">IReportFormatter</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nf">Format</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
 <span class="w">        </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">$"[{string.Join("</span><span class="p">,</span><span class="s">", data.Select(d =&gt; $"</span><span class="err">\</span><span class="s">"{d}\""</span><span class="p">))}]</span><span class="s">";</span>
@@ -13781,7 +13808,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=8e25e5d0cbcce472">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Report</span>
@@ -13817,57 +13844,17 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=e2caebbb63c48374"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=3de72df79a56f135"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Best-Practices">Best Practices<a class="anchor-link" href="#Best-Practices">¶</a></h2><ul>
 <li>Immer Tests haben, bevor man KI-Refactoring anwendet</li>
-<li>KI-Vorschläge als Inspiration verwenden, nicht als finale Lösung</li>
+<li>KI-Vorschläge kritisch bewerten, nicht einfach übernehmen</li>
 <li>Schritte klein genug halten, um sie leicht überprüfen zu können</li>
 <li>Häufig testen: alle paar Minuten müssen die Tests grün sein</li>
 <li>Code-Review für KI-generierte Änderungen</li>
 <li>KI für Routine-Aufgaben nutzen, kreative Entscheidungen selbst treffen</li>
 </ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=47e039fc22234df3"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Legacy-Code:-Das-h%C3%A4ufigste-Szenario">Legacy-Code: Das häufigste Szenario<a class="anchor-link" href="#Legacy-Code:-Das-h%C3%A4ufigste-Szenario">¶</a></h2><ul>
-<li>In der Praxis: Code existiert schon, Tests fehlen</li>
-<li>Klassischer Legacy-Code: funktioniert, aber niemand traut sich etwas zu ändern</li>
-<li>KI kann helfen: erst Tests schreiben, dann refaktorisieren</li>
-<li><code>Program.cs</code> als "lebende Dokumentation" des Verhaltens</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=99bbd51b7b6b78cb"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Der-Legacy-Workflow">Der Legacy-Workflow<a class="anchor-link" href="#Der-Legacy-Workflow">¶</a></h2><ol>
-<li><strong>Code verstehen</strong>: <code>Program.cs</code> ausführen, Verhalten beobachten</li>
-<li><strong>Tests schreiben</strong>: KI schreibt Tests basierend auf beobachtetem Verhalten</li>
-<li><strong>Tests verifizieren</strong>: Alle Tests müssen grün sein</li>
-<li><strong>Refaktorisieren</strong>: Code verbessern, Tests als Sicherheitsnetz</li>
-<li><strong>Wiederholen</strong>: Schrittweise verbessern</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=032a751d8e4e81fa"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Workshop:-Legacy-Code-mit-KI-modernisieren">Workshop: Legacy-Code mit KI modernisieren<a class="anchor-link" href="#Workshop:-Legacy-Code-mit-KI-modernisieren">¶</a></h2><p>Öffnen Sie das Projekt <code>RefactoringWithAiLegacyNUnitSk</code> in Ihrer IDE.</p>
-<p>Verwenden Sie ein KI-Werkzeug, um:</p>
-<ol>
-<li><code>Program.cs</code> ausführen und die Ausgabe analysieren</li>
-<li>NUnit-Tests für <code>Report</code> und <code>Shop</code> schreiben lassen</li>
-<li>Die Tests ausführen und verifizieren</li>
-<li>Den Code mit den Tests als Sicherheitsnetz refaktorisieren</li>
-</ol>
-<p><em>Vergleichen Sie: Wie unterscheidet sich dieser Workflow vom nächsten Workshop?</em></p>
 </div>
 </div>
 </div>
@@ -13887,9 +13874,9 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=c1d0b9d36bf28d5e">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=41b9788632b1aaed">
 <div class="input">
-<div class="prompt input_prompt">In [5]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="nn">System</span><span class="p">;</span>
@@ -13901,7 +13888,7 @@ else {
 </div>
 <div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=04041126d816e54f">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Shop</span>
@@ -13936,21 +13923,30 @@ else {
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=902d3fd40ba5dbaa"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide celltag_alt" id="cell-id=902d3fd40ba5dbaa"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Mögliche Verbesserungen (die eine KI vorschlagen könnte):</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide" id="cell-id=f7b71b984e2d5606">
+<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_alt" id="cell-id=cfeb192d33bceace">
 <div class="input">
-<div class="prompt input_prompt">In [7]:</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">record</span><span class="w"> </span><span class="nf">ShopItem</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">Name</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">Price</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Quantity</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Category</span><span class="p">);</span>
-
-<span class="k">class</span><span class="w"> </span><span class="nc">ShoppingCart</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=377fa2c541df6bc6">
+<div class="input">
+<div class="prompt input_prompt">In [11]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">ShoppingCart</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ShopItem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">();</span>
 <span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="n">Dictionary</span><span class="o">&lt;</span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">TaxRates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="p">()</span>

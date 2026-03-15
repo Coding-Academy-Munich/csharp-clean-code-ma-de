@@ -47,7 +47,7 @@
 // ## Kritisch: Tests sind unverzichtbar!
 //
 // - KI-generierter Code kann subtile Fehler enthalten
-// - Die KI "versteht" den Kontext nicht vollständig
+// - Die KI "versteht" den Problem-Kontext nicht vollständig
 // - Tests sind das Sicherheitsnetz
 // - **Ohne Tests ist KI-gestütztes Refactoring gefährlich!**
 
@@ -116,18 +116,21 @@ interface IReportFormatter
     string Format(List<string> data);
 }
 
+// %%
 class HtmlFormatter : IReportFormatter
 {
     public string Format(List<string> data)
         => $"<html><body>{string.Join("", data.Select(d => $"<p>{d}</p>"))}</body></html>";
 }
 
+// %%
 class CsvFormatter : IReportFormatter
 {
     public string Format(List<string> data)
         => string.Join(",", data);
 }
 
+// %%
 class JsonFormatter : IReportFormatter
 {
     public string Format(List<string> data)
@@ -166,45 +169,11 @@ class Report
 // ## Best Practices
 //
 // - Immer Tests haben, bevor man KI-Refactoring anwendet
-// - KI-Vorschläge als Inspiration verwenden, nicht als finale Lösung
+// - KI-Vorschläge kritisch bewerten, nicht einfach übernehmen
 // - Schritte klein genug halten, um sie leicht überprüfen zu können
 // - Häufig testen: alle paar Minuten müssen die Tests grün sein
 // - Code-Review für KI-generierte Änderungen
 // - KI für Routine-Aufgaben nutzen, kreative Entscheidungen selbst treffen
-
-// %% [markdown]
-//
-// ## Legacy-Code: Das häufigste Szenario
-//
-// - In der Praxis: Code existiert schon, Tests fehlen
-// - Klassischer Legacy-Code: funktioniert, aber niemand traut sich etwas zu ändern
-// - KI kann helfen: erst Tests schreiben, dann refaktorisieren
-// - `Program.cs` als "lebende Dokumentation" des Verhaltens
-
-// %% [markdown]
-//
-// ## Der Legacy-Workflow
-//
-// 1. **Code verstehen**: `Program.cs` ausführen, Verhalten beobachten
-// 2. **Tests schreiben**: KI schreibt Tests basierend auf beobachtetem Verhalten
-// 3. **Tests verifizieren**: Alle Tests müssen grün sein
-// 4. **Refaktorisieren**: Code verbessern, Tests als Sicherheitsnetz
-// 5. **Wiederholen**: Schrittweise verbessern
-
-// %% [markdown]
-//
-// ## Workshop: Legacy-Code mit KI modernisieren
-//
-// Öffnen Sie das Projekt `RefactoringWithAiLegacyNUnitSk` in Ihrer IDE.
-//
-// Verwenden Sie ein KI-Werkzeug, um:
-//
-// 1. `Program.cs` ausführen und die Ausgabe analysieren
-// 2. NUnit-Tests für `Report` und `Shop` schreiben lassen
-// 3. Die Tests ausführen und verifizieren
-// 4. Den Code mit den Tests als Sicherheitsnetz refaktorisieren
-//
-// *Vergleichen Sie: Wie unterscheidet sich dieser Workflow vom nächsten Workshop?*
 
 // %% [markdown]
 //
@@ -254,9 +223,3 @@ class Shop
         return t;
     }
 }
-
-// %% [markdown]
-//
-// Mögliche Verbesserungen (die eine KI vorschlagen könnte):
-
-// %%

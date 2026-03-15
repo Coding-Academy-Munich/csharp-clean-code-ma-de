@@ -33,7 +33,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN:
+// #### GRÜN:
 //
 // - `Rover`-Klasse, `Point` (record struct) und `Direction` (enum) erstellen
 // - Test besteht
@@ -48,7 +48,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN:
+// #### GRÜN:
 //
 // - `ExecuteCommands`-Methode mit einfacher Logik implementieren
 
@@ -62,7 +62,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN:
+// #### GRÜN:
 // - `ExecuteCommands` um `"RR"`-Fall erweitern
 
 // %% [markdown]
@@ -91,7 +91,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - `TurnRight` um alle vier Richtungen erweitern
 // - Parametrisierter Test ist jetzt grün
@@ -107,7 +107,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - `TurnLeft`-Methode implementieren
 // - `ExecuteCommands` um `L`-Befehl erweitern
@@ -123,7 +123,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - Bewegungslogik für Richtung `N` implementieren
 // - Test ist jetzt grün
@@ -138,7 +138,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - `Move`-Methode um alle vier Richtungen erweitern
 // - Parametrisierter Test ist jetzt grün
@@ -174,7 +174,7 @@
 
 // %% [markdown]
 //
-// #### GRUEN & REFACTOR:
+// #### GRÜN & REFACTOR:
 //
 // - Test deckt Designproblem auf: Rover kennt zu viele Welt-Regeln
 // - Designverbesserung:

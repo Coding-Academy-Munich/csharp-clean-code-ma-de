@@ -17,8 +17,8 @@
 // ## Kommentare und Code-Qualität
 //
 // - Kommentare kompensieren unser Unvermögen, uns in Code auszudrücken
-// - Wenn möglich: Drücke dich in Code aus, nicht in Kommentaren!
-// - Prüfe immer erst, ob du es nicht besser im Code tun kannst
+// - Wenn möglich: Drücken Sie sich in Code aus, nicht in Kommentaren!
+// - Prüfen Sie immer erst, ob Sie es nicht besser im Code tun können
 
 // %% [markdown]
 //
@@ -107,10 +107,10 @@ int timeoutMs = 30000;
 //
 // ## Besser: Code statt Kommentare
 //
-// - Verwende erklärende Variablen und gute Namen statt Kommentare
-// - Extrahiere Methoden mit aussagekräftigen Namen
-// - Verwende Enums oder Konstanten statt Magic Numbers
-// - Drücke Bedingungen als benannte Prädikate aus
+// - Verwenden Sie erklärende Variablen und gute Namen statt Kommentare
+// - Extrahieren Sie Methoden mit aussagekräftigen Namen
+// - Verwenden Sie Enums oder Konstanten statt Magic Numbers
+// - Drücken Sie Bedingungen als benannte Prädikate aus
 
 // %%
 class Employee

@@ -16,11 +16,11 @@
 //
 // ## Kata: FizzBuzz
 //
-// Schreiben Sie eine Funktion
+// Erstellen Sie eine Klasse `FizzBuzz` mit einer öffentlichen statischen Methode:
 // ```csharp
-// void PrintFizzBuzz(int n);
+// public static void PrintFizzBuzz(int n)
 // ```
-// die die Zahlen von 1 bis `n` auf dem Bildschirm ausgibt aber dabei
+// Diese Methode soll die Zahlen von 1 bis `n` auf dem Bildschirm ausgeben, aber dabei
 //
 // - jede Zahl, die durch 3 teilbar ist, durch `Fizz` ersetzt
 // - jede Zahl, die durch 5 teilbar ist, durch `Buzz` ersetzt
@@ -28,7 +28,7 @@
 
 // %% [markdown]
 //
-// Zum Beispiel soll `fizz_buzz(16)` die folgende Ausgabe erzeugen:
+// Zum Beispiel soll `FizzBuzz.PrintFizzBuzz(16)` die folgende Ausgabe erzeugen:
 //
 // ```plaintext
 // 1
@@ -48,6 +48,13 @@
 // FizzBuzz
 // 16
 // ```
+
+// %% [markdown]
+//
+// ## Einfache Lösung
+//
+// - Direkte Ausgabe auf die Konsole
+// - Einfach zu schreiben, aber schwer zu testen
 
 // %%
 using System.Collections.Generic;
@@ -84,6 +91,14 @@ public class FizzBuzzSimple {
 
 // %%
 FizzBuzzSimple.Run([]);
+
+// %% [markdown]
+//
+// ## Testbare Lösung
+//
+// - Trennung von Logik und Ausgabe
+// - `GenerateFizzBuzz()` gibt eine Liste zurück (leicht testbar)
+// - `PrintFizzBuzz()` nimmt einen `TextWriter` entgegen (Dependency Injection)
 
 // %%
 using System.IO;
@@ -124,6 +139,13 @@ public class FizzBuzz {
 // %%
 FizzBuzz.Run([]);
 
+// %% [markdown]
+//
+// ## Tests
+//
+// - Testen der Logik und der Ausgabe
+// - Parametrisierte Tests für verschiedene Eingaben
+
 // %%
 using NUnit.Framework;
 using System.IO;
@@ -159,7 +181,7 @@ public class FizzBuzzTest {
 
     [Test]
     public void GenerateFizzBuzz_ThrowsArgumentExceptionForNegativeNumber() {
-        Assert.Throws<ArgumentException>(() => FizzBuzz.GenerateFizzBuzz(-1));
+        Assert.That(() => FizzBuzz.GenerateFizzBuzz(-1), Throws.TypeOf<ArgumentException>());
     }
 
     [Test]

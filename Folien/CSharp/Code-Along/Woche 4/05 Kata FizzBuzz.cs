@@ -16,11 +16,11 @@
 //
 // ## Kata: FizzBuzz
 //
-// Schreiben Sie eine Funktion
+// Erstellen Sie eine Klasse `FizzBuzz` mit einer öffentlichen statischen Methode:
 // ```csharp
-// void PrintFizzBuzz(int n);
+// public static void PrintFizzBuzz(int n)
 // ```
-// die die Zahlen von 1 bis `n` auf dem Bildschirm ausgibt aber dabei
+// Diese Methode soll die Zahlen von 1 bis `n` auf dem Bildschirm ausgeben, aber dabei
 //
 // - jede Zahl, die durch 3 teilbar ist, durch `Fizz` ersetzt
 // - jede Zahl, die durch 5 teilbar ist, durch `Buzz` ersetzt
@@ -28,7 +28,7 @@
 
 // %% [markdown]
 //
-// Zum Beispiel soll `fizz_buzz(16)` die folgende Ausgabe erzeugen:
+// Zum Beispiel soll `FizzBuzz.PrintFizzBuzz(16)` die folgende Ausgabe erzeugen:
 //
 // ```plaintext
 // 1

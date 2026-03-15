@@ -41,14 +41,78 @@ using static NUnitTestRunner;
 // - Klasse `TicketOffice` verwaltet den Verkauf
 
 // %%
+public class Show
+{
+    public Show(string name, int capacity)
+    {
+        Name = name;
+        Capacity = capacity;
+    }
+
+    public string Name { get; }
+    public int Capacity { get; private set; }
+
+    public void Purchase(int numTickets)
+    {
+        if (numTickets > Capacity)
+        {
+            throw new InvalidOperationException("Not enough capacity");
+        }
+        Capacity -= numTickets;
+    }
+}
 
 // %%
+public class TicketOffice
+{
+    public void AddShow(Show show)
+    {
+        shows[show.Name] = show;
+    }
+
+    public Show GetShow(string showName)
+    {
+        return shows[showName];
+    }
+
+    public bool PurchaseTickets(string showName, int numTickets)
+    {
+        if (shows.ContainsKey(showName))
+        {
+            try
+            {
+                shows[showName].Purchase(numTickets);
+                return true;
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.Error.WriteLine($"Cannot purchase {numTickets} tickets for {showName}");
+                Console.Error.WriteLine(e.Message);
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private Dictionary<string, Show> shows = new Dictionary<string, Show>();
+}
 
 // %% [markdown]
 //
 // ### Test im Detroit-School-Stil
 
 // %%
+public class TestPurchaseTickets
+{
+    [Test]
+    public void PurchaseTickets_ReturnsTrueAndReducesCapacity()
+    {
+        TicketOffice ticketOffice = new TicketOffice();
+        Show show = new Show("C# Conference", 100);
+        ticketOffice.AddShow(show);
+
+    }
+}
 
 // %%
 
@@ -150,7 +214,7 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 
 // %% [markdown]
 //
-// ## Vorteile der Isolation der getesteten Unit
+// ## Vorteile der London School
 //
 // - Einfache Struktur der Tests
 //   - Jeder Test gehört zu genau einer Unit
@@ -159,7 +223,7 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 
 // %% [markdown]
 //
-// ## Nachteile der Isolation der getesteten Unit
+// ## Nachteile der London School
 //
 // - Potenziell höherer Aufwand (z.B. Mocks)
 // - Fehler in der Interaktion zwischen Units werden nicht gefunden
@@ -170,12 +234,15 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 //
 // ## Empfehlung
 //
-// - Verwenden Sie isolierte Unit-Tests (Detroit School)
+// - Verwenden Sie typischerweise isolierte Unit-Tests (Detroit School)
 // - Isolieren Sie Abhängigkeiten, die "eine Rakete starten"
-//   - nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles Datum)
+//   - nicht-deterministisch (z.B. Zufallszahlen, aktuelle Zeit, aktuelles
+//     Datum)
 //   - langsam
 //   - externe Systeme (z.B. Datenbank)
 // - Isolieren Sie Abhängigkeiten, die ein komplexes Setup benötigen
+// - Verwenden Sie die London School, wenn das Setup sehr komplex ist oder es
+//   schwierig ist, an den benötigten Zustand zu kommen.
 
 // %% [markdown]
 //
