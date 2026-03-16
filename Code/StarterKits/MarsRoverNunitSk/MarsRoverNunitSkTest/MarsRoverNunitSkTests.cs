@@ -6,8 +6,11 @@ using MarsRoverNUnitSk;
 public class MarsRoverNUnitSkTests
 {
     [Test]
-    public void Test_Message()
+    public void Rover_InitializesToZero_FacingNorth()
     {
-        Assert.That(MarsRoverNUnitSk.Message, Is.EqualTo("Mars Rover Starter Kit"));
+        var rover = new Rover();
+
+        Assert.That(rover.Position, Is.EqualTo(new Point(0, 0)));
+        Assert.That(rover.Direction, Is.EqualTo(Direction.N));
     }
 }

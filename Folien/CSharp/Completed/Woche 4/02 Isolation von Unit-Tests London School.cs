@@ -255,7 +255,7 @@ RunTests<TestPurchaseTicketsLondonSchool>();
 //
 // ## Workshop: Virtuelle Universität
 //
-// - Im `code`-Ordner finden Sie eine Implementierung eines sehr einfachen
+// - Im `Code`-Ordner finden Sie eine Implementierung eines sehr einfachen
 //   Verwaltungssystems für eine Universität:
 // - Es gibt Kurse, Professoren, die die Kurse halten, Studenten, die Aufgaben
 //   bearbeiten und abgeben müssen.
