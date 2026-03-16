@@ -6,12 +6,14 @@ public enum Direction { N, E, S, W }
 
 public class Rover
 {
-    public Point Position { get; private set; }
-    public Direction Direction { get; private set; }
+    public Point Position { get; private set; } = new(0, 0);
+    public Direction Direction { get; private set; } = Direction.N;
 
-    public Rover()
+    public void ExecuteCommands(string commands)
     {
-        Position = new Point(0, 0);
-        Direction = Direction.N;
+        if (commands == "R")
+        {
+            Direction = Direction.E;
+        }
     }
 }
