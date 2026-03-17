@@ -35,7 +35,7 @@
 
 // %% [markdown]
 //
-// ## "Do One Thing"
+// ## "Eine Sache tun" - "Do One Thing"
 //
 // - Funktionen sollten eine Aufgabe erfüllen
 // - Sie sollten diese Aufgabe gut erfüllen
@@ -65,7 +65,7 @@ void DoStuff(int a, int b, List<int> results)
 // Besser: Aufteilen in einzelne Funktionen
 
 // %%
-int GetMeasurement(int a, int b) => a + b;
+int GetMeasurement(int lat, int lon) => lat + lon;
 
 // %%
 int ComputeResult(int measurement) => measurement + 1;
@@ -84,9 +84,9 @@ void PrintResults(List<int> results)
 }
 
 // %%
-void ProcessMeasurement(int a, int b, List<int> results)
+void RecordMeasurement(int lat, int lon, List<int> results)
 {
-    int measurement = GetMeasurement(a, b);
+    int measurement = GetMeasurement(lat, lon);
     int newResult = ComputeResult(measurement);
     if (IsValidResult(newResult))
         SaveResult(newResult, results);
@@ -103,44 +103,69 @@ void ProcessMeasurement(int a, int b, List<int> results)
 // - Nicht mischen!
 
 // %%
-class Order { }
-void ValidateOrder(Order o) { }
-decimal CalculateTotal(Order o) => 0m;
-void ApplyDiscount(Order o, decimal t) { }
-void SendConfirmation(Order o) { }
+class Order {
+    void Process()
+    {
+        Validate();
+        decimal total = CalculateTotal();
+        ApplyDiscount(total);
+        SendConfirmation();
+    }
 
-// %%
-void ProcessOrder(Order order)
-{
-    ValidateOrder(order);
-    decimal total = CalculateTotal(order);
-    ApplyDiscount(order, total);
-    SendConfirmation(order);
+    private void Validate() { }
+    private decimal CalculateTotal() => 0m;
+    private void ApplyDiscount(decimal total) { }
+    private void SendConfirmation() { }
 }
 
 // %% [markdown]
 //
 // ## Funktionsparameter minimieren
 //
-// - Idealerweise: 0 Parameter (niladische Funktion)
-// - 1 Parameter (monadisch) ist gut
-// - 2 Parameter (dyadisch) sind akzeptabel
+// - Idealerweise: 0 Parameter
+// - 1 Parameter ist gut
+// - 2 Parameter sind akzeptabel
 // - 3+ Parameter vermeiden
 // - Viele Parameter → Parameterobjekt einführen
 
 // %%
 void CreateUser(string firstName, string lastName, string email,
-    string phone, string street, string city, string zip)
-{
-}
+                string phone, string street, string city, string zip) {}
+
+// %%
+CreateUser("John", "Doe", "john.doe@example.com", "1234567890", "123 Main St", "Anytown", "12345");
+
+// %% [markdown]
+//
+// Aber:
+
+// %%
+CreateUser(firstName: "John",
+           lastName: "Doe",
+           email: "john.doe@example.com",
+           phone: "1234567890",
+           street: "123 Main St",
+           city: "Anytown",
+           zip: "12345");
 
 // %%
 record UserData(string FirstName, string LastName, string Email,
-    string Phone, string Street, string City, string Zip);
+                string Phone, string Street, string City, string Zip);
 
-void CreateUser(UserData userData)
-{
-}
+// %%
+void CreateUser(UserData userData) {}
+
+// %%
+var john = new UserData(FirstName: "John",
+                        LastName: "Doe",
+                        Email: "john.doe@example.com",
+                        Phone: "1234567890",
+                        Street: "123 Main St",
+                        City: "Anytown",
+                        Zip: "12345");
+
+// %%
+CreateUser(john);
 
 // %% [markdown]
 //
@@ -156,6 +181,8 @@ class User
     public bool IsValidPassword(string p) => true;
     public void InitializeNewSession() { }
 }
+
+// %%
 User FindUser(string name) => new User();
 
 // %%
@@ -181,6 +208,7 @@ bool ValidatePassword(string userName, string password)
     return user != null && user.IsValidPassword(password);
 }
 
+// %%
 void StartSession(string userName)
 {
     var user = FindUser(userName);
@@ -210,6 +238,7 @@ bool HasDefaultValue()
 // %%
 bool HasDefaultValue() => defaultValue >= 0;
 
+// %%
 void SetDefaultValue(int value) { defaultValue = value; }
 
 // %% [markdown]

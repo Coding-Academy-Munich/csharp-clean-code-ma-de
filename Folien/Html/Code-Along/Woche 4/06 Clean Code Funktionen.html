@@ -13403,10 +13403,10 @@ Funktionen zusammen:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=3f0d86999b7db461"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=d1407c5a13c3c462"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="%22Do-One-Thing%22">"Do One Thing"<a class="anchor-link" href="#%22Do-One-Thing%22">¶</a></h2><ul>
+<h2 id="%22Eine-Sache-tun%22---%22Do-One-Thing%22">"Eine Sache tun" - "Do One Thing"<a class="anchor-link" href="#%22Eine-Sache-tun%22---%22Do-One-Thing%22">¶</a></h2><ul>
 <li>Funktionen sollten eine Aufgabe erfüllen</li>
 <li>Sie sollten diese Aufgabe gut erfüllen</li>
 <li>Sie sollten nur diese Aufgabe erfüllen</li>
@@ -13456,12 +13456,12 @@ Funktionen zusammen:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=c31bf627b5144490">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9cb3411fbaf003b8">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">GetMeasurement</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">GetMeasurement</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lon</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">lat</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lon</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -13515,14 +13515,14 @@ Funktionen zusammen:</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3a3e6ae10a3c52d0">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=bdfbe551f1101c4b">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">ProcessMeasurement</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">results</span><span class="p">)</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">RecordMeasurement</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">lon</span><span class="p">,</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">results</span><span class="p">)</span>
 <span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">measurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetMeasurement</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">measurement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">GetMeasurement</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">lon</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">newResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ComputeResult</span><span class="p">(</span><span class="n">measurement</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">IsValidResult</span><span class="p">(</span><span class="n">newResult</span><span class="p">))</span>
 <span class="w">        </span><span class="n">SaveResult</span><span class="p">(</span><span class="n">newResult</span><span class="p">,</span><span class="w"> </span><span class="n">results</span><span class="p">);</span>
@@ -13545,76 +13545,136 @@ Abstraktionsebene sein</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=be9f2b380726c0b5">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=88781d83539b8778">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="k">void</span><span class="w"> </span><span class="nf">ValidateOrder</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="kt">decimal</span><span class="w"> </span><span class="nf">CalculateTotal</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mf">0m</span><span class="p">;</span>
-<span class="k">void</span><span class="w"> </span><span class="nf">ApplyDiscount</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="k">void</span><span class="w"> </span><span class="nf">SendConfirmation</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">o</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3ea934019853a77f">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">ProcessOrder</span><span class="p">(</span><span class="n">Order</span><span class="w"> </span><span class="n">order</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="n">ValidateOrder</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
-<span class="w">    </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateTotal</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
-<span class="w">    </span><span class="n">ApplyDiscount</span><span class="p">(</span><span class="n">order</span><span class="p">,</span><span class="w"> </span><span class="n">total</span><span class="p">);</span>
-<span class="w">    </span><span class="n">SendConfirmation</span><span class="p">(</span><span class="n">order</span><span class="p">);</span>
+<div class="highlight hl-csharp"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Order</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">void</span><span class="w"> </span><span class="nf">Process</span><span class="p">()</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Validate</span><span class="p">();</span>
+<span class="w">        </span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CalculateTotal</span><span class="p">();</span>
+<span class="w">        </span><span class="n">ApplyDiscount</span><span class="p">(</span><span class="n">total</span><span class="p">);</span>
+<span class="w">        </span><span class="n">SendConfirmation</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">Validate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="kt">decimal</span><span class="w"> </span><span class="nf">CalculateTotal</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="mf">0m</span><span class="p">;</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">ApplyDiscount</span><span class="p">(</span><span class="kt">decimal</span><span class="w"> </span><span class="n">total</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">private</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">SendConfirmation</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=7a081646801889d4"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=643f1da0842d777c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Funktionsparameter-minimieren">Funktionsparameter minimieren<a class="anchor-link" href="#Funktionsparameter-minimieren">¶</a></h2><ul>
-<li>Idealerweise: 0 Parameter (niladische Funktion)</li>
-<li>1 Parameter (monadisch) ist gut</li>
-<li>2 Parameter (dyadisch) sind akzeptabel</li>
+<li>Idealerweise: 0 Parameter</li>
+<li>1 Parameter ist gut</li>
+<li>2 Parameter sind akzeptabel</li>
 <li>3+ Parameter vermeiden</li>
 <li>Viele Parameter → Parameterobjekt einführen</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=99a020ce17068e4c">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=26f93f02b1416582">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">CreateUser</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">firstName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">lastName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">email</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">street</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">zip</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="p">}</span>
+<span class="w">                </span><span class="kt">string</span><span class="w"> </span><span class="n">phone</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">street</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">city</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">zip</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=0f600f927f294e12">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5b39985d0fc2c060">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">CreateUser</span><span class="p">(</span><span class="s">"John"</span><span class="p">,</span><span class="w"> </span><span class="s">"Doe"</span><span class="p">,</span><span class="w"> </span><span class="s">"john.doe@example.com"</span><span class="p">,</span><span class="w"> </span><span class="s">"1234567890"</span><span class="p">,</span><span class="w"> </span><span class="s">"123 Main St"</span><span class="p">,</span><span class="w"> </span><span class="s">"Anytown"</span><span class="p">,</span><span class="w"> </span><span class="s">"12345"</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=8da23aa877d11e1b"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Aber:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f1764be86893657a">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">CreateUser</span><span class="p">(</span><span class="n">firstName</span><span class="p">:</span><span class="w"> </span><span class="s">"John"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">lastName</span><span class="p">:</span><span class="w"> </span><span class="s">"Doe"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">email</span><span class="p">:</span><span class="w"> </span><span class="s">"john.doe@example.com"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">phone</span><span class="p">:</span><span class="w"> </span><span class="s">"1234567890"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">street</span><span class="p">:</span><span class="w"> </span><span class="s">"123 Main St"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">city</span><span class="p">:</span><span class="w"> </span><span class="s">"Anytown"</span><span class="p">,</span>
+<span class="w">           </span><span class="n">zip</span><span class="p">:</span><span class="w"> </span><span class="s">"12345"</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=16f521e2a801e9a2">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="k">record</span><span class="w"> </span><span class="nf">UserData</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">FirstName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">LastName</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Email</span><span class="p">,</span>
-<span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="n">Phone</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Street</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Zip</span><span class="p">);</span>
-
-<span class="k">void</span><span class="w"> </span><span class="nf">CreateUser</span><span class="p">(</span><span class="n">UserData</span><span class="w"> </span><span class="n">userData</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="p">}</span>
+<span class="w">                </span><span class="kt">string</span><span class="w"> </span><span class="n">Phone</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Street</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">City</span><span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="n">Zip</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=52d8875831c93ca4">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">CreateUser</span><span class="p">(</span><span class="n">UserData</span><span class="w"> </span><span class="n">userData</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=cd7a314ecd09f864">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="kt">var</span><span class="w"> </span><span class="n">john</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">UserData</span><span class="p">(</span><span class="n">FirstName</span><span class="p">:</span><span class="w"> </span><span class="s">"John"</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">LastName</span><span class="p">:</span><span class="w"> </span><span class="s">"Doe"</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">Email</span><span class="p">:</span><span class="w"> </span><span class="s">"john.doe@example.com"</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">Phone</span><span class="p">:</span><span class="w"> </span><span class="s">"1234567890"</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">Street</span><span class="p">:</span><span class="w"> </span><span class="s">"123 Main St"</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">City</span><span class="p">:</span><span class="w"> </span><span class="s">"Anytown"</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">Zip</span><span class="p">:</span><span class="w"> </span><span class="s">"12345"</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=f35bdb557bba94ca">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">CreateUser</span><span class="p">(</span><span class="n">john</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -13631,7 +13691,7 @@ Abstraktionsebene sein</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=17bf5010ed82a40d">
+<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=aed37ca7748718e1">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13641,7 +13701,17 @@ Abstraktionsebene sein</li>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">IsValidPassword</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">true</span><span class="p">;</span>
 <span class="w">    </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">InitializeNewSession</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
-<span class="n">User</span><span class="w"> </span><span class="nf">FindUser</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">User</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=ba357fb34088980e">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="n">User</span><span class="w"> </span><span class="nf">FindUser</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">User</span><span class="p">();</span>
 </pre></div>
 </div>
 </div>
@@ -13674,7 +13744,7 @@ Abstraktionsebene sein</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=9261737707cee9e5">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=08cc022b0d964e97">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
@@ -13684,8 +13754,17 @@ Abstraktionsebene sein</li>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindUser</span><span class="p">(</span><span class="n">userName</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">user</span><span class="p">.</span><span class="n">IsValidPassword</span><span class="p">(</span><span class="n">password</span><span class="p">);</span>
 <span class="p">}</span>
-
-<span class="k">void</span><span class="w"> </span><span class="nf">StartSession</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">userName</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=dc25592afdde704f">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">StartSession</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="n">userName</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">    </span><span class="kt">var</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FindUser</span><span class="p">(</span><span class="n">userName</span><span class="p">);</span>
 <span class="w">    </span><span class="n">user</span><span class="o">?.</span><span class="n">InitializeNewSession</span><span class="p">();</span>
@@ -13734,14 +13813,23 @@ oder etwas <strong>zurückgeben</strong> (Query)</li>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=93def78f0fc77754">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=fd6cac173a012ec0">
 <div class="input">
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class="highlight hl-csharp"><pre><span></span><span class="kt">bool</span><span class="w"> </span><span class="nf">HasDefaultValue</span><span class="p">()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">defaultValue</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="k">void</span><span class="w"> </span><span class="nf">SetDefaultValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=67d08a01f9bd20a7">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class="highlight hl-csharp"><pre><span></span><span class="k">void</span><span class="w"> </span><span class="nf">SetDefaultValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="k">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">defaultValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">value</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 </pre></div>
 </div>
 </div>

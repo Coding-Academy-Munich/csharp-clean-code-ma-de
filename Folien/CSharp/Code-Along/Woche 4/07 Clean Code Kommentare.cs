@@ -85,23 +85,17 @@ int timeoutMs = 30000;
 //
 // Gut: Warnung vor Konsequenzen
 
-// %% [markdown]
-//
-// ```csharp
-// // WARNING: This test takes 10 minutes to run.
-// // Only run it in CI, not locally.
-// ```
+// %%
+// WARNING: This test takes 10 minutes to run.
+// Only run it in CI, not locally.
 
 // %% [markdown]
 //
 // Gut: TODO für zukünftige Verbesserung
 
-// %% [markdown]
-//
-// ```csharp
-// // TODO: Replace linear search with binary search when
-// // the list grows beyond 10,000 elements
-// ```
+// %%
+// TODO: Replace linear search with binary search when
+// the list grows beyond 10,000 elements
 
 // %% [markdown]
 //
@@ -120,7 +114,8 @@ class Employee
     public bool HasWarnings { get; set; }
     public double Salary { get; set; }
 }
-var employee = new Employee { YearsOfService = 10, Rating = 5, Salary = 50000 };
+
+// %%
 
 // %% [markdown]
 //
